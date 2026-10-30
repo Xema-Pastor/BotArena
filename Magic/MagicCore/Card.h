@@ -290,6 +290,10 @@ public:
 
 	void SetIntoPlayTapped()							{ m_bIntoPlayTapped = TRUE;			   }
 
+	// Devoid (and Ghostfire's "this card is colorless"): the card has no color, whatever its mana cost.
+	// Call it from the card constructor; spells added later don't give the card colors again.
+	void SetDevoid();
+
 	COrientation* GetOrientation()				 const	{ return m_cpOrientation.GetPointer(); }
 
 	CPlayer* GetController()					 const	{ return m_cpController->GetPointer(); }

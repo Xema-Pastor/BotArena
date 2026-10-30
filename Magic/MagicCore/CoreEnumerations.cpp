@@ -195,6 +195,9 @@ CString CardKeyword::ToString(CardKeyword cardKeyword)
 	if ((cardKeyword & CantBeEnchanted).Any())
 		strText += _T("can't be enchanted, ");
 
+	if ((cardKeyword & Devoid).Any())
+		strText += _T("devoid, ");
+
 	if ((cardKeyword & Vanishing).Any())
 		strText += _T("vanishing, ");
 	
@@ -574,7 +577,8 @@ const LPCTSTR PlaneswalkerType::s_Text[PlaneswalkerType::_SubtypeCount] =
 	_T("Tibalt"),
 	_T("Venser"),
 	_T("Vraska"),
-	_T("Xenagos")
+	_T("Xenagos"),
+	_T("Nixilis")
 };
 //____________________________________________________________________________
 //

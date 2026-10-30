@@ -3801,7 +3801,7 @@ void CAvenWarcraftCard::OnColorSelected(const std::vector<SelectionEntry>& selec
 	ATLASSERT(nSelectedCount == 1);
 
 	CCountedCardContainer cards;
-	CCardFilter m_CardFilter = CCardFilter(_T("a creature"), _T("creatures"), new AnyCreatureComparer);
+	CCardFilter m_CardFilter(_T("a creature"), _T("creatures"), new AnyCreatureComparer);
 	
 	CZone* pFromZone;
 
@@ -3957,7 +3957,7 @@ void CGloryCard::OnColorSelected(const std::vector<SelectionEntry>& selection, i
 	ATLASSERT(nSelectedCount == 1);
 
 	CCountedCardContainer cards;
-	CCardFilter m_CardFilter = CCardFilter(_T("a creature"), _T("creatures"), new AnyCreatureComparer);
+	CCardFilter m_CardFilter(_T("a creature"), _T("creatures"), new AnyCreatureComparer);
 	
 	CZone* pFromZone;
 

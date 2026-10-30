@@ -4746,10 +4746,10 @@ CMayaelsAriaCard::CMayaelsAriaCard(CGame* pGame, UINT nID)
 
 bool CMayaelsAriaCard::BeforeResolution(CAbilityAction* pAction) const
 {
-	CCardFilter m_CardFilter1 = CCardFilter(new AnyCreatureComparer);
-	CCardFilter m_CardFilter2 = CCardFilter(new AnyCreatureComparer);
-	CCardFilter m_CardFilter3 = CCardFilter(new AnyCreatureComparer);
-	CCardFilter m_CardFilter4 = CCardFilter(new AnyCreatureComparer);
+	CCardFilter m_CardFilter1(new AnyCreatureComparer);
+	CCardFilter m_CardFilter2(new AnyCreatureComparer);
+	CCardFilter m_CardFilter3(new AnyCreatureComparer);
+	CCardFilter m_CardFilter4(new AnyCreatureComparer);
 	m_CardFilter1.AddComparer(new CreaturePowerComparer<std::greater<int>>(4));
 	m_CardFilter2.AddComparer(new CreaturePowerComparer<std::greater<int>>(9));
 	m_CardFilter3.AddComparer(new CreaturePowerComparer<std::greater<int>>(19));
@@ -4814,7 +4814,7 @@ CNecromancersCovenantCard::CNecromancersCovenantCard(CGame* pGame, UINT nID)
 bool CNecromancersCovenantCard::BeforeResolution(CAbilityAction* pAction) const
 {
 	CPlayer* pTarget = pAction->GetAssociatedPlayer();
-	CCardFilter m_CardFilter = CCardFilter(new AnyCreatureComparer);
+	CCardFilter m_CardFilter(new AnyCreatureComparer);
 	CPlayer* pController = GetController();
 	
 	CZone* pGraveyard = pTarget->GetZoneById(ZoneId::Graveyard);

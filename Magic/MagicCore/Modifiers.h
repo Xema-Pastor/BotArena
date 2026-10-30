@@ -1408,6 +1408,32 @@ protected:
 	mutable int m_nUniqueId;
 };
 
+class CORE_EXPORT CAwakenLandModifier : public CCardModifier
+{
+public:
+	explicit CAwakenLandModifier(int nCounterCount)
+		: m_nCounterCount(nCounterCount)
+	{}
+
+	virtual void ApplyTo(CCard* pCard) const;
+
+	virtual CCardModifier* CloneCardModifier() const
+	{
+		CAwakenLandModifier* pModifier = new CAwakenLandModifier(m_nCounterCount);
+		pModifier->m_LinkedCardModifiers = m_LinkedCardModifiers;
+		return pModifier;
+	}
+
+	virtual bool Equals(const CCardModifier& rhs) const
+	{
+		const CAwakenLandModifier* pThis = dynamic_cast<const CAwakenLandModifier*>(&rhs);
+		return pThis && m_nCounterCount == pThis->m_nCounterCount && __super::Equals(rhs);
+	}
+
+private:
+	int m_nCounterCount;
+};
+
 //____________________________________________________________________________
 //
 class CORE_EXPORT CManaPoolModifier 

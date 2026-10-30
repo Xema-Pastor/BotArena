@@ -2283,7 +2283,7 @@ bool CDarkDabblingCard::BeforeResolution(CAbilityAction* pAction) const
 	if (n >= 2)	// spell mastery - two or more instants and/or sorceries are in your graveyard
 	{
 		CCountedCardContainer cards;
-		CCardFilter m_CardFilter = CCardFilter(_T("a creature"), _T("creatures"), new AnyCreatureComparer);
+		CCardFilter m_CardFilter(_T("a creature"), _T("creatures"), new AnyCreatureComparer);
 		m_CardFilter.AddNegateComparer(new SpecificCardComparer(pAction->GetAssociatedCard())); // exclude card that was target of the original regeneration spell
 		
 		CZone* pFromZone = pAction->GetController()->GetZoneById(ZoneId::Battlefield);

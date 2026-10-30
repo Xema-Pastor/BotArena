@@ -195,6 +195,9 @@ BEGIN
     IDS_STRING64092         "Dragon (AE)\n{4UB}\nArtifact Creature - Dragon\nToken\nFlying\n4/4"
     IDS_STRING64093         "Elemental (AN)\n\nCreature - Elemental\nToken\nTrample\n4/4"
     IDS_STRING64094         "Elemental (AO)\n\nCreature - Elemental\nToken\nHaste\n3/3"
+    IDS_STRING64095         "Elemental (AP)\n{GU}\nCreature - Elemental\nToken\nHexproof\n3/3"
+    IDS_STRING64096         "Elemental (AQ)\n{WB}\nCreature - Elemental\nToken\nLifelink\n2/3"
+    IDS_STRING64097         "Animated Gideon, Ally of Zendikar\n{2WW}\nCreature - Human Soldier Ally\nToken\nIndestructible\rPrevent all damage that would be dealt to Gideon, Ally of Zendikar this turn.\n5/5"
 END
 
 

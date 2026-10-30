@@ -750,6 +750,7 @@ struct CardKeyword
 		UnpreventableDamage				= 0x0000000040000000,
 		Deathtouch						= 0x0000000080000000,
 		CantBeEnchanted					= 0x0000000100000000,
+		Devoid							= 0x0000000200000000,	// This card has no color (Devoid, Ghostfire)
 		
 		ProtectionSpecial				= 0x0400000000000000,
 		ProtectionFromWhite				= 0x0800000000000000,
@@ -1574,6 +1575,7 @@ struct CORE_EXPORT PlaneswalkerType
 		Venser,
 		Vraska,
 		Xenagos,
+		Nixilis,
 
 		_SubtypeCount,
 	};

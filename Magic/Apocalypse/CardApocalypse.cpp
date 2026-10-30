@@ -4258,7 +4258,7 @@ bool CLastStandCard::BeforeResolution(CAbilityAction* pAction) const
 	CDrawCardModifier pModifier5 = CDrawCardModifier(GetGame(), MinimumValue(nIslandCount), MaximumValue(nIslandCount));
 	pModifier5.ApplyTo(pController);
 
-	CCardFilter pFilter = CCardFilter(new TrueCardComparer);
+	CCardFilter pFilter(new TrueCardComparer);
 
 	CZoneModifier pModifier6 = CZoneModifier(GetGame(), ZoneId::Hand, SpecialNumber::All, CZoneModifier::RoleType::PrimaryPlayer,
 				CardPlacement::Top, CZoneModifier::RoleType::PrimaryPlayer);

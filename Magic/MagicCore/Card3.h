@@ -151,6 +151,74 @@ protected:
 };
 //____________________________________________________________________________
 //
+// Ingest (Whenever this creature deals combat damage to a player, that player exiles the top card of his or her library.)
+class CORE_EXPORT CIngestCreatureCard : public CCreatureCard
+{
+protected:
+	CIngestCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
+						LPCTSTR strCostText, Power nPower, Life nToughness);
+
+	virtual ~CIngestCreatureCard() {}
+
+private:
+	bool SetIngestContext(CTriggeredMoveCardAbility::TriggerContextType& triggerContext,
+						  CPlayer* pPlayer, Damage damage) const;
+};
+//____________________________________________________________________________
+//
+// Rally - Whenever this creature or another Ally enters the battlefield under your control,
+// creatures you control gain <keyword> until end of turn.
+class CORE_EXPORT CRallyCreatureCard : public CCreatureCard
+{
+protected:
+	CRallyCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
+					   LPCTSTR strCostText, Power nPower, Life nToughness,
+					   CreatureKeyword::Enum rallyKeyword);
+
+	virtual ~CRallyCreatureCard() {}
+};
+//____________________________________________________________________________
+//
+// When this creature enters the battlefield, create N 1/1 colorless Eldrazi Scion creature tokens
+// with "Sacrifice this creature: Add {C}."
+class CORE_EXPORT CScionMakerCreatureCard : public CCreatureCard
+{
+protected:
+	CScionMakerCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
+							LPCTSTR strCostText, Power nPower, Life nToughness,
+							int nTokenCount);
+
+	virtual ~CScionMakerCreatureCard() {}
+};
+//____________________________________________________________________________
+//
+// Processors: "Put a card an opponent owns from exile into that player's graveyard."
+// A card keeps one CProcessCost member per processing cost it has (e.g. "put two cards ... into their owners' graveyards").
+// - As a cost or condition: check CanPay(), e.g. from a CPlayableIfTrait or a trigger context function.
+// - To pay it: call Pay() when the ability resolves. The player chooses the cards (only if there is a choice);
+//   Pay() returns FALSE if there are not enough cards, so the ability or spell does nothing.
+class CORE_EXPORT CProcessCost
+{
+public:
+	CProcessCost(CCard* pCard, int nCount = 1);
+	virtual ~CProcessCost() {}
+
+	// Number of cards in exile owned by pPlayer's opponents
+	static int CountProcessableCards(const CPlayer* pPlayer);
+
+	BOOL CanPay(const CPlayer* pPlayer) const;
+	BOOL Pay(CPlayer* pPlayer);
+
+protected:
+	void ProcessCard(CCard* pCard, CPlayer* pPlayer);
+	void OnCardsSelected(const std::vector<SelectionEntry>& selection, int nSelectedCount, CPlayer* pSelectionPlayer, DWORD dwContext1, DWORD dwContext2, DWORD dwContext3, DWORD dwContext4, DWORD dwContext5);
+
+	CCard* m_pCard;
+	int m_nCount;
+	CSelectionSupport m_CardSelection;
+};
+//____________________________________________________________________________
+//
 class CORE_EXPORT CChancellorCreatureCard : public CCreatureCard
 {
 protected:

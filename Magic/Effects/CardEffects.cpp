@@ -110,6 +110,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CMoonmistEffectToken);
 		DEFINE_TOKEN(CMystifyingMazeEffectToken);
 		DEFINE_TOKEN(CNecropotenceEffectToken);
+		DEFINE_TOKEN(COnduRisingEffectToken);
+		DEFINE_TOKEN(CGideonAllyOfZendikarEmblemToken);
+		DEFINE_TOKEN(CObNixilisReignitedEmblemToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -1393,13 +1396,126 @@ CJaceArchitectOfThoughtEffectToken::CJaceArchitectOfThoughtEffectToken(CGame* pG
     }
 }
 
-bool CJaceArchitectOfThoughtEffectToken::SetTriggerContext(CTriggeredModifyCreatureAbility::TriggerContextType& triggerContext, 
+bool CJaceArchitectOfThoughtEffectToken::SetTriggerContext(CTriggeredModifyCreatureAbility::TriggerContextType& triggerContext,
 										 CCreatureCard* pCreature,
 										 AttackSubject attacked) const
 {
 	triggerContext.m_pCreature = pCreature;
 
 	return true;
+}
+
+//____________________________________________________________________________
+//
+COnduRisingEffectToken::COnduRisingEffectToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Ondu Rising Effect"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	{
+		typedef
+			TTriggeredAbility< CTriggeredModifyCreatureAbility, CWhenAttackedBlockedAny,
+								CWhenAttackedBlockedAny::PlayerEventCallback, &CWhenAttackedBlockedAny::SetAttackingEventCallback> TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+
+		cpAbility->GetCardKeywordMod().GetModifier().SetToAdd(CardKeyword::Lifelink);
+		cpAbility->GetCardKeywordMod().GetModifier().SetOneTurnOnly(TRUE);
+		cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &COnduRisingEffectToken::SetTriggerContext));
+
+		cpAbility->AddAbilityTag(AbilityTag::CreatureChange);
+
+		cpAbility->SetTriggerToPlayerOption(TriggerToPlayerOption::TriggerToParameter1);
+
+		cpAbility->GetTrigger().SetTriggerinZone(ZoneId::_Effects);
+		cpAbility->SetPlayableFrom(ZoneId::_Effects);
+
+		AddAbility(cpAbility.GetPointer());
+	}
+	{
+		typedef
+			TTriggeredAbility< CTriggeredMoveCardAbility, CWhenNodeChanged > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(
+			::CreateObject<TriggeredAbility>(this, NodeId::CleanupStep2, FALSE));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+
+		cpAbility->SetSkipStack(TRUE);
+
+		cpAbility->GetMoveCardModifier().SetFromZone(ZoneId::_Effects);
+		cpAbility->GetMoveCardModifier().SetToZone(ZoneId::Exile);
+		cpAbility->SetPlayableFrom(ZoneId::_Effects);
+		cpAbility->AddAbilityTag(AbilityTag(ZoneId::_Effects, ZoneId::Exile));
+
+		AddAbility(cpAbility.GetPointer());
+	}
+}
+
+bool COnduRisingEffectToken::SetTriggerContext(CTriggeredModifyCreatureAbility::TriggerContextType& triggerContext,
+										 CCreatureCard* pCreature,
+										 AttackSubject attacked) const
+{
+	triggerContext.m_pCreature = pCreature;
+
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CGideonAllyOfZendikarEmblemToken::CGideonAllyOfZendikarEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Gideon, Ally of Zendikar Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	{
+		counted_ptr<CPwrTghAttrEnchantment> cpAbility(
+			::CreateObject<CPwrTghAttrEnchantment>(this,
+				new AnyCreatureComparer,
+				Power(+1), Life(+1), CreatureKeyword::Null));
+
+		cpAbility->SetEnchantmentActiveIn(ZoneId::_Effects);
+		cpAbility->SetAffectControllerCardsOnly();
+
+		AddAbility(cpAbility.GetPointer());
+	}
+}
+
+//____________________________________________________________________________
+//
+CObNixilisReignitedEmblemToken::CObNixilisReignitedEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Ob Nixilis Reignited Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	{
+		typedef
+			TTriggeredAbility< CTriggeredModifyLifeAbility, CWhenCardDrew > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->SetTriggerToPlayerOption(TriggerToPlayerOption::TriggerToController);
+
+		cpAbility->GetLifeModifier().SetLifeDelta(Life(-2));
+		cpAbility->GetLifeModifier().SetDamageType(DamageType::NotDealingDamage); // life lost
+		cpAbility->GetLifeModifier().SetPreventable(PreventableType::NotPreventable);
+
+		cpAbility->SetPlayableFrom(ZoneId::_Effects);
+		cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CObNixilisReignitedEmblemToken::SetTriggerContext));
+
+		cpAbility->AddAbilityTag(AbilityTag::LifeLost);
+
+		AddAbility(cpAbility.GetPointer());
+	}
+}
+
+bool CObNixilisReignitedEmblemToken::SetTriggerContext(CTriggeredModifyLifeAbility::TriggerContextType& triggerContext,
+													   CPlayer* pPlayer, CCard* pCard, CPlayer* pByPlayer) const
+{
+	return (this->GetZone()->GetZoneId() == ZoneId::_Effects);
 }
 
 //____________________________________________________________________________

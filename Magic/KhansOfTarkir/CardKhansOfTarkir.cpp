@@ -2419,7 +2419,7 @@ bool CFeedTheClanCard::BeforeResolution(CAbilityAction* pAction) const
 {
 	CPlayer* pController     = GetController();
 	CZone* pBattlefield      = pController->GetZoneById(ZoneId::Battlefield);
-	CCardFilter m_CardFilter = CCardFilter(new AnyCreatureComparer);
+	CCardFilter m_CardFilter(new AnyCreatureComparer);
 	m_CardFilter.AddComparer(new CreaturePowerComparer<std::greater<int>>(3)); // creature with power 4 or greater
 	
 	int iLifeGain = 5;
@@ -2453,7 +2453,7 @@ bool CForceAwayCard::BeforeResolution(CAbilityAction* pAction)
 { 
 	CPlayer* pController     = GetController();
 	CZone* pBattlefield      = pController->GetZoneById(ZoneId::Battlefield);
-	CCardFilter m_CardFilter = CCardFilter(new AnyCreatureComparer);
+	CCardFilter m_CardFilter(new AnyCreatureComparer);
 	m_CardFilter.AddComparer(new CreaturePowerComparer<std::greater<int>>(3)); // creature with power 4 or greater
 
 	if (m_CardFilter.CountIncluded(pBattlefield->GetCardContainer()) > 0)	   // Ferocious caster has at least one creature with power 4 or greater
@@ -5757,7 +5757,7 @@ bool CBarrageOfBouldersCard::BeforeResolution(CAbilityAction* pAction) const
 {
 	CPlayer* pController     = GetController();
 	CZone* pBattlefield      = pController->GetZoneById(ZoneId::Battlefield);
-	CCardFilter m_CardFilter = CCardFilter(new AnyCreatureComparer);
+	CCardFilter m_CardFilter(new AnyCreatureComparer);
 	m_CardFilter.AddComparer(new CreaturePowerComparer<std::greater<int>>(3)); // creature with power 4 or greater
 	if (m_CardFilter.CountIncluded(pBattlefield->GetCardContainer()) > 0)	   // ferocious caster has at least one creature with power 4 or greater
 	{
@@ -5849,7 +5849,7 @@ bool CCratersClawsCard::BeforeResolution(CAbilityAction* pAction) const
 {
 	CPlayer* pController		   = GetController();
 	CZone* pBattlefield			   = pController->GetZoneById(ZoneId::Battlefield);
-	CCardFilter m_CardFilter	   = CCardFilter(new AnyCreatureComparer);
+	CCardFilter m_CardFilter(new AnyCreatureComparer);
 	m_CardFilter.AddComparer(new CreaturePowerComparer<std::greater<int>>(3)); // creature with power 4 or greater
 	
 	CCard*		   pTargetCreature = pAction->GetAssociatedCard();

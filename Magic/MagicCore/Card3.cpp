@@ -161,6 +161,166 @@ int CDevourCreatureCard::GetDevouredCount() const
 
 //____________________________________________________________________________
 //
+CIngestCreatureCard::CIngestCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
+										 LPCTSTR strCostText, Power nPower, Life nToughness)
+	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)
+{
+	typedef TTriggeredAbility<CTriggeredMoveCardAbility, CWhenSelfDamageDealt,
+		CWhenSelfDamageDealt::PlayerEventCallback,
+		&CWhenSelfDamageDealt::SetPlayerEventCallback> TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+	cpAbility->GetTrigger().SetCombatDamageOnly();
+	cpAbility->GetTrigger().SetToOpponentsOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetTriggerToPlayerOption(TriggerToPlayerOption::TriggerToParameter1);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(
+		this, &CIngestCreatureCard::SetIngestContext));
+	cpAbility->GetMoveCardModifier().SetToZone(ZoneId::Exile);
+	cpAbility->AddAbilityTag(AbilityTag(ZoneId::Library, ZoneId::Exile));
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CIngestCreatureCard::SetIngestContext(CTriggeredMoveCardAbility::TriggerContextType& triggerContext,
+										   CPlayer* pPlayer, Damage damage) const
+{
+	CZone* pLibrary = pPlayer->GetZoneById(ZoneId::Library);
+	if (!pLibrary->GetSize())
+		return false;
+
+	triggerContext.m_pCard = pLibrary->GetAt(0);
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CRallyCreatureCard::CRallyCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
+									   LPCTSTR strCostText, Power nPower, Life nToughness,
+									   CreatureKeyword::Enum rallyKeyword)
+	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)
+{
+	typedef TTriggeredAbility<CTriggeredModifyCreatureAbility, CWhenCardMoved> TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(
+		::CreateObject<TriggeredAbility>(this, ZoneId::_AllZones, ZoneId::Battlefield));
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTrigger().SetToControllerOnly(TRUE);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetFilterType(CCardFilterHelper::FilterType::Custom);
+	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(
+		new CreatureTypeComparer(CREATURE_TYPE(Ally), false));
+	cpAbility->SetModifyCreatureOption(
+		CTriggeredModifyCreatureAbility::ModifyCreatureOption::ModifyTriggeredPlayersCreatures);
+	cpAbility->GetCardFilterHelper().SetFilterType(CCardFilterHelper::FilterType::Custom);
+	cpAbility->GetCardFilterHelper().GetCustomFilter().AddComparer(new AnyCreatureComparer);
+	cpAbility->GetCreatureKeywordMod().GetModifier().SetToAdd(rallyKeyword);
+	cpAbility->GetCreatureKeywordMod().GetModifier().SetOneTurnOnly(TRUE);
+	cpAbility->AddAbilityTag(AbilityTag::CreatureChange);
+	AddAbility(cpAbility.GetPointer());
+}
+
+//____________________________________________________________________________
+//
+CScionMakerCreatureCard::CScionMakerCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
+												 LPCTSTR strCostText, Power nPower, Life nToughness,
+												 int nTokenCount)
+	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)
+{
+	typedef TTriggeredAbility<CTriggeredCreateTokenAbility, CWhenSelfInplay,
+		CWhenSelfInplay::EventCallback, &CWhenSelfInplay::SetEnterEventCallback> TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetCreateTokenOption(TRUE, _T("Eldrazi Scion (A)"), 55056, nTokenCount);
+	cpAbility->AddAbilityTag(AbilityTag::TokenCreation);
+	AddAbility(cpAbility.GetPointer());
+}
+
+//____________________________________________________________________________
+//
+CProcessCost::CProcessCost(CCard* pCard, int nCount)
+	: m_pCard(pCard)
+	, m_nCount(nCount)
+	, m_CardSelection(pCard->GetGame(), CSelectionSupport::SelectionCallback(this, &CProcessCost::OnCardsSelected))
+{
+}
+
+int CProcessCost::CountProcessableCards(const CPlayer* pPlayer)
+{
+	CGame* pGame = pPlayer->GetGame();
+	int nCount = 0;
+
+	for (int ip = 0; ip < pGame->GetPlayerCount(); ++ip)
+	{
+		CZone* pExile = pGame->GetPlayer(ip)->GetZoneById(ZoneId::Exile);
+
+		for (int i = 0; i < pExile->GetSize(); ++i)
+			if (pExile->GetAt(i)->GetOwner() != pPlayer)
+				++nCount;
+	}
+
+	return nCount;
+}
+
+BOOL CProcessCost::CanPay(const CPlayer* pPlayer) const
+{
+	return CountProcessableCards(pPlayer) >= m_nCount;
+}
+
+BOOL CProcessCost::Pay(CPlayer* pPlayer)
+{
+	if (!CanPay(pPlayer))
+		return FALSE;
+
+	CGame* pGame = pPlayer->GetGame();
+
+	std::vector<SelectionEntry> entries;
+	for (int ip = 0; ip < pGame->GetPlayerCount(); ++ip)
+	{
+		CZone* pExile = pGame->GetPlayer(ip)->GetZoneById(ZoneId::Exile);
+
+		for (int i = 0; i < pExile->GetSize(); ++i)
+		{
+			CCard* pCard = pExile->GetAt(i);
+			if (pCard->GetOwner() == pPlayer)
+				continue;
+
+			SelectionEntry entry;
+
+			entry.dwContext = (DWORD)pCard;
+			entry.cpAssociatedCard = pCard;
+			entry.strText.Format(_T("Put %s into %s's graveyard"), pCard->GetCardName(TRUE), pCard->GetOwner()->GetPlayerName());
+
+			entries.push_back(entry);
+		}
+	}
+
+	if ((int)entries.size() == m_nCount)
+	{
+		// No choice: process all of them
+		for (std::vector<SelectionEntry>::const_iterator it = entries.begin(); it != entries.end(); ++it)
+			ProcessCard((CCard*)it->dwContext, pPlayer);
+	}
+	else
+		m_CardSelection.AddSelectionRequest(entries, m_nCount, m_nCount, m_pCard, pPlayer);
+
+	return TRUE;
+}
+
+void CProcessCost::ProcessCard(CCard* pCard, CPlayer* pPlayer)
+{
+	CMoveCardModifier pModifier = CMoveCardModifier(ZoneId::Exile, ZoneId::Graveyard, TRUE, MoveType::Others, pPlayer);
+	pModifier.ApplyTo(pCard);
+}
+
+void CProcessCost::OnCardsSelected(const std::vector<SelectionEntry>& selection, int nSelectedCount, CPlayer* pSelectionPlayer, DWORD dwContext1, DWORD dwContext2, DWORD dwContext3, DWORD dwContext4, DWORD dwContext5)
+{
+	for (std::vector<SelectionEntry>::const_iterator it = selection.begin(); it != selection.end(); ++it)
+		if (it->bSelected)
+			ProcessCard((CCard*)it->dwContext, pSelectionPlayer);
+}
+
+//____________________________________________________________________________
+//
 CChancellorCreatureCard::CChancellorCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
 										 LPCTSTR strCostText, Power nPower, Life nToughness)
 	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)

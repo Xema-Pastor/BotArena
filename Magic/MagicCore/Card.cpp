@@ -2215,9 +2215,18 @@ void CCard::AddSpell(CSpell* pSpell)
 		cardType = CardType::Artifact;
 	*/
 
+	if (GetCardKeyword()->HasDevoid())
+		cardType = CardType::Null;
+
 	AddCardType(cardType, CardType::_ColorMask, CardTypeEntry::Permanent);
 
 	AddAbility(pSpell);
+}
+
+void CCard::SetDevoid()
+{
+	GetCardKeyword()->AddDevoid(FALSE);
+	AddCardType(CardType::Null, CardType::_ColorMask, CardTypeEntry::Permanent);
 }
 
 void CCard::AddAbility(CAbility* pAbility)
@@ -2522,7 +2531,7 @@ void CCard::OnISAADamageDealt(CCard* pFromCard, CPlayer* pToPlayer, CCreatureCar
 		CPlaneswalkerCard* pWalker = (CPlaneswalkerCard*)this;
 		
 		if (((pIsAlsoA->GetController()->GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon) && pWalker->GetPrintedCardName() == "Gideon Jura") ||
-			(pIsAlsoA->GetController()->GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon2) && pWalker->GetPrintedCardName() == "Gideon, Champion of Justice"))
+			(pIsAlsoA->GetController()->GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon2) && (pWalker->GetPrintedCardName() == "Gideon, Champion of Justice" || pWalker->GetPrintedCardName() == "Gideon, Ally of Zendikar")))
 			&& damage.m_Preventable == PreventableType::Preventable)
 			return;
 		else

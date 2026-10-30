@@ -250,6 +250,9 @@ BEGIN
     IDS_STRING61137          "Searing Blood Effect\n\nEffect\nToken\nWhen the target creature dies this turn, its controller is dealt 3 damage."
     IDS_STRING61138          "Burn Away Effect\n\nEffect\nToken\nWhen the target creature dies this turn, its controller exiles all cards from their graveyard."
     IDS_STRING61139         "Upkeep Step Reanimate Effect\n\nEffect\nToken\nAt the beginning of your next upkeep step, return the subjects to the battlefield under their owner's control."
+    IDS_STRING61140          "Ondu Rising Effect\n\nEffect\nToken\nWhenever a creature attacks this turn, it gains lifelink until end of turn."
+    IDS_STRING61141          "Gideon, Ally of Zendikar Emblem\n\nEmblem\nToken\nCreatures you control get +1/+1."
+    IDS_STRING61142          "Ob Nixilis Reignited Emblem\n\nEmblem\nToken\nWhenever a player draws a card, you lose 2 life."
 //	IDS_STRING61040          "Chancellor of the Annex Effect\n\nEffect\nToken\nWhen each opponent casts his or her first spell of the game, counter that spell unless that player pays {1}."
 END
 #endif    // English (United States) resources

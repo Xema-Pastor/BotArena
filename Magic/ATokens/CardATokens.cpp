@@ -68,6 +68,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CElementalAMToken);
 		DEFINE_TOKEN(CElementalANToken);
 		DEFINE_TOKEN(CElementalAOToken);
+		DEFINE_TOKEN(CElementalAPToken);
+		DEFINE_TOKEN(CElementalAQToken);
+		DEFINE_TOKEN(CAnimatedGideonAllyOfZendikarToken);
 		DEFINE_TOKEN(CElementalHorrorAAToken);
 		DEFINE_TOKEN(CElfAAToken);
 		DEFINE_TOKEN(CFaerieAAToken);
@@ -1485,6 +1488,54 @@ CElementalAOToken::CElementalAOToken(CGame* pGame, UINT nID)
 	GetCreatureKeyword()->AddHaste(FALSE);
 
 // Used by OGW Embodiment of Insight
+}
+
+//____________________________________________________________________________
+//
+CElementalAPToken::CElementalAPToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature/* | CardType::Token*/,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	AddCardType(CardType::Green | CardType::Blue, CardType::_ColorMask);
+
+	GetCardKeyword()->AddHexproof(FALSE);
+
+// Animation of BFZ Lumbering Falls
+}
+
+//____________________________________________________________________________
+//
+CElementalAQToken::CElementalAQToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature/* | CardType::Token*/,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(2), Life(3))
+{
+	AddCardType(CardType::White | CardType::Black, CardType::_ColorMask);
+
+	GetCardKeyword()->AddLifelink(FALSE);
+
+// Animation of BFZ Shambling Vent
+}
+
+//____________________________________________________________________________
+//
+CAnimatedGideonAllyOfZendikarToken::CAnimatedGideonAllyOfZendikarToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Animated Gideon, Ally of Zendikar"), CardType::Creature/* | CardType::Token*/,
+		CREATURE_TYPE3(Human, Soldier, Ally), nID,
+		_T("2") WHITE_MANA_TEXT WHITE_MANA_TEXT,
+		Power(5), Life(5))
+{
+	Life prevent(PreventionType::PreventAllDamage);
+	CDamagePreventionEntry entry(prevent);
+	entry.SetOneTurnOnly(FALSE);
+
+	GetDamagePrevention().AddDamagePreventionEntry(entry);
+	GetCardKeyword()->AddIndestructible(FALSE);
+
+// Animation of BFZ Gideon, Ally of Zendikar
 }
 
 //____________________________________________________________________________

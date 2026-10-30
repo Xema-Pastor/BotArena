@@ -37,7 +37,7 @@ namespace Epoch {
 //____________________________________________________________________________
 //
 #define DISALLOW_COMPARISON(c)	private: bool operator==(const c&);
-#define DISALLOW_BASE_IMPL(m)	private: class _##m_dummy {}; void m(_##m_dummy&);
+#define DISALLOW_BASE_IMPL(m)	private: class _##m##_dummy {}; void m(_##m##_dummy&);
 
 // To prevent creations, protect the cstor and dstor.
 
@@ -257,6 +257,7 @@ protected:
 	{
 		ATLASSERT(!m_nReferenceCount && m_bDeleting);
 		if (m_nReferenceCount)
+#pragma warning(suppress : 4297)
 			throw E_UNEXPECTED;
 	}
 

@@ -722,8 +722,8 @@ void CCardModule::InitializeEntries(HWND hwndProgress)
 		CCardEntry* pEntry = new CCardEntry(i, this);
 		if (!pEntry->IsValidEntry())
 		{
-			delete pEntry;	// Stop on first error
-			break;
+			delete pEntry;	// Skip gaps in the card ID range (modules under construction)
+			continue;
 		}
 
 /* No longer useful with the support of multiple card info for a single card

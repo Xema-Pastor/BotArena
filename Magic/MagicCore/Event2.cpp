@@ -1306,6 +1306,16 @@ BOOL CCardKeyword::HasCantBeEnchanted() const
 	return (m_Bitflag & CardKeyword::CantBeEnchanted).Any();
 }
 
+void CCardKeyword::AddDevoid(BOOL bThisTurnOnly)
+{
+	AddEntry(BitflagEntry(CardKeyword::Devoid, bThisTurnOnly));
+}
+
+BOOL CCardKeyword::HasDevoid() const
+{
+	return (m_Bitflag & CardKeyword::Devoid).Any();
+}
+
 void CCardKeyword::AddFlash(BOOL bThisTurnOnly)
 {
 	AddEntry(BitflagEntry(CardKeyword::Flash, bThisTurnOnly));

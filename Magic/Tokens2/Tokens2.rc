@@ -148,9 +148,9 @@ BEGIN
     IDS_STRING55053         "Thopter (D)\n{1}\nArtifact Creature - Thopter\nToken\nFlying\n1/1"
     IDS_STRING55054         "Thopter (E)\n{1}\nArtifact Creature - Thopter\nToken\nFlying\n1/1"
     IDS_STRING55055         "Octopus (A)\n{U}\nCreature - Octopus\nToken\n\n8/8"
-    IDS_STRING55056         "Eldrazi Scion (A)\n{1}\nCreature - Eldrazi Spawn\nToken\nSacrifice this creature: Add {1} to your mana pool.\n1/1"
-    IDS_STRING55057         "Eldrazi Scion (B)\n{1}\nCreature - Eldrazi Spawn\nToken\nSacrifice this creature: Add {1} to your mana pool.\n1/1"
-    IDS_STRING55058         "Eldrazi Scion (C)\n{1}\nCreature - Eldrazi Spawn\nToken\nSacrifice this creature: Add {1} to your mana pool.\n1/1"
+    IDS_STRING55056         "Eldrazi Scion (A)\n{1}\nCreature - Eldrazi Scion\nToken\nSacrifice this creature: Add {C}.\n1/1"
+    IDS_STRING55057         "Eldrazi Scion (B)\n{1}\nCreature - Eldrazi Scion\nToken\nSacrifice this creature: Add {C}.\n1/1"
+    IDS_STRING55058         "Eldrazi Scion (C)\n{1}\nCreature - Eldrazi Scion\nToken\nSacrifice this creature: Add {C}.\n1/1"
     IDS_STRING55059         "Eldrazi (A)\n{1}\nCreature - Eldrazi\nToken\n\n10/10"
 END
 
@@ -159,7 +159,7 @@ BEGIN
     IDS_STRING55060         "Knight Ally (A)\n{W}\nCreature - Knight Ally\nToken\n\n2/2"
     IDS_STRING55061         "Kor Ally (A)\n{W}\nCreature - Kor Ally\nToken\n\n1/1"
     IDS_STRING55062         "Dragon (J)\n{R}\nCreature - Dragon\nToken\nFlying\r\n5/5"
-    IDS_STRING55063         "Elemental (Y)\n{R}\nCreature - Elemental\nToken\nTrample, haste\n3/1"
+    IDS_STRING55063         "Elemental (Y)\n{R}\nCreature - Elemental\nToken\nTrample, haste\rAt the beginning of the next end step, exile this creature.\n3/1"
     IDS_STRING55064         "Plant (B)\n{G}\nCreature - Plant\nToken\n\n1/1"
     IDS_STRING55065         "Elemental (Z)\n{RG}\nCreature - Elemental\nToken\n\n5/5"
     IDS_STRING55066         "Plant (C)\n{G}\nCreature - Plant\nToken\n\n0/1"
@@ -167,9 +167,9 @@ BEGIN
     IDS_STRING55068         "Elemental (ZB)\n{R}\nCreature - Elemental\nToken\nHaste\n3/1"
     IDS_STRING55069         "Zombie (U)\n{B}\nCreature - Zombie\nToken\n\n2/2"
     IDS_STRING55070         "Angel (K)\n{W}\nCreature - Angel\nToken\nFlying\n3/3"
-    IDS_STRING55071         "Eldrazi Scion (D)\n{1}\nCreature - Eldrazi Spawn\nToken\nSacrifice this creature: Add {1} to your mana pool.\n1/1"
-    IDS_STRING55072         "Eldrazi Scion (E)\n{1}\nCreature - Eldrazi Spawn\nToken\nSacrifice this creature: Add {1} to your mana pool.\n1/1"
-    IDS_STRING55073         "Eldrazi Scion (F)\n{1}\nCreature - Eldrazi Spawn\nToken\nSacrifice this creature: Add {1} to your mana pool.\n1/1"
+    IDS_STRING55071         "Eldrazi Scion (D)\n{1}\nCreature - Eldrazi Scion\nToken\nSacrifice this creature: Add {C}.\n1/1"
+    IDS_STRING55072         "Eldrazi Scion (E)\n{1}\nCreature - Eldrazi Scion\nToken\nSacrifice this creature: Add {C}.\n1/1"
+    IDS_STRING55073         "Eldrazi Scion (F)\n{1}\nCreature - Eldrazi Scion\nToken\nSacrifice this creature: Add {C}.\n1/1"
     IDS_STRING55074         "Angel (L)\n{W}\nCreature - Angel\nToken\nFlying\n4/4"
 END
 
@@ -184,6 +184,7 @@ BEGIN
    IDS_STRING55081         "Ooze (F)\n{G}\nCreature - Ooze\nToken\n\n3/3"
    IDS_STRING55082         "Wolf (L)\n{G}\nCreature - Wolf\nToken\n\n2/2"
    IDS_STRING55083         "Human Cleric (A)\n{WB}\nCreature - Human Cleric\nToken\n\n1/1"
+   IDS_STRING55084         "Awakened Land\n{0}\nCreature - Elemental\nToken\nHaste\n0/0"
 END
 
 #endif    // English (United States) resources

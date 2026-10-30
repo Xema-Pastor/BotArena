@@ -857,7 +857,7 @@ void CPlayer::OnPlaneswalkerSelected(const std::vector<SelectionEntry>& selectio
 			// Planeswalker
 
 			if (((GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon) &&  ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon Jura") ||
-				(GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon2) &&  ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Champion of Justice"))
+				(GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon2) &&  (((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Champion of Justice" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Ally of Zendikar")))
 				&& damage.m_Preventable == PreventableType::Preventable)
 				return;
 

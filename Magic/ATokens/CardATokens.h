@@ -685,3 +685,24 @@ class CElementalAOToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CElementalAPToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalAPToken);
+};
+
+//____________________________________________________________________________
+//
+class CElementalAQToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalAQToken);
+};
+
+//____________________________________________________________________________
+//
+class CAnimatedGideonAllyOfZendikarToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAnimatedGideonAllyOfZendikarToken);
+};
+
+//____________________________________________________________________________
+//

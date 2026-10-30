@@ -38,6 +38,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CEldraziScionDToken);
 		DEFINE_TOKEN(CEldraziScionEToken);
 		DEFINE_TOKEN(CEldraziScionFToken);
+		DEFINE_TOKEN(CAwakenedLandToken);
 		DEFINE_TOKEN(CElementalXToken);
 		DEFINE_TOKEN(CElementalYToken);
 		DEFINE_TOKEN(CElementalZToken);
@@ -961,6 +962,22 @@ CElementalYToken::CElementalYToken(CGame* pGame, UINT nID)
 	AddCardType(CardType::Red, CardType::_ColorMask);
 	GetCreatureKeyword()->AddTrample(FALSE);
 	GetCreatureKeyword()->AddHaste(FALSE);
+
+	// Akoum Stonewaker: "Exile that token at the beginning of the next end step." (as Ball Lightning)
+	{
+		typedef
+			TTriggeredAbility< CTriggeredMoveCardAbility, CWhenNodeChanged > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::EndStep));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->GetMoveCardModifier().SetToZone(ZoneId::Exile);
+		cpAbility->GetMoveCardModifier().SetMoveType(MoveType::Others);
+
+		cpAbility->AddAbilityTag(AbilityTag(ZoneId::Battlefield, ZoneId::Exile));
+
+		AddAbility(cpAbility.GetPointer());
+	}
 // BFZ version: used by Akoum Stonewaker.
 }
 
@@ -1101,6 +1118,12 @@ CEldraziScionFToken::CEldraziScionFToken(CGame* pGame, UINT nID)
 	AddAbility(cpAbility.GetPointer());
 // OGW version: used by Abstruse Interference, Birthing Hulk, Scion Summoner, Sifter of Skulls, 
 // Vile Redeemer and Warping Wail.
+}
+
+CAwakenedLandToken::CAwakenedLandToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Awakened Land"), CardType::Creature,
+		CREATURE_TYPE(Elemental), nID, _T(""), Power(0), Life(0))
+{
 }
 
 //____________________________________________________________________________

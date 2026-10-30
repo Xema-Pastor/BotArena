@@ -3053,7 +3053,13 @@ void CTargetPlayerCardsSpell::ResolvePlayer(const CTargetSpellAction* pAction, C
 void CTargetPlayerCardsSpell::ResolvePlayerCards(const CTargetSpellAction* pAction, CPlayer* pPlayer, const CCountedCardContainer& cards, const ContextValue& value)
 {
 	for (int k = 0; k < cards.GetSize(); ++k)
+	{
 		m_CardModifiers.ApplyTo(cards.GetAt(k));
+
+		CCreatureCard* pCreature = dynamic_cast<CCreatureCard*>(cards.GetAt(k));
+		if (pCreature && pCreature->GetCardType().IsCreature())
+			m_CreatureModifiers.ApplyTo(pCreature);
+	}
 }
 
 //____________________________________________________________________________
@@ -10681,6 +10687,258 @@ BOOL CDoubleTargetSpell::ResolveImpl(const CAbilityAction* pAction)
 }
 void CDoubleTargetSpell::ResolveGroup(const CCountedCardContainer& pContainer1,const  CCountedCardContainer& pContainer2,const CPlayerContainer& pPContainer1,const CPlayerContainer& pPContainer2)
 {
+}
+
+CAwakenSpell::CAwakenSpell(CCard* pCard, AbilityType abilityType, LPCTSTR strManaCost,
+    CardComparer* pTargetComparer, ZoneId targetZone,
+	int nAwakenCounters, CCardModifier* pTargetEffect,
+	CardComparer* pAdditionalTargetComparer)
+    : CDoubleTargetSpell(pCard, abilityType, strManaCost,
+        pTargetComparer, FALSE,
+        new CardTypeComparer(CardType::_Land, false), FALSE,
+        _T(" and targets an Awaken land"))
+    , m_nAwakenCounters(nAwakenCounters)
+{
+    GetTargeting1()->SetSubjectZoneId(targetZone);
+    GetTargeting1()->SetSubjectCount(1, 1);
+	if (pAdditionalTargetComparer)
+		GetTargeting1()->GetSubjectCardFilter().AddComparer(pAdditionalTargetComparer);
+    GetTargeting2()->SetSubjectZoneId(ZoneId::Battlefield);
+    GetTargeting2()->SetSubjectCount(1, 1);
+    GetTargeting2()->SetIncludeControllerCardsOnly();	// "target land you control"
+    GetTargeting2()->SetDefaultCharacteristic(Characteristic::Positive);
+    SetMainSpell(FALSE);
+    SetAbilityText(_T("Casts with Awaken"));
+    m_TargetEffects.Add(pTargetEffect);
+}
+
+void CAwakenSpell::ResolveGroup(const CCountedCardContainer& pContainer1,
+    const CCountedCardContainer& pContainer2,
+    const CPlayerContainer& pPContainer1,
+    const CPlayerContainer& pPContainer2)
+{
+    for (int i = 0; i < pContainer1.GetSize(); ++i)
+        m_TargetEffects.ApplyTo(pContainer1.GetAt(i));
+
+    if (pContainer2.GetSize())
+    {
+        CAwakenLandModifier awakenModifier(m_nAwakenCounters);
+        awakenModifier.ApplyTo(pContainer2.GetAt(0));
+    }
+}
+
+//____________________________________________________________________________
+//
+CAwakenLandSpell::CAwakenLandSpell(CCard* pCard, AbilityType abilityType, LPCTSTR strManaCost,
+	int nAwakenCounters,
+	CardComparer* pGlobalComparer)
+	: CTargetSpell(pCard, abilityType, strManaCost,
+		new CardTypeComparer(CardType::_Land, false), FALSE)
+	, m_nAwakenCounters(nAwakenCounters)
+	, m_bHasGlobalEffect(pGlobalComparer != NULL)
+	, m_bOpponentCardsOnly(FALSE)
+{
+	if (pGlobalComparer)
+		m_GlobalCardFilter.AddComparer(pGlobalComparer);
+
+	GetTargeting()->SetSubjectZoneId(ZoneId::Battlefield);
+	GetTargeting()->SetIncludeControllerCardsOnly();	// "target land you control"
+	GetTargeting()->SetDefaultCharacteristic(Characteristic::Positive);
+	SetMainSpell(FALSE);
+	SetAbilityText(_T("Casts with Awaken"));
+}
+
+void CAwakenLandSpell::ResolveCard(const CTargetSpellAction* pAction, CCard* pCard, const ContextValue& value)
+{
+	CPlayer* pController = pAction->GetController();
+
+	if (m_bHasGlobalEffect)
+	{
+		// Collect first: the modifiers may move cards out of the battlefield
+		CCountedCardContainer affectedCards;
+		for (int i = 0; i < m_pGame->GetPlayerCount(); ++i)
+		{
+			CPlayer* pPlayer = m_pGame->GetPlayer(i);
+			if (m_bOpponentCardsOnly && pPlayer == pController)
+				continue;
+
+			CZone* pBattlefield = pPlayer->GetZoneById(ZoneId::Battlefield);
+			for (int j = 0; j < pBattlefield->GetSize(); ++j)
+				if (m_GlobalCardFilter.IsCardIncluded(pBattlefield->GetAt(j)))
+					affectedCards.AddCard(pBattlefield->GetAt(j), CardPlacement::Top);
+		}
+
+		for (int i = 0; i < affectedCards.GetSize(); ++i)
+		{
+			CCard* pAffected = affectedCards.GetAt(i);
+			m_GlobalCardModifiers.ApplyTo(pAffected);
+
+			CCreatureCard* pCreature = dynamic_cast<CCreatureCard*>(pAffected);
+			if (pCreature && pCreature->GetCardType().IsCreature() &&
+				pCreature->GetZoneId() == ZoneId::Battlefield)
+				m_GlobalCreatureModifiers.ApplyTo(pCreature);
+		}
+	}
+
+	m_ControllerModifiers.ApplyTo(pController);
+
+	CAwakenLandModifier awakenModifier(m_nAwakenCounters);
+	awakenModifier.ApplyTo(pCard);
+}
+
+//____________________________________________________________________________
+//
+CAwakenTargetPlayerSpell::CAwakenTargetPlayerSpell(CCard* pCard, AbilityType abilityType, LPCTSTR strManaCost,
+	int nAwakenCounters)
+	: CDoubleTargetSpell(pCard, abilityType, strManaCost,
+		FALSE_CARD_COMPARER, TRUE,
+		new CardTypeComparer(CardType::_Land, false), FALSE,
+		_T(" and targets an Awaken land"))
+	, m_nAwakenCounters(nAwakenCounters)
+	, m_nDiscardCount(0)
+{
+	GetTargeting1()->SetIncludeOpponentPlayersOnly();
+	GetTargeting1()->SetSubjectCount(1, 1);
+	GetTargeting1()->SetDefaultCharacteristic(Characteristic::Negative);
+	GetTargeting2()->SetSubjectZoneId(ZoneId::Battlefield);
+	GetTargeting2()->SetSubjectCount(1, 1);
+	GetTargeting2()->SetIncludeControllerCardsOnly();	// "target land you control"
+	GetTargeting2()->SetDefaultCharacteristic(Characteristic::Positive);
+	SetMainSpell(FALSE);
+	SetAbilityText(_T("Casts with Awaken"));
+}
+
+void CAwakenTargetPlayerSpell::ResolveGroup(const CCountedCardContainer& pContainer1,
+	const CCountedCardContainer& pContainer2,
+	const CPlayerContainer& pPContainer1,
+	const CPlayerContainer& pPContainer2)
+{
+	for (int i = 0; i < pPContainer1.GetSize(); ++i)
+	{
+		CPlayer* pTarget = pPContainer1.GetAt(i);
+
+		m_TargetPlayerModifiers.ApplyTo(pTarget);
+
+		// Note: covers the creatures that player controls at resolution; creatures entering later are not affected
+		CZone* pBattlefield = pTarget->GetZoneById(ZoneId::Battlefield);
+		for (int j = 0; j < pBattlefield->GetSize(); ++j)
+		{
+			CCreatureCard* pCreature = dynamic_cast<CCreatureCard*>(pBattlefield->GetAt(j));
+			if (pCreature && pCreature->GetCardType().IsCreature())
+				m_TargetPlayerCreatureModifiers.ApplyTo(pCreature);
+		}
+
+		if (m_nDiscardCount > 0)
+			CDiscardCardCommon::ResolveDiscardCards(pTarget, pTarget, GetController(), m_nDiscardCount, MoveType::Discard);
+	}
+
+	if (pContainer2.GetSize())
+	{
+		CAwakenLandModifier awakenModifier(m_nAwakenCounters);
+		awakenModifier.ApplyTo(pContainer2.GetAt(0));
+	}
+}
+
+//____________________________________________________________________________
+//
+CAwakenCounterSpell::CAwakenCounterSpell(CCard* pCard, AbilityType abilityType, LPCTSTR strManaCost,
+	int nAwakenCounters,
+	CardComparer* pComparer)
+	: CCounterSpell(pCard, abilityType, strManaCost, pComparer)
+	, m_nAwakenCounters(nAwakenCounters)
+{
+	m_LandTargeting.SetAbility(this);
+	m_LandTargeting.SetSubjectZoneId(ZoneId::Battlefield);
+	m_LandTargeting.GetSubjectCardFilter().AddComparer(new CardTypeComparer(CardType::_Land, false));
+	m_LandTargeting.SetIncludeControllerCardsOnly();
+	m_LandTargeting.SetDefaultCharacteristic(Characteristic::Positive);
+	SetMainSpell(FALSE);
+	SetAbilityText(_T("Casts with Awaken"));
+}
+
+CActionContainer* CAwakenCounterSpell::GetAbilityActions(BOOL bIncludeTricks, BOOL bSetNames)
+{
+	CActionContainer* pCounterActions = __super::GetAbilityActions(bIncludeTricks, bSetNames);
+	if (!pCounterActions)
+		return NULL;
+
+	CActionContainer* pActions = new CActionContainer;
+	CZone* pBattlefield = GetController()->GetZoneById(ZoneId::Battlefield);
+
+	for (int i = 0; i < pCounterActions->GetSize(); ++i)
+	{
+		const CTargetStackSpellAction* pCounterAction =
+			(const CTargetStackSpellAction*)pCounterActions->GetAt(i).GetPointer();
+
+		for (int j = 0; j < pBattlefield->GetSize(); ++j)
+		{
+			CCard* pLand = pBattlefield->GetAt(j);
+			BOOL bTrick = FALSE;
+			if (!m_LandTargeting.TargetAllowed(pLand, bIncludeTricks, bTrick))
+				continue;
+
+			counted_ptr<CTargetStackSpellAction> cpAction = (CTargetStackSpellAction*)CreateAction().GetPointer();
+			cpAction->Copy(pCounterAction);
+			cpAction->GetTargetGroup().AddSubject(pLand, pLand->GetZoneMoveNumber());
+
+			if (bTrick)
+				cpAction->SetTrick();
+
+			if (bSetNames)
+				cpAction->AppendToActionName(_T(" and targets ") + pLand->GetCardName() + _T(" as Awaken land"));
+
+			pActions->Add(cpAction.GetPointer());
+		}
+	}
+
+	delete pCounterActions;
+	return pActions;
+}
+
+void CAwakenCounterSpell::DeflectTargetToSpell(CTargetStackSpellAction* pAction, CCard* pCard)
+{
+	// Only the spell target can be redirected; keep the land target
+	CSubjectGroup& targetGroup = pAction->GetTargetGroup();
+	CCountedCardContainer lands;
+	for (CSubjectGroup::CardSubjectIterator it = targetGroup.CardSubjectBegin();
+		it != targetGroup.CardSubjectEnd(); ++it)
+		if ((*it)->GetZoneId() == ZoneId::Battlefield)
+			lands.AddCard((CCard*)it->GetPointer(), CardPlacement::Top);
+
+	targetGroup.RemoveAll();
+	targetGroup.AddSubject(pCard);
+	for (int i = 0; i < lands.GetSize(); ++i)
+		targetGroup.AddSubject(lands.GetAt(i), lands.GetAt(i)->GetZoneMoveNumber());
+}
+
+BOOL CAwakenCounterSpell::ResolveImpl(const CAbilityAction* pAction)
+{
+	const CTargetStackSpellAction* pAction1 = (const CTargetStackSpellAction*)pAction;
+	const CSubjectGroup& targetGroup = pAction1->GetTargetGroup();
+
+	// Check the land target before countering (it must still be legal on resolution)
+	CCard* pLand = NULL;
+	for (CSubjectGroup::CardSubjectIterator it = targetGroup.CardSubjectBegin();
+		it != targetGroup.CardSubjectEnd(); ++it)
+	{
+		CCard* pCard = (CCard*)it->GetPointer();
+		BOOL bTrick;
+		if ((pCard->GetZoneId() == ZoneId::Battlefield) &&
+			(pCard->GetZoneMoveNumber() == targetGroup.GetZoneMoveNumber(pCard)) &&
+			m_LandTargeting.TargetAllowed(pCard, TRUE, bTrick))
+			pLand = pCard;
+	}
+
+	// Counter target spell, then awaken; the spell only fails if both targets are illegal
+	BOOL bCountered = __super::ResolveImpl(pAction);
+
+	if (pLand)
+	{
+		CAwakenLandModifier awakenModifier(m_nAwakenCounters);
+		awakenModifier.ApplyTo(pLand);
+	}
+
+	return bCountered || (pLand != NULL);
 }
 /*void CDoubleTargetSpell::ResolveCard(const CTargetSpellAction* pAction, CCard* pCard, const ContextValue& value)
 {

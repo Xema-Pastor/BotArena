@@ -866,7 +866,7 @@ CGhostfireCard::CGhostfireCard(CGame* pGame, UINT nID)
 {
 	m_pTargetChgLifeSpell->SetDamageType(DamageType::SpellDamage | DamageType::NonCombatDamage);
 
-	AddCardType(CardType::Null, CardType::_ColorMask);
+	SetDevoid(); // Ghostfire is colorless.
 }
 
 //____________________________________________________________________________

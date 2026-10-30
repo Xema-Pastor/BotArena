@@ -536,6 +536,9 @@ public:
 	void RemoveCantBeEnchanted(BOOL bThisTurnOnly);
 	BOOL HasCantBeEnchanted() const;
 
+	void AddDevoid(BOOL bThisTurnOnly);
+	BOOL HasDevoid() const;
+
 	void AddFlash(BOOL bThisTurnOnly);
 	void RemoveFlash(BOOL bThisTurnOnly);
 	BOOL HasFlash() const;

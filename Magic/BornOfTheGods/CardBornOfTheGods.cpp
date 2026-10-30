@@ -3523,7 +3523,7 @@ bool CGraverobberSpiderCard::BeforeResolution(CAbilityAction* pAction) const
 	int nDomainCount = m_CardFilter_temp.CountIncluded(pGraveyard->GetCardContainer());
 	
 	CPowerModifier pModifier1 = CPowerModifier(Power(nDomainCount));
-	CLifeModifier pModifier2 = CLifeModifier(Life(GET_INTEGER(nDomainCount)));
+	CLifeModifier pModifier2 = CLifeModifier(Life(nDomainCount));
 
 	pModifier1.ApplyTo((CCreatureCard*)this);
 	pModifier2.ApplyTo((CCreatureCard*)this);

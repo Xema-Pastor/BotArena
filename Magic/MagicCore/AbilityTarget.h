@@ -707,6 +707,7 @@ protected:
 
 public:
 	void AddCardModifier(CCardModifier* pModifier) { m_CardModifiers.Add(pModifier); }
+	void AddCreatureModifier(CCreatureModifier* pModifier) { m_CreatureModifiers.Add(pModifier); }	// applied to the affected cards that are creatures
 	void ApplyToAllPlayers(BOOL bAllPlayers) { m_bAllPlayers = bAllPlayers; } // default: false (target one player but apply the card modifier to all players' zones
 
 protected:
@@ -721,6 +722,7 @@ private:
 	ZoneId m_FromZone;
 	const CCardFilter* m_pPlayerCardFilter;
 	CCardModifiers m_CardModifiers;
+	CCreatureModifiers m_CreatureModifiers;
 	BOOL m_bAllPlayers;
 };
 
@@ -2535,6 +2537,157 @@ private:
 	CCardFlagModifier			m_CardFlagModifier;
 	LPCTSTR						m_pText;
 	BOOL                        m_pAnother;
+};
+
+class CORE_EXPORT CAwakenSpell : public CDoubleTargetSpell
+{
+    DEFINE_CREATE_TO_CPTR_ONLY;
+
+protected:
+    CAwakenSpell(CCard* pCard, AbilityType abilityType, LPCTSTR strManaCost,
+        CardComparer* pTargetComparer, ZoneId targetZone,
+		int nAwakenCounters, CCardModifier* pTargetEffect,
+		CardComparer* pAdditionalTargetComparer = NULL);
+    virtual ~CAwakenSpell() {}
+
+public:
+    // Additional effects applied to the first target (e.g. tap + doesn't untap)
+    CCardModifiers& GetTargetEffects() { return m_TargetEffects; }
+
+protected:
+    OVERRIDE(void, ResolveGroup)(const CCountedCardContainer& pContainer1,
+        const CCountedCardContainer& pContainer2,
+        const CPlayerContainer& pPContainer1,
+        const CPlayerContainer& pPContainer2);
+
+private:
+    int m_nAwakenCounters;
+    CCardModifiers m_TargetEffects;
+};
+
+//____________________________________________________________________________
+//
+/*
+	Awaken version of a spell with no targets: the only target is the land to awaken.
+	The spell effect is described by modifiers applied to the controller and/or
+	to every battlefield card matching the global comparer.
+Ref:
+	Coastal Discovery 3U
+	Sorcery
+	Draw two cards.
+	Awaken 4-5U
+	Rising Miasma 3B
+	Sorcery
+	All creatures get -2/-2 until end of turn.
+	Awaken 3-5BB
+*/
+class CORE_EXPORT CAwakenLandSpell : public CTargetSpell
+{
+	DEFINE_CREATE_TO_CPTR_ONLY;
+
+protected:
+	CAwakenLandSpell(CCard* pCard, AbilityType abilityType, LPCTSTR strManaCost,
+		int nAwakenCounters,
+		CardComparer* pGlobalComparer = NULL);	// NULL: no battlefield cards are affected
+	virtual ~CAwakenLandSpell() {}
+
+public:
+	// Applied to the spell's controller (e.g. draw cards, extra turn, effect tokens)
+	CPlayerModifiers& GetControllerModifiers()			{ return m_ControllerModifiers; }
+
+	// Applied to each battlefield card matching the global comparer
+	CCardFilter& GetGlobalCardFilter()					{ return m_GlobalCardFilter; }
+	CCardModifiers& GetGlobalCardModifiers()			{ return m_GlobalCardModifiers; }
+	CCreatureModifiers& GetGlobalCreatureModifiers()	{ return m_GlobalCreatureModifiers; }
+	void SetAffectOpponentCardsOnly()					{ m_bOpponentCardsOnly = TRUE; }
+
+protected:
+	OVERRIDE(void, ResolveCard)(const CTargetSpellAction* pAction, CCard* pCard, const ContextValue& value);
+
+private:
+	int m_nAwakenCounters;
+	BOOL m_bHasGlobalEffect;
+	BOOL m_bOpponentCardsOnly;
+	CPlayerModifiers m_ControllerModifiers;
+	CCardFilter m_GlobalCardFilter;
+	CCardModifiers m_GlobalCardModifiers;
+	CCreatureModifiers m_GlobalCreatureModifiers;
+};
+
+//____________________________________________________________________________
+//
+/*
+	Awaken version of a spell targeting an opponent: first target is the opponent, second the land.
+Ref:
+	Mire's Malice 3B
+	Sorcery
+	Target opponent discards two cards.
+	Awaken 3-5B
+	Encircling Fissure 2W
+	Instant
+	Prevent all combat damage that would be dealt this turn by creatures target opponent controls.
+	Awaken 2-4W
+*/
+class CORE_EXPORT CAwakenTargetPlayerSpell : public CDoubleTargetSpell
+{
+	DEFINE_CREATE_TO_CPTR_ONLY;
+
+protected:
+	CAwakenTargetPlayerSpell(CCard* pCard, AbilityType abilityType, LPCTSTR strManaCost,
+		int nAwakenCounters);
+	virtual ~CAwakenTargetPlayerSpell() {}
+
+public:
+	// Applied to the target player
+	CPlayerModifiers& GetTargetPlayerModifiers()				{ return m_TargetPlayerModifiers; }
+	// Applied to the creatures the target player controls at resolution
+	CCreatureModifiers& GetTargetPlayerCreatureModifiers()		{ return m_TargetPlayerCreatureModifiers; }
+	// The target player discards cards of his or her choice
+	void SetTargetPlayerDiscardCount(int nDiscardCount)			{ m_nDiscardCount = nDiscardCount; }
+
+protected:
+	OVERRIDE(void, ResolveGroup)(const CCountedCardContainer& pContainer1,
+		const CCountedCardContainer& pContainer2,
+		const CPlayerContainer& pPContainer1,
+		const CPlayerContainer& pPContainer2);
+
+private:
+	int m_nAwakenCounters;
+	int m_nDiscardCount;
+	CPlayerModifiers m_TargetPlayerModifiers;
+	CCreatureModifiers m_TargetPlayerCreatureModifiers;
+};
+
+//____________________________________________________________________________
+//
+/*
+	Awaken version of "Counter target spell": the land you control is added as a second subject of the target group.
+Ref:
+	Scatter to the Winds 1UU
+	Instant
+	Counter target spell.
+	Awaken 3-4UU
+*/
+class CORE_EXPORT CAwakenCounterSpell : public CCounterSpell
+{
+	DEFINE_CREATE_TO_CPTR_ONLY;
+
+protected:
+	CAwakenCounterSpell(CCard* pCard, AbilityType abilityType, LPCTSTR strManaCost,
+		int nAwakenCounters,
+		CardComparer* pComparer = new TrueCardComparer);
+	virtual ~CAwakenCounterSpell() {}
+
+public:
+	OVERRIDE(CActionContainer*, GetAbilityActions)(BOOL bIncludeTricks, BOOL bSetNames);
+	OVERRIDE(void, DeflectTargetToSpell)(CTargetStackSpellAction* pAction, CCard* pCard);
+
+protected:
+	OVERRIDE(BOOL, ResolveImpl)(const CAbilityAction* pAction);
+
+private:
+	int m_nAwakenCounters;
+	CTargeting m_LandTargeting;
 };
 
 //____________________________________________________________________________

@@ -526,6 +526,11 @@ class CEldraziScionFToken : public CTokenCreature
 	DECLARE_CARD_CSTOR(CEldraziScionFToken);
 };
 
+class CAwakenedLandToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAwakenedLandToken);
+};
+
 //____________________________________________________________________________
 //
 class CAngelLToken : public CTokenCreature

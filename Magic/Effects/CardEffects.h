@@ -298,9 +298,39 @@ class CJaceArchitectOfThoughtEffectToken : public CEffectCard
 	DECLARE_CARD_CSTOR(CJaceArchitectOfThoughtEffectToken);
 
 private:
-	bool SetTriggerContext(CTriggeredModifyCreatureAbility::TriggerContextType& triggerContext, 
+	bool SetTriggerContext(CTriggeredModifyCreatureAbility::TriggerContextType& triggerContext,
 										 CCreatureCard* pCreature,
 										 AttackSubject attacked) const;
+};
+
+//____________________________________________________________________________
+//
+class COnduRisingEffectToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(COnduRisingEffectToken);
+
+private:
+	bool SetTriggerContext(CTriggeredModifyCreatureAbility::TriggerContextType& triggerContext,
+										 CCreatureCard* pCreature,
+										 AttackSubject attacked) const;
+};
+
+//____________________________________________________________________________
+//
+class CGideonAllyOfZendikarEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CGideonAllyOfZendikarEmblemToken);
+};
+
+//____________________________________________________________________________
+//
+class CObNixilisReignitedEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CObNixilisReignitedEmblemToken);
+
+private:
+	bool SetTriggerContext(CTriggeredModifyLifeAbility::TriggerContextType& triggerContext,
+						   CPlayer* pPlayer, CCard* pCard, CPlayer* pByPlayer) const;
 };
 
 //____________________________________________________________________________

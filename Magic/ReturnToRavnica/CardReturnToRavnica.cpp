@@ -2800,7 +2800,7 @@ CWildBeastmasterCard::CWildBeastmasterCard(CGame* pGame, UINT nID)
 bool CWildBeastmasterCard::BeforeResolution(TriggeredAbility::TriggeredActionType* pAction) const
 {
 	TriggeredAbility::TriggerContextType triggerContext(pAction->GetTriggerContext());
-	CCardFilter m_CardFilter = CCardFilter(new AnyCreatureComparer);
+	CCardFilter m_CardFilter(new AnyCreatureComparer);
 	m_CardFilter.AddNegateComparer(new SpecificCardComparer(this));
 
 	int nPower = GetLastKnownPower();

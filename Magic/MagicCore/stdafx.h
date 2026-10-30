@@ -15,7 +15,7 @@
 
 // C++
 
-#include <typeinfo.h>
+#include <typeinfo>
 #include <math.h>
 
 #include <limits>

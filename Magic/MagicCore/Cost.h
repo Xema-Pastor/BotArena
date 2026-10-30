@@ -48,6 +48,7 @@ public:
 			m_strCostName += _T(", ");
 		m_strCostName+= strCostName;
 	}
+	friend bool operator==(const CAbstractCostEntry&, const CAbstractCostEntry&)	{return true;}
 
 protected:
 	CString			m_strCostName;
@@ -81,6 +82,7 @@ public:
 						  CostConfigurationArray& configurations,
 						  size_t start) const								{return 0;}
 	VIRTUAL(const AbilityType::Enum, GetAbilityType)()						{return AbilityType::Null;}
+	friend bool operator==(const CAbstractCost&, const CAbstractCost&)				{return true;}
 };
 
 //____________________________________________________________________________
@@ -970,9 +972,8 @@ public:
 				nToCardCount = Cards.GetSize();
 
 				// Add 0 cost
-				configurations.insert<CostConfigurationArray::const_iterator>(configurations.end(),
-					CostConfigurationArray::const_iterator(&configurations[start],&configurations),
-						configurations.end());
+				CostConfigurationArray zeroCost(configurations.begin() + start, configurations.end());
+				configurations.insert(configurations.end(), zeroCost.begin(), zeroCost.end());
 				start=end;
 				end=configurations.size();
 			}
@@ -993,7 +994,7 @@ public:
 				CheckPointers(newConfigs, Cards, configurations, start, end);
 			else
 			{
-				configurations2.assign<CostConfigurationArray::const_iterator>(CostConfigurationArray::const_iterator(&configurations[start],&configurations),configurations.end());
+				configurations2.assign(configurations.begin() + start, configurations.end());
 				CheckPointers(newConfigs, Cards, configurations2, 0, end-start);
 			}
 

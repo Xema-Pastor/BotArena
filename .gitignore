@@ -1,1 +1,13 @@
+# Local reference material (not part of the project)
+no_vale/
+MagicCompRules*.pdf
 
+# Local Claude Code settings
+.claude/
+
+# Build output and Visual Studio files
+Release/
+Debug/
+.vs/
+*.user
+*.mdmp

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Ajustes comunes para compilar los proyectos (originalmente VS2010) con Visual Studio 2022.
+  MSBuild importa este archivo automáticamente en todos los .vcxproj que cuelgan de esta carpeta.
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PlatformToolset>v143</PlatformToolset>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <!-- VS2010 incluía estos headers de forma indirecta; el STL moderno no. -->
+      <ForcedIncludeFiles>memory;functional;algorithm;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <!--
+        Los proyectos tratan los avisos como errores (/WX). Estos son nuevos en compiladores modernos:
+          C4834 descartar valor [[nodiscard]]   (Modifiers.h: '==' donde debería ir '=')
+          C4477 CString pasado a printf("%s")   (inofensivo con CString)
+          C4302 truncamiento puntero -> wchar_t (CardFactory/CardStore: CString::XCHAR(_T("â")))
+      -->
+      <DisableSpecificWarnings>4834;4477;4302;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+</Project>

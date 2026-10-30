@@ -5914,7 +5914,7 @@ CMartonStromgaldCard::CMartonStromgaldCard(CGame* pGame, UINT nID)
 bool CMartonStromgaldCard::BeforeResolution1(TriggeredAbility1::TriggeredActionType* pAction) const
 {
 	TriggeredAbility1::TriggerContextType triggerContext(pAction->GetTriggerContext());
-	CCardFilter m_CardFilter = CCardFilter(new AttackingCreatureComparer);
+	CCardFilter m_CardFilter(new AttackingCreatureComparer);
 	m_CardFilter.AddNegateComparer(new SpecificCardComparer(this));
 
 	int nCount = 0;
@@ -5937,7 +5937,7 @@ bool CMartonStromgaldCard::BeforeResolution1(TriggeredAbility1::TriggeredActionT
 bool CMartonStromgaldCard::BeforeResolution2(TriggeredAbility2::TriggeredActionType* pAction) const
 {
 	TriggeredAbility2::TriggerContextType triggerContext(pAction->GetTriggerContext());
-	CCardFilter m_CardFilter = CCardFilter(new BlockingCreatureComparer);
+	CCardFilter m_CardFilter(new BlockingCreatureComparer);
 	m_CardFilter.AddNegateComparer(new SpecificCardComparer(this));
 
 	int nCount = 0;

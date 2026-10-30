@@ -1003,7 +1003,7 @@ void CPlanewideDisasterCard::OnResolutionCompleted(const CAbilityAction* pAbilit
 	for (int ic = 0; ic < creatures.GetSize(); ++ic)
 		modifier.ApplyTo(creatures.GetAt(ic));
 
-	CCardPlaneswalkModifier pModifier = CCardPlaneswalkModifier(GetGame(), TRUE, TRUE);
+	CCardPlaneswalkModifier pModifier(GetGame(), TRUE, TRUE);
 	pModifier.ApplyTo(this);
 }
 //__________________________________________________________________________
@@ -1046,7 +1046,7 @@ void CRealityShapingCard::OnResolutionCompleted(const CAbilityAction* pAbilityAc
 	pModifier.ApplyTo(pAbilityAction->GetController());
 	pModifier.ApplyTo(m_pGame->GetNextPlayer(pAbilityAction->GetController()));
 
-	CCardPlaneswalkModifier pModifier1 = CCardPlaneswalkModifier(GetGame(), TRUE, TRUE);
+	CCardPlaneswalkModifier pModifier1(GetGame(), TRUE, TRUE);
 	pModifier1.ApplyTo(this);
 }
 //__________________________________________________________________________

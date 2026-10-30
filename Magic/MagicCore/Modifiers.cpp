@@ -1495,6 +1495,27 @@ void CCardIsAlsoAModifier::RemoveFrom(CCard* pCard) const
 	__super::RemoveFrom(pCard);
 }
 
+void CAwakenLandModifier::ApplyTo(CCard* pCard) const
+{
+	__super::ApplyTo(pCard);
+
+	CCardCounterModifier counterModifier(_T("+1/+1"), m_nCounterCount);
+	counterModifier.ApplyTo(pCard);
+
+	CCardIsAlsoAModifier awakenedLand(_T("Awakened Land"), 55084, pCard->GetController());
+	awakenedLand.ApplyTo(pCard);
+
+	// Awaken grants haste permanently (not until end of turn), so add it directly to the animated land
+	CCreatureCard* pAwakenedLand = dynamic_cast<CCreatureCard*>(pCard->GetIsAlsoA());
+	if (pAwakenedLand)
+	{
+		CCreatureKeywordModifier hasteModifier;
+		hasteModifier.GetModifier().SetToAdd(CreatureKeyword::Haste);
+		hasteModifier.GetModifier().SetOneTurnOnly(FALSE);
+		hasteModifier.ApplyTo(pAwakenedLand);
+	}
+}
+
 //____________________________________________________________________________
 //
 void CManaPoolModifier::ApplyTo(CPlayer* pPlayer) const
