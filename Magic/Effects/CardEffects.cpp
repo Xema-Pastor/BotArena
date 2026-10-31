@@ -115,6 +115,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CObNixilisReignitedEmblemToken);
 		DEFINE_TOKEN(CJaceUnravelerOfSecretsEmblemToken);
 		DEFINE_TOKEN(CArlinnEmbracedByTheMoonEmblemToken);
+		DEFINE_TOKEN(CLilianaTheLastHopeEmblemToken);
+		DEFINE_TOKEN(COtherworldlyOutburstEffectToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -1608,6 +1610,116 @@ bool CArlinnEmbracedByTheMoonEmblemToken::BeforeDamage(CAbilityAction* pAction) 
 		pModifier.ApplyTo(pAction->GetAssociatedPlayer());
 
 	return false;	// the damage is done here
+}
+
+//____________________________________________________________________________
+//
+CLilianaTheLastHopeEmblemToken::CLilianaTheLastHopeEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Liliana, the Last Hope Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// At the beginning of your end step, create X 2/2 black Zombie creature tokens,
+	// where X is two plus the number of Zombies you control.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::EndStep, FALSE));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CLilianaTheLastHopeEmblemToken::SetTriggerContext));
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CLilianaTheLastHopeEmblemToken::BeforeResolution));
+	cpAbility->AddAbilityTag(AbilityTag::TokenCreation);
+
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CLilianaTheLastHopeEmblemToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const
+{
+	return (this->GetZone()->GetZoneId() == ZoneId::_Effects);
+}
+
+bool CLilianaTheLastHopeEmblemToken::BeforeResolution(CAbilityAction* pAction) const
+{
+	CPlayer* pController = pAction->GetController();
+	CZone* pBattlefield = pController->GetZoneById(ZoneId::Battlefield);
+	CreatureTypeComparer zombies(CREATURE_TYPE(Zombie), false);
+
+	int nCount = 2;
+	for (int i = 0; i < pBattlefield->GetSize(); ++i)
+		if (zombies(pBattlefield->GetAt(i)))
+			++nCount;
+
+	CTokenCreationModifier pModifier = CTokenCreationModifier(GetGame(), _T("Zombie (P)"), 55009, nCount);
+	pModifier.ApplyTo(pController);
+	return true;
+}
+
+//____________________________________________________________________________
+//
+// Otherworldly Outburst (Eldritch Moon): "When that creature dies this turn, create a 3/2 colorless Eldrazi Horror
+// creature token." The creature is in the container; the effect ends at the cleanup step (as Loyal Cathar Effect).
+COtherworldlyOutburstEffectToken::COtherworldlyOutburstEffectToken(CGame* pGame, UINT nID)
+	: CContainerEffectCard(pGame, _T("Otherworldly Outburst Effect"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	{
+		typedef
+			TTriggeredAbility< CTriggeredAbility<>, CWhenCardMoved > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this,
+			ZoneId::Battlefield, ZoneId::Graveyard, TRUE, FALSE, FALSE));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->SetPlayableFrom(ZoneId::_Effects);
+		cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &COtherworldlyOutburstEffectToken::SetTriggerContext));
+		cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &COtherworldlyOutburstEffectToken::BeforeResolution));
+		cpAbility->AddAbilityTag(AbilityTag::TokenCreation);
+
+		AddAbility(cpAbility.GetPointer());
+	}
+	{
+		typedef
+			TTriggeredAbility< CTriggeredMoveCardAbility, CWhenNodeChanged > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(
+			::CreateObject<TriggeredAbility>(this, NodeId::CleanupStep2, FALSE));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->SetSkipStack(TRUE);
+		cpAbility->GetMoveCardModifier().SetFromZone(ZoneId::_Effects);
+		cpAbility->GetMoveCardModifier().SetToZone(ZoneId::Exile);
+		cpAbility->SetPlayableFrom(ZoneId::_Effects);
+		cpAbility->AddAbilityTag(AbilityTag(ZoneId::_Effects, ZoneId::Exile));
+		cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &COtherworldlyOutburstEffectToken::SetTriggerContextCleanup));
+
+		AddAbility(cpAbility.GetPointer());
+	}
+}
+
+bool COtherworldlyOutburstEffectToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+														 CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType)
+{
+	if (GetZone()->GetZoneId() != ZoneId::_Effects || !pCards.HasCard(pCard))
+		return false;
+
+	pCards.RemoveCard(pCard);
+	return true;
+}
+
+bool COtherworldlyOutburstEffectToken::BeforeResolution(CAbilityAction* pAction) const
+{
+	CTokenCreationModifier pModifier = CTokenCreationModifier(GetGame(), _T("Eldrazi Horror (A)"), 55087, 1);
+	pModifier.ApplyTo(pAction->GetController());
+	return true;
+}
+
+bool COtherworldlyOutburstEffectToken::SetTriggerContextCleanup(CTriggeredMoveCardAbility::TriggerContextType& triggerContext, CNode* pToNode)
+{
+	return GetZone()->GetZoneId() == ZoneId::_Effects;
 }
 
 //____________________________________________________________________________

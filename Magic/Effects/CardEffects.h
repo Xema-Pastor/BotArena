@@ -356,6 +356,30 @@ private:
 
 //____________________________________________________________________________
 //
+class CLilianaTheLastHopeEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CLilianaTheLastHopeEmblemToken);
+
+private:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const;
+	bool BeforeResolution(CAbilityAction* pAction) const;
+};
+
+//____________________________________________________________________________
+//
+class COtherworldlyOutburstEffectToken : public CContainerEffectCard
+{
+	DECLARE_CARD_CSTOR(COtherworldlyOutburstEffectToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+						   CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType);
+	bool BeforeResolution(CAbilityAction* pAction) const;
+	bool SetTriggerContextCleanup(CTriggeredMoveCardAbility::TriggerContextType& triggerContext, CNode* pToNode);
+};
+
+//____________________________________________________________________________
+//
 class CLatNamsLegacyEffectToken : public CEffectCard
 {
 	DECLARE_CARD_CSTOR(CLatNamsLegacyEffectToken);

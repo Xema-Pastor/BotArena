@@ -186,6 +186,10 @@ BEGIN
    IDS_STRING55083         "Human Cleric (A)\n{WB}\nCreature - Human Cleric\nToken\n\n1/1"
    IDS_STRING55084         "Awakened Land\n{0}\nCreature - Elemental\nToken\nHaste\n0/0"
    IDS_STRING55085         "Clue (A)\n{1}\nArtifact - Clue\nToken\n{2}, Sacrifice this artifact: Draw a card."
+   IDS_STRING55086         "Human (D)\n{R}\nCreature - Human\nToken\n\n1/1"
+   IDS_STRING55087         "Eldrazi Horror (A)\n{1}\nCreature - Eldrazi Horror\nToken\n\n3/2"
+   IDS_STRING55088         "Spider (E)\n{G}\nCreature - Spider\nToken\nReach\n1/2"
+   IDS_STRING55089         "Human Wizard (A)\n{U}\nCreature - Human Wizard\nToken\n\n1/1"
 END
 
 #endif    // English (United States) resources

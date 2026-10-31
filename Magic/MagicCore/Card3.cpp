@@ -357,6 +357,49 @@ void Investigate(CGame* pGame, CPlayer* pPlayer, int nCount)
 	pModifier.ApplyTo(pPlayer);
 }
 
+CCard* FindMeldPartner(const CPlayer* pPlayer, LPCTSTR strCardName)
+{
+	const CZone* pBattlefield = pPlayer->GetZoneById(ZoneId::Battlefield);
+	for (int i = 0; i < pBattlefield->GetSize(); ++i)
+	{
+		CCard* pCard = pBattlefield->GetAt(i);
+		if (!pCard->GetCardType().IsToken() && pCard->GetOwner() == pPlayer && pCard->GetCardName(FALSE) == strCardName)
+			return pCard;
+	}
+	return NULL;
+}
+
+BOOL ExileAndMeld(CCard* pCard, LPCTSTR strPartnerName, const CPlayer* pPlayer)
+{
+	if (pCard->GetZoneId() != ZoneId::Battlefield || pCard->GetCardType().IsToken() ||
+		pCard->GetOwner() != pPlayer || pCard->GetController() != pPlayer)
+		return FALSE;
+
+	CCard* pPartner = FindMeldPartner(pPlayer, strPartnerName);
+	if (!pPartner)
+		return FALSE;
+
+	CMeldCreatureCard* pHost = dynamic_cast<CMeldCreatureCard*>(pCard);
+	CCard* pOther = pPartner;
+	if (!pHost)
+	{
+		pHost = dynamic_cast<CMeldCreatureCard*>(pPartner);
+		pOther = pCard;
+	}
+	if (!pHost)
+		return FALSE;
+
+	pCard->Move(pCard->GetOwner()->GetZoneById(ZoneId::Exile), pPlayer, MoveType::Others);
+	pPartner->Move(pPartner->GetOwner()->GetZoneById(ZoneId::Exile), pPlayer, MoveType::Others);
+
+	// Melded only if both cards were exiled
+	if (pHost->GetZoneId() != ZoneId::Exile || pOther->GetZoneId() != ZoneId::Exile)
+		return FALSE;
+
+	pHost->MeldWith(pOther);
+	return TRUE;
+}
+
 //____________________________________________________________________________
 //
 CSurgeSupport::CSurgeSupport(CCard* pCard)
@@ -510,7 +553,7 @@ void CDoubleFacedCreatureCard::Transform()
 	GetOrientation()->IsSecondFaced() ? FirstFace() : SecondFace();
 }
 
-void CDoubleFacedCreatureCard::SecondFace()
+void CDoubleFacedCreatureCard::SecondFace(BOOL bFireTransformTrigger)
 {
 	GetOrientation()->SecondFace();
 
@@ -536,6 +579,9 @@ void CDoubleFacedCreatureCard::SecondFace()
 		if ( pEnchantmentAbility->GetAbilityName() == _T("Second Face Enchantment"))
 			pEnchantmentAbility->StartEnchantment();
 	}
+
+	if (!bFireTransformTrigger)
+		return;
 
 	CSpecialEffectModifier modifier(this, TRANSFORM_TRIGGER_ID);
 	modifier.ApplyTo(this);
@@ -657,6 +703,54 @@ DWORD CDoubleFacedCreatureCard::GetManaCost(CManaCostBase::Color manaCost, BOOL 
 	if (GetOrientation()->IsSecondFaced())
 		return 0;
 	return __super::GetManaCost(manaCost, bMax);
+}
+
+//____________________________________________________________________________
+//
+CMeldCreatureCard::CMeldCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
+									 LPCTSTR strCostText, Power nPower, Life nToughness,
+									 Power nMeldedPower, Life nMeldedToughness, LPCTSTR strMeldedCardName)
+	: CDoubleFacedCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness,
+							   nMeldedPower, nMeldedToughness, strMeldedCardName)
+	, m_pMeldedCard(NULL)
+{
+}
+
+void CMeldCreatureCard::MeldWith(CCard* pPartner)
+{
+	// The host turns to the melded face in exile and enters the battlefield as a new object
+	// (as cards returned to the battlefield transformed, see CGraveyardFaceTransformModifier)
+	m_pMeldedCard = pPartner;
+	SecondFace(FALSE);
+	Move(GetOwner()->GetZoneById(ZoneId::Battlefield), GetOwner(), MoveType::Others);
+}
+
+DWORD CMeldCreatureCard::GetConvertedManaCost() const
+{
+	DWORD nManaValue = __super::GetConvertedManaCost();
+	if (m_pMeldedCard && GetOrientation()->IsSecondFaced())
+		nManaValue += m_pMeldedCard->GetConvertedManaCost();
+	return nManaValue;
+}
+
+void CMeldCreatureCard::Move(CZone* pToZone, const CPlayer* pByPlayer, MoveType moveType, CardPlacement cardPlacement, BOOL can_dredge)
+{
+	CCard* pMeldedCard = NULL;
+	ZoneId toZoneId = pToZone->GetZoneId();
+
+	// Leaving the battlefield (phasing out keeps the cards melded)
+	if (m_pMeldedCard && GetZoneId() == ZoneId::Battlefield &&
+		(toZoneId == ZoneId::Hand || toZoneId == ZoneId::Library || toZoneId == ZoneId::Graveyard || toZoneId == ZoneId::Exile))
+	{
+		pMeldedCard = m_pMeldedCard;
+		m_pMeldedCard = NULL;
+	}
+
+	__super::Move(pToZone, pByPlayer, moveType, cardPlacement, can_dredge);
+
+	// The other card goes to the same zone (it is already in exile)
+	if (pMeldedCard && pMeldedCard->GetZoneId() == ZoneId::Exile && toZoneId != ZoneId::Exile)
+		pMeldedCard->Move(pMeldedCard->GetOwner()->GetZoneById(toZoneId), pByPlayer, MoveType::Others, cardPlacement, can_dredge);
 }
 
 //____________________________________________________________________________

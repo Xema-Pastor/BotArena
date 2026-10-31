@@ -607,3 +607,31 @@ class CClueAToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CClueAToken);
 };
+
+//____________________________________________________________________________
+//
+class CHumanDToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CHumanDToken);
+};
+
+//____________________________________________________________________________
+//
+class CEldraziHorrorAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CEldraziHorrorAToken);
+};
+
+//____________________________________________________________________________
+//
+class CSpiderEToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSpiderEToken);
+};
+
+//____________________________________________________________________________
+//
+class CHumanWizardAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CHumanWizardAToken);
+};

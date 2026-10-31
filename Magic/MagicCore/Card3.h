@@ -234,6 +234,13 @@ CORE_EXPORT void SetDeliriumCondition(CEnchantment* pEnchantment);
 #define CLUE_TOKEN_NAME		_T("Clue (A)")
 #define CLUE_TOKEN_ID		55085
 CORE_EXPORT void Investigate(CGame* pGame, CPlayer* pPlayer, int nCount = 1);
+
+// Meld (Eldritch Moon), see CMeldCreatureCard.
+// A nontoken permanent named strCardName that pPlayer both owns and controls, or NULL
+CORE_EXPORT CCard* FindMeldPartner(const CPlayer* pPlayer, LPCTSTR strCardName);
+// "If you both own and control X and a permanent named Y, exile them, then meld them": exiles both cards
+// and, if both are in exile, melds them (one of them must be a CMeldCreatureCard). Returns TRUE if melded.
+CORE_EXPORT BOOL ExileAndMeld(CCard* pCard, LPCTSTR strPartnerName, const CPlayer* pPlayer);
 //____________________________________________________________________________
 //
 // Surge (You may cast this spell for its surge cost if you or a teammate has cast another spell this turn.)
@@ -424,14 +431,41 @@ protected:
 	CCreatureModifiers	m_CreatureModifiers;
 	CCardModifiers		m_CardModifiers;
 
-private:
 	friend CFaceTransformModifier;
 	friend CGraveyardFaceTransformModifier;
 	void FirstFace();
-	void SecondFace();
+	void SecondFace(BOOL bFireTransformTrigger = TRUE);	// melding is not transforming: no transform trigger
 
+private:
 	OVERRIDE (CString, GetPrintedCardName)() const;
 	OVERRIDE (CString, GetSecondPrintedCardName)() const;
+};
+
+//____________________________________________________________________________
+//
+// Meld (Eldritch Moon): two cards a player both owns and controls are exiled and melded into one permanent,
+// represented by both cards. The meld pair has a host card: a double-faced creature whose second face is
+// the melded permanent; the other card stays in exile, linked to the host, while they are melded.
+// When the melded permanent leaves the battlefield, both cards go to the same zone (the host returns to its
+// first face, as any double-faced card). Its mana value is the total of the mana values of both cards.
+// The abilities of the melded permanent go in the host class, gated with CanPlaySecondFace (as transform cards).
+class CORE_EXPORT CMeldCreatureCard : public CDoubleFacedCreatureCard
+{
+protected:
+	CMeldCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
+					  LPCTSTR strCostText, Power nPower, Life nToughness,
+					  Power nMeldedPower, Life nMeldedToughness, LPCTSTR strMeldedCardName);
+
+public:
+	// Both cards must be in exile: puts the host onto the battlefield as the melded permanent under its owner's control
+	void MeldWith(CCard* pPartner);
+	CCard* GetMeldedCard() const { return m_pMeldedCard; }
+
+	OVERRIDE (DWORD, GetConvertedManaCost)() const;
+	OVERRIDE (void, Move)(CZone* pToZone, const CPlayer* pByPlayer, MoveType moveType, CardPlacement cardPlacement = CardPlacement::Top, BOOL can_dredge = TRUE);
+
+protected:
+	CCard* m_pMeldedCard;	// the other card of the melded permanent (in exile), NULL if not melded
 };
 
 //____________________________________________________________________________

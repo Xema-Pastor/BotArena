@@ -99,6 +99,10 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CZombieUToken);
 		DEFINE_TOKEN(CZombieVToken);
 		DEFINE_TOKEN(CClueAToken);
+		DEFINE_TOKEN(CHumanDToken);
+		DEFINE_TOKEN(CEldraziHorrorAToken);
+		DEFINE_TOKEN(CSpiderEToken);
+		DEFINE_TOKEN(CHumanWizardAToken);
 	} while (false);
 
 	return cpCard;
@@ -1313,4 +1317,48 @@ CClueAToken::CClueAToken(CGame* pGame, UINT nID)
 	cpAbility->AddSacrificeCost();
 
 	AddAbility(cpAbility.GetPointer());
+}
+
+//____________________________________________________________________________
+CHumanDToken::CHumanDToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Human"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Human), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Red, CardType::_ColorMask);
+// Eldritch Moon version: used by Hanweir Garrison.
+}
+
+//____________________________________________________________________________
+CEldraziHorrorAToken::CEldraziHorrorAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Eldrazi Horror"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Eldrazi, Horror), nID,
+		_T(""),
+		Power(3), Life(2))
+{
+// Eldritch Moon version: used by Hanweir, the Writhing Township.
+}
+
+//____________________________________________________________________________
+CSpiderEToken::CSpiderEToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Spider"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Spider), nID,
+		_T(""),
+		Power(1), Life(2))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+	GetCreatureKeyword()->AddReach(FALSE);
+// Eldritch Moon version: used by Ishkanah, Grafwidow.
+}
+
+//____________________________________________________________________________
+CHumanWizardAToken::CHumanWizardAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Human Wizard"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Human, Wizard), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Blue, CardType::_ColorMask);
+// Eldritch Moon version: used by Docent of Perfection.
 }

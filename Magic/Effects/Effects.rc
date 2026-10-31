@@ -255,6 +255,8 @@ BEGIN
     IDS_STRING61142          "Ob Nixilis Reignited Emblem\n\nEmblem\nToken\nWhenever a player draws a card, you lose 2 life."
     IDS_STRING61143          "Jace, Unraveler of Secrets Emblem\n\nEmblem\nToken\nWhenever an opponent casts their first spell each turn, counter that spell."
     IDS_STRING61144          "Arlinn, Embraced by the Moon Emblem\n\nEmblem\nToken\nCreatures you control have haste and ""{T}: This creature deals damage equal to its power to any target.""."
+    IDS_STRING61145          "Liliana, the Last Hope Emblem\n\nEmblem\nToken\nAt the beginning of your end step, create X 2/2 black Zombie creature tokens, where X is two plus the number of Zombies you control."
+    IDS_STRING61146          "Otherworldly Outburst Effect\n\nEffect\nToken\nWhen that creature dies this turn, create a 3/2 colorless Eldrazi Horror creature token."
 //	IDS_STRING61040          "Chancellor of the Annex Effect\n\nEffect\nToken\nWhen each opponent casts his or her first spell of the game, counter that spell unless that player pays {1}."
 END
 #endif    // English (United States) resources
