@@ -219,6 +219,34 @@ protected:
 };
 //____________________________________________________________________________
 //
+// Surge (You may cast this spell for its surge cost if you or a teammate has cast another spell this turn.)
+// The card adds two spells: the normal one and a copy with the surge cost, then calls SetSpells().
+// Note: there are no teams in the game, so only the spells cast by the controller count.
+// - WasSurgeCostPaid(): for "if its surge cost was paid". It is set when either spell starts resolving
+//   (so it is right for "When this creature enters" triggers) and cleared when the permanent leaves the battlefield.
+// - Both spells' resolution started callbacks are used by this class.
+class CORE_EXPORT CSurgeSupport
+{
+public:
+	CSurgeSupport(CCard* pCard);
+	virtual ~CSurgeSupport() {}
+
+	void SetSpells(CSpell* pNormalSpell, CSpell* pSurgeSpell);
+
+	BOOL WasSurgeCostPaid() const { return m_bSurgeCostPaid; }
+
+protected:
+	BOOL CanCastWithSurge(BOOL bIncludeTricks);
+	bool OnNormalSpellResolving(CAbilityAction* pAction);
+	bool OnSurgeSpellResolving(CAbilityAction* pAction);
+	void OnZoneChanged(CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType);
+
+	CCard* m_pCard;
+	BOOL_ m_bSurgeCostPaid;
+	ListenerPtr<CardMovementEventSource::Listener> m_cpAListener;
+};
+//____________________________________________________________________________
+//
 class CORE_EXPORT CChancellorCreatureCard : public CCreatureCard
 {
 protected:

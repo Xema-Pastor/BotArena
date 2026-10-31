@@ -706,3 +706,24 @@ class CAnimatedGideonAllyOfZendikarToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CElementalARToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalARToken);
+};
+
+//____________________________________________________________________________
+//
+class CElementalASToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalASToken);
+};
+
+//____________________________________________________________________________
+//
+class CElementalATToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalATToken);
+};
+
+//____________________________________________________________________________
+//

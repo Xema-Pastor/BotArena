@@ -321,6 +321,51 @@ void CProcessCost::OnCardsSelected(const std::vector<SelectionEntry>& selection,
 
 //____________________________________________________________________________
 //
+CSurgeSupport::CSurgeSupport(CCard* pCard)
+	: m_pCard(pCard)
+	, m_bSurgeCostPaid(FALSE)
+	, m_cpAListener(VAR_NAME(m_cpAListener), CardMovementEventSource::Listener::EventCallback(this, &CSurgeSupport::OnZoneChanged))
+{
+	pCard->GetMovedEventSource()->AddListener(m_cpAListener.GetPointer());
+}
+
+void CSurgeSupport::SetSpells(CSpell* pNormalSpell, CSpell* pSurgeSpell)
+{
+	pNormalSpell->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CSurgeSupport::OnNormalSpellResolving));
+	pSurgeSpell->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CSurgeSupport::OnSurgeSpellResolving));
+
+	counted_ptr<CPlayableIfTrait> cpTrait(
+		::CreateObject<CPlayableIfTrait>(pSurgeSpell,
+			CPlayableIfTrait::PlayableCallback(this, &CSurgeSupport::CanCastWithSurge)));
+	pSurgeSpell->Add(cpTrait.GetPointer());
+}
+
+BOOL CSurgeSupport::CanCastWithSurge(BOOL bIncludeTricks)
+{
+	// "if you have cast another spell this turn" (as Talara's Battalion)
+	return m_pCard->GetController()->GetTurnCastedSpellCount() > 0;
+}
+
+bool CSurgeSupport::OnNormalSpellResolving(CAbilityAction* pAction)
+{
+	m_bSurgeCostPaid = FALSE;
+	return true;
+}
+
+bool CSurgeSupport::OnSurgeSpellResolving(CAbilityAction* pAction)
+{
+	m_bSurgeCostPaid = TRUE;
+	return true;
+}
+
+void CSurgeSupport::OnZoneChanged(CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType)
+{
+	if (pCard == m_pCard && pFromZone && pFromZone->GetZoneId() == ZoneId::Battlefield)
+		m_bSurgeCostPaid = FALSE;
+}
+
+//____________________________________________________________________________
+//
 CChancellorCreatureCard::CChancellorCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
 										 LPCTSTR strCostText, Power nPower, Life nToughness)
 	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)

@@ -16,7 +16,7 @@ void CManaProductionHint::Add(const CAbility* pAbility,
 			manaPool.GetMana(CManaPool::Color::Green)	  == pManaCost->GetCost(CManaCost::Color::Green) &&
 			manaPool.GetMana(CManaPool::Color::Red)		  == pManaCost->GetCost(CManaCost::Color::Red)	 &&
 			manaPool.GetMana(CManaPool::Color::White)	  == pManaCost->GetCost(CManaCost::Color::White) &&
-			manaPool.GetMana(CManaPool::Color::Colorless) == pManaCost->GetCost(CManaCost::Color::Generic))
+			manaPool.GetMana(CManaPool::Color::Colorless) == pManaCost->GetCost(CManaCost::Color::Generic) + pManaCost->GetCost(CManaCost::Color::Colorless))
 			return;
 
 		m_ManaCosts.Add(*pManaCost);

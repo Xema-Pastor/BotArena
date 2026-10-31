@@ -21,6 +21,7 @@ public:
 			Green	= 0x00000008,
 			White	= 0x00000010,
 			Generic	= 0x00000020,
+			Colorless = 0x00000040,	// {C}: must be paid with colorless mana
 		};
 
 		DEFINE_BITFLAG_ENUM_OPS(Color, DWORD);
@@ -117,6 +118,9 @@ public:
 			if ((m_Costs & Color::Generic).Any())
 				++nCount;
 
+			if ((m_Costs & Color::Colorless).Any())
+				++nCount;
+
 			return nCount;
 		}
 
@@ -139,6 +143,9 @@ public:
 
 			if ((m_Costs & Color::Generic).Any())
 				return Color::Generic;
+
+			if ((m_Costs & Color::Colorless).Any())
+				return Color::Colorless;
 
 			return Color::Null;
 		}
@@ -219,7 +226,7 @@ public:
 		if (costColor == Color::White)
 			return CManaPool::Color::White;
 
-		if (costColor == Color::Generic)
+		if (costColor == Color::Generic || costColor == Color::Colorless)
 			return CManaPool::Color::Colorless;
 
 		return CManaPool::Color::Null;
@@ -244,7 +251,7 @@ public:
 		if (costColors.HasColor(Color::White))
 			colors.AddColor(CManaPool::Color::White);
 
-		if (costColors.HasColor(Color::Generic))
+		if (costColors.HasColor(Color::Generic) || costColors.HasColor(Color::Colorless))
 			colors.AddColor(CManaPool::Color::Colorless);
 
 		return colors;
@@ -267,6 +274,7 @@ public:
 		, m_GreenCost  (0)
 		, m_WhiteCost  (0)
 		, m_GenericCost(0)
+		, m_ColorlessCost(0)
 	{
 	}
 
@@ -283,6 +291,7 @@ public:
 		, m_GreenCost  (0)
 		, m_WhiteCost  (0)
 		, m_GenericCost(0)
+		, m_ColorlessCost(0)
 	{
 		SetAllCost(
 			manaCost1, dwValue1,
@@ -300,6 +309,7 @@ public:
 		, m_GreenCost  (0)
 		, m_WhiteCost  (0)
 		, m_GenericCost(0)
+		, m_ColorlessCost(0)
 	{
 		SetCost(manaCost);
 	}
@@ -311,6 +321,7 @@ public:
 		, m_GreenCost  (0)
 		, m_WhiteCost  (0)
 		, m_GenericCost(0)
+		, m_ColorlessCost(0)
 	{
 		SetCost(strManaText);
 	}
@@ -332,7 +343,8 @@ public:
 			   (m_GreenCost	  == manaCost.m_GreenCost)	 &&
 			   (m_RedCost	  == manaCost.m_RedCost)	 &&
 			   (m_WhiteCost	  == manaCost.m_WhiteCost)	 &&
-			   (m_GenericCost == manaCost.m_GenericCost);
+			   (m_GenericCost == manaCost.m_GenericCost) &&
+			   (m_ColorlessCost == manaCost.m_ColorlessCost);
 	}
 
 	CManaCostBase2 operator+(const CManaCostBase2& manaCost) const
@@ -344,6 +356,7 @@ public:
 		result.m_GreenCost	 = m_GreenCost	 + manaCost.m_GreenCost;
 		result.m_WhiteCost	 = m_WhiteCost	 + manaCost.m_WhiteCost;
 		result.m_GenericCost = m_GenericCost + manaCost.m_GenericCost;
+		result.m_ColorlessCost = m_ColorlessCost + manaCost.m_ColorlessCost;
 		return result;
 	}
 
@@ -372,6 +385,9 @@ public:
 
 		if (manaCost.HasColor(Color::Generic))
 			m_GenericCost += dwValue;
+
+		if (manaCost.HasColor(Color::Colorless))
+			m_ColorlessCost += dwValue;
 	}
 
 	template <class C>
@@ -383,6 +399,7 @@ public:
 		m_GreenCost	  += manaCost.m_GreenCost;
 		m_WhiteCost	  += manaCost.m_WhiteCost;
 		m_GenericCost += manaCost.m_GenericCost;
+		m_ColorlessCost += manaCost.m_ColorlessCost;
 	}
 
 	void AddCost(LPCTSTR strManaText)
@@ -404,6 +421,7 @@ public:
 					case RED_MANA_CHAR:	  ++m_RedCost;	 break;
 					case GREEN_MANA_CHAR: ++m_GreenCost; break;
 					case WHITE_MANA_CHAR: ++m_WhiteCost; break;
+					case COLORLESS_MANA_CHAR: ++m_ColorlessCost; break;
 				}
 			}
 			else
@@ -433,7 +451,8 @@ public:
 			!tempManaPool.RemoveMana(CManaPool::Color::Black, m_BlackCost, false) ||
 			!tempManaPool.RemoveMana(CManaPool::Color::Red,	  m_RedCost, false)	  ||
 			!tempManaPool.RemoveMana(CManaPool::Color::Green, m_GreenCost, false) ||
-			!tempManaPool.RemoveMana(CManaPool::Color::White, m_WhiteCost, false))
+			!tempManaPool.RemoveMana(CManaPool::Color::White, m_WhiteCost, false) ||
+			!tempManaPool.RemoveMana(CManaPool::Color::Colorless, m_ColorlessCost, false))
 		{
 			return FALSE;
 		}
@@ -466,6 +485,10 @@ public:
 		// No mana in mana pool, cannot satisfy this non-empty cost
 		if (!manaPool.GetTotal())
 			return FALSE;
+
+		DWORD dwColorlessForColorless = MIN(manaPool.GetMana(CManaPool::Color::Colorless), m_ColorlessCost);
+		m_ColorlessCost -= dwColorlessForColorless;
+		manaPool.RemoveMana(CManaPool::Color::Colorless, dwColorlessForColorless, true);
 
 		DWORD dwBlueMana	= manaPool.GetMana(CManaPool::Color::Blue);
 		DWORD dwRemoveBlue	= MIN(dwBlueMana, m_BlueCost);
@@ -599,6 +622,17 @@ public:
 			}
 		}
 
+		if (m_ColorlessCost)
+		{
+			DWORD dwColorlessMana = tempManaPool.GetMana(CManaPool::Color::Colorless);
+			if (dwColorlessMana)
+			{
+				DWORD dwUsed = MIN(dwColorlessMana, m_ColorlessCost);
+				m_ColorlessCost -= dwUsed;
+				tempManaPool.RemoveMana(CManaPool::Color::Colorless, dwUsed, true);
+			}
+		}
+
 		if (m_GenericCost)
 		{
 			DWORD dwMana = tempManaPool.GetTotal();
@@ -635,6 +669,9 @@ public:
 		if (m_WhiteCost && manaPool.GetMana(CManaPool::Color::White))
 			return TRUE;
 
+		if (m_ColorlessCost && manaPool.GetMana(CManaPool::Color::Colorless))
+			return TRUE;
+
 		return FALSE;
 	}
 
@@ -648,7 +685,8 @@ public:
 			CManaPool::Color::Black, m_BlackCost,
 			CManaPool::Color::Red,	 m_RedCost,
 			CManaPool::Color::Green, m_GreenCost,
-			CManaPool::Color::White, m_WhiteCost);
+			CManaPool::Color::White, m_WhiteCost,
+			CManaPool::Color::Colorless, m_ColorlessCost);
 	}
 
 	CManaPool RemoveColorCostFromPool(const CManaPool& manaPool) const
@@ -663,6 +701,7 @@ public:
 		manaPool2.RemoveMana(CManaPool::Color::Red,	  m_RedCost,   false);
 		manaPool2.RemoveMana(CManaPool::Color::Green, m_GreenCost, false);
 		manaPool2.RemoveMana(CManaPool::Color::White, m_WhiteCost, false);
+		manaPool2.RemoveMana(CManaPool::Color::Colorless, m_ColorlessCost, false);
 
 		return manaPool2;
 	}
@@ -675,7 +714,7 @@ public:
 			CManaPool::Color::Red,		 m_RedCost,
 			CManaPool::Color::Green,	 m_GreenCost,
 			CManaPool::Color::White,	 m_WhiteCost,
-			CManaPool::Color::Colorless, m_GenericCost); // careful when using this conversion
+			CManaPool::Color::Colorless, m_GenericCost + m_ColorlessCost); // careful when using this conversion
 	}
 
 	void RemoveCost(Color color, DWORD dwValue)
@@ -744,6 +783,18 @@ public:
 					m_WhiteCost -= dwWhiteMana;
 			}
 		}
+
+		if (m_ColorlessCost)
+		{
+			DWORD dwColorlessMana = manaPool.GetMana(CManaPool::Color::Colorless);
+			if (dwColorlessMana)
+			{
+				if (m_ColorlessCost <= dwColorlessMana)
+					m_ColorlessCost = 0;
+				else
+					m_ColorlessCost -= dwColorlessMana;
+			}
+		}
 	}
 
 	void RemoveAllCost()
@@ -754,6 +805,7 @@ public:
 		m_GreenCost	  = 0;
 		m_WhiteCost	  = 0;
 		m_GenericCost = 0;
+		m_ColorlessCost = 0;
 	}
 
 	void RemoveAllCostExcept(Colors colors)
@@ -775,6 +827,9 @@ public:
 			
 		if (!(colors & Color::Generic).Any())
 			m_GenericCost = 0;
+
+		if (!(colors & Color::Colorless).Any())
+			m_ColorlessCost = 0;
 	}
 
 	template <class C>
@@ -826,6 +881,14 @@ public:
 				m_GenericCost  = 0;
 			else
 				m_GenericCost -= manaCost.m_GenericCost;
+		}
+
+		if (manaCost.m_ColorlessCost)
+		{
+			if (m_ColorlessCost <= manaCost.m_ColorlessCost)
+				m_ColorlessCost  = 0;
+			else
+				m_ColorlessCost -= manaCost.m_ColorlessCost;
 		}
 	}
 
@@ -929,6 +992,22 @@ public:
 				manaCost.m_GenericCost	  = 0;
 			}
 		}
+
+		if (manaCost.m_ColorlessCost)
+		{
+			if (m_ColorlessCost <= manaCost.m_ColorlessCost)
+			{
+				removedCost.m_ColorlessCost = m_ColorlessCost;
+				manaCost.m_ColorlessCost   -= m_ColorlessCost;
+				m_ColorlessCost				= 0;
+			}
+			else
+			{
+				removedCost.m_ColorlessCost = manaCost.m_ColorlessCost;
+				m_ColorlessCost			   -= manaCost.m_ColorlessCost;
+				manaCost.m_ColorlessCost	= 0;
+			}
+		}
 	}
 
 	DWORD RemoveGenericCost(DWORD dwValue)
@@ -976,6 +1055,7 @@ public:
 		m_GreenCost	  = manaCost.m_GreenCost;
 		m_WhiteCost	  = manaCost.m_WhiteCost;
 		m_GenericCost = manaCost.m_GenericCost;
+		m_ColorlessCost = manaCost.m_ColorlessCost;
 	}
 
 	bool Any() const	// has slightly better performance than GetTotal() if all you need is a simple check and not the total
@@ -985,7 +1065,8 @@ public:
 				m_RedCost	  > 0 ||
 				m_GreenCost	  > 0 ||
 				m_WhiteCost	  > 0 ||
-				m_GenericCost > 0;
+				m_GenericCost > 0 ||
+				m_ColorlessCost > 0;
 	}
 
 	DWORD GetTotal() const
@@ -995,7 +1076,8 @@ public:
 				m_RedCost	+
 				m_GreenCost +
 				m_WhiteCost +
-				m_GenericCost;
+				m_GenericCost +
+				m_ColorlessCost;
 	}
 
 	DWORD GetTotalColorCost() const
@@ -1033,6 +1115,9 @@ public:
 		for (DWORD i = 0; i < m_WhiteCost; ++i)
 			strText += WHITE_MANA_TEXT;
 
+		for (DWORD i = 0; i < m_ColorlessCost; ++i)
+			strText += COLORLESS_MANA_TEXT;
+
 		return strText;
 	}
 
@@ -1055,6 +1140,9 @@ public:
 
 		if (m_GenericCost)
 			m_GenericCost = 1;
+
+		if (m_ColorlessCost)
+			m_ColorlessCost = 1;
 	}
 
 	Colors GetNormalizedColors() const
@@ -1079,6 +1167,9 @@ public:
 		if (m_GenericCost)
 			costs.AddColor(Color::Generic);
 
+		if (m_ColorlessCost)
+			costs.AddColor(Color::Colorless);
+
 		return costs;
 	}
 
@@ -1101,6 +1192,9 @@ public:
 
 		if (manaCost.m_GenericCost > m_GenericCost)
 			m_GenericCost = manaCost.m_GenericCost;
+
+		if (manaCost.m_ColorlessCost > m_ColorlessCost)
+			m_ColorlessCost = manaCost.m_ColorlessCost;
 	}
 
 protected:
@@ -1132,6 +1226,7 @@ protected:
 		case Color::Green:		m_GreenCost	  = dwValue; break;
 		case Color::White:		m_WhiteCost	  = dwValue; break;
 		case Color::Generic:	m_GenericCost = dwValue; break;
+		case Color::Colorless:	m_ColorlessCost = dwValue; break;
 		}
 	}
 
@@ -1148,6 +1243,7 @@ protected:
 			case Color::Green:		if (nDelta < 0 && (DWORD)-nDelta >= m_GreenCost  ) m_GreenCost	 = 0; else m_GreenCost	 += nDelta; break;
 			case Color::White:		if (nDelta < 0 && (DWORD)-nDelta >= m_WhiteCost  ) m_WhiteCost	 = 0; else m_WhiteCost	 += nDelta; break;
 			case Color::Generic:	if (nDelta < 0 && (DWORD)-nDelta >= m_GenericCost) m_GenericCost = 0; else m_GenericCost += nDelta; break;
+			case Color::Colorless:	if (nDelta < 0 && (DWORD)-nDelta >= m_ColorlessCost) m_ColorlessCost = 0; else m_ColorlessCost += nDelta; break;
 		}
 	}
 
@@ -1161,6 +1257,7 @@ protected:
 			case Color::Green:		return m_GreenCost;
 			case Color::White:		return m_WhiteCost;
 			case Color::Generic:	return m_GenericCost;
+			case Color::Colorless:	return m_ColorlessCost;
 		}		
 
 		return 0;
@@ -1172,6 +1269,7 @@ protected:
 	ValueType m_GreenCost;
 	ValueType m_WhiteCost;
 	ValueType m_GenericCost;
+	ValueType m_ColorlessCost;	// {C}: only colorless mana can pay it
 };
 
 //____________________________________________________________________________
@@ -1244,6 +1342,7 @@ public:
 		manaCost.m_GreenCost   = m_GreenCost;
 		manaCost.m_WhiteCost   = m_WhiteCost;
 		manaCost.m_GenericCost = m_GenericCost;
+		manaCost.m_ColorlessCost = m_ColorlessCost;
 
 		return manaCost;
 	}
@@ -1279,6 +1378,7 @@ private:
 			stateStack.AddTail((PVOID)entry.GetCost(CManaCost::Color::Green));
 			stateStack.AddTail((PVOID)entry.GetCost(CManaCost::Color::Red));
 			stateStack.AddTail((PVOID)entry.GetCost(CManaCost::Color::White));
+			stateStack.AddTail((PVOID)entry.GetCost(CManaCost::Color::Colorless));
 		}
 
 		stateStack.AddTail((PVOID)nCount);
@@ -1292,6 +1392,7 @@ private:
 		for (int i = 0; i < nCount; ++i)
 		{
 			CManaCost entry;
+			entry.AddCost(CManaCost::Color::Colorless, (DWORD)m_Stack.RemoveTail());
 			entry.AddCost(CManaCost::Color::White,	 (DWORD)m_Stack.RemoveTail());
 			entry.AddCost(CManaCost::Color::Red,	 (DWORD)m_Stack.RemoveTail());
 			entry.AddCost(CManaCost::Color::Green,	 (DWORD)m_Stack.RemoveTail());
@@ -1313,6 +1414,7 @@ private:
 		for (int i = 0; i < nCount; ++i)
 		{
 			CManaCost entry;
+			entry.AddCost(CManaCost::Color::Colorless, (DWORD)m_Stack.GetPrev(pos));
 			entry.AddCost(CManaCost::Color::White,	 (DWORD)m_Stack.GetPrev(pos));
 			entry.AddCost(CManaCost::Color::Red,	 (DWORD)m_Stack.GetPrev(pos));
 			entry.AddCost(CManaCost::Color::Green,	 (DWORD)m_Stack.GetPrev(pos));

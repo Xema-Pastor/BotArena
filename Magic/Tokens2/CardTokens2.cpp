@@ -1039,6 +1039,22 @@ CElementalZBToken::CElementalZBToken(CGame* pGame, UINT nID)
 {
 	AddCardType(CardType::Red, CardType::_ColorMask);
 	GetCreatureKeyword()->AddHaste(FALSE);
+
+	// Chandra, Flamecaller: "Exile them at the beginning of the next end step." (as Ball Lightning)
+	{
+		typedef
+			TTriggeredAbility< CTriggeredMoveCardAbility, CWhenNodeChanged > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::EndStep));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->GetMoveCardModifier().SetToZone(ZoneId::Exile);
+		cpAbility->GetMoveCardModifier().SetMoveType(MoveType::Others);
+
+		cpAbility->AddAbilityTag(AbilityTag(ZoneId::Battlefield, ZoneId::Exile));
+
+		AddAbility(cpAbility.GetPointer());
+	}
 // OGW version: used by Chandra, Flamecaller.
 }
 

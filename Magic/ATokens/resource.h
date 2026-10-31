@@ -112,6 +112,9 @@
 #define IDS_STRING64095                 64095
 #define IDS_STRING64096                 64096
 #define IDS_STRING64097                 64097
+#define IDS_STRING64098                 64098
+#define IDS_STRING64099                 64099
+#define IDS_STRING64100                 64100
 #define IDI_MODULE                      64998
 #define IDI_LARGE_MODULE                64999
 

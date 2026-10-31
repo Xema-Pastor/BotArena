@@ -1,5 +1,9 @@
 #pragma once
 
+// Registry values (in the Settings key) that remember the View > Magic Arts / Magic Symbols choices
+#define REG_SETTINGS_SHOWMTGBITMAPS	_T("ShowMagicArts")
+#define REG_SETTINGS_SHOWMTGSYMBOLS	_T("ShowMagicSymbols")
+
 //_____________________________________________________________________________
 //
 // CCoreApp

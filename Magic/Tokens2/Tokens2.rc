@@ -164,7 +164,7 @@ BEGIN
     IDS_STRING55065         "Elemental (Z)\n{RG}\nCreature - Elemental\nToken\n\n5/5"
     IDS_STRING55066         "Plant (C)\n{G}\nCreature - Plant\nToken\n\n0/1"
     IDS_STRING55067         "Elemental (ZA)\n{G}\nCreature - Elemental\nToken\n\n*/*"
-    IDS_STRING55068         "Elemental (ZB)\n{R}\nCreature - Elemental\nToken\nHaste\n3/1"
+    IDS_STRING55068         "Elemental (ZB)\n{R}\nCreature - Elemental\nToken\nHaste\rAt the beginning of the next end step, exile this creature.\n3/1"
     IDS_STRING55069         "Zombie (U)\n{B}\nCreature - Zombie\nToken\n\n2/2"
     IDS_STRING55070         "Angel (K)\n{W}\nCreature - Angel\nToken\nFlying\n3/3"
     IDS_STRING55071         "Eldrazi Scion (D)\n{1}\nCreature - Eldrazi Scion\nToken\nSacrifice this creature: Add {C}.\n1/1"

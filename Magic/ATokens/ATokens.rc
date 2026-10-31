@@ -198,6 +198,9 @@ BEGIN
     IDS_STRING64095         "Elemental (AP)\n{GU}\nCreature - Elemental\nToken\nHexproof\n3/3"
     IDS_STRING64096         "Elemental (AQ)\n{WB}\nCreature - Elemental\nToken\nLifelink\n2/3"
     IDS_STRING64097         "Animated Gideon, Ally of Zendikar\n{2WW}\nCreature - Human Soldier Ally\nToken\nIndestructible\rPrevent all damage that would be dealt to Gideon, Ally of Zendikar this turn.\n5/5"
+    IDS_STRING64098         "Elemental (AR)\n{BG}\nCreature - Elemental\nToken\nDeathtouch\n2/2"
+    IDS_STRING64099         "Elemental (AS)\n{RW}\nCreature - Elemental\nToken\nDouble strike\n2/1"
+    IDS_STRING64100         "Elemental (AT)\n{UR}\nCreature - Elemental\nToken\n{0}: Switch this creature's power and toughness until end of turn.\n1/4"
 END
 
 

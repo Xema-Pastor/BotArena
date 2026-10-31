@@ -206,12 +206,13 @@ BOOL CCoreApp::InitInstance()
 		SetRegistryKey(m_strSoftwareSubKey);
 
 		if (g_pCoreApp->GetProfileInt(REG_SETTINGS_KEY, REG_SETTINGS_MTGKEY, 0))
-		{
-			CCardStore::GetInstance()->SetShowMTGSymbols(TRUE);
-			CCardStore::GetInstance()->SetShowMTGBitmaps(TRUE);
-
 			m_bMTGKeyFound = TRUE;
-		}
+
+		// The last choice made in View > Magic Arts / Magic Symbols; if never chosen, on only with the MTG key
+		CCardStore::GetInstance()->SetShowMTGSymbols(
+			g_pCoreApp->GetProfileInt(REG_SETTINGS_KEY, REG_SETTINGS_SHOWMTGSYMBOLS, m_bMTGKeyFound));
+		CCardStore::GetInstance()->SetShowMTGBitmaps(
+			g_pCoreApp->GetProfileInt(REG_SETTINGS_KEY, REG_SETTINGS_SHOWMTGBITMAPS, m_bMTGKeyFound));
 
 		m_strMtgModulePath = GetProfileString(REG_SETTINGS_KEY, REG_SETTINGS_MTGMODULE, m_strModulePath);
 		if (m_strMtgModulePath.Right(1) == _T("\\"))

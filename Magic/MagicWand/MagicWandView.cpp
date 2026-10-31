@@ -3406,21 +3406,13 @@ void CMagicWandView::OnUpdateUsagePattern(CCmdUI* pCmdUI)
 
 void CMagicWandView::OnUpdateViewMagicbitmaps(CCmdUI* pCmdUI) 
 {
-	if (!g_pCoreApp->GetMTGKeyFound())
-	{
-		pCmdUI->Enable(FALSE);
-	}
-	else
-	{
-		pCmdUI->Enable(TRUE);
-		pCmdUI->SetCheck(CCardStore::GetInstance()->GetShowMTGBitmaps());
-	}		
+	pCmdUI->Enable(TRUE);
+	pCmdUI->SetCheck(CCardStore::GetInstance()->GetShowMTGBitmaps());
 }
 
 void CMagicWandView::OnUpdateViewMagicsymbols(CCmdUI* pCmdUI) 
 {
-	if (!g_pCoreApp->GetMTGKeyFound() ||
-		!CCardStore::GetInstance()->GetSmallSymbols().Count() ||
+	if (!CCardStore::GetInstance()->GetSmallSymbols().Count() ||
 		!CCardStore::GetInstance()->GetLargeSymbols().Count())
 	{
 		pCmdUI->Enable(FALSE);
@@ -3496,6 +3488,7 @@ void CMagicWandView::OnViewDecks()
 void CMagicWandView::OnViewMagicbitmaps() 
 {
 	CCardStore::GetInstance()->SetShowMTGBitmaps(!CCardStore::GetInstance()->GetShowMTGBitmaps());
+	g_pCoreApp->WriteProfileInt(REG_SETTINGS_KEY, REG_SETTINGS_SHOWMTGBITMAPS, CCardStore::GetInstance()->GetShowMTGBitmaps());
 
 	m_ElementManager.RefreshCardBitmaps();
 }
@@ -3503,6 +3496,7 @@ void CMagicWandView::OnViewMagicbitmaps()
 void CMagicWandView::OnViewMagicsymbols() 
 {
 	CCardStore::GetInstance()->SetShowMTGSymbols(!CCardStore::GetInstance()->GetShowMTGSymbols());
+	g_pCoreApp->WriteProfileInt(REG_SETTINGS_KEY, REG_SETTINGS_SHOWMTGSYMBOLS, CCardStore::GetInstance()->GetShowMTGSymbols());
 
 	CMainFrame* pMainWnd = (CMainFrame*)::AfxGetMainWnd();
 	pMainWnd->GetGraphDialogBar()->Invalidate();

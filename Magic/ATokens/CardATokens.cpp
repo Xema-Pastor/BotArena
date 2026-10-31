@@ -71,6 +71,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CElementalAPToken);
 		DEFINE_TOKEN(CElementalAQToken);
 		DEFINE_TOKEN(CAnimatedGideonAllyOfZendikarToken);
+		DEFINE_TOKEN(CElementalARToken);
+		DEFINE_TOKEN(CElementalASToken);
+		DEFINE_TOKEN(CElementalATToken);
 		DEFINE_TOKEN(CElementalHorrorAAToken);
 		DEFINE_TOKEN(CElfAAToken);
 		DEFINE_TOKEN(CFaerieAAToken);
@@ -1536,6 +1539,57 @@ CAnimatedGideonAllyOfZendikarToken::CAnimatedGideonAllyOfZendikarToken(CGame* pG
 	GetCardKeyword()->AddIndestructible(FALSE);
 
 // Animation of BFZ Gideon, Ally of Zendikar
+}
+
+//____________________________________________________________________________
+//
+CElementalARToken::CElementalARToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature/* | CardType::Token*/,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::Black | CardType::Green, CardType::_ColorMask);
+
+	GetCardKeyword()->AddDeathtouch(FALSE);
+
+// Animation of OGW Hissing Quagmire
+}
+
+//____________________________________________________________________________
+//
+CElementalASToken::CElementalASToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature/* | CardType::Token*/,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(2), Life(1))
+{
+	AddCardType(CardType::Red | CardType::White, CardType::_ColorMask);
+
+	GetCreatureKeyword()->AddDoubleStrike(FALSE);
+
+// Animation of OGW Needle Spires
+}
+
+//____________________________________________________________________________
+//
+CElementalATToken::CElementalATToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature/* | CardType::Token*/,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(1), Life(4))
+{
+	AddCardType(CardType::Blue | CardType::Red, CardType::_ColorMask);
+
+	// {0}: Switch this creature's power and toughness until end of turn. (as Windreaver)
+	counted_ptr<CPumpAbility> cpAbility(
+		::CreateObject<CPumpAbility>(this,
+			_T("0"),
+			Power(+0), Life(+0), CreatureKeyword::SwitchedPT));
+
+	AddAbility(cpAbility.GetPointer());
+
+// Animation of OGW Wandering Fumarole
 }
 
 //____________________________________________________________________________

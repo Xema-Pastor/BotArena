@@ -8,12 +8,14 @@
 #define RED_MANA_TEXT	_T("R")
 #define GREEN_MANA_TEXT	_T("G")
 #define ALL_MANA_TEXT	_T("WUBRG")
+#define COLORLESS_MANA_TEXT	_T("C")	// {C}: colorless mana (in costs it must be paid with colorless mana)
 
 #define WHITE_MANA_CHAR	_T('W')
 #define BLUE_MANA_CHAR	_T('U')
 #define BLACK_MANA_CHAR	_T('B')
 #define RED_MANA_CHAR	_T('R')
 #define GREEN_MANA_CHAR	_T('G')
+#define COLORLESS_MANA_CHAR	_T('C')
 
 class CManaCost;
 
@@ -842,6 +844,7 @@ protected:
 				case BLACK_MANA_CHAR: ++dwBlackMana; break;
 				case RED_MANA_CHAR:   ++dwRedMana;	 break;
 				case GREEN_MANA_CHAR: ++dwGreenMana; break;
+				case COLORLESS_MANA_CHAR: ++dwColorlessMana; break;
 				}
 			}
 			else
