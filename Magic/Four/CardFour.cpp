@@ -1678,7 +1678,7 @@ CWallOfSpearsCard::CWallOfSpearsCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CHurrJackalCard::CHurrJackalCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Hurr Jackal"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Hurr Jackal"), CardType::Creature, CREATURE_TYPE(Jackal), nID,
 		RED_MANA_TEXT, Power(1), Life(1))
 {
 	counted_ptr<CActivatedAbility<CTargetChgPwrTghAttrSpell>> cpAbility(

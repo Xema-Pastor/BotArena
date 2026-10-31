@@ -1138,7 +1138,7 @@ CAbzanFalconerCard::CAbzanFalconerCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CAinokBondKinCard::CAinokBondKinCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Ainok Bond-Kin"), CardType::Creature, CREATURE_TYPE2(Hound, Soldier), nID,
+	: CCreatureCard(pGame, _T("Ainok Bond-Kin"), CardType::Creature, CREATURE_TYPE2(Dog, Soldier), nID,
 		_T("1") WHITE_MANA_TEXT, Power(2), Life(1))
 {
 	{
@@ -1336,10 +1336,10 @@ CWarBehemothCard::CWarBehemothCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CAinokTrackerCard::CAinokTrackerCard(CGame* pGame, UINT nID)
-	: CMorphCreatureCard(pGame, _T("Ainok Tracker"), CardType::Creature, CREATURE_TYPE2(Hound, Scout), nID,
+	: CMorphCreatureCard(pGame, _T("Ainok Tracker"), CardType::Creature, CREATURE_TYPE2(Dog, Scout), nID,
 		_T("5") RED_MANA_TEXT, Power(3), Life(3), _T("4") RED_MANA_TEXT)
 {
-	this->AddCreatureType(SingleCreatureType::Hound);
+	this->AddCreatureType(SingleCreatureType::Dog);
 	this->AddCreatureType(SingleCreatureType::Scout);
 	this->AddCreatureModifier(new CCreatureKeywordModifier(CreatureKeyword::FirstStrike, true, false));
 }
@@ -1534,7 +1534,7 @@ CKinTreeWardenCard::CKinTreeWardenCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CLongshotSquadCard::CLongshotSquadCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Longshot Squad"), CardType::Creature, CREATURE_TYPE2(Hound, Archer), nID,
+	: CCreatureCard(pGame, _T("Longshot Squad"), CardType::Creature, CREATURE_TYPE2(Dog, Archer), nID,
 		_T("3") GREEN_MANA_TEXT, Power(3), Life(3))
 {
 	{

@@ -204,7 +204,7 @@ BEGIN
     IDS_STRING12098         "Sivvi's Ruse\n{2WW}\nInstant\nNMS,U\nIf an opponent controls a Mountain and you control a Plains, you may cast Sivvi's Ruse without paying its mana cost.\rPrevent all damage that would be dealt this turn to creatures you control."
     IDS_STRING12099         "Skyshroud Cutter\n{3G}\nCreature - Beast\nNMS,C\nIf you control a Forest, rather than pay Skyshroud Cutter's mana cost, you may have each other player gain 5 life.\n2/2"
     IDS_STRING12100         "Submerge\n{4U}\nInstant\nNMS,U\nIf an opponent controls a Forest and you control an Island, you may cast Submerge without paying its mana cost.\rPut target creature on top of its owner's library."
-    IDS_STRING12101         "Mossdog\n{G}\nCreature - Plant Hound\nNMS,C\nWhenever Mossdog becomes the target of a spell or ability an opponent controls, put a +1/+1 counter on Mossdog.\n1/1"
+    IDS_STRING12101         "Mossdog\n{G}\nCreature - Plant Dog\nNMS,C\nWhenever Mossdog becomes the target of a spell or ability an opponent controls, put a +1/+1 counter on Mossdog.\n1/1"
     IDS_STRING12102         "Downhill Charge\n{2R}\nInstant\nNMS,C\nYou may sacrifice a Mountain rather than pay Downhill Charge's mana cost.\rTarget creature gets +X/+0 until end of turn, where X is the number of Mountains you control."
     IDS_STRING12103         "Tangle Wire\n{3}\nArtifact\nNMS,R\nFading 4\rAt the beginning of each player's upkeep, that player taps an untapped artifact, creature, or land he or she controls for each fade counter on Tangle Wire."
     IDS_STRING12104         "Rusting Golem\n{4}\nArtifact Creature - Golem\nNMS,U\nFading 5\rRusting Golem's power and toughness are each equal to the number of fade counters on it.\n*/*"

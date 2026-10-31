@@ -1572,7 +1572,7 @@ CHorrorAToken::CHorrorAToken(CGame* pGame, UINT nID)
 //
 CHoundToken::CHoundToken(CGame* pGame, UINT nID)
 	: CTokenCreature(pGame, _T("Hound"), CardType::Creature | CardType::Token,
-		CREATURE_TYPE(Hound), nID,
+		CREATURE_TYPE(Dog), nID,
 		_T(""),
 		Power(1), Life(1))
 {

@@ -4667,7 +4667,7 @@ void CSpawnOfRixMaadiCard::OnZoneChanged(CCard* pCard, CZone* pFromZone, CZone* 
 //____________________________________________________________________________
 //
 CRakdosRagemuttCard::CRakdosRagemuttCard(CGame* pGame, UINT nID)
-	: CHasteCreatureCard(pGame, _T("Rakdos Ragemutt"), CardType::Creature, CREATURE_TYPE2(Elemental, Hound), nID,
+	: CHasteCreatureCard(pGame, _T("Rakdos Ragemutt"), CardType::Creature, CREATURE_TYPE2(Elemental, Dog), nID,
 		_T("3") BLACK_MANA_TEXT RED_MANA_TEXT, Power(3), Life(3))
 {
 	GetCardKeyword()->AddLifelink(FALSE);

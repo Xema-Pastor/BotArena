@@ -39,6 +39,7 @@ CEnchantment::CEnchantment(CCard* pCard, LPCTSTR strManaCost,
 	, m_ConditionCheckPlayer(ConditionCheckPlayerType::CheckControllerOnly)
 	, m_ConditionIsMaximum(FALSE)
 	, m_ConditionCheckLife(FALSE)
+	, m_ConditionCountCardTypes(FALSE)
 	, m_ActiveIn(ZoneId::Battlefield)
 	, m_ConditionActive(FALSE)
 {
@@ -83,6 +84,7 @@ CEnchantment::CEnchantment(CCard* pCard, AbilityType abilityType,	// Enchantment
 	, m_ConditionCheckPlayer(ConditionCheckPlayerType::CheckControllerOnly)
 	, m_ConditionIsMaximum(FALSE)
 	, m_ConditionCheckLife(FALSE)
+	, m_ConditionCountCardTypes(FALSE)
 	, m_ActiveIn(ZoneId::Battlefield)
 	, m_ConditionActive(FALSE)
 {
@@ -124,6 +126,7 @@ CEnchantment::CEnchantment(CCard* pCard,	// EnchantmentInternalType::SecondaryEn
 	, m_ConditionCheckPlayer(ConditionCheckPlayerType::CheckControllerOnly)
 	, m_ConditionIsMaximum(FALSE)
 	, m_ConditionCheckLife(FALSE)
+	, m_ConditionCountCardTypes(FALSE)
 	, m_ActiveIn(ZoneId::Battlefield)
 	, m_ConditionActive(FALSE)
 {
@@ -900,17 +903,17 @@ bool CEnchantment::EvaluateCondition()
 			{
 				if (m_ConditionIsMaximum)
 				{
-					if (m_ConditionFilter.CountIncluded(GetGame()->GetPlayer(ip)->GetZoneById(m_ConditionCheckZone)->GetCardContainer()) <= m_ConditionValue)
+					if (CountForCondition(GetGame()->GetPlayer(ip)->GetZoneById(m_ConditionCheckZone)) <= m_ConditionValue)
 					return true;
 				}
 				else
 				{
-					if (m_ConditionFilter.CountIncluded(GetGame()->GetPlayer(ip)->GetZoneById(m_ConditionCheckZone)->GetCardContainer()) >= m_ConditionValue)
+					if (CountForCondition(GetGame()->GetPlayer(ip)->GetZoneById(m_ConditionCheckZone)) >= m_ConditionValue)
 					return true;
 				}
 				continue;
 			}
-			nCount += m_ConditionFilter.CountIncluded(GetGame()->GetPlayer(ip)->GetZoneById(m_ConditionCheckZone)->GetCardContainer());
+			nCount += CountForCondition(GetGame()->GetPlayer(ip)->GetZoneById(m_ConditionCheckZone));
 		}
 	}
 
@@ -919,6 +922,14 @@ bool CEnchantment::EvaluateCondition()
 	return (nCount <= m_ConditionValue);
 	else
 	return (nCount >= m_ConditionValue);
+}
+
+int CEnchantment::CountForCondition(const CZone* pZone) const
+{
+	if (m_ConditionCountCardTypes)
+		return CountCardTypes(pZone);	// Delirium
+
+	return m_ConditionFilter.CountIncluded(pZone->GetCardContainer());
 }
 
 //____________________________________________________________________________

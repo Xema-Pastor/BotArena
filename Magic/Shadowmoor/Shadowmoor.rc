@@ -140,7 +140,7 @@ BEGIN
     IDS_STRING18546         "Goldenglow Moth\n{W}\nCreature - Insect\nSHM,C\nFlying\rWhenever Goldenglow Moth blocks, you may gain 4 life.\n0/1"
     IDS_STRING18547         "Graven Cairns\n\nLand\nSHM,R\n{T}: Add {1} to your mana pool.\r{D}, {T}: Add {BB}, {BR}, or {RR} to your mana pool."
     IDS_STRING18548         "Guttural Response\n{E}\nInstant\nSHM,U\nCounter target blue instant spell."
-    IDS_STRING18549         "Hollowborn Barghest\n{5BB}\nCreature - Demon Hound\nSHM,R\nAt the beginning of your upkeep, if you have no cards in hand, each opponent loses 2 life.\rAt the beginning of each opponent's upkeep, if that player has no cards in hand, he or she loses 2 life.\n7/6"
+    IDS_STRING18549         "Hollowborn Barghest\n{5BB}\nCreature - Demon Dog\nSHM,R\nAt the beginning of your upkeep, if you have no cards in hand, each opponent loses 2 life.\rAt the beginning of each opponent's upkeep, if that player has no cards in hand, he or she loses 2 life.\n7/6"
     IDS_STRING18550         "Hollowsage\n{3B}\nCreature - Merfolk Wizard\nSHM,U\nWhenever Hollowsage becomes untapped, you may have target player discard a card.\n2/2"
     IDS_STRING18551         "Horde of Boggarts\n{3R}\nCreature - Goblin\nSHM,U\nHorde of Boggarts's power and toughness are each equal to the number of red permanents you control.\rHorde of Boggarts can't be blocked except by two or more creatures.\n*/*"
     IDS_STRING18552         "Hungry Spriggan\n{2G}\nCreature - Goblin Warrior\nSHM,C\nTrample\rWhenever Hungry Spriggan attacks, it gets +3/+3 until end of turn.\n1/1"

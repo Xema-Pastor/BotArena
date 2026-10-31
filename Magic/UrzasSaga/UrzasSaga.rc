@@ -134,7 +134,7 @@ BEGIN
     IDS_STRING10844         "Greater Good\n{2GG}\nEnchantment\nUSG,R\nSacrifice a creature: Draw cards equal to the sacrificed creature's power, then discard three cards."
     IDS_STRING10845         "Healing Salve\n{W}\nInstant\nUSG,C\nChoose one - Target player gains 3 life; or prevent the next 3 damage that would be dealt to target creature or player this turn."
     IDS_STRING10846         "Hibernation\n{2U}\nInstant\nUSG,U\nReturn all green permanents to their owners' hands."
-    IDS_STRING10847         "Hollow Dogs\n{4B}\nCreature - Zombie Hound\nUSG,C\nWhenever Hollow Dogs attacks, it gets +2/+0 until end of turn.\n3/3"
+    IDS_STRING10847         "Hollow Dogs\n{4B}\nCreature - Phyrexian Zombie Dog\nUSG,C\nWhenever Hollow Dogs attacks, it gets +2/+0 until end of turn.\n3/3"
 END
 
 STRINGTABLE
@@ -427,7 +427,7 @@ BEGIN
     IDS_STRING11077         "Power Taint\n{1U}\nEnchantment - Aura\nUSG,C\nEnchant enchantment\rAt the beginning of the upkeep of enchanted enchantment's controller, that player loses 2 life unless he or she pays {2}.\rCycling {2}"
     IDS_STRING11078         "Turnabout\n{2UU}\nInstant\nUSG,U\nChoose artifact, creature, or land. Tap all untapped permanents of the chosen type target player controls, or untap all tapped permanents of that type that player controls."
     IDS_STRING11079         "Citanul Flute\n{5}\nArtifact\nUSG,R\n{X}, {T}: Search your library for a creature card with converted mana cost X or less, reveal it, and put it into your hand. Then shuffle your library."
-    IDS_STRING11080         "Wild Dogs\n{G}\nCreature - Hound\nUSG,C\nAt the beginning of your upkeep, if a player has more life than each other player, the player with the most life gains control of Wild Dogs.\rCycling {2}\n2/1"
+    IDS_STRING11080         "Wild Dogs\n{G}\nCreature - Dog\nUSG,C\nAt the beginning of your upkeep, if a player has more life than each other player, the player with the most life gains control of Wild Dogs.\rCycling {2}\n2/1"
     IDS_STRING11081         "Planar Birth\n{1W}\nSorcery\nUSG,R\nReturn all basic land cards from all graveyards to the battlefield tapped under their owners' control."
     IDS_STRING11082         "Brand\n{R}\nInstant\nUSG,R\nGain control of all permanents you own.\rCycling {2}"
     IDS_STRING11083         "Congregate\n{3W}\nInstant\nUSG,C\nTarget player gains 2 life for each creature on the battlefield."

@@ -2599,7 +2599,7 @@ CFamishedGhoulCard::CFamishedGhoulCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CFilthyCurCard::CFilthyCurCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Filthy Cur"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Filthy Cur"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("1") BLACK_MANA_TEXT, Power(2), Life(2))
 {
 	typedef
@@ -2743,7 +2743,7 @@ COvereagerApprenticeCard::COvereagerApprenticeCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CPatrolHoundCard::CPatrolHoundCard(CGame* pGame, UINT nID)
-	: CPumpCreatureCard(pGame, _T("Patrol Hound"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CPumpCreatureCard(pGame, _T("Patrol Hound"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("1") WHITE_MANA_TEXT, Power(2), Life(2),
 		_T(""), Power(+0), Life(+0), CreatureKeyword::FirstStrike)
 {
@@ -2775,7 +2775,7 @@ CPatronWizardCard::CPatronWizardCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CPhantomWhelpCard::CPhantomWhelpCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Phantom Whelp"), CardType::Creature, CREATURE_TYPE2(Illusion, Hound), nID,
+	: CCreatureCard(pGame, _T("Phantom Whelp"), CardType::Creature, CREATURE_TYPE2(Illusion, Dog), nID,
 		_T("1") BLUE_MANA_TEXT, Power(2), Life(2))
 {
 	typedef
@@ -5754,7 +5754,7 @@ CHolisticWisdomCard::CHolisticWisdomCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CWildMongrelCard::CWildMongrelCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Wild Mongrel"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Wild Mongrel"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("1") GREEN_MANA_TEXT, Power(2), Life(2))
 {
 	counted_ptr<CActivatedAbility<CTargetChangeCardTypeSpell>> cpAbility(

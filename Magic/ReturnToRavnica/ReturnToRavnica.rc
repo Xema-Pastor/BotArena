@@ -290,7 +290,7 @@ BEGIN
     IDS_STRING25264         "Druid's Deliverance\n{1G}\nInstant\nRTR,C\nPrevent all combat damage that would be dealt to you this turn. Populate."
     IDS_STRING25265         "Carnival Hellsteed\n{4BR}\nCreature - Nightmare Horse\nRTR,R\nFirst strike, haste\rUnleash\n5/4"
     IDS_STRING25266         "Spawn of Rix Maadi\n{3BR}\nCreature - Horror\nRTR,C\nUnleash\n5/3"
-    IDS_STRING25267         "Rakdos Ragemutt\n{3BR}\nCreature - Elemental Hound\nRTR,U\nLifelink, haste\n3/3"
+    IDS_STRING25267         "Rakdos Ragemutt\n{3BR}\nCreature - Elemental Dog\nRTR,U\nLifelink, haste\n3/3"
     IDS_STRING25268         "Hellhole Flailer\n{1BR}\nCreature - Ogre Warrior\nRTR,U\nUnleash\r{2BR}, Sacrifice Hellhole Flailer: Hellhole Flailer deals damage equal to its power to target player.\n3/2"
     IDS_STRING25269         "Skull Rend\n{3BR}\nSorcery\nRTR,C\nSkull Rend deals 2 damage to each opponent. Those players each discard two cards at random."
     IDS_STRING25270         "Risen Sanctuary\n{5GW}\nCreature - Elemental\nRTR,U\nVigilance\n8/8"

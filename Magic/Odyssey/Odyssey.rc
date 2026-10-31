@@ -241,7 +241,7 @@ STRINGTABLE
 BEGIN
     IDS_STRING13328         "Face of Fear\n{5B}\nCreature - Horror\nODY,U\n{2B}, Discard a card: Face of Fear gains fear until end of turn.\n3/4"
     IDS_STRING13329         "Famished Ghoul\n{3B}\nCreature - Zombie\nODY,U\n{1B}, Sacrifice Famished Ghoul: Exile up to two target cards from a single graveyard.\n3/2"
-    IDS_STRING13330         "Filthy Cur\n{1B}\nCreature - Hound\nODY,C\nWhenever Filthy Cur is dealt damage, you lose that much life.\n2/2"
+    IDS_STRING13330         "Filthy Cur\n{1B}\nCreature - Dog\nODY,C\nWhenever Filthy Cur is dealt damage, you lose that much life.\n2/2"
     IDS_STRING13331         "Fledgling Imp\n{2B}\nCreature - Imp\nODY,C\n{B}, Discard a card: Fledgling Imp gains flying until end of turn.\n2/2"
     IDS_STRING13332         "Halberdier\n{3R}\nCreature - Human Barbarian\nODY,C\nFirst strike\n3/1"
     IDS_STRING13333         "Iridescent Angel\n{5WU}\nCreature - Angel\nODY,R\nFlying, protection from all colors\n4/4"
@@ -251,9 +251,9 @@ BEGIN
     IDS_STRING13337         "Minotaur Explorer\n{1R}\nCreature - Minotaur Scout\nODY,U\nWhen Minotaur Explorer enters the battlefield, sacrifice it unless you discard a card at random.\n3/3"
     IDS_STRING13338         "Nantuko Elder\n{2G}\nCreature - Insect Druid\nODY,U\n{T}: Add {1G} to your mana pool.\n1/2"
     IDS_STRING13339         "Overeager Apprentice\n{2B}\nCreature - Human Minion\nODY,C\nDiscard a card, Sacrifice Overeager Apprentice: Add {BBB} to your mana pool.\n1/2"
-    IDS_STRING13340         "Patrol Hound\n{1W}\nCreature - Hound\nODY,C\nDiscard a card: Patrol Hound gains first strike until end of turn.\n2/2"
+    IDS_STRING13340         "Patrol Hound\n{1W}\nCreature - Dog\nODY,C\nDiscard a card: Patrol Hound gains first strike until end of turn.\n2/2"
     IDS_STRING13341         "Patron Wizard\n{UUU}\nCreature - Human Wizard\nODY,R\nTap an untapped Wizard you control: Counter target spell unless its controller pays {1}.\n2/2"
-    IDS_STRING13342         "Phantom Whelp\n{1U}\nCreature - Illusion Hound\nODY,C\nWhen Phantom Whelp attacks or blocks, return it to its owner's hand at end of combat.\n2/2"
+    IDS_STRING13342         "Phantom Whelp\n{1U}\nCreature - Illusion Dog\nODY,C\nWhen Phantom Whelp attacks or blocks, return it to its owner's hand at end of combat.\n2/2"
     IDS_STRING13343         "Pianna, Nomad Captain\n{1WW}\nLegendary Creature - Human Nomad\nODY,R\nWhenever Pianna, Nomad Captain attacks, attacking creatures get +1/+1 until end of turn.\n2/2"
 END
 
@@ -379,7 +379,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_STRING13440         "Wild Mongrel\n{1G}\nCreature - Hound\nODY,C\nDiscard a card: Wild Mongrel gets +1/+1 and becomes the color of your choice until end of turn.\n2/2"
+    IDS_STRING13440         "Wild Mongrel\n{1G}\nCreature - Dog\nODY,C\nDiscard a card: Wild Mongrel gets +1/+1 and becomes the color of your choice until end of turn.\n2/2"
     IDS_STRING13441         "Aboshan, Cephalid Emperor\n{4UU}\nLegendary Creature - Cephalid\nODY,R\nTap an untapped Cephalid you control: Tap target permanent.\r{UUU}: Tap all creatures without flying.\n3/3"
     IDS_STRING13442         "Kirtar's Wrath\n{4WW}\nSorcery\nODY,R\nDestroy all creatures. They can't be regenerated.\rThreshold - If seven or more cards are in your graveyard, instead destroy all creatures, then put two 1/1 white Spirit creature tokens with flying onto the battlefield. Creatures destroyed this way can't be regenerated."
     IDS_STRING13443         "Animal Boneyard\n{2W}\nEnchantment - Aura\nODY,U\nEnchant land\rEnchanted land has ""{T}, Sacrifice a creature: You gain life equal to the sacrificed creature's toughness."""

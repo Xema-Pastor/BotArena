@@ -191,7 +191,7 @@ BEGIN
     IDS_STRING21985         "Darksteel Relic\n{0}\nArtifact\nNPH,U\nIndestructible"
     IDS_STRING21986         "Etched Monstrosity\n{5}\nArtifact Creature - Golem\nNPH,MR\nEtched Monstrosity enters the battlefield with five -1/-1 counters on it.\r{WUBRG}, Remove five -1/-1 counters from Etched Monstrosity: target player draws three cards.\n10/10"
     IDS_STRING21987         "Hovermyr\n{2}\nArtifact Creature - Myr\nNPH,C\nFlying, vigilance\n1/2"
-    IDS_STRING21988         "Immolating Souleater\n{2}\nArtifact Creature - Hound\nNPH,C\n{&}: Immolating Souleater gets +1/+0 until end of turn.\n1/1"
+    IDS_STRING21988         "Immolating Souleater\n{2}\nArtifact Creature - Phyrexian Dog\nNPH,C\n{&}: Immolating Souleater gets +1/+0 until end of turn.\n1/1"
     IDS_STRING21989         "Insatiable Souleater\n{4}\nArtifact Creature - Beast\nNPH,C\n{/}: Insatiable Souleater gains trample until end of turn.\n5/1"
     IDS_STRING21990         "Pestilent Souleater\n{5}\nArtifact Creature - Insect\nNPH,C\n{%}: Pestilent Souleater gains infect until end of turn.\n3/3"
     IDS_STRING21991         "Mycosynth Wellspring\n{2}\nArtifact\nNPH,C\nWhen Mycosynth Wellspring enters the battlefield or is put into a graveyard from the battlefield, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle your library."
@@ -227,7 +227,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_STRING22016         "Mortis Dogs\n{3B}\nCreature - Hound\nNPH,C\nWhenever Mortis Dogs attacks, it gets +2/+0 until end of turn.\rWhen Mortis Dogs dies, target player loses life equal to its power.\n2/2"
+    IDS_STRING22016         "Mortis Dogs\n{3B}\nCreature - Phyrexian Dog\nNPH,C\nWhenever Mortis Dogs attacks, it gets +2/+0 until end of turn.\rWhen Mortis Dogs dies, target player loses life equal to its power.\n2/2"
     IDS_STRING22017         "Shrine of Loyal Legions\n{2}\nArtifact\nNPH,U\nAt the beginning of your upkeep or whenever you cast a white spell, put a charge counter on Shrine of Loyal Legions.\r{3}, {T}, Sacrifice Shrine of Loyal Legions: Put a 1/1 colorless Myr artifact creature token onto the battlefield for each charge counter on Shrine of Loyal Legions."
     IDS_STRING22018         "Fresh Meat\n{3G}\nInstant\nNPH,R\nPut a 3/3 green Beast creature token onto the battlefield for each creature put into your graveyard from the battlefield this turn."
     IDS_STRING22019         "Dispatch\n{W}\nInstant\nNPH,U\nTap target creature.\rMetalcraft - If you control three or more artifacts, exile that creature."

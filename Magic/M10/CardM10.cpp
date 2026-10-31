@@ -955,7 +955,7 @@ CBurstOfSpeedCard::CBurstOfSpeedCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CFieryHellhoundCard::CFieryHellhoundCard(CGame* pGame, UINT nID)
-	: CPumpCreatureCard(pGame, _T("Fiery Hellhound"), CardType::Creature, CREATURE_TYPE2(Elemental, Hound), nID,
+	: CPumpCreatureCard(pGame, _T("Fiery Hellhound"), CardType::Creature, CREATURE_TYPE2(Elemental, Dog), nID,
 		_T("1") RED_MANA_TEXT RED_MANA_TEXT, Power(2), Life(2),
 		RED_MANA_TEXT, Power(+1), Life(0))
 {

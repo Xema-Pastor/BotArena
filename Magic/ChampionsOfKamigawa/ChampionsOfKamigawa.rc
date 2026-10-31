@@ -82,7 +82,7 @@ BEGIN
     IDS_STRING15600         "Azami, Lady of Scrolls\n{2UUU}\nLegendary Creature - Human Wizard\nCHK,R\nTap an untapped Wizard you control: Draw a card.\n0/2"
     IDS_STRING15601         "Azusa, Lost but Seeking\n{2G}\nLegendary Creature - Human Monk\nCHK,R\nYou may play two additional lands on each of your turns.\n1/2"
     IDS_STRING15602         "Hair-Strung Koto\n{6}\nArtifact\nCHK,R\nTap an untapped creature you control: Target player puts the top card of his or her library into his or her graveyard."
-    IDS_STRING15603         "Isamaru, Hound of Konda\n{W}\nLegendary Creature - Hound\nCHK,R\n\n2/2"
+    IDS_STRING15603         "Isamaru, Hound of Konda\n{W}\nLegendary Creature - Dog\nCHK,R\n\n2/2"
     IDS_STRING15604         "Kodama of the North Tree\n{2GGG}\nLegendary Creature - Spirit\nCHK,R\nTrample; shroud\n6/4"
     IDS_STRING15605         "Sakura-Tribe Elder\n{1G}\nCreature - Snake Shaman\nCHK,C\nSacrifice Sakura-Tribe Elder: Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle your library.\n1/1"
     IDS_STRING15606         "Befoul\n{2BB}\nSorcery\nCHK,C\nDestroy target land or nonblack creature. It can't be regenerated."

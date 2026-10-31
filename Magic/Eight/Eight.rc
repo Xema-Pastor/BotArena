@@ -348,7 +348,7 @@ STRINGTABLE
 BEGIN
     IDS_STRING1712          "Foratog\n{2G}\nCreature - Atog\n8TH,U\n{G}, Sacrifice a Forest: Foratog gets +2/+2 until end of turn.\n1/2"
     IDS_STRING1713          "Canyon Wildcat\n{1R}\nCreature - Cat\n8TH,C\nMountainwalk\n2/1"
-    IDS_STRING1714          "Lava Hounds\n{2RR}\nCreature - Hound\n8TH,R\nHaste\rWhen Lava Hounds enters the battlefield, it deals 4 damage to you.\n4/4"
+    IDS_STRING1714          "Lava Hounds\n{2RR}\nCreature - Dog\n8TH,R\nHaste\rWhen Lava Hounds enters the battlefield, it deals 4 damage to you.\n4/4"
     IDS_STRING1715          "Spitting Spider\n{3GG}\nCreature - Spider\n8TH,U\nReach\rSacrifice a land: Spitting Spider deals 1 damage to each creature with flying.\n3/5"
     IDS_STRING1716          "Cinder Wall\n{R}\nCreature - Wall\n8TH,C\nDefender\rWhen Cinder Wall blocks, destroy it at end of combat.\n3/3"
     IDS_STRING1717          "Sword Dancer\n{1W}\nCreature - Human Rebel\n8TH,U\n{WW}: Target attacking creature gets -1/-0 until end of turn.\n1/2"

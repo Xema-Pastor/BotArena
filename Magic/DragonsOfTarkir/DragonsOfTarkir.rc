@@ -148,7 +148,7 @@ END
 STRINGTABLE
 BEGIN
     IDS_STRING29752         "Segmented Krotiq\n{5G}\nCreature - Insect\nDTK,C\nMegamorph {6G}\n6/5"
-    IDS_STRING29753         "Aerie Bowmasters\n{2GG}\nCreature - Hound Archer\nDTK,C\nReach\rMegamorph {5G}\n3/4"
+    IDS_STRING29753         "Aerie Bowmasters\n{2GG}\nCreature - Dog Archer\nDTK,C\nReach\rMegamorph {5G}\n3/4"
     IDS_STRING29754         "Aven Sunstriker\n{1WW}\nCreature - Bird Warrior\nDTK,U\nFlying\rDouble strike\rMegamorph {4W}\n1/1"
     IDS_STRING29755         "Dirgur Nemesis\n{5U}\nCreature - Serpent\nDTK,C\nDefender\rMegamorph {6U}\n6/5"
     IDS_STRING29756         "Gudul Lurker\n{U}\nCreature - Salamander\nDTK,U\nGudul Lurker can't be blocked.\rMegamorph {U}\n1/1"
@@ -190,7 +190,7 @@ BEGIN
     IDS_STRING29784         "Sandcrafter Mage\n{2W}\nCreature - Human Wizard\nDTK,C\nWhen Sandcrafter Mage enters the battlefield, bolster 1.\n2/2"
     IDS_STRING29785         "Aven Tactician\n{4W}\nCreature - Bird Soldier\nDTK,C\nFlying\rWhen Aven Tactician enters the battlefield, bolster 1.\n2/3"
     IDS_STRING29786         "Dromoka Captain\n{2W}\nCreature - Human Soldier\nDTK,U\nFirst Strike\rWhenever Dromoka Captain attacks, bolster 1.\n1/1"
-    IDS_STRING29787         "Sandsteppe Scavenger\n{4G}\nCreature - Hound Scout\nDTK,C\nWhen Sandsteppe Scavenger enters the battlefield, bolster 2.\n2/2"
+    IDS_STRING29787         "Sandsteppe Scavenger\n{4G}\nCreature - Dog Scout\nDTK,C\nWhen Sandsteppe Scavenger enters the battlefield, bolster 2.\n2/2"
     IDS_STRING29788         "Shambling Goblin\n{B}\nCreature - Zombie Goblin\nDTK,C\nWhen Shambling Goblin dies, target creature an opponent controls gets -1/-1 until end of turn.\n1/1"
     IDS_STRING29789         "Twin Bolt\n{1R}\nInstant\nDTK,C\nTwin Bolt deals 2 damage divided as you choose among one or two target creatures and/or players."
     IDS_STRING29790         "Berserkers' Onslaught\n{3RR}\nEnchantment\nDTK,R\nAttacking creatures you control have double strike."

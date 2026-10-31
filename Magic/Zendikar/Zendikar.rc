@@ -219,7 +219,7 @@ BEGIN
     IDS_STRING19409         "Cliff Threader\n{1W}\nCreature - Kor Scout\nZEN,C\nMountainwalk\n2/1"
     IDS_STRING19410         "Crypt Ripper\n{2BB}\nCreature - Shade\nZEN,C\nHaste\r{B}: Crypt Ripper gets +1/+1 until end of turn.\n2/2"
     IDS_STRING19411         "Hagra Crocodile\n{3B}\nCreature - Crocodile\nZEN,C\nHagra Crocodile can't block.\rLandfall - Whenever a land enters the battlefield under your control, Hagra Crocodile gets +2/+2 until end of turn.\n3/1"
-    IDS_STRING19412         "Hellfire Mongrel\n{2R}\nCreature - Elemental Hound\nZEN,U\nAt the beginning of each opponent's upkeep, if that player has two or fewer cards in hand, Hellfire Mongrel deals 2 damage to him or her.\n2/2"
+    IDS_STRING19412         "Hellfire Mongrel\n{2R}\nCreature - Elemental Dog\nZEN,U\nAt the beginning of each opponent's upkeep, if that player has two or fewer cards in hand, Hellfire Mongrel deals 2 damage to him or her.\n2/2"
     IDS_STRING19413         "Landbind Ritual\n{3WW}\nSorcery\nZEN,U\nYou gain 2 life for each Plains you control."
     IDS_STRING19414         "Magma Rift\n{2R}\nSorcery\nZEN,C\nAs an additional cost to cast Magma Rift, sacrifice a land.\rMagma Rift deals 5 damage to target creature."
     IDS_STRING19415         "Marsh Casualties\n{BB}\nSorcery\nZEN,U\nKicker {3}\rCreatures target player controls get -1/-1 until end of turn. If Marsh Casualties was kicked, those creatures get -2/-2 until end of turn instead."

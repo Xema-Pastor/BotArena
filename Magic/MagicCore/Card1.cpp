@@ -212,8 +212,8 @@ CString CDoubleFacedInPlaySpellCard::GetSecondPrintedCardName() const
 
 DWORD CDoubleFacedInPlaySpellCard::GetConvertedManaCost() const
 {
-	if (GetOrientation()->IsSecondFaced())
-		return 0;
+	// Current rules: the mana value of a transforming double-faced permanent with its back face up is calculated
+	// from the mana cost of its front face (the back face itself has no mana cost, see GetManaCost)
 	return __super::GetConvertedManaCost();
 }
 

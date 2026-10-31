@@ -230,7 +230,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_STRING23440         "Thraben Purebloods\n{4W}\nCreature - Hound\nISD,C\n\n3/5"
+    IDS_STRING23440         "Thraben Purebloods\n{4W}\nCreature - Dog\nISD,C\n\n3/5"
     IDS_STRING23441         "Urgent Exorcism\n{1W}\nInstant\nISD,C\nDestroy target Spirit or enchantment."
     IDS_STRING23442         "Village Bell-Ringer\n{2W}\nCreature - Human Scout\nISD,C\nFlash\rWhen Village Bell-Ringer enters the battlefield, untap all creatures you control.\n1/4"
     IDS_STRING23443         "Dream Twist\n{U}\nInstant\nISD,C\nTarget player puts the top three cards of his or her library into his or her graveyard.\rFlashback {1U}"
@@ -261,7 +261,7 @@ BEGIN
     IDS_STRING23464         "Stromkirk Patrol\n{4B}\nCreature - Vampire Soldier\nISD,C\nWhenever Stromkirk Patrol deals combat damage to a player, put a +1/+1 counter on it.\n4/3"
     IDS_STRING23465         "Bloodcrazed Neonate\n{1R}\nCreature - Vampire\nISD,C\nBloodcrazed Neonate attacks each turn if able.\rWhenever Bloodcrazed Neonate deals combat damage to a player, put a +1/+1 counter on it.\n2/1"
     IDS_STRING23466         "Typhoid Rats\n{B}\nCreature - Rat\nISD,C\nDeathtouch\n1/1"
-    IDS_STRING23467         "Ashmouth Hound\n{1R}\nCreature - Elemental Hound\nISD,C\nWhenever Ashmouth Hound blocks or becomes blocked by a creature, Ashmouth Hound deals 1 damage to that creature.\n2/1"
+    IDS_STRING23467         "Ashmouth Hound\n{1R}\nCreature - Elemental Dog\nISD,C\nWhenever Ashmouth Hound blocks or becomes blocked by a creature, Ashmouth Hound deals 1 damage to that creature.\n2/1"
     IDS_STRING23468         "Ancient Grudge\n{1R}\nInstant\nISD,C\nDestroy target artifact.\rFlashback {G}"
     IDS_STRING23469         "Charmbreaker Devils\n{5R}\nCreature - Devil\nISD,R\nAt the beginning of your upkeep, return an instant or sorcery card at random from your graveyard to your hand.\rWhenever you cast an instant or sorcery spell, Charmbreaker Devils gets +4/+0 until end of turn.\n4/4"
     IDS_STRING23470         "Crossway Vampire\n{1RR}\nCreature - Vampire\nISD,C\nWhen Crossway Vampire enters the battlefield, target creature can't block this turn.\n3/2"

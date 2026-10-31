@@ -113,6 +113,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(COnduRisingEffectToken);
 		DEFINE_TOKEN(CGideonAllyOfZendikarEmblemToken);
 		DEFINE_TOKEN(CObNixilisReignitedEmblemToken);
+		DEFINE_TOKEN(CJaceUnravelerOfSecretsEmblemToken);
+		DEFINE_TOKEN(CArlinnEmbracedByTheMoonEmblemToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -1516,6 +1518,96 @@ bool CObNixilisReignitedEmblemToken::SetTriggerContext(CTriggeredModifyLifeAbili
 													   CPlayer* pPlayer, CCard* pCard, CPlayer* pByPlayer) const
 {
 	return (this->GetZone()->GetZoneId() == ZoneId::_Effects);
+}
+
+//____________________________________________________________________________
+//
+CJaceUnravelerOfSecretsEmblemToken::CJaceUnravelerOfSecretsEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Jace, Unraveler of Secrets Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Whenever an opponent casts their first spell each turn, counter that spell. (as Erayo's Essence)
+	typedef
+		TTriggeredAbility< CTriggeredCounterSpellAbility, CWhenSpellCast > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTrigger().SetMonitorOpponentsOnly(true);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetPredefinedFilter(CCardFilter::GetFilter(_T("cards")));
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CJaceUnravelerOfSecretsEmblemToken::SetTriggerContext));
+	cpAbility->AddAbilityTag(AbilityTag::Counterspell);
+
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CJaceUnravelerOfSecretsEmblemToken::SetTriggerContext(CTriggeredCounterSpellAbility::TriggerContextType& triggerContext, CCard* pCard) const
+{
+	if (this->GetZone()->GetZoneId() != ZoneId::_Effects)
+		return false;
+
+	triggerContext.m_pCard = pCard;
+	return (pCard->GetController()->GetTurnCastedSpellCount() == 1);
+}
+
+//____________________________________________________________________________
+//
+CArlinnEmbracedByTheMoonEmblemToken::CArlinnEmbracedByTheMoonEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Arlinn, Embraced by the Moon Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Creatures you control have haste and "{T}: This creature deals damage equal to its power to any target."
+	// (the ability is added as in Chlorophant's threshold)
+	counted_ptr<CPwrTghAttrEnchantment> cpAbility(
+		::CreateObject<CPwrTghAttrEnchantment>(this,
+			new AnyCreatureComparer,
+			Power(+0), Life(+0), CreatureKeyword::Haste));
+
+	cpAbility->GetOtherCardModifiers().Add(new CCardAbilityModifier(CCardAbilityModifier::CreateAbilityCallback(this,
+		&CArlinnEmbracedByTheMoonEmblemToken::CreateDamageAbility)));
+	cpAbility->SetEnchantmentActiveIn(ZoneId::_Effects);
+	cpAbility->SetAffectControllerCardsOnly();
+
+	AddAbility(cpAbility.GetPointer());
+}
+
+counted_ptr<CAbility> CArlinnEmbracedByTheMoonEmblemToken::CreateDamageAbility(CCard* pCard)
+{
+	counted_ptr<CActivatedAbility<CTargetSpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CTargetSpell>>(pCard,
+			_T(""),
+			new AnyCreatureComparer, TRUE));
+
+	cpAbility->AddTapCost();
+	cpAbility->GetTargeting()->SetDefaultCharacteristic(Characteristic::Negative);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CArlinnEmbracedByTheMoonEmblemToken::BeforeDamage));
+	cpAbility->AddAbilityTag(AbilityTag::DamageSource);
+
+	return counted_ptr<CAbility>(cpAbility.GetPointer());
+}
+
+bool CArlinnEmbracedByTheMoonEmblemToken::BeforeDamage(CAbilityAction* pAction) const
+{
+	CCreatureCard* pSource = dynamic_cast<CCreatureCard*>(pAction->GetAbility()->GetCard());
+	if (!pSource)
+		return false;
+
+	int nPower = GET_INTEGER(pSource->GetPower());
+	if (nPower <= 0)
+		return false;
+
+	CLifeModifier pModifier = CLifeModifier(Life(-nPower), pSource, PreventableType::Preventable,
+		DamageType::AbilityDamage | DamageType::NonCombatDamage);
+
+	if (pAction->GetAssociatedCard() && pAction->GetAssociatedCard()->GetCardType().IsCreature())
+		pModifier.ApplyTo((CCreatureCard*)pAction->GetAssociatedCard());
+	else if (pAction->GetAssociatedPlayer())
+		pModifier.ApplyTo(pAction->GetAssociatedPlayer());
+
+	return false;	// the damage is done here
 }
 
 //____________________________________________________________________________

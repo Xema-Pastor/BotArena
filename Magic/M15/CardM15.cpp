@@ -1730,7 +1730,7 @@ counted_ptr<CAbility> CBurningAngerCard::CreateEnchantAbility(CCard* pEnchantedC
 //____________________________________________________________________________
 //
 CScrapyardMongrelCard::CScrapyardMongrelCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Scrapyard Mongrel"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Scrapyard Mongrel"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("3") RED_MANA_TEXT, Power(3), Life(3))
 {
 	counted_ptr<CPwrTghAttrEnchantment> cpAbility(

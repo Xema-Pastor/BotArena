@@ -414,7 +414,7 @@ BEGIN
     IDS_STRING965           "Soul Feast\n{3BB}\nSorcery\n7TH,U\nTarget player loses 4 life and you gain 4 life."
     IDS_STRING966           "Goblin Elite Infantry\n{1R}\nCreature - Goblin Warrior\n7TH,C\nWhenever Goblin Elite Infantry blocks or becomes blocked, it gets -1/-1 until end of turn.\n2/2"
     IDS_STRING967           "Gang of Elk\n{5G}\nCreature - Elk Beast\n7TH,U\nWhenever Gang of Elk becomes blocked, it gets +2/+2 until end of turn for each creature blocking it.\n5/4"
-    IDS_STRING968           "Hollow Dogs\n{4B}\nCreature - Zombie Hound\n7TH,C\nWhenever Hollow Dogs attacks, it gets +2/+0 until end of turn.\n3/3"
+    IDS_STRING968           "Hollow Dogs\n{4B}\nCreature - Phyrexian Zombie Dog\n7TH,C\nWhenever Hollow Dogs attacks, it gets +2/+0 until end of turn.\n3/3"
     IDS_STRING969           "Sustainer of the Realm\n{2WW}\nCreature - Angel\n7TH,U\nFlying\rWhenever Sustainer of the Realm blocks, it gets +0/+2 until end of turn.\n2/3"
     IDS_STRING970           "Reckless Embermage\n{3R}\nCreature - Human Wizard\n7TH,R\n{1R}: Reckless Embermage deals 1 damage to target creature or player and 1 damage to itself.\n2/2"
     IDS_STRING971           "Gerrard's Wisdom\n{2WW}\nSorcery\n7TH,U\nYou gain 2 life for each card in your hand."

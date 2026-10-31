@@ -104,7 +104,7 @@ BEGIN
     IDS_STRING9818          "Gerrard's Wisdom\n{2WW}\nSorcery\nWTH,U\nYou gain 2 life for each card in your hand."
     IDS_STRING9819          "Heavy Ballista\n{3W}\nCreature - Human Soldier\nWTH,C\n{T}: Heavy Ballista deals 2 damage to target attacking or blocking creature.\n2/3"
     IDS_STRING9820          "Hidden Horror\n{1BB}\nCreature - Horror\nWTH,U\nWhen Hidden Horror enters the battlefield, sacrifice it unless you discard a creature card.\n4/4"
-    IDS_STRING9821          "Lava Hounds\n{2RR}\nCreature - Hound\nWTH,U\nHaste\rWhen Lava Hounds enters the battlefield, it deals 4 damage to you.\n4/4"
+    IDS_STRING9821          "Lava Hounds\n{2RR}\nCreature - Dog\nWTH,U\nHaste\rWhen Lava Hounds enters the battlefield, it deals 4 damage to you.\n4/4"
     IDS_STRING9822          "Llanowar Behemoth\n{3GG}\nCreature - Elemental\nWTH,U\nTap an untapped creature you control: Llanowar Behemoth gets +1/+1 until end of turn.\n4/4"
     IDS_STRING9823          "Mind Stone\n{2}\nArtifact\nWTH,C\n{T}: Add {1} to your mana pool.\r{1}, {T}, Sacrifice Mind Stone: Draw a card."
 END

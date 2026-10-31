@@ -1514,7 +1514,7 @@ CHealerOfThePrideCard::CHealerOfThePrideCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CWarclampMastiffCard::CWarclampMastiffCard(CGame* pGame, UINT nID)
-	: CFirstStrikeCreatureCard(pGame, _T("Warclamp Mastiff"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CFirstStrikeCreatureCard(pGame, _T("Warclamp Mastiff"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		WHITE_MANA_TEXT, Power(1), Life(1))
 {
 }

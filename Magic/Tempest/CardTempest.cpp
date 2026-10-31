@@ -728,7 +728,7 @@ CEladamriLordOfLeavesCard::CEladamriLordOfLeavesCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CElvenWarhoundsCard::CElvenWarhoundsCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Elven Warhounds"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Elven Warhounds"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("3") GREEN_MANA_TEXT, Power(2), Life(2))
 {
 	typedef
@@ -3187,7 +3187,7 @@ CFlowstoneSalamanderCard::CFlowstoneSalamanderCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CJackalPupCard::CJackalPupCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Jackal Pup"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Jackal Pup"), CardType::Creature, CREATURE_TYPE(Jackal), nID,
 		RED_MANA_TEXT, Power(2), Life(1))
 {
 	typedef
@@ -4419,7 +4419,7 @@ bool CKezzerdrixCard::BeforeResolution(TriggeredAbility::TriggeredActionType* pA
 //____________________________________________________________________________
 //
 CMongrelPackCard::CMongrelPackCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Mongrel Pack"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Mongrel Pack"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("3") GREEN_MANA_TEXT, Power(4), Life(1))
 {
 	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));

@@ -1827,7 +1827,7 @@ CPsychosisCrawlerCard::CPsychosisCrawlerCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CGoreVassalCard::CGoreVassalCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Gore Vassal"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Gore Vassal"), CardType::Creature, CREATURE_TYPE2(Phyrexian, Dog), nID,
 		_T("2") WHITE_MANA_TEXT, Power(2), Life(1))
 	, m_cpEventListener(VAR_NAME(m_cpListener), ResolutionCompletedEventSource::Listener::EventCallback(this,
 				   &CGoreVassalCard::OnResolutionCompleted))
@@ -3176,7 +3176,7 @@ bool CChokingFumesCard::BeforeResolution(CAbilityAction* pAction) const
 //____________________________________________________________________________
 //
 CDrossRipperCard::CDrossRipperCard(CGame* pGame, UINT nID)
-	: CPumpCreatureCard(pGame, _T("Dross Ripper"), CardType::_ArtifactCreature, CREATURE_TYPE(Hound), nID,
+	: CPumpCreatureCard(pGame, _T("Dross Ripper"), CardType::_ArtifactCreature, CREATURE_TYPE2(Phyrexian, Dog), nID,
 		_T("4"), Power(3), Life(3),
 		_T("2") BLACK_MANA_TEXT, Power(+1), Life(+1))
 {
@@ -3248,7 +3248,7 @@ CRustedSlasherCard::CRustedSlasherCard(CGame* pGame, UINT nID)
 //___________________________________________________________________________________
 //
 CCausticHoundCard::CCausticHoundCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Caustic Hound"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Caustic Hound"), CardType::Creature, CREATURE_TYPE2(Phyrexian, Dog), nID,
 		_T("5") BLACK_MANA_TEXT, Power(4), Life(4))
 {
 	typedef

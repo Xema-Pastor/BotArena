@@ -332,7 +332,7 @@ BEGIN
     IDS_STRING28603         "Symbiotic Wurm\n{5GGG}\nCreature - Wurm\nVMA,U\nWhen Symbiotic Wurm dies, put seven 1/1 green Insect creature tokens onto the battlefield.\n7/7"
     IDS_STRING28604         "Tangle\n{1G}\nInstant\nVMA,C\nPrevent all combat damage that would be dealt this turn.\rEach attacking creature doesn't untap during its controller's next untap step."
     IDS_STRING28605         "Tribute to the Wild\n{1G}\nInstant\nVMA,C\nEach opponent sacrifices an artifact or enchantment."
-    IDS_STRING28606         "Wild Mongrel\n{1G}\nCreature - Hound\nVMA,C\nDiscard a card: Wild Mongrel gets +1/+1 and becomes the color of your choice until end of turn.\n2/2"
+    IDS_STRING28606         "Wild Mongrel\n{1G}\nCreature - Dog\nVMA,C\nDiscard a card: Wild Mongrel gets +1/+1 and becomes the color of your choice until end of turn.\n2/2"
     IDS_STRING28607         "Yavimaya Elder\n{1GG}\nCreature - Human Druid\nVMA,U\nWhen Yavimaya Elder dies, you may search your library for up to two basic land cards, reveal them, and put them into your hand. If you do, shuffle your library.\r{2}, Sacrifice Yavimaya Elder: Draw a card.\n2/1"
 END
 

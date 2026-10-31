@@ -164,7 +164,7 @@ BEGIN
     IDS_STRING28866         "Disowned Ancestor\n{B}\nCreature - Spirit Warrior\nKTK,C\nOutlast {1B} ({1B}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)\n0/4"
     IDS_STRING28867         "Abzan Battle Priest\n{3W}\nCreature - Human Cleric\nKTK,U\nOutlast {W} ({W}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)\rEach creature you control with a +1/+1 counter on it has lifelink.\n3/2"
     IDS_STRING28868         "Abzan Falconer\n{2W}\nCreature - Human Soldier\nKTK,U\nOutlast {W} ({W}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)\rEach creature you control with a +1/+1 counter on it has flying.\n2/3"
-    IDS_STRING28869         "Ainok Bond-Kin\n{1W}\nCreature - Hound Soldier\nKTK,C\nOutlast {1W} ({1W}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)\rEach creature you control with a +1/+1 counter on it has first strike.\n2/1"
+    IDS_STRING28869         "Ainok Bond-Kin\n{1W}\nCreature - Dog Soldier\nKTK,C\nOutlast {1W} ({1W}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)\rEach creature you control with a +1/+1 counter on it has first strike.\n2/1"
     IDS_STRING28870         "Dazzling Ramparts\n{4W}\nCreature - Wall\nKTK,U\nDefender\r{1W}, {T}: Tap target creature.\n0/7"
     IDS_STRING28871         "Defiant Strike\n{W}\nInstant\nKTK,C\nTarget creature gets +1/+0 until end of turn.\rDraw a card."
     IDS_STRING28872         "Firehoof Cavalry\n{W}\nCreature - Human Berserker\nKTK,C\n{3R}: Firehoof Cavalry gets +2/+0 and gains trample until end of turn.\n1/1"
@@ -179,7 +179,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_STRING28880         "Ainok Tracker\n{5R}\nCreature - Hound Scout\nKTK,C\nFirst strike\rMorph {4R}\n3/3"
+    IDS_STRING28880         "Ainok Tracker\n{5R}\nCreature - Dog Scout\nKTK,C\nFirst strike\rMorph {4R}\n3/3"
     IDS_STRING28881         "Bloodfire Mentor\n{2R}\nCreature - Efreet Shaman\nKTK,C\n{2U},{T}: Draw a card, then discard a card.\n0/5"
     IDS_STRING28882         "Canyon Lurkers\n{4R}\nCreature - Human Rogue\nKTK,C\nMorph {3R}\n5/2"
     IDS_STRING28883         "Hordeling Outburst\n{1RR}\nSorcery\nKTK,U\nPut three 1/1 red Goblin creature tokens onto the battlefield."
@@ -192,7 +192,7 @@ BEGIN
     IDS_STRING28890         "Dragonscale Boon\n{3G}\nInstant\nKTK,C\nPut two +1/+1 counters on target creature and untap it."
     IDS_STRING28891         "Highland Game\n{1G}\nCreature - Elk\nKTK,C\nWhen Highland Game dies, you gain 2 life.\n2/1"
     IDS_STRING28892         "Kin-Tree Warden\n{G}\nCreature - Human Warrior\nKTK,C\n{2}: Regenerate Kin-Tree Warden.\rMorph {G}\n1/1"
-    IDS_STRING28893         "Longshot Squad\n{3G}\nCreature - Hound Archer\nKTK,U\nOutlast {1G} ({1G}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)\rEach creature you control with a +1/+1 counter on it has reach.\n3/3"
+    IDS_STRING28893         "Longshot Squad\n{3G}\nCreature - Dog Archer\nKTK,U\nOutlast {1G} ({1G}, {T}: Put a +1/+1 counter on this creature. Outlast only as a sorcery.)\rEach creature you control with a +1/+1 counter on it has reach.\n3/3"
     IDS_STRING28894         "Rattleclaw Mystic\n{1G}\nCreature - Human Shaman\nKTK,R\n{T}: Add {G}, {U}, or {R} to your mana pool.\rMorph {2}\rWhen Rattleclaw Mystic is turned face up, add {GUR} to your mana pool.\n2/1"
     IDS_STRING28895         "Sagu Archer\n{4G}\nCreature - Naga Archer\nKTK,C\nReach\rMorph {4G}\n2/5"
 END

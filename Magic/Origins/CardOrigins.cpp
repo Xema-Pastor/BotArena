@@ -1056,7 +1056,7 @@ bool CReclusiveArtificerCard::BeforeResolution(TriggeredAbility::TriggeredAction
 //____________________________________________________________________________
 //
 CBlazingHellhoundCard::CBlazingHellhoundCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Blazing Hellhound"), CardType::Creature, CREATURE_TYPE2(Elemental, Hound), nID,
+	: CCreatureCard(pGame, _T("Blazing Hellhound"), CardType::Creature, CREATURE_TYPE2(Elemental, Dog), nID,
 		_T("2") BLACK_MANA_TEXT RED_MANA_TEXT, Power(4), Life(3))
 {
 	m_CardFilter.AddComparer(new AnyCreatureComparer);

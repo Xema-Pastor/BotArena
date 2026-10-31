@@ -874,7 +874,7 @@ CGutturalResponseCard::CGutturalResponseCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CHollowbornBarghestCard::CHollowbornBarghestCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Hollowborn Barghest"), CardType::Creature, CREATURE_TYPE2(Demon, Hound), nID,
+	: CCreatureCard(pGame, _T("Hollowborn Barghest"), CardType::Creature, CREATURE_TYPE2(Demon, Dog), nID,
 		_T("5") BLACK_MANA_TEXT BLACK_MANA_TEXT, Power(7), Life(6))
 {
 	{

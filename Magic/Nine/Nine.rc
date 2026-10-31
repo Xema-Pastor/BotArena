@@ -174,7 +174,7 @@ BEGIN
     IDS_STRING2075          "Grizzly Bears\n{1G}\nCreature - Bear\n9TH,C\n\n2/2"
     IDS_STRING2076          "Guerrilla Tactics\n{1R}\nInstant\n9TH,U\nGuerrilla Tactics deals 2 damage to target creature or player.\rWhen a spell or ability an opponent controls causes you to discard Guerrilla Tactics, Guerrilla Tactics deals 4 damage to target creature or player."
     IDS_STRING2077          "Hill Giant\n{3R}\nCreature - Giant\n9TH,C\n\n3/3"
-    IDS_STRING2078          "Hollow Dogs\n{4B}\nCreature - Zombie Hound\n9TH,C\nWhenever Hollow Dogs attacks, it gets +2/+0 until end of turn.\n3/3"
+    IDS_STRING2078          "Hollow Dogs\n{4B}\nCreature - Phyrexian Zombie Dog\n9TH,C\nWhenever Hollow Dogs attacks, it gets +2/+0 until end of turn.\n3/3"
     IDS_STRING2079          "Holy Day\n{W}\nInstant\n9TH,C\nPrevent all combat damage that would be dealt this turn."
 END
 

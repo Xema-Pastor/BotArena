@@ -195,7 +195,7 @@ void CShatteringPulseCard::Move(CZone* pToZone, const CPlayer* pByPlayer, MoveTy
 //____________________________________________________________________________
 //
 CVampireHoundsCard::CVampireHoundsCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Vampire Hounds"), CardType::Creature, CREATURE_TYPE2(Vampire, Hound), nID,
+	: CCreatureCard(pGame, _T("Vampire Hounds"), CardType::Creature, CREATURE_TYPE2(Vampire, Dog), nID,
 		_T("2") BLACK_MANA_TEXT, Power(2), Life(2))
 {
 	counted_ptr<CPumpAbility> cpAbility( 
@@ -2396,7 +2396,7 @@ CDauthiCutthroatCard::CDauthiCutthroatCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CDauthiJackalCard::CDauthiJackalCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Dauthi Jackal"), CardType::Creature, CREATURE_TYPE2(Dauthi, Hound), nID,
+	: CCreatureCard(pGame, _T("Dauthi Jackal"), CardType::Creature, CREATURE_TYPE2(Dauthi, Jackal), nID,
 		_T("2") BLACK_MANA_TEXT, Power(2), Life(1))
 {
 	GetCreatureKeyword()->AddShadow(FALSE);

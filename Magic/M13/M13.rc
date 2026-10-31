@@ -219,7 +219,7 @@ BEGIN
     IDS_STRING24409         "Healer of the Pride\n{3W}\nCreature - Cat Cleric\nM13,U\nWhenever another creature enters the battlefield under your control, you gain 2 life.\n2/3"
     IDS_STRING24410         "Serra Angel\n{3WW}\nCreature - Angel\nM13,U\nFlying\rVigilance\n4/4"
     IDS_STRING24411         "Silvercoat Lion\n{1W}\nCreature - Cat\nM13,C\n\n2/2"
-    IDS_STRING24412         "Warclamp Mastiff\n{W}\nCreature - Hound\nM13,C\nFirst strike\n1/1"
+    IDS_STRING24412         "Warclamp Mastiff\n{W}\nCreature - Dog\nM13,C\nFirst strike\n1/1"
     IDS_STRING24413         "Kraken Hatchling\n{U}\nCreature - Kraken\nM13,C\n\n0/4"
     IDS_STRING24414         "Sleep\n{2UU}\nSorcery\nM13,U\nTap all creatures target player controls. Those creatures don't untap during that player's next untap step."
     IDS_STRING24415         "Stormtide Leviathan\n{5UUU}\nCreature - Leviathan\nM13,R\nIslandwalk\rAll lands are Islands in addition to their other types.\rCreatures without flying or islandwalk can't attack.\n8/8"

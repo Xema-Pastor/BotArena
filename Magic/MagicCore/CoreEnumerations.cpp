@@ -29,6 +29,9 @@ CString CreatureKeyword::ToString(CreatureKeyword creatureKeyword)
 	if ((creatureKeyword & CreatureKeyword::Intimidate).Any())
 		strText += _T("intimidate, ");
 
+	if ((creatureKeyword & CreatureKeyword::Skulk).Any())
+		strText += _T("skulk, ");
+
 	if ((creatureKeyword & CreatureKeyword::Unleash).Any())
 		strText += _T("unleash, ");
 
@@ -408,7 +411,7 @@ const LPCTSTR SingleCreatureType::s_Text[SingleCreatureType::_SingleTypeCount] =
 	_T("Homunculus"),
 	_T("Horror"),
 	_T("Horse"),
-	_T("Hound"),
+	_T("Dog"),
 	_T("Human"),
 	_T("Hydra"),
 	_T("Hyena"),
@@ -547,7 +550,11 @@ const LPCTSTR SingleCreatureType::s_Text[SingleCreatureType::_SingleTypeCount] =
 	_T("Wurm"),
 	_T("Yeti"),
 	_T("Zombie"),
-	_T("Zubera")
+	_T("Zubera"),
+	_T("Mole"),
+	_T("Jackal"),
+	_T("Phyrexian"),
+	_T("Noble")
 };
 
 //____________________________________________________________________________
@@ -578,7 +585,9 @@ const LPCTSTR PlaneswalkerType::s_Text[PlaneswalkerType::_SubtypeCount] =
 	_T("Venser"),
 	_T("Vraska"),
 	_T("Xenagos"),
-	_T("Nixilis")
+	_T("Nixilis"),
+	_T("Arlinn"),
+	_T("Nahiri")
 };
 //____________________________________________________________________________
 //

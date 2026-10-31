@@ -148,7 +148,7 @@ BEGIN
     IDS_STRING22154         "Zombie Infestation\n{1B}\nEnchantment\nM12,U\nDiscard two cards: Put a 2/2 black Zombie creature token onto the battlefield."
     IDS_STRING22155         "Act of Treason\n{2R}\nSorcery\nM12,C\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn."
     IDS_STRING22156         "Chandra's Outrage\n{2RR}\nInstant\nM12,C\nChandra's Outrage deals 4 damage to target creature and 2 damage to that creature's controller."
-    IDS_STRING22157         "Fiery Hellhound\n{1RR}\nCreature - Elemental Hound\nM12,C\n{R}: Fiery Hellhound gets +1/+0 until end of turn.\n2/2"
+    IDS_STRING22157         "Fiery Hellhound\n{1RR}\nCreature - Elemental Dog\nM12,C\n{R}: Fiery Hellhound gets +1/+0 until end of turn.\n2/2"
     IDS_STRING22158         "Jace, Memory Adept\n{3UU}\nPlaneswalker - Jace\nM12,MR\n[+1]: Draw a card. Target player puts the top card of his or her library into his or her graveyard.\r[0]: Target player puts the top ten cards of his or her library into his or her graveyard.\r[-7]: Any number of target players each draw twenty cards.\n4"
     IDS_STRING22159         "Fling\n{1R}\nInstant\nM12,C\nAs an additional cost to cast Fling, sacrifice a creature.\rFling deals damage equal to the sacrificed creature's power to target creature or player."
 END

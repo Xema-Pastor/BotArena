@@ -219,6 +219,23 @@ protected:
 };
 //____________________________________________________________________________
 //
+// Delirium (Shadows over Innistrad): four or more card types among cards in your graveyard.
+// The card types are artifact, creature, enchantment, instant, land, planeswalker, sorcery and tribal.
+// For "as long as" effects, use CEnchantment::SetConditionCountCardTypes() (see SetDeliriumCondition()).
+CORE_EXPORT int CountCardTypes(const CZone* pZone);
+CORE_EXPORT BOOL HasDelirium(const CPlayer* pPlayer);
+
+// Makes the enchantment ability work only while its controller has delirium
+CORE_EXPORT void SetDeliriumCondition(CEnchantment* pEnchantment);
+
+// Investigate (Shadows over Innistrad): create a colorless Clue artifact token with
+// "{2}, Sacrifice this artifact: Draw a card." (Tokens2 module). For abilities, a CTokenCreationModifier
+// with CLUE_TOKEN_NAME and CLUE_TOKEN_ID can also be used as resolution modifier.
+#define CLUE_TOKEN_NAME		_T("Clue (A)")
+#define CLUE_TOKEN_ID		55085
+CORE_EXPORT void Investigate(CGame* pGame, CPlayer* pPlayer, int nCount = 1);
+//____________________________________________________________________________
+//
 // Surge (You may cast this spell for its surge cost if you or a teammate has cast another spell this turn.)
 // The card adds two spells: the normal one and a copy with the surge cost, then calls SetSpells().
 // Note: there are no teams in the game, so only the spells cast by the controller count.

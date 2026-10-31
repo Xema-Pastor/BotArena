@@ -354,7 +354,7 @@ BEGIN
     IDS_STRING6516          "Fumarole\n{3BR}\nSorcery\nICE,U\nAs an additional cost to cast Fumarole, pay 3 life.\rDestroy target creature and target land."
     IDS_STRING6517          "Fylgja\n{W}\nEnchantment - Aura\nICE,C\nEnchant creature\rFylgja enters the battlefield with four healing counters on it.\rRemove a healing counter from Fylgja: Prevent the next 1 damage that would be dealt to enchanted creature this turn.\r{2W}: Put a healing counter on Fylgja."
     IDS_STRING6518          "Goblin Mutant\n{2RR}\nCreature - Goblin Mutant\nICE,U\nTrample\rGoblin Mutant can't attack if defending player controls an untapped creature with power 3 or greater.\rGoblin Mutant can't block creatures with power 3 or greater.\n5/3"
-    IDS_STRING6519          "Snow Hound\n{2W}\nCreature - Hound\nICE,U\n{1}, {T}: Return Snow Hound and target green or blue creature you control to their owner's hand.\n1/1"
+    IDS_STRING6519          "Snow Hound\n{2W}\nCreature - Dog\nICE,U\n{1}, {T}: Return Snow Hound and target green or blue creature you control to their owner's hand.\n1/1"
     IDS_STRING6520          "Word of Blasting\n{1R}\nInstant\nICE,U\nDestroy target Wall. It can't be regenerated. Word of Blasting deals damage equal to that Wall's converted mana cost to the Wall's controller."
     IDS_STRING6521          "Mistfolk\n{UU}\nCreature - Illusion\nICE,C\n{U}: Counter target spell that targets Mistfolk.\n1/2"
     IDS_STRING6522          "Arctic Foxes\n{1W}\nCreature - Fox\nICE,C\nCreatures with power 2 or greater can't block Arctic Foxes as long as defending player controls a snow land.\n1/1"

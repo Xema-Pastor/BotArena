@@ -1778,7 +1778,7 @@ CHagraCrocodileCard::CHagraCrocodileCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CHellfireMongrelCard::CHellfireMongrelCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Hellfire Mongrel"), CardType::Creature, CREATURE_TYPE2(Elemental, Hound), nID,
+	: CCreatureCard(pGame, _T("Hellfire Mongrel"), CardType::Creature, CREATURE_TYPE2(Elemental, Dog), nID,
 		_T("2") RED_MANA_TEXT, Power(2), Life(2))
 {
 	counted_ptr<TriggeredAbility> cpAbility(

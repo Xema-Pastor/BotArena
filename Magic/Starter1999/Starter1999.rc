@@ -139,7 +139,7 @@ BEGIN
     IDS_STRING20545         "Gorilla Warrior\n{2G}\nCreature - Ape Warrior\nS99,C\n\n3/2"
     IDS_STRING20546         "Gravedigger\n{3B}\nCreature - Zombie\nS99,U\nWhen Gravedigger enters the battlefield, you may return target creature card from your graveyard to your hand.\n2/2"
     IDS_STRING20547         "Grizzly Bears\n{1G}\nCreature - Bear\nS99,C\n\n2/2"
-    IDS_STRING20548         "Hollow Dogs\n{4B}\nCreature - Zombie Hound\nS99,C\nWhenever Hollow Dogs attacks, it gets +2/+0 until end of turn.\n3/3"
+    IDS_STRING20548         "Hollow Dogs\n{4B}\nCreature - Phyrexian Zombie Dog\nS99,C\nWhenever Hollow Dogs attacks, it gets +2/+0 until end of turn.\n3/3"
     IDS_STRING20549         "Hulking Goblin\n{1R}\nCreature - Goblin\nS99,C\nHulking Goblin can't block.\n2/2"
     IDS_STRING20550         "Hulking Ogre\n{2R}\nCreature - Ogre\nS99,U\nHulking Ogre can't block.\n3/3"
     IDS_STRING20551         "Ingenious Thief\n{1U}\nCreature - Human Rogue\nS99,C\nFlying.\rWhen Ingenious Thief enters the battlefield, look at target player's hand.\n1/1"

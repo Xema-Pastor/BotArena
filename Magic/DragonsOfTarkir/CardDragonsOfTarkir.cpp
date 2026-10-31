@@ -847,10 +847,10 @@ CSegmentedKrotiqCard::CSegmentedKrotiqCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CAerieBowmastersCard::CAerieBowmastersCard(CGame* pGame, UINT nID)
-	: CMorphCreatureCard(pGame, _T("Aerie Bowmasters"), CardType::Creature, CREATURE_TYPE2(Hound, Archer), nID,
+	: CMorphCreatureCard(pGame, _T("Aerie Bowmasters"), CardType::Creature, CREATURE_TYPE2(Dog, Archer), nID,
 		_T("2") GREEN_MANA_TEXT GREEN_MANA_TEXT, Power(3), Life(4), _T("5") GREEN_MANA_TEXT)
 {
-	this->AddCreatureType(SingleCreatureType::Hound);
+	this->AddCreatureType(SingleCreatureType::Dog);
 	this->AddCreatureType(SingleCreatureType::Archer);
 	this->AddCreatureModifier(new CCreatureKeywordModifier(CreatureKeyword::Reach, true, false));
 	{
@@ -1615,7 +1615,7 @@ CDromokaCaptainCard::CDromokaCaptainCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CSandsteppeScavengerCard::CSandsteppeScavengerCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Sandsteppe Scavenger"), CardType::Creature, CREATURE_TYPE2(Hound, Scout), nID,
+	: CCreatureCard(pGame, _T("Sandsteppe Scavenger"), CardType::Creature, CREATURE_TYPE2(Dog, Scout), nID,
 		_T("4") GREEN_MANA_TEXT, Power(2), Life(2))
 {
 	typedef

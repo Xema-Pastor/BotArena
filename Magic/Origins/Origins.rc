@@ -119,7 +119,7 @@ BEGIN
     IDS_STRING32729         "Plummet\n{1G}\nInstant\nORI,C\nDestroy target creature with flying."
     IDS_STRING32730         "Prized Unicorn\n{3G}\nCreature - Unicorn\nORI,U\nAll creatures able to block Prized Unicorn do so.\n2/2"
     IDS_STRING32731         "Shivan Dragon\n{4RR}\nCreature - Dragon\nORI,R\nFlying\r{R}: Shivan Dragon gets +1/+0 until end of turn.\n5/5"
-    IDS_STRING32732         "Fiery Hellhound\n{1RR}\nCreature - Elemental Hound\nORI,C\n{R}: Fiery Hellhound gets +1/+0 until end of turn.\n2/2"
+    IDS_STRING32732         "Fiery Hellhound\n{1RR}\nCreature - Elemental Dog\nORI,C\n{R}: Fiery Hellhound gets +1/+0 until end of turn.\n2/2"
     IDS_STRING32733         "Sengir Vampire\n{3BB}\nCreature - Vampire\nORI,U\nFlying\rWhenever a creature dealt damage by Sengir Vampire this turn dies, put a +1/+1 counter on Sengir Vampire.\n4/4"
     IDS_STRING32734         "Nightmare\n{5B}\nCreature - Nightmare Horse\nORI,R\nFlying\rNightmare's power and toughness are each equal to the number of Swamps you control.\n*/*"
     IDS_STRING32735         "Mind Rot\n{2B}\nSorcery\nORI,C\nTarget player discards two cards."
@@ -169,7 +169,7 @@ STRINGTABLE
 BEGIN
     IDS_STRING32768         "Citadel Castellan\n{1GW}\nCreature - Human Knight\nORI,U\nVigilance\rRenown 2\n2/3"
     IDS_STRING32769         "Reclusive Artificer\n{2UR}\nCreature - Human Artificer\nORI,U\nHaste\rWhen Reclusive Artificer enters the battlefield, you may have it deal damage to target creature equal to the number of artifacts you control.\n2/3"
-    IDS_STRING32770         "Blazing Hellhound\n{2BR}\nCreature - Elemental Hound\nORI,U\n{1}, Sacrifice another creature: Blazing Hellhound deals 1 damage to target creature or player.\n4/3"
+    IDS_STRING32770         "Blazing Hellhound\n{2BR}\nCreature - Elemental Dog\nORI,U\n{1}, Sacrifice another creature: Blazing Hellhound deals 1 damage to target creature or player.\n4/3"
     IDS_STRING32771         "Zendikar Incarnate\n{2RG}\nCreature - Elemental\nORI,U\nZendikar Incarnate's power is equal to the number of lands your control.\n*/4"
     IDS_STRING32772         "Shaman of the Pack\n{1BG}\nCreature - Elf Shaman\nORI,U\nWhen Shaman of the Pack enters the battlefield, target opponent loses life equal to the number of Elves you control.\n3/2"
     IDS_STRING32773         "Yeva's Forcemage\n{2G}\nCreature - Elf Shaman\nORI,C\nWhen Yeva's Forcemage enters the battlefield, target creature gets +2/+2 until end of turn.\n2/2"

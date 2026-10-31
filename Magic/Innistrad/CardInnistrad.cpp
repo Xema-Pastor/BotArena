@@ -3378,7 +3378,7 @@ CStonySilenceCard::CStonySilenceCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CThrabenPurebloodsCard::CThrabenPurebloodsCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Thraben Purebloods"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Thraben Purebloods"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("4") WHITE_MANA_TEXT, Power(3), Life(5))
 {
 }
@@ -3967,7 +3967,7 @@ CBloodcrazedNeonateCard::CBloodcrazedNeonateCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CAshmouthHoundCard::CAshmouthHoundCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Ashmouth Hound"), CardType::Creature, CREATURE_TYPE2(Elemental, Hound), nID,
+	: CCreatureCard(pGame, _T("Ashmouth Hound"), CardType::Creature, CREATURE_TYPE2(Elemental, Dog), nID,
 		_T("1") RED_MANA_TEXT, Power(2), Life(1))
 {
 	typedef

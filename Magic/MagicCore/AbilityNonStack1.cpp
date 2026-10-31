@@ -487,6 +487,11 @@ BOOL CBlockAbility::CanBlockImpl(const CCreatureCard* pBlocker,	          // Thi
 		&& (!pAttacker->IsColor(CManaPool::Color::Green) || !pBlocker->IsColor(CManaPool::Color::Green)))
 		return FALSE;
 
+	// Skulk: can't be blocked by creatures with greater power. The current power is used, and only when
+	// blockers are declared (a block already made stays if the power changes later).
+	if (pAttackerKeyword->Skulk() && (pBlocker->GetPower() > pAttacker->GetPower()))
+		return FALSE;
+
 	if (pAttackerKeyword->Shadow() && !pBlockerKeyword->Shadow() && !pBlockerKeyword->ShadowReach())
 		return FALSE;
 

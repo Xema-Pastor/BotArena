@@ -1018,7 +1018,7 @@ CTrainedCheetahCard::CTrainedCheetahCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CTrainedJackalCard::CTrainedJackalCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Trained Jackal"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Trained Jackal"), CardType::Creature, CREATURE_TYPE(Jackal), nID,
 		GREEN_MANA_TEXT, Power(1), Life(2))
 {
 }
@@ -1269,7 +1269,7 @@ BOOL CZhouYuChiefCommanderCard::CanAttack(BOOL bIncludeTricks)
 //____________________________________________________________________________
 //
 CZodiacDogCard::CZodiacDogCard(CGame* pGame, UINT nID)
-	: CLandwalkCreatureCard(pGame, _T("Zodiac Dog"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CLandwalkCreatureCard(pGame, _T("Zodiac Dog"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("2") RED_MANA_TEXT, Power(2), Life(2),
 		CreatureKeyword::Mountainwalk)
 {

@@ -2858,7 +2858,7 @@ BOOL CSubmergeCard::CanPlay2(BOOL bIncludeTricks)
 //____________________________________________________________________________
 //
 CMossdogCard::CMossdogCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Mossdog"), CardType::Creature, CREATURE_TYPE2(Plant, Hound), nID,
+	: CCreatureCard(pGame, _T("Mossdog"), CardType::Creature, CREATURE_TYPE2(Plant, Dog), nID,
 		GREEN_MANA_TEXT, Power(1), Life(1))
 {
 	typedef

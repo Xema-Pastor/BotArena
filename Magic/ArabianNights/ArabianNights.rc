@@ -143,7 +143,7 @@ BEGIN
     IDS_STRING5049          "Sorceress Queen\n{1BB}\nCreature - Human Wizard\nARN,U\n{T}: Target creature other than Sorceress Queen becomes 0/2 until end of turn.\n1/1"
     IDS_STRING5050          "Island of Wak-Wak\n\nLand\nARN,R\n{T}: The power of target creature with flying becomes 0 until end of turn."
     IDS_STRING5051          "Singing Tree\n{3G}\nCreature - Plant\nARN,R\n{T}: Target attacking creature's power becomes 0 until end of turn.\n0/3"
-    IDS_STRING5052          "Hurr Jackal\n{R}\nCreature - Hound\nARN,C\n{T}: Target creature can't be regenerated this turn.\n1/1"
+    IDS_STRING5052          "Hurr Jackal\n{R}\nCreature - Jackal\nARN,C\n{T}: Target creature can't be regenerated this turn.\n1/1"
     IDS_STRING5053          "Merchant Ship\n{U}\nCreature - Human\nARN,U\nMerchant Ship can't attack unless defending player controls an Island.\rWhenever Merchant Ship attacks and isn't blocked, you gain 2 life.\rWhen you control no Islands, sacrifice Merchant Ship.\n0/2"
     IDS_STRING5054          "Diamond Valley\n\nLand\nARN,U\n{T}, Sacrifice a creature: You gain life equal to the sacrificed creature's toughness."
     IDS_STRING5055          "Unstable Mutation\n{U}\nEnchantment - Aura\nARN,C\nEnchant creature\rEnchanted creature gets +3/+3.\rAt the beginning of the upkeep of enchanted creature's controller, put a -1/-1 counter on that creature."

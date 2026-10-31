@@ -687,6 +687,7 @@ public:
 	BOOL Flying() const;
 	BOOL Fear() const;
 	BOOL Intimidate() const;
+	BOOL Skulk() const;
 	BOOL Unleash() const;
 	BOOL Paired() const;
 	BOOL Soulbond() const;
@@ -756,6 +757,7 @@ public:
 	void AddFlying(BOOL bThisTurnOnly);
 	void AddFear(BOOL bThisTurnOnly);
 	void AddIntimidate(BOOL bThisTurnOnly);
+	void AddSkulk(BOOL bThisTurnOnly);
 	void AddUnleash(BOOL bThisTurnOnly);
 	void AddPaired(BOOL bThisTurnOnly);
 	void AddSoulbond(BOOL bThisTurnOnly);
@@ -824,6 +826,7 @@ public:
 	void RemoveFlying(BOOL bThisTurnOnly);
 	void RemoveFear(BOOL bThisTurnOnly);
 	void RemoveIntimidate(BOOL bThisTurnOnly);
+	void RemoveSkulk(BOOL bThisTurnOnly);
 	void RemoveUnleash(BOOL bThisTurnOnly);
 	void RemovePaired(BOOL bThisTurnOnly);
 	void RemoveSoulbond(BOOL bThisTurnOnly);

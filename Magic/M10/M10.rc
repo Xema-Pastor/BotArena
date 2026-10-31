@@ -279,7 +279,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_STRING4160          "Fiery Hellhound\n{1RR}\nCreature - Elemental Hound\nM10,C\n{R}: Fiery Hellhound gets +1/+0 until end of turn.\n2/2"
+    IDS_STRING4160          "Fiery Hellhound\n{1RR}\nCreature - Elemental Dog\nM10,C\n{R}: Fiery Hellhound gets +1/+0 until end of turn.\n2/2"
     IDS_STRING4161          "Goblin Artillery\n{1RR}\nCreature - Goblin Warrior\nM10,U\n{T}: Goblin Artillery deals 2 damage to target creature or player and 3 damage to you.\n1/3"
     IDS_STRING4162          "Seismic Strike\n{2R}\nInstant\nM10,C\nSeismic Strike deals damage to target creature equal to the number of Mountains you control."
     IDS_STRING4163          "Viashino Spearhunter\n{2R}\nCreature - Viashino Warrior\nM10,C\nFirst strike\n2/1"

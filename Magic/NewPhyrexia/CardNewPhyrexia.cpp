@@ -2534,7 +2534,7 @@ CHovermyrCard::CHovermyrCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CImmolatingSouleaterCard::CImmolatingSouleaterCard(CGame* pGame, UINT nID)
-	: CPumpCreatureCard(pGame, _T("Immolating Souleater"), CardType::_ArtifactCreature, CREATURE_TYPE(Hound), nID,
+	: CPumpCreatureCard(pGame, _T("Immolating Souleater"), CardType::_ArtifactCreature, CREATURE_TYPE2(Phyrexian, Dog), nID,
 		_T("2"), Power(1), Life(1),
 		RED_MANA_TEXT, Power(+1), Life(+0))
 {			
@@ -3933,7 +3933,7 @@ void CApostlesBlessingCard::OnColorSelected(const std::vector<SelectionEntry>& s
 //____________________________________________________________________________
 //
 CMortisDogsCard::CMortisDogsCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Mortis Dogs"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Mortis Dogs"), CardType::Creature, CREATURE_TYPE2(Phyrexian, Dog), nID,
 		_T("3") BLACK_MANA_TEXT, Power(2), Life(2))
 {
 	{

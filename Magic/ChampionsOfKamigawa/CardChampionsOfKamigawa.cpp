@@ -295,7 +295,7 @@ CHairStrungKotoCard::CHairStrungKotoCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CIsamaruHoundOfKondaCard::CIsamaruHoundOfKondaCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Isamaru, Hound of Konda"), CardType::_LegendaryCreature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Isamaru, Hound of Konda"), CardType::_LegendaryCreature, CREATURE_TYPE(Dog), nID,
 		WHITE_MANA_TEXT, Power(2), Life(2))
 {
 }

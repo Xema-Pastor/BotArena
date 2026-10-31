@@ -693,7 +693,7 @@ CFolkOfAnHavvaCard::CFolkOfAnHavvaCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CGhostHoundsCard::CGhostHoundsCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Ghost Hounds"), CardType::Creature, CREATURE_TYPE2(Hound, Spirit), nID,
+	: CCreatureCard(pGame, _T("Ghost Hounds"), CardType::Creature, CREATURE_TYPE2(Dog, Spirit), nID,
 		_T("1") BLACK_MANA_TEXT, Power(1), Life(1))
 {
 	GetCreatureKeyword()->AddVigilance(FALSE);

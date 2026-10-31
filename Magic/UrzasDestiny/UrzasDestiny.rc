@@ -142,7 +142,7 @@ BEGIN
     IDS_STRING11448         "Marker Beetles\n{1GG}\nCreature - Insect\nUDS,C\nWhen Marker Beetles dies, target creature gets +1/+1 until end of turn.\r{2}, Sacrifice Marker Beetles: Draw a card.\n2/3"
     IDS_STRING11449         "Metathran Elite\n{1UU}\nCreature - Metathran Soldier\nUDS,U\nMetathran Elite is unblockable as long as it's enchanted.\n2/3"
     IDS_STRING11450         "Phyrexian Monitor\n{3B}\nCreature - Skeleton\nUDS,C\n{B}: Regenerate Phyrexian Monitor.\n2/2"
-    IDS_STRING11451         "Plague Dogs\n{4B}\nCreature - Zombie Hound\nUDS,U\nWhen Plague Dogs dies, all creatures get -1/-1 until end of turn.\r{2}, Sacrifice Plague Dogs: Draw a card.\n3/3"
+    IDS_STRING11451         "Plague Dogs\n{4B}\nCreature - Phyrexian Zombie Dog\nUDS,U\nWhen Plague Dogs dies, all creatures get -1/-1 until end of turn.\r{2}, Sacrifice Plague Dogs: Draw a card.\n3/3"
     IDS_STRING11452         "Plated Spider\n{4G}\nCreature - Spider\nUDS,C\nReach\n4/4"
     IDS_STRING11453         "Reliquary Monk\n{2W}\nCreature - Human Monk Cleric\nUDS,C\nWhen Reliquary Monk dies, destroy target artifact or enchantment.\n2/2"
     IDS_STRING11454         "Skittering Horror\n{2B}\nCreature - Horror\nUDS,C\nWhen you cast a creature spell, sacrifice Skittering Horror.\n4/3"

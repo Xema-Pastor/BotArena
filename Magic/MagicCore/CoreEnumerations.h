@@ -861,6 +861,7 @@ struct CreatureKeyword
 		MustAttackEachCombat				= 0x0010000000000000,	// Ref: Hellraiser Goblin
 		Monstrous							= 0x0020000000000000,
 		Renowned							= 0x0040000000000000,
+		Skulk								= 0x0080000000000000,	// Can't be blocked by creatures with greater power (Shadows over Innistrad)
 
 		_All								= 0xffffffffffffffff,
 
@@ -873,7 +874,7 @@ struct CreatureKeyword
 
 		// For usage patterns. These are the attributes which will give attacking creatures advantages.
 
-		_PositiveAttackingCreatureKeywords	= (FirstStrike | DoubleStrike | Flying | Unblockable | CantBeBlockedByMultiple | _LandwalkMask | NonBasicWalk | UnblockableWalk | Lure | CantBeBlockedBy1 | CantBeBlockedBy1Or2 | Shadow | Horsemanship | Flanking | Fear | Intimidate),
+		_PositiveAttackingCreatureKeywords	= (FirstStrike | DoubleStrike | Flying | Unblockable | CantBeBlockedByMultiple | _LandwalkMask | NonBasicWalk | UnblockableWalk | Lure | CantBeBlockedBy1 | CantBeBlockedBy1Or2 | Shadow | Horsemanship | Flanking | Fear | Intimidate | Skulk),
 
 		// For usage patterns. These are the attributes which will give a creature the ability to block.
 
@@ -1386,7 +1387,7 @@ struct CORE_EXPORT SingleCreatureType
 		Homunculus,
 		Horror,
 		Horse,
-		Hound,
+		Dog,		// was Hound (renamed in the Oracle text in 2020); same value, so compiled modules keep working
 		Human,
 		Hydra,
 		Hyena,
@@ -1526,6 +1527,10 @@ struct CORE_EXPORT SingleCreatureType
 		Yeti,
 		Zombie,
 		Zubera,
+		Mole,		// Shadows over Innistrad (appended, the values above are kept)
+		Jackal,		// Oracle types (appended)
+		Phyrexian,
+		Noble,
 
 		_SingleTypeCount,
 	};
@@ -1576,6 +1581,8 @@ struct CORE_EXPORT PlaneswalkerType
 		Vraska,
 		Xenagos,
 		Nixilis,
+		Arlinn,
+		Nahiri,
 
 		_SubtypeCount,
 	};

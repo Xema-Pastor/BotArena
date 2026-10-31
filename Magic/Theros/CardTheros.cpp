@@ -7478,7 +7478,7 @@ CTritonShorethiefCard::CTritonShorethiefCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CTwoHeadedCerberusCard::CTwoHeadedCerberusCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Two-Headed Cerberus"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Two-Headed Cerberus"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("1") RED_MANA_TEXT RED_MANA_TEXT, Power(1), Life(2))
 {
 	GetCreatureKeyword()->AddDoubleStrike(FALSE);
@@ -7524,7 +7524,7 @@ CTymaretTheMurderKingCard::CTymaretTheMurderKingCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CUnderworldCerberusCard::CUnderworldCerberusCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Underworld Cerberus"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Underworld Cerberus"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("3") BLACK_MANA_TEXT RED_MANA_TEXT, Power(6), Life(6))
 {
 	GetCreatureKeyword()->AddCantBeBlockedByOneOrTwo(FALSE);

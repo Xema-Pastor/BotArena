@@ -268,7 +268,7 @@ BEGIN
     IDS_STRING2857          "Ooze (E)\n{G}\nCreature - Ooze\nToken\nThis creature's power and toughness are each equal to the number of slime counters on Gutter Grime.\n*/*"
     IDS_STRING2858          "Shapeshifter\n{1}\nCreature - Shapeshifter\nToken\nChangeling\n1/1"
     IDS_STRING2859          "Bird (E)\n{W}\nCreature - Bird\nToken\nFlying\n1/1"
-    IDS_STRING2860          "Hound\n{G}\nCreature - Hound\nToken\n\n1/1"
+    IDS_STRING2860          "Hound\n{G}\nCreature - Dog\nToken\n\n1/1"
     IDS_STRING2861          "Reflection (A)\n{W}\nCreature - Reflection\nToken\n\n2/2"
     IDS_STRING2862          "Faerie Rogue (A)\n{UB}\nCreature - Faerie Rogue\nToken\nFlying\n1/1"
     IDS_STRING2863          "Ooze (D)\n{G}\nCreature - Ooze\nToken\n\n*/*"

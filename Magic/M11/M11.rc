@@ -220,7 +220,7 @@ BEGIN
     IDS_STRING21210         "Crystal Ball\n{3}\nArtifact\nM11,U\n{1}, {T}: Scry 2."
     IDS_STRING21211         "Knight Exemplar\n{1WW}\nCreature - Human Knight\nM11,R\nFirst strike\rOther Knight creatures you control get +1/+1 and are indestructible.\n2/2"
     IDS_STRING21212         "Time Reversal\n{3UU}\nSorcery\nM11,MR\nEach player shuffles his or her hand and graveyard into his or her library, then draws seven cards. Exile Time Reversal."
-    IDS_STRING21213         "Fiery Hellhound\n{1RR}\nCreature - Elemental Hound\nM11,C\n{R}: Fiery Hellhound gets +1/+0 until end of turn.\n2/2"
+    IDS_STRING21213         "Fiery Hellhound\n{1RR}\nCreature - Elemental Dog\nM11,C\n{R}: Fiery Hellhound gets +1/+0 until end of turn.\n2/2"
     IDS_STRING21214         "Mana Leak\n{1U}\nInstant\nM11,C\nCounter target spell unless its controller pays {3}."
     IDS_STRING21215         "Back to Nature\n{1G}\nInstant\nM11,U\nDestroy all enchantments."
 END

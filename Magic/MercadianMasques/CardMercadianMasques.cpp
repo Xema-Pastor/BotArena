@@ -1427,7 +1427,7 @@ CKyrenSniperCard::CKyrenSniperCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CLightningHoundsCard::CLightningHoundsCard(CGame* pGame, UINT nID)
-	: CFirstStrikeCreatureCard(pGame, _T("Lightning Hounds"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CFirstStrikeCreatureCard(pGame, _T("Lightning Hounds"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("2") RED_MANA_TEXT RED_MANA_TEXT, Power(3), Life(2))
 {
 }
@@ -5996,7 +5996,7 @@ bool CSubterraneanHangarCard::BeforeResolution(CAbilityAction* pAction)
 //____________________________________________________________________________
 //
 CBloodHoundCard::CBloodHoundCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Blood Hound"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Blood Hound"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("2") RED_MANA_TEXT, Power(1), Life(1))
 {
 	{

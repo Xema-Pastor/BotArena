@@ -616,7 +616,7 @@ CDreamstoneHedronCard::CDreamstoneHedronCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CAffaGuardHoundCard::CAffaGuardHoundCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Affa Guard Hound"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Affa Guard Hound"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("2") WHITE_MANA_TEXT, Power(2), Life(2))
 {
 	GetCardKeyword()->AddFlash(FALSE);

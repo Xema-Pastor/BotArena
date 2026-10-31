@@ -349,7 +349,7 @@ CCanyonWildcatCard::CCanyonWildcatCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CLavaHoundsCard::CLavaHoundsCard(CGame* pGame, UINT nID)
-	: CHasteCreatureCard(pGame, _T("Lava Hounds"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CHasteCreatureCard(pGame, _T("Lava Hounds"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("2") RED_MANA_TEXT RED_MANA_TEXT, Power(4), Life(4))
 {
 	typedef

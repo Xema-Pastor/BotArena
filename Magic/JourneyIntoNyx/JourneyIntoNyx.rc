@@ -81,7 +81,7 @@ BEGIN
     IDS_STRING27900         "Temple of Epiphany\n\nLand\nJOU,R\nTemple of Epiphany enters the battlefield tapped.\rWhen Temple of Epiphany enters the battlefield, scry 1.\r{T}: Add {U} or {R} to your mana pool."
     IDS_STRING27901         "Temple of Malady\n\nLand\nJOU,R\nTemple of Malady enters the battlefield tapped.\rWhen Temple of Malady enters the battlefield, scry 1.\r{T}: Add {B} or {G} to your mana pool."
     IDS_STRING27902         "Gold-Forged Sentinel\n{6}\nArtifact Creature - Chimera\nJOU,U\nFlying\n4/4"
-    IDS_STRING27903         "Akroan Mastiff\n{3W}\nCreature - Hound\nJOU,C\n{W}, {T}: Tap target creature.\n2/2"
+    IDS_STRING27903         "Akroan Mastiff\n{3W}\nCreature - Dog\nJOU,C\n{W}, {T}: Tap target creature.\n2/2"
 END
 
 STRINGTABLE
@@ -167,7 +167,7 @@ END
 STRINGTABLE
 BEGIN
     IDS_STRING27968         "Ravenous Leucrocota\n{3G}\nCreature - Beast\nJOU,C\nVigilance\r{6G}: Monstrosity 3.\n2/4"
-    IDS_STRING27969         "Wildfire Cerberus\n{4R}\nCreature - Hound\nJOU,U\n{5RR}: Monstrosity 1.\rWhen Wildfire Cerberus becomes monstrous, it deals 2 damage to each opponent and each creature your opponents control.\n4/3"
+    IDS_STRING27969         "Wildfire Cerberus\n{4R}\nCreature - Dog\nJOU,U\n{5RR}: Monstrosity 1.\rWhen Wildfire Cerberus becomes monstrous, it deals 2 damage to each opponent and each creature your opponents control.\n4/3"
     IDS_STRING27970         "Hydra Broodmaster\n{4GG}\nCreature - Hydra\nJOU,R\n{XXG}: Monstrosity X.\rWhen Hydra Broodmaster becomes monstrous, put X X/X green Hydra creature tokens onto the battlefield.\n7/7"
     IDS_STRING27971         "Lightning Diadem\n{5R}\nEnchantment - Aura\nJOU,C\nEnchant creature\rWhen Lightning Diadem enters the battlefield, it deals 2 damage to target creature or player.\rEnchanted creature gets +2/+2."
     IDS_STRING27972         "Magma Spray\n{R}\nInstant\nJOU,C\nMagma Spray deals 2 damage to target creature. If that creature would die this turn, exile it instead."

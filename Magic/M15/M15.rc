@@ -271,7 +271,7 @@ BEGIN
     IDS_STRING27754         "Borderland Marauder\n{1R}\nCreature - Human Warrior\nM15,C\nWhenever Borderland Marauder attacks, it gets +2/+0 until end of turn.\n1/2"
     IDS_STRING27755         "Brood Keeper\n{3R}\nCreature - Human Shaman\nM15,U\nWhenever an Aura becomes attached to Brood Keeper, put a 2/2 red Dragon creature token with flying onto the battlefield. It has ""{R}: This creature gets +1/+0 until end of turn.""\n2/3"
     IDS_STRING27756         "Burning Anger\n{4R}\nEnchantment - Aura\nM15,R\nEnchant creature\rEnchanted creature has """"{T}: This creature deals damage equal to its power to target creature or player."""""
-    IDS_STRING27757         "Scrapyard Mongrel\n{3R}\nCreature - Hound\nM15,C\nAs long as you control an artifact, Scrapyard Mongrel gets +2/+0 and has trample.\n3/3"
+    IDS_STRING27757         "Scrapyard Mongrel\n{3R}\nCreature - Dog\nM15,C\nAs long as you control an artifact, Scrapyard Mongrel gets +2/+0 and has trample.\n3/3"
     IDS_STRING27758         "Hammerhand\n{R}\nEnchantment - Aura\nM15,C\nEnchant creature\rWhen Hammerhand enters the battlefield, target creature can't block this turn.\rEnchanted creature gets +1/+1 and has haste."
     IDS_STRING27759         "Inferno Fist\n{1R}\nEnchantment - Aura\nM15,C\nEnchant creature you control\rEnchanted creature gets +2/+0.\r{R}, Sacrifice Inferno Fist: Inferno Fist deals 2 damage to target creature or player. "
 END

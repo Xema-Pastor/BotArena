@@ -335,6 +335,27 @@ private:
 
 //____________________________________________________________________________
 //
+class CJaceUnravelerOfSecretsEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CJaceUnravelerOfSecretsEmblemToken);
+
+private:
+	bool SetTriggerContext(CTriggeredCounterSpellAbility::TriggerContextType& triggerContext, CCard* pCard) const;
+};
+
+//____________________________________________________________________________
+//
+class CArlinnEmbracedByTheMoonEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CArlinnEmbracedByTheMoonEmblemToken);
+
+private:
+	counted_ptr<CAbility> CreateDamageAbility(CCard* pCard);
+	bool BeforeDamage(CAbilityAction* pAction) const;
+};
+
+//____________________________________________________________________________
+//
 class CLatNamsLegacyEffectToken : public CEffectCard
 {
 	DECLARE_CARD_CSTOR(CLatNamsLegacyEffectToken);

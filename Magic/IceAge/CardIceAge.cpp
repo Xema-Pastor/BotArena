@@ -3118,7 +3118,7 @@ BOOL CGoblinMutantCard::CanAttack(BOOL bIncludeTricks)
 //____________________________________________________________________________
 //
 CSnowHoundCard::CSnowHoundCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Snow Hound"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Snow Hound"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("2") WHITE_MANA_TEXT, Power(1), Life(1))
 {
 	counted_ptr<CActivatedAbility<CTargetMoveCardSpell>> cpAbility(

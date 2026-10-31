@@ -98,6 +98,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CZombieTToken);
 		DEFINE_TOKEN(CZombieUToken);
 		DEFINE_TOKEN(CZombieVToken);
+		DEFINE_TOKEN(CClueAToken);
 	} while (false);
 
 	return cpCard;
@@ -1214,7 +1215,7 @@ CZombieVToken::CZombieVToken(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CDevilAToken::CDevilAToken(CGame* pGame, UINT nID)
-	: CTokenCreature(pGame, _T("Devil"), CardType::Token,
+	: CTokenCreature(pGame, _T("Devil"), CardType::Creature | CardType::Token,
 		CREATURE_TYPE(Devil), nID,
 		_T(""),
 		Power(1), Life(1))
@@ -1295,3 +1296,21 @@ CHumanClericAToken::CHumanClericAToken(CGame* pGame, UINT nID)
 }
 //____________________________________________________________________________
 //
+// Clue: an artifact token, not a creature. There is no noncreature token class (CTokenCreationModifier
+// treats every token as a CTokenCreature), so it is a CTokenCreature without the creature card type:
+// it can't attack or block and the state-based actions don't check its toughness.
+CClueAToken::CClueAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Clue"), CardType::Artifact | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {2}, Sacrifice this artifact: Draw a card.
+	counted_ptr<CActivatedAbility<CDrawCardSpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CDrawCardSpell>>(this,
+			_T("2"), 1));
+
+	cpAbility->AddSacrificeCost();
+
+	AddAbility(cpAbility.GetPointer());
+}

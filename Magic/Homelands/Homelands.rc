@@ -145,7 +145,7 @@ BEGIN
     IDS_STRING6151          "Faerie Noble\n{2G}\nCreature - Faerie\nHML,R\nFlying\rOther Faerie creatures you control get +0/+1.\r{T}: Other Faerie creatures you control get +1/+0 until end of turn.\n1/2"
     IDS_STRING6152          "Folk of An-Havva\n{G}\nCreature - Human\nHML,C\nWhenever Folk of An-Havva blocks, it gets +2/+0 until end of turn.\n1/1"
     IDS_STRING6153          "Folk of An-Havva\n{G}\nCreature - Human\nHML,C\nWhenever Folk of An-Havva blocks, it gets +2/+0 until end of turn.\n1/1"
-    IDS_STRING6154          "Ghost Hounds\n{1B}\nCreature - Hound Spirit\nHML,U\nVigilance\rWhenever Ghost Hounds blocks or becomes blocked by a white creature, Ghost Hounds gains first strike until end of turn.\n1/1"
+    IDS_STRING6154          "Ghost Hounds\n{1B}\nCreature - Dog Spirit\nHML,U\nVigilance\rWhenever Ghost Hounds blocks or becomes blocked by a white creature, Ghost Hounds gains first strike until end of turn.\n1/1"
     IDS_STRING6155          "Grandmother Sengir\n{4B}\nLegendary Creature - Human Wizard\nHML,R\n{1B}, {T}: Target creature gets -1/-1 until end of turn.\n3/3"
     IDS_STRING6156          "Hungry Mist\n{2GG}\nCreature - Elemental\nHML,C\nAt the beginning of your upkeep, sacrifice Hungry Mist unless you pay {GG}.\n6/2"
     IDS_STRING6157          "Hungry Mist\n{2GG}\nCreature - Elemental\nHML,C\nAt the beginning of your upkeep, sacrifice Hungry Mist unless you pay {GG}.\n6/2"

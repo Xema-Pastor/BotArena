@@ -321,6 +321,44 @@ void CProcessCost::OnCardsSelected(const std::vector<SelectionEntry>& selection,
 
 //____________________________________________________________________________
 //
+int CountCardTypes(const CZone* pZone)
+{
+	const CardType types[] = { CardType::Artifact, CardType::Creature, CardType::_Enchantment, CardType::Instant,
+							   CardType::_Land, CardType::Planeswalker, CardType::Sorcery, CardType::Tribal };
+	int nCount = 0;
+
+	for (int t = 0; t < _countof(types); ++t)
+		for (int i = 0; i < pZone->GetSize(); ++i)
+			if ((pZone->GetAt(i)->GetCardType() & types[t]).Any())
+			{
+				++nCount;
+				break;
+			}
+
+	return nCount;
+}
+
+BOOL HasDelirium(const CPlayer* pPlayer)
+{
+	return CountCardTypes(pPlayer->GetZoneById(ZoneId::Graveyard)) >= 4;
+}
+
+void SetDeliriumCondition(CEnchantment* pEnchantment)
+{
+	pEnchantment->SetConditionWork();
+	pEnchantment->SetConditionCheckZone(ZoneId::Graveyard);
+	pEnchantment->SetConditionCountCardTypes();
+	pEnchantment->SetConditionValue(4);
+}
+
+void Investigate(CGame* pGame, CPlayer* pPlayer, int nCount)
+{
+	CTokenCreationModifier pModifier = CTokenCreationModifier(pGame, CLUE_TOKEN_NAME, CLUE_TOKEN_ID, nCount);
+	pModifier.ApplyTo(pPlayer);
+}
+
+//____________________________________________________________________________
+//
 CSurgeSupport::CSurgeSupport(CCard* pCard)
 	: m_pCard(pCard)
 	, m_bSurgeCostPaid(FALSE)
@@ -609,8 +647,8 @@ CString CDoubleFacedCreatureCard::GetSecondPrintedCardName() const
 
 DWORD CDoubleFacedCreatureCard::GetConvertedManaCost() const
 {
-	if (GetOrientation()->IsSecondFaced())
-		return 0;
+	// Current rules: the mana value of a transforming double-faced permanent with its back face up is calculated
+	// from the mana cost of its front face (the back face itself has no mana cost, see GetManaCost)
 	return __super::GetConvertedManaCost();
 }
 

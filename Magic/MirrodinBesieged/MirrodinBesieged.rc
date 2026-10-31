@@ -154,7 +154,7 @@ END
 STRINGTABLE
 BEGIN
     IDS_STRING21760         "Psychosis Crawler\n{5}\nArtifact Creature - Horror\nMBS,R\nPsychosis Crawler's power and toughness are each equal to the number of cards in your hand.\rWhenever you draw a card, each opponent loses 1 life.\n*/*"
-    IDS_STRING21761         "Gore Vassal\n{2W}\nCreature - Hound\nMBS,U\nSacrifice Gore Vassal: Put a -1/-1 counter on target creature. Then if that creature's toughness is 1 or greater, regenerate it.\n2/1"
+    IDS_STRING21761         "Gore Vassal\n{2W}\nCreature - Phyrexian Dog\nMBS,U\nSacrifice Gore Vassal: Put a -1/-1 counter on target creature. Then if that creature's toughness is 1 or greater, regenerate it.\n2/1"
     IDS_STRING21762         "Sword of Feast and Famine\n{3}\nArtifact - Equipment\nMBS,MR\nEquipped creature gets +2/+2 and has protection from black and from green.\rWhenever equipped creature deals combat damage to a player, that player discards a card and you untap all lands you control.\rEquip {2}"
     IDS_STRING21763         "Flayer Husk\n{1}\nArtifact - Equipment\nMBS,C\nLiving weapon\rEquipped creature gets +1/+1.\rEquip {2}"
     IDS_STRING21764         "Bonehoard\n{4}\nArtifact - Equipment\nMBS,R\nLiving weapon\rEquipped creature gets +X/+X, where X is the number of creature cards in all graveyards.\rEquip {2}"
@@ -220,11 +220,11 @@ BEGIN
     IDS_STRING21812         "Rally the Forces\n{2R}\nInstant\nMBS,C\nAttacking creatures get +1/+0 and gain first strike until end of turn."
     IDS_STRING21813         "Loxodon Partisan\n{4W}\nCreature - Elephant Soldier\nMBS,C\nBattle cry\n3/4"
     IDS_STRING21814         "Choking Fumes\n{2W}\nInstant\nMBS,U\nPut a -1/-1 counter on each attacking creature."
-    IDS_STRING21815         "Dross Ripper\n{4}\nArtifact Creature - Hound\nMBS,C\n{2B}: Dross Ripper gets +1/+1 until end of turn.\n3/3"
+    IDS_STRING21815         "Dross Ripper\n{4}\nArtifact Creature - Phyrexian Dog\nMBS,C\n{2B}: Dross Ripper gets +1/+1 until end of turn.\n3/3"
     IDS_STRING21816         "Frantic Salvage\n{3W}\nInstant\nMBS,C\nPut any number of target artifact cards from your graveyard on top of your library.\rDraw a card."
     IDS_STRING21817         "Quicksilver Geyser\n{4U}\nInstant\nMBS,C\nReturn up to two target nonland permanents to their owners' hands."
     IDS_STRING21818         "Rusted Slasher\n{4}\nArtifact Creature - Horror\nMBS,C\nSacrifice an artifact: Regenerate Rusted Slasher.\n4/1"
-    IDS_STRING21819         "Caustic Hound\n{5B}\nCreature - Hound\nMBS,C\nWhen Caustic Hound dies, each player loses 4 life.\n4/4"
+    IDS_STRING21819         "Caustic Hound\n{5B}\nCreature - Phyrexian Dog\nMBS,C\nWhen Caustic Hound dies, each player loses 4 life.\n4/4"
     IDS_STRING21820         "Copper Carapace\n{1}\nArtifact - Equipment\nMBS,C\nEquipped creature gets +2/+2 and can't block.\rEquip {3}"
     IDS_STRING21821         "Tangle Hulk\n{5}\nArtifact Creature - Beast\nMBS,C\n{2G}: Regenerate Tangle Hulk.\n5/3"
     IDS_STRING21822         "Nested Ghoul\n{3BB}\nCreature - Zombie Warrior\nMBS,U\nWhenever a source deals damage to Nested Ghoul, put a 2/2 black Zombie creature token onto the battlefield.\n4/2"

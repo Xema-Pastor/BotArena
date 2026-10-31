@@ -1763,7 +1763,7 @@ CHavengulVampireCard::CHavengulVampireCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CHoundOfGriselbrandCard::CHoundOfGriselbrandCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Hound of Griselbrand"), CardType::Creature, CREATURE_TYPE2(Elemental, Hound), nID,
+	: CCreatureCard(pGame, _T("Hound of Griselbrand"), CardType::Creature, CREATURE_TYPE2(Elemental, Dog), nID,
 		_T("2") RED_MANA_TEXT RED_MANA_TEXT, Power(2), Life(2))
 	, CUndyingKeyword(this)
 {

@@ -180,7 +180,7 @@ END
 STRINGTABLE
 BEGIN
     IDS_STRING26480         "Greater Gargadon\n{9R}\nCreature - Beast\nMMA,R\nSuspend 10 - {R}\rSacrifice an artifact, creature, or land: Remove a time counter from Greater Gargadon. Activate this ability only if Greater Gargadon is suspended.\n9/7"
-    IDS_STRING26481         "Greater Mossdog\n{3G}\nCreature - Plant Hound\nMMA,C\nDredge 3\n3/3"
+    IDS_STRING26481         "Greater Mossdog\n{3G}\nCreature - Plant Dog\nMMA,C\nDredge 3\n3/3"
     IDS_STRING26482         "Grinning Ignus\n{2R}\nCreature - Elemental\nMMA,C\n{R}, Return Grinning Ignus to its owner's hand: Add {2R} to your mana pool. Activate this ability only any time you could cast a sorcery.\n2/2"
     IDS_STRING26483         "Hammerheim Deadeye\n{3R}\nCreature - Giant Warrior\nMMA,U\nEcho {5R}\rWhen Hammerheim Deadeye enters the battlefield, destroy target creature with flying.\n3/3"
     IDS_STRING26484         "Hana Kami\n{G}\nCreature - Spirit\nMMA,C\n{1G}, Sacrifice Hana Kami: Return target Arcane card from your graveyard to your hand.\n1/1"

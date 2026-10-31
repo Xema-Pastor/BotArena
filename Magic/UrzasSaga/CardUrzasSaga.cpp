@@ -6210,7 +6210,7 @@ void CTurnaboutCard::CTurnaboutSpell::OnSelectionDone(const std::vector<Selectio
 //____________________________________________________________________________
 //
 CWildDogsCard::CWildDogsCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Wild Dogs"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Wild Dogs"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		GREEN_MANA_TEXT, Power(2), Life(1))
 	, m_cpEventListener(VAR_NAME(m_cpListener), ResolutionCompletedEventSource::Listener::EventCallback(this,
 			&CWildDogsCard::OnResolutionCompleted))

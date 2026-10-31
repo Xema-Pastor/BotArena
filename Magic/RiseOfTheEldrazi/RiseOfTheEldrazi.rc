@@ -120,7 +120,7 @@ BEGIN
     IDS_STRING20832         "Near-Death Experience\n{2WWW}\nEnchantment\nROE,R\nAt the beginning of your upkeep, if you have exactly 1 life, you win the game."
     IDS_STRING20833         "Traitorous Instinct\n{3R}\nSorcery\nROE,U\nGain control of target creature until end of turn. Untap that creature. Until end of turn, it gets +2/+0 and gains haste."
     IDS_STRING20834         "Dreamstone Hedron\n{6}\nArtifact\nROE,U\n{T}: Add {3} to your mana pool.\r{3}, {T}, Sacrifice Dreamstone Hedron: Draw three cards."
-    IDS_STRING20835         "Affa Guard Hound\n{2W}\nCreature - Hound\nROE,U\nFlash\rWhen Affa Guard Hound enters the battlefield, target creature gets +0/+3 until end of turn.\n2/2"
+    IDS_STRING20835         "Affa Guard Hound\n{2W}\nCreature - Dog\nROE,U\nFlash\rWhen Affa Guard Hound enters the battlefield, target creature gets +0/+3 until end of turn.\n2/2"
     IDS_STRING20836         "Nirkana Revenant\n{4BB}\nCreature - Vampire Shade\nROE,MR\nWhenever you tap a Swamp for mana, add {B} to your mana pool.\r{B}: Nirkana Revenant gets +1/+1 until end of turn.\n4/4"
     IDS_STRING20837         "Magmaw\n{3RR}\nCreature - Elemental\nROE,R\n{1}, Sacrifice a nonland permanent: Magmaw deals 1 damage to target creature or player.\n4/4"
     IDS_STRING20838         "Sphinx of Magosi\n{3UUU}\nCreature - Sphinx\nROE,R\nFlying\r{2U}: Draw a card, then put a +1/+1 counter on Sphinx of Magosi.\n6/6"

@@ -172,7 +172,7 @@ BEGIN
     IDS_STRING24074         "Demolish\n{3R}\nSorcery\nAVR,C\nDestroy target artifact or land."
     IDS_STRING24075         "Gang of Devils\n{5R}\nCreature - Devil\nAVR,U\nWhen Gang of Devils dies, it deals 3 damage divided as you choose among one, two, or three target creatures and/or players.\n3/3"
     IDS_STRING24076         "Havengul Vampire\n{3R}\nCreature - Vampire\nAVR,U\nWhenever Havengul Vampire deals combat damage to a player, put a +1/+1 counter on it.\rWhenever another creature dies, put a +1/+1 counter on Havengul Vampire.\n2/2"
-    IDS_STRING24077         "Hound of Griselbrand\n{2RR}\nCreature - Elemental Hound\nAVR,R\nDouble strike\rUndying\n2/2"
+    IDS_STRING24077         "Hound of Griselbrand\n{2RR}\nCreature - Elemental Dog\nAVR,R\nDouble strike\rUndying\n2/2"
     IDS_STRING24078         "Kessig Malcontents\n{2R}\nCreature - Human Warrior\nAVR,U\nWhen Kessig Malcontents enters the battlefield, it deals damage to target player equal to the number of Humans you control.\n3/1"
     IDS_STRING24079         "Kruin Striker\n{1R}\nCreature - Human Warrior\nAVR,C\nWhenever another creature enters the battlefield under your control, Kruin Striker gets +1/+0 and gains trample until end of turn.\n2/1"
 END

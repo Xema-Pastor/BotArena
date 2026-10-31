@@ -1447,7 +1447,7 @@ CFlameKinZealotCard::CFlameKinZealotCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CGateHoundCard::CGateHoundCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Gate Hound"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Gate Hound"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("2") WHITE_MANA_TEXT, Power(1), Life(1))
 {
 	{
@@ -4628,7 +4628,7 @@ CGraveShellScarabCard::CGraveShellScarabCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CGreaterMossdogCard::CGreaterMossdogCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Greater Mossdog"), CardType::Creature, CREATURE_TYPE2(Plant, Hound), nID,
+	: CCreatureCard(pGame, _T("Greater Mossdog"), CardType::Creature, CREATURE_TYPE2(Plant, Dog), nID,
 		_T("3") GREEN_MANA_TEXT, Power(3), Life(3))
 {
 	GetCardKeyword()->AddDredge(FALSE, 3);

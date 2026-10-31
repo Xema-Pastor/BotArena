@@ -261,7 +261,7 @@ CTempleOfMaladyCard::CTempleOfMaladyCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CAkroanMastiffCard::CAkroanMastiffCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Akroan Mastiff"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Akroan Mastiff"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("3") WHITE_MANA_TEXT, Power(2), Life(2))
 {
 	counted_ptr<CActivatedAbility<CTargetTapUntapCardSpell>> cpAbility(
@@ -2199,7 +2199,7 @@ bool CRavenousLeucrocotaCard::BeforeResolution(CAbilityAction* pAction)
 //____________________________________________________________________________
 //
 CWildfireCerberusCard::CWildfireCerberusCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Wildfire Cerberus"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Wildfire Cerberus"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("4") RED_MANA_TEXT, Power(4), Life(3))
 {
 	{

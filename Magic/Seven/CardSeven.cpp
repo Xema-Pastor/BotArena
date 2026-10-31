@@ -1647,7 +1647,7 @@ CGangOfElkCard::CGangOfElkCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CHollowDogsCard::CHollowDogsCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Hollow Dogs"), CardType::Creature, CREATURE_TYPE2(Zombie, Hound), nID,
+	: CCreatureCard(pGame, _T("Hollow Dogs"), CardType::Creature, CREATURE_TYPE3(Phyrexian, Zombie, Dog), nID,
 		_T("4") BLACK_MANA_TEXT, Power(3), Life(3))
 {
 	typedef

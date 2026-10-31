@@ -3183,7 +3183,7 @@ CBladedPinionsCard::CBladedPinionsCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CCorpseCurCard::CCorpseCurCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Corpse Cur"), CardType::_ArtifactCreature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Corpse Cur"), CardType::_ArtifactCreature, CREATURE_TYPE2(Phyrexian, Dog), nID,
 		_T("4"), Power(2), Life(2))
 {
 	GetCardKeyword()->AddInfect(FALSE);

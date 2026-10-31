@@ -161,6 +161,11 @@ BOOL CCreatureKeyword::Intimidate() const
 	return (m_Bitflag & CreatureKeyword::Intimidate).Any();
 }
 
+BOOL CCreatureKeyword::Skulk() const
+{
+	return (m_Bitflag & CreatureKeyword::Skulk).Any();
+}
+
 BOOL CCreatureKeyword::Unleash() const
 {
 	return (m_Bitflag & CreatureKeyword::Unleash).Any();
@@ -479,6 +484,11 @@ void CCreatureKeyword::AddIntimidate(BOOL bThisTurnOnly)
 	AddEntry(BitflagEntry(CreatureKeyword::Intimidate, bThisTurnOnly));
 }
 
+void CCreatureKeyword::AddSkulk(BOOL bThisTurnOnly)
+{
+	AddEntry(BitflagEntry(CreatureKeyword::Skulk, bThisTurnOnly));
+}
+
 void CCreatureKeyword::AddUnleash(BOOL bThisTurnOnly)
 {
 	AddEntry(BitflagEntry(CreatureKeyword::Unleash, bThisTurnOnly));
@@ -733,6 +743,11 @@ void CCreatureKeyword::RemoveFear(BOOL bThisTurnOnly)
 void CCreatureKeyword::RemoveIntimidate(BOOL bThisTurnOnly)
 {
 	AddEntry(BitflagEntry(CreatureKeyword::Intimidate, bThisTurnOnly, EntryType::Removal));
+}
+
+void CCreatureKeyword::RemoveSkulk(BOOL bThisTurnOnly)
+{
+	AddEntry(BitflagEntry(CreatureKeyword::Skulk, bThisTurnOnly, EntryType::Removal));
 }
 
 void CCreatureKeyword::RemoveUnleash(BOOL bThisTurnOnly)

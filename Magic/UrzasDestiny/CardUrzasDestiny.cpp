@@ -659,7 +659,7 @@ CPhyrexianMonitorCard::CPhyrexianMonitorCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CPlagueDogsCard::CPlagueDogsCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Plague Dogs"), CardType::Creature, CREATURE_TYPE2(Zombie, Hound), nID,
+	: CCreatureCard(pGame, _T("Plague Dogs"), CardType::Creature, CREATURE_TYPE3(Phyrexian, Zombie, Dog), nID,
 		_T("4") BLACK_MANA_TEXT, Power(3), Life(3))
 {
 	{

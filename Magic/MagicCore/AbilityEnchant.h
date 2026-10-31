@@ -73,6 +73,7 @@ public:
 	void SetConditionCheckPlayer(ConditionCheckPlayerType::Enum players);
 	void SetConditionIsMaximum() {m_ConditionIsMaximum=TRUE;}
 	void SetConditionCheckLife() {m_ConditionCheckLife=TRUE;}
+	void SetConditionCountCardTypes() {m_ConditionCountCardTypes=TRUE;}	// count card types instead of cards (Delirium)
 	bool EvaluateCondition();
 
 	// Others
@@ -188,6 +189,9 @@ protected:
 	ZoneId          m_ActiveIn;
 	BOOL            m_ConditionActive;
 	ConditionCheckPlayerType m_ConditionCheckPlayer;
+	BOOL			m_ConditionCountCardTypes;
+
+	int CountForCondition(const CZone* pZone) const;
 
 	// State managed
 

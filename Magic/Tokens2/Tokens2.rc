@@ -185,6 +185,7 @@ BEGIN
    IDS_STRING55082         "Wolf (L)\n{G}\nCreature - Wolf\nToken\n\n2/2"
    IDS_STRING55083         "Human Cleric (A)\n{WB}\nCreature - Human Cleric\nToken\n\n1/1"
    IDS_STRING55084         "Awakened Land\n{0}\nCreature - Elemental\nToken\nHaste\n0/0"
+   IDS_STRING55085         "Clue (A)\n{1}\nArtifact - Clue\nToken\n{2}, Sacrifice this artifact: Draw a card."
 END
 
 #endif    // English (United States) resources

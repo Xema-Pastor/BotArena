@@ -3507,7 +3507,7 @@ CUnflinchingCourageCard::CUnflinchingCourageCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CBorosMastiffCard::CBorosMastiffCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Boros Mastiff"), CardType::Creature, CREATURE_TYPE(Hound), nID,
+	: CCreatureCard(pGame, _T("Boros Mastiff"), CardType::Creature, CREATURE_TYPE(Dog), nID,
 		_T("1") WHITE_MANA_TEXT, Power(2), Life(2))
 
 {
@@ -4636,7 +4636,7 @@ CSkylasherCard::CSkylasherCard(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CThrashingMossdogCard::CThrashingMossdogCard(CGame* pGame, UINT nID)
-	: CCreatureCard(pGame, _T("Thrashing Mossdog"), CardType::Creature, CREATURE_TYPE2(Plant, Hound), nID,
+	: CCreatureCard(pGame, _T("Thrashing Mossdog"), CardType::Creature, CREATURE_TYPE2(Plant, Dog), nID,
 		_T("3") GREEN_MANA_TEXT, Power(3), Life(3))
 {
 	GetCreatureKeyword()->AddReach(FALSE);

@@ -603,3 +603,7 @@ class CHumanClericAToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CClueAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CClueAToken);
+};
