@@ -558,7 +558,8 @@ const LPCTSTR SingleCreatureType::s_Text[SingleCreatureType::_SingleTypeCount] =
 	_T("Servo"),
 	_T("Aetherborn"),
 	_T("Pilot"),
-	_T("Monkey")
+	_T("Monkey"),
+	_T("Pangolin")
 };
 
 //____________________________________________________________________________

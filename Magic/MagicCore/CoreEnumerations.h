@@ -1535,6 +1535,7 @@ struct CORE_EXPORT SingleCreatureType
 		Aetherborn,
 		Pilot,
 		Monkey,
+		Pangolin,
 
 		_SingleTypeCount,
 	};

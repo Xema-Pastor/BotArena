@@ -178,6 +178,13 @@ BOOL CZone::AddCard(CCard* pCard, const CPlayer* pByPlayer, MoveType moveType, C
 		pOrientation->RemoveListener(pFromZone->m_cpOListener.GetPointer());
 		pFromZone->Remove(pCard);
 		GetPlayer()->AddTurnMovementHistory(pCard, pCard->GetCardType(), pFromZone->GetZoneId(), GetZoneId());
+
+		// Revolt: a permanent left the battlefield under its controller's control (the controller is the owner of the
+		// battlefield zone). Phasing doesn't count, and neither does an animation token (IsAlsoA) going away, e.g. a
+		// Vehicle that is no longer crewed: the permanent itself stays on the battlefield.
+		if (pFromZone->GetZoneId() == ZoneId::Battlefield && GetZoneId() != ZoneId::Battlefield &&
+			moveType != MoveType::Phasing && moveType != MoveType::Morph && !pCard->GetIsAlsoOf() && pFromZone->GetPlayer())
+			pFromZone->GetPlayer()->IncreasePermanentsLeftBattlefieldThisTurn();
 		if ((pFromZone->GetZoneId() != ZoneId::Stack) || (GetZoneId() != ZoneId::Battlefield))
 			for (int ip = 0; ip < GetGame()->GetPlayerCount(); ++ip)
 				GetGame()->GetPlayer(ip)->RemoveFromDamageSourcesThisTurn(pCard);

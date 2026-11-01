@@ -260,6 +260,7 @@ BEGIN
     IDS_STRING61147          "Chandra, Torch of Defiance Emblem\n\nEmblem\nToken\nWhenever you cast a spell, this emblem deals 5 damage to any target."
     IDS_STRING61148          "Dovin Baan Emblem\n\nEmblem\nToken\nYour opponents can't untap more than two permanents during their untap steps."
     IDS_STRING61149          "Nissa, Vital Force Emblem\n\nEmblem\nToken\nWhenever a land you control enters, you may draw a card."
+    IDS_STRING61150          "Tezzeret the Schemer Emblem\n\nEmblem\nToken\nAt the beginning of combat on your turn, target artifact you control becomes an artifact creature with base power and toughness 5/5."
 //	IDS_STRING61040          "Chancellor of the Annex Effect\n\nEffect\nToken\nWhen each opponent casts his or her first spell of the game, counter that spell unless that player pays {1}."
 END
 #endif    // English (United States) resources

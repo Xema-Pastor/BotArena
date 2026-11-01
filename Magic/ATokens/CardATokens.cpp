@@ -86,6 +86,13 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CSkySkiffVehicleToken);
 		DEFINE_TOKEN(CSkysovereignConsulFlagshipVehicleToken);
 		DEFINE_TOKEN(CSmugglersCopterVehicleToken);
+		DEFINE_TOKEN(CAethersphereHarvesterVehicleToken);
+		DEFINE_TOKEN(CConsulateDreadnoughtVehicleToken);
+		DEFINE_TOKEN(CHeartofKiranVehicleToken);
+		DEFINE_TOKEN(CIrontreadCrusherVehicleToken);
+		DEFINE_TOKEN(CMobileGarrisonVehicleToken);
+		DEFINE_TOKEN(CPeacewalkerColossusVehicleToken);
+		DEFINE_TOKEN(CUntetheredExpressVehicleToken);
 		DEFINE_TOKEN(CElementalHorrorAAToken);
 		DEFINE_TOKEN(CElfAAToken);
 		DEFINE_TOKEN(CFaerieAAToken);
@@ -1821,3 +1828,143 @@ CSmugglersCopterVehicleToken::CSmugglersCopterVehicleToken(CGame* pGame, UINT nI
 
 // Used by KLD Smuggler's Copter (the creature it becomes when crewed, see CCrewSupport)
 }
+
+//____________________________________________________________________________
+//
+CAethersphereHarvesterVehicleToken::CAethersphereHarvesterVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Aethersphere Harvester"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(3), Life(5))
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+
+// Used by AER Aethersphere Harvester (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CConsulateDreadnoughtVehicleToken::CConsulateDreadnoughtVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Consulate Dreadnought"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(7), Life(11))
+{
+// Used by AER Consulate Dreadnought (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CHeartofKiranVehicleToken::CHeartofKiranVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Heart of Kiran"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+	GetCreatureKeyword()->AddVigilance(FALSE);
+
+// Used by AER Heart of Kiran (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CIrontreadCrusherVehicleToken::CIrontreadCrusherVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Irontread Crusher"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(6), Life(6))
+{
+// Used by AER Irontread Crusher (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CMobileGarrisonVehicleToken::CMobileGarrisonVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Mobile Garrison"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(3), Life(4))
+{
+	// Whenever this Vehicle attacks, untap another target artifact or creature you control.
+	typedef
+		TTriggeredTargetAbility< CTriggeredAbility<>, CWhenSelfAttackedBlocked,
+								 CWhenSelfAttackedBlocked::AttackEventCallback,
+								 &CWhenSelfAttackedBlocked::SetAttackingEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new CardTypeComparer(CardType::Artifact | CardType::Creature, false));
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new NegateCardComparer(new SpecificCardComparer(this)));
+	cpAbility->GetTargeting().SetIncludeControllerCardsOnly();
+	cpAbility->GetTargeting().SetDefaultCharacteristic(Characteristic::Positive);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CMobileGarrisonVehicleToken::BeforeUntap));
+	AddAbility(cpAbility.GetPointer());
+
+// Used by AER Mobile Garrison (the creature it becomes when crewed, see CCrewSupport)
+}
+
+bool CMobileGarrisonVehicleToken::BeforeUntap(CAbilityAction* pAction) const
+{
+	// "another": not the Vehicle itself (the card this creature is linked to)
+	CCard* pCard = pAction->GetAssociatedCard();
+	if (pCard && pCard != GetIsAlsoOf() && pCard->GetZoneId() == ZoneId::Battlefield && pCard->GetOrientation()->IsTapped())
+	{
+		CCardOrientationModifier pModifier = CCardOrientationModifier(FALSE);
+		pModifier.ApplyTo(pCard);
+	}
+	return false;
+}
+
+//____________________________________________________________________________
+//
+CPeacewalkerColossusVehicleToken::CPeacewalkerColossusVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Peacewalker Colossus"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(6), Life(6))
+{
+// Used by AER Peacewalker Colossus (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CUntetheredExpressVehicleToken::CUntetheredExpressVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Untethered Express"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	GetCreatureKeyword()->AddTrample(FALSE);
+
+	// Whenever this Vehicle attacks, put a +1/+1 counter on it.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfAttackedBlocked,
+						   CWhenSelfAttackedBlocked::AttackEventCallback,
+						   &CWhenSelfAttackedBlocked::SetAttackingEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CUntetheredExpressVehicleToken::BeforeCounter));
+	AddAbility(cpAbility.GetPointer());
+
+// Used by AER Untethered Express (the creature it becomes when crewed, see CCrewSupport)
+}
+
+bool CUntetheredExpressVehicleToken::BeforeCounter(CAbilityAction* pAction) const
+{
+	// The counter goes on the Vehicle card (it stays when the Vehicle stops being a creature); the counters of the
+	// card and of its creature are kept in sync by the IsAlsoA mechanism
+	CCard* pVehicle = GetIsAlsoOf() ? GetIsAlsoOf() : (CCard*)this;
+	if (pVehicle->GetZoneId() == ZoneId::Battlefield)
+	{
+		CCardCounterModifier pModifier = CCardCounterModifier(_T("+1/+1"), +1);
+		pModifier.ApplyTo(pVehicle);
+	}
+	return true;
+}
+
+//____________________________________________________________________________
+//

@@ -193,6 +193,7 @@ BEGIN
    IDS_STRING55090         "Servo (A)\n{1}\nArtifact Creature - Servo\nToken\n\n1/1"
    IDS_STRING55091         "Construct (B)\n{1}\nArtifact Creature - Construct\nToken\n\n0/0"
     IDS_STRING55092         "Beast (Q)\n{1}\nArtifact Creature - Beast\nToken\n\n6/6"
+    IDS_STRING55093         "Etherium Cell\n{1}\nArtifact\nToken\n{T}, Sacrifice this token: Add one mana of any color."
 END
 
 #endif    // English (United States) resources

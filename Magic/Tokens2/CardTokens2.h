@@ -656,3 +656,10 @@ class CBeastQToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CBeastQToken);
 };
+
+//____________________________________________________________________________
+//
+class CEtheriumCellToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CEtheriumCellToken);
+};

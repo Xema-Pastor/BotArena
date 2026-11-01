@@ -120,6 +120,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CChandraTorchOfDefianceEmblemToken);
 		DEFINE_TOKEN(CDovinBaanEmblemToken);
 		DEFINE_TOKEN(CNissaVitalForceEmblemToken);
+		DEFINE_TOKEN(CTezzeretTheSchemerEmblemToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -11606,6 +11607,71 @@ bool CUpkeepStepReanimateEffectToken::SetTriggerContextAux2(CTriggeredMoveCardAb
 	if (!bFired) 
 		return false;
 	return true;
+}
+
+//____________________________________________________________________________
+//
+CTezzeretTheSchemerEmblemToken::CTezzeretTheSchemerEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Tezzeret the Schemer Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// At the beginning of combat on your turn, target artifact you control becomes an artifact creature with base
+	// power and toughness 5/5.
+	typedef
+		TTriggeredTargetAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::BeginningOfCombatStep, FALSE));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new CardTypeComparer(CardType::Artifact, false));
+	cpAbility->GetTargeting().SetIncludeControllerCardsOnly();
+	cpAbility->GetTargeting().SetDefaultCharacteristic(Characteristic::Positive);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CTezzeretTheSchemerEmblemToken::SetTriggerContext));
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CTezzeretTheSchemerEmblemToken::BeforeResolution));
+	cpAbility->AddAbilityTag(AbilityTag::CreatureChange);
+
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CTezzeretTheSchemerEmblemToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const
+{
+	return (this->GetZone()->GetZoneId() == ZoneId::_Effects);
+}
+
+bool CTezzeretTheSchemerEmblemToken::BeforeResolution(CAbilityAction* pAction) const
+{
+	CCard* pCard = pAction->GetAssociatedCard();
+	if (!pCard || pCard->GetZoneId() != ZoneId::Battlefield)
+		return false;
+
+	CCreatureCard* pCreature = dynamic_cast<CCreatureCard*>(pCard);
+	if (pCard->GetCardType().IsCreature() && pCreature)
+	{
+		// Already an artifact creature: its base power and toughness become 5/5 (as Tezzeret the Seeker)
+		CPowerModifier powerModifier;
+		powerModifier.SetPowerDelta(Power(5));
+		powerModifier.SetToBase(TRUE);
+		powerModifier.SetReplacement(TRUE);
+		powerModifier.SetOneTurnOnly(FALSE);
+		powerModifier.ApplyTo(pCreature);
+
+		CLifeModifier lifeModifier;
+		lifeModifier.SetLifeDelta(Life(5));
+		lifeModifier.SetToBase(TRUE);
+		lifeModifier.SetReplacement(TRUE);
+		lifeModifier.SetOneTurnOnly(FALSE);
+		lifeModifier.ApplyTo(pCreature);
+	}
+	else
+	{
+		// A noncreature artifact becomes a 5/5 artifact creature (permanently)
+		CCardIsAlsoAModifier animationModifier(_T("Animated Artifact (A)"), 64000, pAction->GetController());
+		animationModifier.ApplyTo(pCard);
+	}
+	return false;
 }
 
 //____________________________________________________________________________

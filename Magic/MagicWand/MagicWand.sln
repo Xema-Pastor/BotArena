@@ -925,6 +925,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kaladesh Block", "Kaladesh 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaladesh", "..\Kaladesh\Kaladesh.vcxproj", "{FB815B38-5AD1-45E4-8932-A48B44F59E26}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AetherRevolt", "..\AetherRevolt\AetherRevolt.vcxproj", "{B41D3914-9878-4657-BDF3-A981E3FD088D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -1670,6 +1672,12 @@ Global
 		{FB815B38-5AD1-45E4-8932-A48B44F59E26}.Release|Win32.Build.0 = Release|Win32
 		{FB815B38-5AD1-45E4-8932-A48B44F59E26}.Template|Win32.ActiveCfg = Release|Win32
 		{FB815B38-5AD1-45E4-8932-A48B44F59E26}.Template|Win32.Build.0 = Release|Win32
+		{B41D3914-9878-4657-BDF3-A981E3FD088D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B41D3914-9878-4657-BDF3-A981E3FD088D}.Debug|Win32.Build.0 = Debug|Win32
+		{B41D3914-9878-4657-BDF3-A981E3FD088D}.Release|Win32.ActiveCfg = Release|Win32
+		{B41D3914-9878-4657-BDF3-A981E3FD088D}.Release|Win32.Build.0 = Release|Win32
+		{B41D3914-9878-4657-BDF3-A981E3FD088D}.Template|Win32.ActiveCfg = Release|Win32
+		{B41D3914-9878-4657-BDF3-A981E3FD088D}.Template|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1835,6 +1843,7 @@ Global
 		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890} = {B5C6D7E8-F9A0-1234-BCDE-F01234567891}
 		{6B0F5C2E-3D4A-4F8B-9E21-7C5A1D8E4B93} = {11A16C86-7F12-4A28-A321-3933B7F60479}
 		{FB815B38-5AD1-45E4-8932-A48B44F59E26} = {6B0F5C2E-3D4A-4F8B-9E21-7C5A1D8E4B93}
+		{B41D3914-9878-4657-BDF3-A981E3FD088D} = {6B0F5C2E-3D4A-4F8B-9E21-7C5A1D8E4B93}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = ..\..

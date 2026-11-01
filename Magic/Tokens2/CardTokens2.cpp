@@ -106,6 +106,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CServoAToken);
 		DEFINE_TOKEN(CConstructBToken);
 		DEFINE_TOKEN(CBeastQToken);
+		DEFINE_TOKEN(CEtheriumCellToken);
 	} while (false);
 
 	return cpCard;
@@ -1394,4 +1395,24 @@ CBeastQToken::CBeastQToken(CGame* pGame, UINT nID)
 		Power(6), Life(6))
 {
 // Kaladesh version: used by Architect of the Untamed.
+}
+
+//____________________________________________________________________________
+CEtheriumCellToken::CEtheriumCellToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Etherium Cell"), CardType::Artifact | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {T}, Sacrifice this token: Add one mana of any color. (one mana ability for each color, as Lotus Petal)
+	LPCTSTR colors[] = { WHITE_MANA_TEXT, BLUE_MANA_TEXT, BLACK_MANA_TEXT, RED_MANA_TEXT, GREEN_MANA_TEXT };
+	for (int i = 0; i < _countof(colors); ++i)
+	{
+		counted_ptr<CManaProductionAbility> cpAbility(
+			::CreateObject<CManaProductionAbility>(this, _T(""), AbilityType::Activated, colors[i]));
+		cpAbility->AddTapCost();
+		cpAbility->AddSacrificeCost();
+		AddAbility(cpAbility.GetPointer());
+	}
+// Aether Revolt version: used by Tezzeret the Schemer.
 }

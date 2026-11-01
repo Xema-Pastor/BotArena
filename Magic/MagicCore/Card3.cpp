@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <map>
 
 
 #define new DEBUG_NEW
@@ -447,10 +448,31 @@ void CSurgeSupport::OnZoneChanged(CCard* pCard, CZone* pFromZone, CZone* pToZone
 
 //____________________________________________________________________________
 //
+// Every Vehicle registers its crew support here (see Find)
+static std::map<const CCard*, CCrewSupport*>& GetCrewSupports()
+{
+	static std::map<const CCard*, CCrewSupport*> crewSupports;
+	return crewSupports;
+}
+
 CCrewSupport::CCrewSupport(CCard* pVehicle)
 	: m_pVehicle(pVehicle)
 	, m_uID(0)
 {
+	GetCrewSupports()[pVehicle] = this;
+}
+
+CCrewSupport::~CCrewSupport()
+{
+	std::map<const CCard*, CCrewSupport*>::iterator it = GetCrewSupports().find(m_pVehicle);
+	if (it != GetCrewSupports().end() && it->second == this)
+		GetCrewSupports().erase(it);
+}
+
+CCrewSupport* CCrewSupport::Find(const CCard* pCard)
+{
+	std::map<const CCard*, CCrewSupport*>::const_iterator it = GetCrewSupports().find(pCard);
+	return it != GetCrewSupports().end() ? it->second : NULL;
 }
 
 CAbility* CCrewSupport::AddCrewAbility(int nCrew, LPCTSTR strCreature, UINT uID)

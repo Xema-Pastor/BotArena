@@ -375,6 +375,11 @@ public:
 	void AddEnergyCounters(int nCount);		// a negative count removes them (never below 0)
 	int GetEnergyCounters()				  const				{ return m_nEnergyCounters;		 }
 
+	// Revolt (Aether Revolt): did a permanent leave the battlefield under this player's control this turn?
+	void IncreasePermanentsLeftBattlefieldThisTurn()	{ m_nPermanentsLeftBattlefieldThisTurn += 1;	 }
+	int  GetPermanentsLeftBattlefieldThisTurn() const	{ return m_nPermanentsLeftBattlefieldThisTurn; }
+	BOOL HasRevolt() const								{ return m_nPermanentsLeftBattlefieldThisTurn > 0; }
+
 	void AddLifeLossTakenThisTurn(Life pLifeLost);
 	void AddLifeGainThisTurn(Life pLifeGained);
 
@@ -651,6 +656,7 @@ protected:
 	CCountedCardContainer_ detainedCard;
 
 	int_	m_nEnergyCounters;	// at the end of the class, so that the layout of the other members doesn't change
+	int_	m_nPermanentsLeftBattlefieldThisTurn;	// Revolt (Aether Revolt), reset every turn
 };
 
 //____________________________________________________________________________

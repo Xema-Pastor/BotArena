@@ -69,6 +69,7 @@ CPlayer::CPlayer(CGame* pGame)
 	, s_hCard()
 	, detainedCard()
 	, m_nEnergyCounters(0)
+	, m_nPermanentsLeftBattlefieldThisTurn(0)
 	, s_hTypes()
 	, s_hfromZones()
 	, s_htoZones()
@@ -1785,6 +1786,7 @@ void CPlayer::ResetTurnInfo()
 	m_nTurnUntappedCreaturesCount		= 0;
 	m_nTurnCastedSpellCount				= 0;
 	m_nTurnDrawCount					= 0;
+	m_nPermanentsLeftBattlefieldThisTurn = 0;
 	m_pCardsDrawnThisTurn.RemoveAll();
 	m_pLastDrawThisTurn					= NULL;
 	m_pDamageSourcesThisTurn.RemoveAll();

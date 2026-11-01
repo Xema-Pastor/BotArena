@@ -213,6 +213,13 @@ BEGIN
     IDS_STRING64110         "Sky Skiff (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nFlying\n2/3"
     IDS_STRING64111         "Skysovereign, Consul Flagship (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nFlying\rWhenever Skysovereign attacks, it deals 3 damage to target creature an opponent controls.\n6/5"
     IDS_STRING64112         "Smuggler's Copter (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nFlying\rWhenever this Vehicle attacks or blocks, you may draw a card. If you do, discard a card.\n3/3"
+    IDS_STRING64113         "Aethersphere Harvester (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nFlying\n3/5"
+    IDS_STRING64114         "Consulate Dreadnought (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n7/11"
+    IDS_STRING64115         "Heart of Kiran (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nFlying, vigilance\n4/4"
+    IDS_STRING64116         "Irontread Crusher (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n6/6"
+    IDS_STRING64117         "Mobile Garrison (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nWhenever this Vehicle attacks, untap another target artifact or creature you control.\n3/4"
+    IDS_STRING64118         "Peacewalker Colossus (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n6/6"
+    IDS_STRING64119         "Untethered Express (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nTrample\rWhenever this Vehicle attacks, put a +1/+1 counter on it.\n4/4"
 END
 
 

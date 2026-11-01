@@ -280,7 +280,11 @@ class CORE_EXPORT CCrewSupport
 {
 public:
 	CCrewSupport(CCard* pVehicle);
-	virtual ~CCrewSupport() {}
+	virtual ~CCrewSupport();
+
+	// The crew support of a Vehicle (NULL if the card isn't a Vehicle), e.g. for "target Vehicle becomes an artifact
+	// creature until end of turn" (Peacewalker Colossus)
+	static CCrewSupport* Find(const CCard* pCard);
 
 	// Adds the crew ability to the vehicle; returns it (for the abilities that also need a trait, etc.)
 	CAbility* AddCrewAbility(int nCrew, LPCTSTR strCreature, UINT uID);

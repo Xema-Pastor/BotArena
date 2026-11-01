@@ -2090,3 +2090,14 @@ protected:
 
 //____________________________________________________________________________
 //
+class CTezzeretTheSchemerEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CTezzeretTheSchemerEmblemToken);
+
+private:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const;
+	bool BeforeResolution(CAbilityAction* pAction) const;
+};
+
+//____________________________________________________________________________
+//

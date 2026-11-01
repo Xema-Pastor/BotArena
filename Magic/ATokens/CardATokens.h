@@ -811,3 +811,61 @@ class CSmugglersCopterVehicleToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CSmugglersCopterVehicleToken);
 };
+
+//____________________________________________________________________________
+//
+class CAethersphereHarvesterVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAethersphereHarvesterVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CConsulateDreadnoughtVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CConsulateDreadnoughtVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CHeartofKiranVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CHeartofKiranVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CIrontreadCrusherVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CIrontreadCrusherVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CMobileGarrisonVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CMobileGarrisonVehicleToken);
+
+protected:
+	bool BeforeUntap(CAbilityAction* pAction) const;
+};
+
+//____________________________________________________________________________
+//
+class CPeacewalkerColossusVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CPeacewalkerColossusVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CUntetheredExpressVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CUntetheredExpressVehicleToken);
+
+protected:
+	bool BeforeCounter(CAbilityAction* pAction) const;
+};
+
+//____________________________________________________________________________
+//
