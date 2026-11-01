@@ -578,6 +578,129 @@ protected:
 
 //____________________________________________________________________________
 //
+	// Player energy cost (Kaladesh): pay {E} (energy counters of the source card's controller)
+class CORE_EXPORT CPlayerEnergyCostEntry : public CAbstractCostEntry
+{
+	friend class CPlayerEnergyCost;
+public:
+	CPlayerEnergyCostEntry()
+		: m_pPlayer(NULL)
+		, m_nEnergy(0)
+	{}
+	CPlayerEnergyCostEntry(const CPlayerEnergyCostEntry& c)
+		: CAbstractCostEntry(c)
+		, m_pPlayer(c.m_pPlayer)
+		, m_nEnergy(c.m_nEnergy)
+	{}
+	CPlayerEnergyCostEntry(CPlayer* pPlayer, int nEnergy)
+		: m_pPlayer(pPlayer)
+		, m_nEnergy(nEnergy)
+	{}
+	OVERRIDE(BOOL,PayCost)(CPlayer* pByPlayer) const;
+	friend bool operator==(const CPlayerEnergyCostEntry& i, const CPlayerEnergyCostEntry& j)
+	{
+		return i.m_pPlayer == j.m_pPlayer && i.m_nEnergy == j.m_nEnergy;
+	}
+protected:
+	CPlayer*	m_pPlayer;
+	int			m_nEnergy;		// energy counters to pay (> 0)
+};
+
+class CORE_EXPORT CPlayerEnergyCost : public CAbstractCost
+{
+	typedef CPlayerEnergyCost Me;
+	typedef TCheapList<CPlayerEnergyCostEntry, CAbstractCostEntry> OutType;
+public:
+	CPlayerEnergyCost(CCard* pSourceCard, int nEnergy)
+		: m_pSourceCard(pSourceCard)
+		, m_nEnergy(nEnergy)
+	{}
+	CPlayerEnergyCost(const Me& c)
+		: m_pSourceCard(c.m_pSourceCard)
+		, m_nEnergy(c.m_nEnergy)
+	{}
+	OVERRIDE(BOOL, IsPlayable)
+						(const CPlayer* pByPlayer,
+						  BOOL bIncludeTricks,
+						  BOOL bAssumeSufficientMana) const;
+	OVERRIDE(bool, GetConfigurations)
+						(const CPlayer* pByPlayer,
+						  BOOL bIncludeTricks, BOOL bSetNames,
+						  CostConfigurationArray& configurations,
+						  size_t start) const;
+	friend bool operator==(const Me& i, const Me& j)
+	{
+		return (i.m_pSourceCard == j.m_pSourceCard) && (i.m_nEnergy == j.m_nEnergy);
+	}
+protected:
+	CCard*		m_pSourceCard;
+	int			m_nEnergy;
+};
+
+//____________________________________________________________________________
+//
+	// Crew N (Kaladesh): tap any number of other untapped creatures you control with total power N or greater.
+	// There is one cost configuration for each minimal group of creatures (limited number of configurations).
+	// Summoning sick creatures can crew (it isn't a {T} cost).
+class CORE_EXPORT CCrewCostEntry : public CAbstractCostEntry
+{
+	friend class CCrewCost;
+public:
+	// (CCountedCardContainer isn't defined yet: the creatures are kept by pointer, see Cost.cpp)
+	CCrewCostEntry();
+	CCrewCostEntry(const CCrewCostEntry& c);
+	explicit CCrewCostEntry(const CCountedCardContainer& cards);
+	~CCrewCostEntry();
+	CCrewCostEntry& operator=(const CCrewCostEntry& c);
+
+	OVERRIDE(const CCountedCardContainer*, GetCards)() const	{return m_pCards;}
+	OVERRIDE(BOOL,PayCost)(CPlayer* pByPlayer) const;
+	bool IsSameCrew(const CCrewCostEntry& c) const;
+	friend bool operator==(const CCrewCostEntry& i, const CCrewCostEntry& j)
+	{
+		return i.IsSameCrew(j);
+	}
+protected:
+	CCountedCardContainer*	m_pCards;	// the creatures to tap
+};
+
+class CORE_EXPORT CCrewCost : public CAbstractCost
+{
+	typedef CCrewCost Me;
+	typedef TCheapList<CCrewCostEntry, CAbstractCostEntry> OutType;
+public:
+	CCrewCost(CCard* pVehicle, int nPower)
+		: m_pVehicle(pVehicle)
+		, m_nPower(nPower)
+	{}
+	CCrewCost(const Me& c)
+		: m_pVehicle(c.m_pVehicle)
+		, m_nPower(c.m_nPower)
+	{}
+	OVERRIDE(BOOL, IsPlayable)
+						(const CPlayer* pByPlayer,
+						  BOOL bIncludeTricks,
+						  BOOL bAssumeSufficientMana) const;
+	OVERRIDE(bool, GetConfigurations)
+						(const CPlayer* pByPlayer,
+						  BOOL bIncludeTricks, BOOL bSetNames,
+						  CostConfigurationArray& configurations,
+						  size_t start) const;
+	friend bool operator==(const Me& i, const Me& j)
+	{
+		return (i.m_pVehicle == j.m_pVehicle) && (i.m_nPower == j.m_nPower);
+	}
+protected:
+	// The untapped creatures that can crew (not the vehicle) with their power, the strongest first
+	// (an animated artifact, e.g. a crewed vehicle, has its power in GetIsAlsoA())
+	void GetCrewCreatures(const CPlayer* pByPlayer, std::vector<std::pair<int, CCard*> >& creatures) const;
+
+	CCard*		m_pVehicle;
+	int			m_nPower;
+};
+
+//____________________________________________________________________________
+//
 class CThisCounterCost;
 struct CounterCostBase;
 
@@ -1526,6 +1649,8 @@ public:
 	typedef TCheapList<CUntapFilterCost,CAbstractCost> UntapFilterCost;
 
 	typedef TCheapList<CPlayerLifeCost,CAbstractCost> PlayerLifeCost;
+	typedef TCheapList<CPlayerEnergyCost,CAbstractCost> PlayerEnergyCost;
+	typedef TCheapList<CCrewCost,CAbstractCost> CrewCost;
 
 	typedef TCheapList<CReturnThisCost,CAbstractCost> ReturnThisCost;
 	typedef TCheapList<CReturnFilterCost,CAbstractCost> ReturnFilterCost;
@@ -1915,6 +2040,22 @@ public:
 		ATLASSERT(SpecialNumber::IsSpecialNumber(GET_INTEGER(nLifeDelta)) || (nLifeDelta <= Life(0)));
 
 		AddNormalCost(new PlayerLifeCost(pSourceCard, nLifeDelta), bOptional);
+	}
+
+	// Energy cost (Kaladesh): pay nEnergy energy counters ({E})
+	void AddEnergyCost(CCard* pSourceCard, 		// Will get player from source card's controller when GetConfigurations() is called.
+					   int nEnergy,
+					   bool bOptional = false)
+	{
+		ATLASSERT(nEnergy > 0);
+
+		AddNormalCost(new PlayerEnergyCost(pSourceCard, nEnergy), bOptional);
+	}
+
+	// Crew cost (Kaladesh): tap other untapped creatures you control with total power nPower or greater
+	void AddCrewCost(CCard* pVehicle, int nPower, bool bOptional = false)
+	{
+		AddNormalCost(new CrewCost(pVehicle, nPower), bOptional);
 	}
 
 	// Tap specific card cost

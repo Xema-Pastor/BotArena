@@ -447,6 +447,54 @@ void CSurgeSupport::OnZoneChanged(CCard* pCard, CZone* pFromZone, CZone* pToZone
 
 //____________________________________________________________________________
 //
+CCrewSupport::CCrewSupport(CCard* pVehicle)
+	: m_pVehicle(pVehicle)
+	, m_uID(0)
+{
+}
+
+CAbility* CCrewSupport::AddCrewAbility(int nCrew, LPCTSTR strCreature, UINT uID)
+{
+	m_strCreature = strCreature;
+	m_uID = uID;
+
+	counted_ptr<CActivatedAbility<CGenericSpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CGenericSpell>>(m_pVehicle,
+			_T("")));
+
+	cpAbility->GetCost().AddCrewCost(m_pVehicle, nCrew);
+
+	CString strText;
+	strText.Format(_T("Crew %d (this Vehicle becomes an artifact creature until end of turn). Activates"), nCrew);
+	cpAbility->SetAbilityText(strText);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CCrewSupport::OnCrewResolving));
+	cpAbility->AddAbilityTag(AbilityTag::CreatureChange);
+
+	m_pVehicle->AddAbility(cpAbility.GetPointer());
+	return cpAbility.GetPointer();
+}
+
+bool CCrewSupport::OnCrewResolving(CAbilityAction* pAction)
+{
+	Animate(pAction->GetController());
+	return true;
+}
+
+void CCrewSupport::Animate(CPlayer* pController)
+{
+	// Already a creature (e.g. crewed twice): nothing changes
+	if (m_pVehicle->GetZoneId() != ZoneId::Battlefield || m_pVehicle->GetCardType().IsCreature())
+		return;
+
+	CScheduledCardModifier animationModifier = CScheduledCardModifier(m_pVehicle->GetGame(),
+		new CCardIsAlsoAModifier(m_strCreature, m_uID, pController),
+		TurnNumberDelta(-1), NodeId::CleanupStep2,
+		true, CScheduledCardModifier::Operation::ApplyToNowRemoveLater);
+	animationModifier.ApplyTo(m_pVehicle);
+}
+
+//____________________________________________________________________________
+//
 CChancellorCreatureCard::CChancellorCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
 										 LPCTSTR strCostText, Power nPower, Life nToughness)
 	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)

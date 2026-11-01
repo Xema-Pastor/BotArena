@@ -74,6 +74,18 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CElementalARToken);
 		DEFINE_TOKEN(CElementalASToken);
 		DEFINE_TOKEN(CElementalATToken);
+		DEFINE_TOKEN(CElementalAUToken);
+		DEFINE_TOKEN(CAradaraExpressVehicleToken);
+		DEFINE_TOKEN(CBallistaChargerVehicleToken);
+		DEFINE_TOKEN(CBomatBazaarBargeVehicleToken);
+		DEFINE_TOKEN(CCultivatorsCaravanVehicleToken);
+		DEFINE_TOKEN(CDemolitionStomperVehicleToken);
+		DEFINE_TOKEN(CFleetwheelCruiserVehicleToken);
+		DEFINE_TOKEN(COvalchaseDragsterVehicleToken);
+		DEFINE_TOKEN(CRenegadeFreighterVehicleToken);
+		DEFINE_TOKEN(CSkySkiffVehicleToken);
+		DEFINE_TOKEN(CSkysovereignConsulFlagshipVehicleToken);
+		DEFINE_TOKEN(CSmugglersCopterVehicleToken);
 		DEFINE_TOKEN(CElementalHorrorAAToken);
 		DEFINE_TOKEN(CElfAAToken);
 		DEFINE_TOKEN(CFaerieAAToken);
@@ -1594,3 +1606,218 @@ CElementalATToken::CElementalATToken(CGame* pGame, UINT nID)
 
 //____________________________________________________________________________
 //
+
+//____________________________________________________________________________
+//
+CElementalAUToken::CElementalAUToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(5), Life(5))
+{
+	GetCreatureKeyword()->AddHaste(FALSE);
+
+// Used by KLD Nissa, Vital Force (a land that becomes a 5/5 Elemental creature with haste)
+}
+
+//____________________________________________________________________________
+//
+CAradaraExpressVehicleToken::CAradaraExpressVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Aradara Express"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(8), Life(6))
+{
+	GetCreatureKeyword()->AddCantBeBlockedByOne(FALSE);	// Menace
+
+// Used by KLD Aradara Express (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CBallistaChargerVehicleToken::CBallistaChargerVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Ballista Charger"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(6), Life(6))
+{
+	// Whenever this Vehicle attacks, it deals 1 damage to any target.
+	typedef
+		TTriggeredTargetAbility< CTriggeredModifyLifeAbility, CWhenSelfAttackedBlocked,
+								 CWhenSelfAttackedBlocked::AttackEventCallback,
+								 &CWhenSelfAttackedBlocked::SetAttackingEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetLifeModifier().SetLifeDelta(Life(-1));
+	cpAbility->GetLifeModifier().SetDamageType(DamageType::AbilityDamage | DamageType::NonCombatDamage);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new AnyCreatureComparer);
+	cpAbility->GetTargeting().SetIncludePlayers(TRUE);
+	cpAbility->GetTargeting().SetDefaultCharacteristic(Characteristic::Negative);
+	cpAbility->AddAbilityTag(AbilityTag::DamageSource);
+	AddAbility(cpAbility.GetPointer());
+
+// Used by KLD Ballista Charger (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CBomatBazaarBargeVehicleToken::CBomatBazaarBargeVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Bomat Bazaar Barge"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(5), Life(5))
+{
+// Used by KLD Bomat Bazaar Barge (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CCultivatorsCaravanVehicleToken::CCultivatorsCaravanVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Cultivator's Caravan"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(5), Life(5))
+{
+// Used by KLD Cultivator's Caravan (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CDemolitionStomperVehicleToken::CDemolitionStomperVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Demolition Stomper"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(10), Life(7))
+{
+	// Note: "This Vehicle can't be blocked by creatures with power 2 or less." is not implemented.
+
+// Used by KLD Demolition Stomper (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CFleetwheelCruiserVehicleToken::CFleetwheelCruiserVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Fleetwheel Cruiser"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(5), Life(3))
+{
+	GetCreatureKeyword()->AddTrample(FALSE);
+	GetCreatureKeyword()->AddHaste(FALSE);
+
+// Used by KLD Fleetwheel Cruiser (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+COvalchaseDragsterVehicleToken::COvalchaseDragsterVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Ovalchase Dragster"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(6), Life(1))
+{
+	GetCreatureKeyword()->AddTrample(FALSE);
+	GetCreatureKeyword()->AddHaste(FALSE);
+
+// Used by KLD Ovalchase Dragster (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CRenegadeFreighterVehicleToken::CRenegadeFreighterVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Renegade Freighter"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(4), Life(3))
+{
+	// Whenever this Vehicle attacks, it gets +1/+1 and gains trample until end of turn.
+	typedef
+		TTriggeredAbility< CTriggeredModifyCreatureAbility, CWhenSelfAttackedBlocked,
+						   CWhenSelfAttackedBlocked::AttackEventCallback,
+						   &CWhenSelfAttackedBlocked::SetAttackingEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetPowerModifier().SetPowerDelta(Power(+1));
+	cpAbility->GetLifeModifier().SetLifeDelta(Life(+1));
+	cpAbility->GetLifeModifier().SetPreventable(PreventableType::NotPreventable);
+	cpAbility->GetCreatureKeywordMod().GetModifier().SetToAdd(CreatureKeyword::Trample);
+	cpAbility->GetCreatureKeywordMod().GetModifier().SetOneTurnOnly(TRUE);
+	cpAbility->AddAbilityTag(AbilityTag::CreatureChange);
+	AddAbility(cpAbility.GetPointer());
+
+// Used by KLD Renegade Freighter (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CSkySkiffVehicleToken::CSkySkiffVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Sky Skiff"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(2), Life(3))
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+
+// Used by KLD Sky Skiff (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CSkysovereignConsulFlagshipVehicleToken::CSkysovereignConsulFlagshipVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Skysovereign, Consul Flagship"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(6), Life(5))
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+
+	// Whenever Skysovereign attacks, it deals 3 damage to target creature or planeswalker an opponent controls.
+	// Note: not legendary (the Vehicle card is); only creatures can be targeted
+	typedef
+		TTriggeredTargetAbility< CTriggeredModifyLifeAbility, CWhenSelfAttackedBlocked,
+								 CWhenSelfAttackedBlocked::AttackEventCallback,
+								 &CWhenSelfAttackedBlocked::SetAttackingEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetLifeModifier().SetLifeDelta(Life(-3));
+	cpAbility->GetLifeModifier().SetDamageType(DamageType::AbilityDamage | DamageType::NonCombatDamage);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new AnyCreatureComparer);
+	cpAbility->GetTargeting().SetIncludeNonControllerCardsOnly();
+	cpAbility->GetTargeting().SetDefaultCharacteristic(Characteristic::Negative);
+	cpAbility->AddAbilityTag(AbilityTag::DamageSource);
+	AddAbility(cpAbility.GetPointer());
+
+// Used by KLD Skysovereign, Consul Flagship (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CSmugglersCopterVehicleToken::CSmugglersCopterVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Smuggler's Copter"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+
+	// Whenever this Vehicle attacks or blocks, you may draw a card. If you do, discard a card.
+	typedef
+		TTriggeredAbility< CTriggeredDrawCardAbility, CWhenSelfAttackedBlocked,
+						   CWhenSelfAttackedBlocked::EventCallback,
+						   &CWhenSelfAttackedBlocked::SetAttackingOrBlockingEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Optional);
+	cpAbility->SetDrawCount(1);
+	cpAbility->SetDiscard(1, FALSE, MoveType::Discard);
+	AddAbility(cpAbility.GetPointer());
+
+// Used by KLD Smuggler's Copter (the creature it becomes when crewed, see CCrewSupport)
+}

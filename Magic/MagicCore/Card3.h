@@ -269,6 +269,33 @@ protected:
 	BOOL_ m_bSurgeCostPaid;
 	ListenerPtr<CardMovementEventSource::Listener> m_cpAListener;
 };
+
+//____________________________________________________________________________
+//
+// Crew N (Kaladesh): "Tap any number of other untapped creatures you control with total power N or greater: This
+// Vehicle becomes an artifact creature until end of turn." The vehicle becomes the creature strCreature/uID (an
+// IsAlsoA entry with the vehicle's power, toughness and keywords, e.g. in ATokens) until the cleanup step, as
+// Tezzeret the Seeker's -5 in Shards of Alara. The cost is CCost::AddCrewCost.
+class CORE_EXPORT CCrewSupport
+{
+public:
+	CCrewSupport(CCard* pVehicle);
+	virtual ~CCrewSupport() {}
+
+	// Adds the crew ability to the vehicle; returns it (for the abilities that also need a trait, etc.)
+	CAbility* AddCrewAbility(int nCrew, LPCTSTR strCreature, UINT uID);
+
+	// The vehicle becomes an artifact creature until end of turn (e.g. "When this Vehicle enters, it becomes an
+	// artifact creature until end of turn"). Call AddCrewAbility first: it sets the creature.
+	void Animate(CPlayer* pController);
+
+protected:
+	bool OnCrewResolving(CAbilityAction* pAction);
+
+	CCard* m_pVehicle;
+	CString m_strCreature;
+	UINT m_uID;
+};
 //____________________________________________________________________________
 //
 class CORE_EXPORT CChancellorCreatureCard : public CCreatureCard

@@ -2225,12 +2225,35 @@ public:
 		return pModifier;
 	}
 
-protected:	
+protected:
 	CGame* m_pGame;
 	int m_value;
 	BOOL	m_replace;
 	BOOL    m_opposite_player;
 
+};
+//____________________________________________________________________________
+//
+// Energy counters (Kaladesh): the player gets (or, with a negative count, pays) energy counters
+class CORE_EXPORT CEnergyModifier
+	: public CPlayerModifier
+{
+public:
+	CEnergyModifier(CGame* pGame, int nCount)
+		: m_pGame(pGame)
+		, m_nCount(nCount)
+	{}
+
+	virtual void ApplyTo(CPlayer* pPlayer) const;
+
+	virtual CPlayerModifier* ClonePlayerModifier() const
+	{
+		return new CEnergyModifier(m_pGame, m_nCount);
+	}
+
+protected:
+	CGame*	m_pGame;
+	int		m_nCount;
 };
 //____________________________________________________________________________
 //

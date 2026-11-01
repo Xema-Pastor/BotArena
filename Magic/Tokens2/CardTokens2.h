@@ -635,3 +635,24 @@ class CHumanWizardAToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CHumanWizardAToken);
 };
+
+//____________________________________________________________________________
+//
+class CServoAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CServoAToken);
+};
+
+//____________________________________________________________________________
+//
+class CConstructBToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CConstructBToken);
+};
+
+//____________________________________________________________________________
+//
+class CBeastQToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CBeastQToken);
+};

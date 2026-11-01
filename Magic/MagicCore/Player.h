@@ -371,6 +371,10 @@ public:
 	void SetPoisonCounters(int value,BOOL replace);
 	int GetPoisonCounters()				  const				{ return m_nPoisonCounters;		 }
 
+	// Energy counters (Kaladesh): a player resource, got with CEnergyModifier and paid with CCost::AddEnergyCost
+	void AddEnergyCounters(int nCount);		// a negative count removes them (never below 0)
+	int GetEnergyCounters()				  const				{ return m_nEnergyCounters;		 }
+
 	void AddLifeLossTakenThisTurn(Life pLifeLost);
 	void AddLifeGainThisTurn(Life pLifeGained);
 
@@ -646,6 +650,7 @@ protected:
 
 	CCountedCardContainer_ detainedCard;
 
+	int_	m_nEnergyCounters;	// at the end of the class, so that the layout of the other members doesn't change
 };
 
 //____________________________________________________________________________

@@ -727,3 +727,87 @@ class CElementalATToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+
+//____________________________________________________________________________
+//
+class CElementalAUToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalAUToken);
+};
+
+//____________________________________________________________________________
+//
+class CAradaraExpressVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAradaraExpressVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CBallistaChargerVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CBallistaChargerVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CBomatBazaarBargeVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CBomatBazaarBargeVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CCultivatorsCaravanVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CCultivatorsCaravanVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CDemolitionStomperVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CDemolitionStomperVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CFleetwheelCruiserVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CFleetwheelCruiserVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class COvalchaseDragsterVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(COvalchaseDragsterVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CRenegadeFreighterVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CRenegadeFreighterVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CSkySkiffVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSkySkiffVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CSkysovereignConsulFlagshipVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSkysovereignConsulFlagshipVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CSmugglersCopterVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSmugglersCopterVehicleToken);
+};

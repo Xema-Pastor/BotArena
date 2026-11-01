@@ -115,6 +115,18 @@
 #define IDS_STRING64098                 64098
 #define IDS_STRING64099                 64099
 #define IDS_STRING64100                 64100
+#define IDS_STRING64101                 64101
+#define IDS_STRING64102                 64102
+#define IDS_STRING64103                 64103
+#define IDS_STRING64104                 64104
+#define IDS_STRING64105                 64105
+#define IDS_STRING64106                 64106
+#define IDS_STRING64107                 64107
+#define IDS_STRING64108                 64108
+#define IDS_STRING64109                 64109
+#define IDS_STRING64110                 64110
+#define IDS_STRING64111                 64111
+#define IDS_STRING64112                 64112
 #define IDI_MODULE                      64998
 #define IDI_LARGE_MODULE                64999
 

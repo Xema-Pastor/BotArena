@@ -68,6 +68,7 @@ CPlayer::CPlayer(CGame* pGame)
 	, m_OwnedCards(ZoneId::_OwnedCards, FALSE, FALSE, FALSE, this)
 	, s_hCard()
 	, detainedCard()
+	, m_nEnergyCounters(0)
 	, s_hTypes()
 	, s_hfromZones()
 	, s_htoZones()
@@ -1205,6 +1206,12 @@ void CPlayer::SetPoisonCounters(int value,BOOL replace)
 
 	if (m_nPoisonCounters>9)  m_bLostByPoison = TRUE;
 	UpdateLost();
+}
+
+void CPlayer::AddEnergyCounters(int nCount)
+{
+	int nEnergy = m_nEnergyCounters + nCount;
+	m_nEnergyCounters = nEnergy < 0 ? 0 : nEnergy;
 }
 
 void CPlayer::AddLifeLossTakenThisTurn(Life pLifeLost)

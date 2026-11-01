@@ -3258,6 +3258,32 @@ void CPoisonModifier::ApplyTo(CPlayer* pPlayer) const
 }
 //____________________________________________________________________________
 //
+void CEnergyModifier::ApplyTo(CPlayer* pPlayer) const
+{
+	__super::ApplyTo(pPlayer);
+
+	if (m_nCount == 0)
+		return;
+
+	pPlayer->AddEnergyCounters(m_nCount);
+
+	// The interface doesn't show player counters: the total is shown in a message
+	if (!m_pGame->IsThinking())
+	{
+		CString strMessage;
+		strMessage.Format(_T("%s %s %d energy (total: %d)"), pPlayer->GetPlayerName(),
+			m_nCount > 0 ? _T("gets") : _T("pays"), m_nCount > 0 ? m_nCount : -m_nCount, pPlayer->GetEnergyCounters());
+
+		m_pGame->Message(
+			strMessage,
+			pPlayer->IsComputer() ? m_pGame->GetComputerImage() : m_pGame->GetHumanImage(),
+			MessageImportance::High
+			);
+	}
+}
+
+//____________________________________________________________________________
+//
 void CFastCombatModifier::ApplyTo(CPlayer* pPlayer) const
 {
 	__super::ApplyTo(pPlayer);	

@@ -491,3 +491,217 @@ BOOL CCostConfigEntry::PayCost(CPlayer* pByPlayer) const
 
 	return bResult;
 }
+
+//____________________________________________________________________________
+//
+// Energy cost (Kaladesh)
+BOOL CPlayerEnergyCostEntry::PayCost(CPlayer* pByPlayer) const
+{
+	if (!m_pPlayer || m_pPlayer->GetEnergyCounters() < m_nEnergy)
+		return FALSE;
+
+	CEnergyModifier pModifier = CEnergyModifier(m_pPlayer->GetGame(), -m_nEnergy);
+	pModifier.ApplyTo(m_pPlayer);
+	return TRUE;
+}
+
+BOOL CPlayerEnergyCost::IsPlayable
+						(const CPlayer* pByPlayer,
+						  BOOL bIncludeTricks,
+						  BOOL bAssumeSufficientMana) const
+{
+	return pByPlayer->GetEnergyCounters() >= m_nEnergy;
+}
+
+bool CPlayerEnergyCost::GetConfigurations
+						(const CPlayer* pByPlayer, 
+						  BOOL bIncludeTricks, BOOL bSetNames,
+						  CostConfigurationArray& configurations,
+						  size_t start) const
+{
+	if (!IsPlayable(pByPlayer, bIncludeTricks, FALSE))
+		return false;
+
+	if (configurations.empty())
+		configurations.push_back(CCostConfigEntry());
+
+	for (size_t i = start; i < configurations.size(); ++i)
+	{
+		CCostConfigEntry& costConfig = configurations[i];
+		costConfig.GetCosts().pushBack(new OutType(m_pSourceCard->GetController(), m_nEnergy));
+
+		if (bSetNames)
+		{
+			CString strCostName;
+			strCostName.Format(_T("Pay %d energy"), m_nEnergy);
+			costConfig.GetCosts().back()->AppendToCostName(strCostName);
+		}
+	}
+	return true;
+}
+
+//____________________________________________________________________________
+//
+// Crew cost (Kaladesh)
+CCrewCostEntry::CCrewCostEntry()
+	: m_pCards(new CCountedCardContainer)
+{
+}
+
+CCrewCostEntry::CCrewCostEntry(const CCrewCostEntry& c)
+	: CAbstractCostEntry(c)
+	, m_pCards(new CCountedCardContainer(*c.m_pCards))
+{
+}
+
+CCrewCostEntry::CCrewCostEntry(const CCountedCardContainer& cards)
+	: m_pCards(new CCountedCardContainer(cards))
+{
+}
+
+CCrewCostEntry::~CCrewCostEntry()
+{
+	delete m_pCards;
+}
+
+CCrewCostEntry& CCrewCostEntry::operator=(const CCrewCostEntry& c)
+{
+	if (this != &c)
+	{
+		m_strCostName = c.m_strCostName;
+		*m_pCards = *c.m_pCards;
+	}
+	return *this;
+}
+
+bool CCrewCostEntry::IsSameCrew(const CCrewCostEntry& c) const
+{
+	return *m_pCards == *c.m_pCards;
+}
+
+BOOL CCrewCostEntry::PayCost(CPlayer* pByPlayer) const
+{
+	BOOL bResult = TRUE;
+	for (int i = 0; i < m_pCards->GetSize(); ++i)
+	{
+		CCard* pCard = m_pCards->GetAt(i);
+		if (pCard->GetZoneId() == ZoneId::Battlefield && pCard->GetController() == pByPlayer &&
+			!pCard->GetOrientation()->IsTapped())
+			bResult &= pCard->GetOrientation()->Tap();
+		else
+			bResult = FALSE;
+	}
+	return bResult;
+}
+
+void CCrewCost::GetCrewCreatures(const CPlayer* pByPlayer, std::vector<std::pair<int, CCard*> >& creatures) const
+{
+	const CZone* pBattlefield = pByPlayer->GetZoneById(ZoneId::Battlefield);
+	for (int i = 0; i < pBattlefield->GetSize(); ++i)
+	{
+		CCard* pCard = pBattlefield->GetAt(i);
+		if (pCard == m_pVehicle || !pCard->GetCardType().IsCreature() || pCard->GetOrientation()->IsTapped())
+			continue;
+
+		const CCreatureCard* pCreature = dynamic_cast<const CCreatureCard*>(pCard);
+		if (!pCreature)
+			pCreature = dynamic_cast<const CCreatureCard*>(pCard->GetIsAlsoA());
+		if (!pCreature)
+			continue;
+
+		int nPower = GET_INTEGER(pCreature->GetPower());
+		if (nPower <= 0)
+			continue;
+
+		// the strongest first
+		size_t j = 0;
+		while (j < creatures.size() && creatures[j].first >= nPower)
+			++j;
+		creatures.insert(creatures.begin() + j, std::make_pair(nPower, pCard));
+	}
+}
+
+// The groups of creatures with total power nPower or greater. The creatures are added from the strongest one and a
+// group is complete as soon as it reaches nPower, so each group is minimal (no creature can be left out).
+static void CollectCrews(const std::vector<std::pair<int, CCard*> >& creatures, size_t from, int nSum, int nPower,
+						 CCountedCardContainer& chosen, std::vector<CCountedCardContainer>& crews, size_t nMaxCrews)
+{
+	for (size_t i = from; i < creatures.size() && crews.size() < nMaxCrews; ++i)
+	{
+		chosen.AddCard(creatures[i].second, CardPlacement::Top);
+
+		int nNewSum = nSum + creatures[i].first;
+		if (nNewSum >= nPower)
+			crews.push_back(chosen);
+		else
+			CollectCrews(creatures, i + 1, nNewSum, nPower, chosen, crews, nMaxCrews);
+
+		chosen.RemoveCard(creatures[i].second);
+	}
+}
+
+BOOL CCrewCost::IsPlayable
+						(const CPlayer* pByPlayer,
+						  BOOL bIncludeTricks,
+						  BOOL bAssumeSufficientMana) const
+{
+	std::vector<std::pair<int, CCard*> > creatures;
+	GetCrewCreatures(pByPlayer, creatures);
+
+	int nTotal = 0;
+	for (size_t i = 0; i < creatures.size(); ++i)
+		nTotal += creatures[i].first;
+	return nTotal >= m_nPower;
+}
+
+bool CCrewCost::GetConfigurations
+						(const CPlayer* pByPlayer, 
+						  BOOL bIncludeTricks, BOOL bSetNames,
+						  CostConfigurationArray& configurations,
+						  size_t start) const
+{
+	std::vector<std::pair<int, CCard*> > creatures;
+	GetCrewCreatures(pByPlayer, creatures);
+
+	// A limited number of choices (fewer when the computer is thinking)
+	std::vector<CCountedCardContainer> crews;
+	CCountedCardContainer chosen;
+	CollectCrews(creatures, 0, 0, m_nPower, chosen, crews, pByPlayer->GetGame()->IsThinking() ? 2 : 12);
+	if (crews.empty())
+		return false;
+
+	if (configurations.empty())
+		configurations.push_back(CCostConfigEntry());
+
+	// One configuration for each group of creatures
+	const size_t end = configurations.size();
+	for (size_t i = start; i < end; ++i)
+	{
+		CCostConfigEntry original = configurations[i];
+		for (size_t k = 0; k < crews.size(); ++k)
+		{
+			size_t index = i;
+			if (k > 0)
+			{
+				configurations.push_back(original);
+				index = configurations.size() - 1;
+			}
+
+			CCostConfigEntry& costConfig = configurations[index];
+			costConfig.GetCosts().pushBack(new OutType(CCrewCostEntry(crews[k])));
+
+			if (bSetNames)
+			{
+				CString strCostName = _T("Crew: tap ");
+				for (int c = 0; c < crews[k].GetSize(); ++c)
+				{
+					if (c > 0)
+						strCostName += _T(", ");
+					strCostName += crews[k].GetAt(c)->GetCardName(TRUE);
+				}
+				costConfig.GetCosts().back()->AppendToCostName(strCostName);
+			}
+		}
+	}
+	return true;
+}

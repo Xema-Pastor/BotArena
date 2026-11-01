@@ -190,6 +190,9 @@ BEGIN
    IDS_STRING55087         "Eldrazi Horror (A)\n{1}\nCreature - Eldrazi Horror\nToken\n\n3/2"
    IDS_STRING55088         "Spider (E)\n{G}\nCreature - Spider\nToken\nReach\n1/2"
    IDS_STRING55089         "Human Wizard (A)\n{U}\nCreature - Human Wizard\nToken\n\n1/1"
+   IDS_STRING55090         "Servo (A)\n{1}\nArtifact Creature - Servo\nToken\n\n1/1"
+   IDS_STRING55091         "Construct (B)\n{1}\nArtifact Creature - Construct\nToken\n\n0/0"
+    IDS_STRING55092         "Beast (Q)\n{1}\nArtifact Creature - Beast\nToken\n\n6/6"
 END
 
 #endif    // English (United States) resources

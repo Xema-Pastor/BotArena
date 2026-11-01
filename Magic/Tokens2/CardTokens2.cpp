@@ -103,6 +103,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CEldraziHorrorAToken);
 		DEFINE_TOKEN(CSpiderEToken);
 		DEFINE_TOKEN(CHumanWizardAToken);
+		DEFINE_TOKEN(CServoAToken);
+		DEFINE_TOKEN(CConstructBToken);
+		DEFINE_TOKEN(CBeastQToken);
 	} while (false);
 
 	return cpCard;
@@ -1361,4 +1364,34 @@ CHumanWizardAToken::CHumanWizardAToken(CGame* pGame, UINT nID)
 {
 	AddCardType(CardType::Blue, CardType::_ColorMask);
 // Eldritch Moon version: used by Docent of Perfection.
+}
+
+//____________________________________________________________________________
+CServoAToken::CServoAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Servo"), CardType::_ArtifactCreature | CardType::Token,
+		CREATURE_TYPE(Servo), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+// Kaladesh version: used by Fabricate and the Servo makers.
+}
+
+//____________________________________________________________________________
+CConstructBToken::CConstructBToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Construct"), CardType::_ArtifactCreature | CardType::Token,
+		CREATURE_TYPE(Construct), nID,
+		_T(""),
+		Power(0), Life(0))
+{
+// Kaladesh version: used by Metallurgic Summonings (an X/X Construct: its power and toughness are set when created).
+}
+
+//____________________________________________________________________________
+CBeastQToken::CBeastQToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Beast"), CardType::_ArtifactCreature | CardType::Token,
+		CREATURE_TYPE(Beast), nID,
+		_T(""),
+		Power(6), Life(6))
+{
+// Kaladesh version: used by Architect of the Untamed.
 }

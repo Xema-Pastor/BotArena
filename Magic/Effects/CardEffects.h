@@ -380,6 +380,34 @@ protected:
 
 //____________________________________________________________________________
 //
+class CChandraTorchOfDefianceEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CChandraTorchOfDefianceEmblemToken);
+
+private:
+	bool SetTriggerContext(CTriggeredModifyLifeAbility::TriggerContextType& triggerContext, CCard* pCard) const;
+};
+
+//____________________________________________________________________________
+//
+class CDovinBaanEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CDovinBaanEmblemToken);
+};
+
+//____________________________________________________________________________
+//
+class CNissaVitalForceEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CNissaVitalForceEmblemToken);
+
+private:
+	bool SetTriggerContext(CTriggeredDrawCardAbility::TriggerContextType& triggerContext,
+						   CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType) const;
+};
+
+//____________________________________________________________________________
+//
 class CLatNamsLegacyEffectToken : public CEffectCard
 {
 	DECLARE_CARD_CSTOR(CLatNamsLegacyEffectToken);

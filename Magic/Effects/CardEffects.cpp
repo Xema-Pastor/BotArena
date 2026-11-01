@@ -117,6 +117,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CArlinnEmbracedByTheMoonEmblemToken);
 		DEFINE_TOKEN(CLilianaTheLastHopeEmblemToken);
 		DEFINE_TOKEN(COtherworldlyOutburstEffectToken);
+		DEFINE_TOKEN(CChandraTorchOfDefianceEmblemToken);
+		DEFINE_TOKEN(CDovinBaanEmblemToken);
+		DEFINE_TOKEN(CNissaVitalForceEmblemToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -1720,6 +1723,86 @@ bool COtherworldlyOutburstEffectToken::BeforeResolution(CAbilityAction* pAction)
 bool COtherworldlyOutburstEffectToken::SetTriggerContextCleanup(CTriggeredMoveCardAbility::TriggerContextType& triggerContext, CNode* pToNode)
 {
 	return GetZone()->GetZoneId() == ZoneId::_Effects;
+}
+
+//____________________________________________________________________________
+//
+CChandraTorchOfDefianceEmblemToken::CChandraTorchOfDefianceEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Chandra, Torch of Defiance Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Whenever you cast a spell, this emblem deals 5 damage to any target.
+	typedef
+		TTriggeredTargetAbility< CTriggeredModifyLifeAbility, CWhenSpellCast > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetPredefinedFilter(CCardFilter::GetFilter(_T("cards")));
+	cpAbility->GetLifeModifier().SetLifeDelta(Life(-5));
+	cpAbility->GetLifeModifier().SetDamageType(DamageType::AbilityDamage | DamageType::NonCombatDamage);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new AnyCreatureComparer);
+	cpAbility->GetTargeting().SetIncludePlayers(TRUE);
+	cpAbility->GetTargeting().SetDefaultCharacteristic(Characteristic::Negative);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CChandraTorchOfDefianceEmblemToken::SetTriggerContext));
+	cpAbility->AddAbilityTag(AbilityTag::DamageSource);
+
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CChandraTorchOfDefianceEmblemToken::SetTriggerContext(CTriggeredModifyLifeAbility::TriggerContextType& triggerContext, CCard* pCard) const
+{
+	return (this->GetZone()->GetZoneId() == ZoneId::_Effects);
+}
+
+//____________________________________________________________________________
+//
+CDovinBaanEmblemToken::CDovinBaanEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Dovin Baan Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Your opponents can't untap more than two permanents during their untap steps. (as Static Orb)
+	counted_ptr<CPlayerEffectEnchantment> cpAbility(
+		::CreateObject<CPlayerEffectEnchantment>(this, PlayerEffectType::UntapLimit, 2));
+
+	cpAbility->SetAffectOpponentsOnly();
+	cpAbility->SetEnchantmentActiveIn(ZoneId::_Effects);
+	AddAbility(cpAbility.GetPointer());
+}
+
+//____________________________________________________________________________
+//
+CNissaVitalForceEmblemToken::CNissaVitalForceEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Nissa, Vital Force Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Whenever a land you control enters, you may draw a card.
+	typedef
+		TTriggeredAbility< CTriggeredDrawCardAbility, CWhenCardMoved > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this,
+		ZoneId::_AllZones, ZoneId::Battlefield));
+
+	cpAbility->GetTrigger().SetToControllerOnly(TRUE);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetFilterType(CCardFilterHelper::FilterType::Custom);
+	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(new CardTypeComparer(CardType::_Land, false));
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Optional);
+	cpAbility->SetDrawCount(1);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CNissaVitalForceEmblemToken::SetTriggerContext));
+
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CNissaVitalForceEmblemToken::SetTriggerContext(CTriggeredDrawCardAbility::TriggerContextType& triggerContext,
+													 CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType) const
+{
+	return (this->GetZone()->GetZoneId() == ZoneId::_Effects);
 }
 
 //____________________________________________________________________________

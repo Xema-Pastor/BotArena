@@ -201,6 +201,18 @@ BEGIN
     IDS_STRING64098         "Elemental (AR)\n{BG}\nCreature - Elemental\nToken\nDeathtouch\n2/2"
     IDS_STRING64099         "Elemental (AS)\n{RW}\nCreature - Elemental\nToken\nDouble strike\n2/1"
     IDS_STRING64100         "Elemental (AT)\n{UR}\nCreature - Elemental\nToken\n{0}: Switch this creature's power and toughness until end of turn.\n1/4"
+    IDS_STRING64101         "Elemental (AU)\n{G}\nCreature - Elemental\nToken\nHaste\n5/5"
+    IDS_STRING64102         "Aradara Express (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nMenace\n8/6"
+    IDS_STRING64103         "Ballista Charger (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nWhenever this Vehicle attacks, it deals 1 damage to any target.\n6/6"
+    IDS_STRING64104         "Bomat Bazaar Barge (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n5/5"
+    IDS_STRING64105         "Cultivator's Caravan (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n5/5"
+    IDS_STRING64106         "Demolition Stomper (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n10/7"
+    IDS_STRING64107         "Fleetwheel Cruiser (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nTrample, haste\n5/3"
+    IDS_STRING64108         "Ovalchase Dragster (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nTrample, haste\n6/1"
+    IDS_STRING64109         "Renegade Freighter (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nWhenever this Vehicle attacks, it gets +1/+1 and gains trample until end of turn.\n4/3"
+    IDS_STRING64110         "Sky Skiff (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nFlying\n2/3"
+    IDS_STRING64111         "Skysovereign, Consul Flagship (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nFlying\rWhenever Skysovereign attacks, it deals 3 damage to target creature an opponent controls.\n6/5"
+    IDS_STRING64112         "Smuggler's Copter (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nFlying\rWhenever this Vehicle attacks or blocks, you may draw a card. If you do, discard a card.\n3/3"
 END
 
 

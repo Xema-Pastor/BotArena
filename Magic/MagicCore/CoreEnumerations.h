@@ -1531,6 +1531,10 @@ struct CORE_EXPORT SingleCreatureType
 		Jackal,		// Oracle types (appended)
 		Phyrexian,
 		Noble,
+		Servo,
+		Aetherborn,
+		Pilot,
+		Monkey,
 
 		_SingleTypeCount,
 	};
@@ -1583,6 +1587,8 @@ struct CORE_EXPORT PlaneswalkerType
 		Nixilis,
 		Arlinn,
 		Nahiri,
+		Dovin,
+		Saheeli,
 
 		_SubtypeCount,
 	};

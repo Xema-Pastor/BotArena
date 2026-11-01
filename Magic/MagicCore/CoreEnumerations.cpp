@@ -554,7 +554,11 @@ const LPCTSTR SingleCreatureType::s_Text[SingleCreatureType::_SingleTypeCount] =
 	_T("Mole"),
 	_T("Jackal"),
 	_T("Phyrexian"),
-	_T("Noble")
+	_T("Noble"),
+	_T("Servo"),
+	_T("Aetherborn"),
+	_T("Pilot"),
+	_T("Monkey")
 };
 
 //____________________________________________________________________________
@@ -587,7 +591,9 @@ const LPCTSTR PlaneswalkerType::s_Text[PlaneswalkerType::_SubtypeCount] =
 	_T("Xenagos"),
 	_T("Nixilis"),
 	_T("Arlinn"),
-	_T("Nahiri")
+	_T("Nahiri"),
+	_T("Dovin"),
+	_T("Saheeli")
 };
 //____________________________________________________________________________
 //
