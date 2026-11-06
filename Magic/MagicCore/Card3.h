@@ -302,6 +302,80 @@ protected:
 };
 //____________________________________________________________________________
 //
+// Aftermath (Amonkhet): a split card whose first half is cast only from the hand and whose second half
+// ("Aftermath") is cast only from the graveyard. A card cast with the second half is exiled when it leaves the
+// stack, as with Flashback (see CStack). The card adds one spell for each half (as Far // Away in Dragon's Maze)
+// and calls SetFirstHalf and SetSecondHalf.
+#define AFTERMATH_ABILITY_NAME	_T("Aftermath")
+
+class CORE_EXPORT CAftermathSupport
+{
+public:
+	// "Cast this spell only from your hand"
+	static void SetFirstHalf(CSpell* pSpell);
+	// "Aftermath (Cast this spell only from your graveyard. Then exile it.)". strName: the half's name, for the
+	// ability text (e.g. "Leave")
+	static void SetSecondHalf(CSpell* pSpell, LPCTSTR strName);
+};
+
+//____________________________________________________________________________
+//
+// Embalm (Amonkhet): "{cost}, Exile this card from your graveyard: Create a token that's a copy of it, except it's a
+// white Zombie <types> with no mana cost. Embalm only as a sorcery."
+// Eternalize (Hour of Devastation): the same, except the token is a 4/4 black Zombie.
+// The card keeps a CEmbalmSupport member and calls AddEmbalmAbility or AddEternalizeAbility.
+// Note: the token keeps the printed mana cost (only matters for its mana value).
+class CORE_EXPORT CEmbalmSupport
+{
+public:
+	CEmbalmSupport(CCard* pCard);
+	virtual ~CEmbalmSupport() {}
+
+	CAbility* AddEmbalmAbility(LPCTSTR strCost);
+	CAbility* AddEternalizeAbility(LPCTSTR strCost);
+
+	// Creates the token copy of pCard for pController (also for other effects, e.g. "create a token that's a copy
+	// of it, except it's a white Zombie"). bEternalize: a 4/4 black Zombie instead of a white one.
+	static void CreateZombieCopy(CCard* pCard, CPlayer* pController, BOOL bEternalize);
+
+protected:
+	CAbility* AddAbility(LPCTSTR strCost, BOOL bEternalize);
+	bool OnEmbalmResolving(CAbilityAction* pAction);
+	bool OnEternalizeResolving(CAbilityAction* pAction);
+
+	CCard* m_pCard;
+	CCardFilter m_ThisCardFilter;
+};
+
+//____________________________________________________________________________
+//
+// Exert (Amonkhet): "You may exert this creature as it attacks. When you do, <effect>. (An exerted creature won't
+// untap during your next untap step.)"
+// The choice is made as an optional attack trigger. Exerting fires EXERT_TRIGGER_ID on the creature (for "whenever
+// you exert a creature", with a CSpecialTrigger listening to the controller).
+// - AddExertAbility: for effects without targets; the callback (optional) runs after exerting. Returns the ability
+//   (e.g. to set its text).
+// - For effects with targets, the card adds its own optional attack trigger and calls Exert() when it resolves.
+class CORE_EXPORT CExertSupport
+{
+public:
+	CExertSupport(CCard* pCreature);
+	virtual ~CExertSupport() {}
+
+	CAbility* AddExertAbility(LPCTSTR strText, CAbility::ResolutionStartedCallback callback = CAbility::ResolutionStartedCallback());
+
+	// The creature won't untap during its controller's next untap step; fires EXERT_TRIGGER_ID
+	static void Exert(CCard* pCreature);
+
+protected:
+	bool OnExertResolving(CAbilityAction* pAction);
+
+	CCard* m_pCreature;
+	CAbility::ResolutionStartedCallback m_Callback;
+};
+
+//____________________________________________________________________________
+//
 class CORE_EXPORT CChancellorCreatureCard : public CCreatureCard
 {
 protected:

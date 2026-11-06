@@ -869,3 +869,17 @@ protected:
 
 //____________________________________________________________________________
 //
+class CAnimatedGideonOfTheTrialsToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAnimatedGideonOfTheTrialsToken);
+};
+
+//____________________________________________________________________________
+//
+class CAnimatedGideonMartialParagonToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAnimatedGideonMartialParagonToken);
+};
+
+//____________________________________________________________________________
+//

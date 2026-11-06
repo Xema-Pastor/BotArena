@@ -59,7 +59,8 @@ void CStack::AddAction(CStackAbilityAction* pAction)
 
 		if (pAbility->IsMorph())
 			(reinterpret_cast<CMorphCreatureCard*>(pCard))->Morph();
-		else if (pAction->IsFlashback() || pAbility->GetAbilityName() == _T("Flashback"))
+		else if (pAction->IsFlashback() || pAbility->GetAbilityName() == _T("Flashback") ||
+				 pAbility->GetAbilityName() == AFTERMATH_ABILITY_NAME)	// Aftermath (Amonkhet): exiled like Flashback
 			pCard->GetReplacementKeyword()->AddFlashback(TRUE);
 
 		pCard->SetLastCastingCostConfigEntry(pAction->GetCostConfigEntry());

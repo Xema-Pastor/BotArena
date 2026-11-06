@@ -210,6 +210,7 @@
 #define MONSTROUS_TRIGGER_ID			60345
 #define SCRY_TRIGGER_ID					60346
 #define SURVEIL_TRIGGER_ID				60347
+#define EXERT_TRIGGER_ID				60348
 #define RENOWNED_TRIGGER_ID				60345
 
 //____________________________________________________________________________

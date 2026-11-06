@@ -194,6 +194,11 @@ BEGIN
    IDS_STRING55091         "Construct (B)\n{1}\nArtifact Creature - Construct\nToken\n\n0/0"
     IDS_STRING55092         "Beast (Q)\n{1}\nArtifact Creature - Beast\nToken\n\n6/6"
     IDS_STRING55093         "Etherium Cell\n{1}\nArtifact\nToken\n{T}, Sacrifice this token: Add one mana of any color."
+    IDS_STRING55094         "Warrior (E)\n{W}\nCreature - Warrior\nToken\nVigilance\n1/1"
+    IDS_STRING55095         "Wurm (I)\n{G}\nCreature - Wurm\nToken\n\n5/5"
+    IDS_STRING55096         "Beast (R)\n{G}\nCreature - Beast\nToken\n\n4/2"
+    IDS_STRING55097         "Hippo (C)\n{G}\nCreature - Hippo\nToken\n\n3/3"
+    IDS_STRING55098         "Cat (G)\n{W}\nCreature - Cat\nToken\nLifelink\n1/1"
 END
 
 #endif    // English (United States) resources

@@ -71,6 +71,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CElementalAPToken);
 		DEFINE_TOKEN(CElementalAQToken);
 		DEFINE_TOKEN(CAnimatedGideonAllyOfZendikarToken);
+		DEFINE_TOKEN(CAnimatedGideonOfTheTrialsToken);
+		DEFINE_TOKEN(CAnimatedGideonMartialParagonToken);
 		DEFINE_TOKEN(CElementalARToken);
 		DEFINE_TOKEN(CElementalASToken);
 		DEFINE_TOKEN(CElementalATToken);
@@ -1964,6 +1966,42 @@ bool CUntetheredExpressVehicleToken::BeforeCounter(CAbilityAction* pAction) cons
 		pModifier.ApplyTo(pVehicle);
 	}
 	return true;
+}
+
+//____________________________________________________________________________
+//
+CAnimatedGideonOfTheTrialsToken::CAnimatedGideonOfTheTrialsToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Animated Gideon of the Trials"), CardType::Creature,
+		CREATURE_TYPE2(Human, Soldier), nID,
+		_T("1") WHITE_MANA_TEXT WHITE_MANA_TEXT,
+		Power(4), Life(4))
+{
+	Life prevent(PreventionType::PreventAllDamage);
+	CDamagePreventionEntry entry(prevent);
+	entry.SetOneTurnOnly(FALSE);
+
+	GetDamagePrevention().AddDamagePreventionEntry(entry);
+	GetCardKeyword()->AddIndestructible(FALSE);
+
+// Animation of AKH Gideon of the Trials (as Animated Gideon, Ally of Zendikar)
+}
+
+//____________________________________________________________________________
+//
+CAnimatedGideonMartialParagonToken::CAnimatedGideonMartialParagonToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Animated Gideon, Martial Paragon"), CardType::Creature,
+		CREATURE_TYPE2(Human, Soldier), nID,
+		_T("4") WHITE_MANA_TEXT,
+		Power(5), Life(5))
+{
+	Life prevent(PreventionType::PreventAllDamage);
+	CDamagePreventionEntry entry(prevent);
+	entry.SetOneTurnOnly(FALSE);
+
+	GetDamagePrevention().AddDamagePreventionEntry(entry);
+	GetCardKeyword()->AddIndestructible(FALSE);
+
+// Animation of AKH Gideon, Martial Paragon (as Animated Gideon, Ally of Zendikar)
 }
 
 //____________________________________________________________________________

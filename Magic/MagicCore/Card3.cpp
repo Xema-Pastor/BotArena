@@ -517,6 +517,188 @@ void CCrewSupport::Animate(CPlayer* pController)
 
 //____________________________________________________________________________
 //
+void CAftermathSupport::SetFirstHalf(CSpell* pSpell)
+{
+	pSpell->SetHandOnly();
+}
+
+void CAftermathSupport::SetSecondHalf(CSpell* pSpell, LPCTSTR strName)
+{
+	pSpell->SetGraveyardOnly();
+	pSpell->SetMainSpell(FALSE);
+	pSpell->SetAbilityName(AFTERMATH_ABILITY_NAME);
+
+	CString strText;
+	strText.Format(_T("%s (Aftermath). Casts"), strName);
+	pSpell->SetAbilityText(strText);
+}
+
+//____________________________________________________________________________
+//
+CEmbalmSupport::CEmbalmSupport(CCard* pCard)
+	: m_pCard(pCard)
+{
+	m_ThisCardFilter.AddComparer(new SpecificCardComparer(pCard));
+}
+
+CAbility* CEmbalmSupport::AddEmbalmAbility(LPCTSTR strCost)
+{
+	return AddAbility(strCost, FALSE);
+}
+
+CAbility* CEmbalmSupport::AddEternalizeAbility(LPCTSTR strCost)
+{
+	return AddAbility(strCost, TRUE);
+}
+
+CAbility* CEmbalmSupport::AddAbility(LPCTSTR strCost, BOOL bEternalize)
+{
+	// "{cost}, Exile this card from your graveyard: ... Activate only as a sorcery." (as Scavenge in Return to Ravnica)
+	counted_ptr<CActivatedAbility<CGenericSpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CGenericSpell>>(m_pCard, strCost));
+
+	cpAbility->SetGraveyardOnly();
+	cpAbility->GetCost().AddExileGraveyardCardCost(1, &m_ThisCardFilter);
+	cpAbility->SetAbilityType((cpAbility->GetAbilityType() & ~AbilityType::Activated) | AbilityType::AsSorcery);
+
+	if (bEternalize)
+	{
+		cpAbility->SetAbilityText(_T("Eternalize (create a 4/4 black Zombie token copy of this card). Activates"));
+		cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CEmbalmSupport::OnEternalizeResolving));
+	}
+	else
+	{
+		cpAbility->SetAbilityText(_T("Embalm (create a white Zombie token copy of this card). Activates"));
+		cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CEmbalmSupport::OnEmbalmResolving));
+	}
+
+	m_pCard->AddAbility(cpAbility.GetPointer());
+	return cpAbility.GetPointer();
+}
+
+bool CEmbalmSupport::OnEmbalmResolving(CAbilityAction* pAction)
+{
+	CreateZombieCopy(m_pCard, pAction->GetController(), FALSE);
+	return true;
+}
+
+bool CEmbalmSupport::OnEternalizeResolving(CAbilityAction* pAction)
+{
+	CreateZombieCopy(m_pCard, pAction->GetController(), TRUE);
+	return true;
+}
+
+void CEmbalmSupport::CreateZombieCopy(CCard* pCard, CPlayer* pController, BOOL bEternalize)
+{
+	CGame* pGame = pCard->GetGame();
+
+	// Doubling Season, Primal Vigor... (as CCardCopyModifier)
+	int nTokens = 1;
+	int nMultiplier = 0;
+	if (pController->GetPlayerEffect().HasPlayerEffectSum(PlayerEffectType::DoubleTokens, nMultiplier, FALSE))
+		nTokens <<= nMultiplier;
+	if (pController->GetPlayerEffect().HasPlayerEffectSum(PlayerEffectType::DoubleTokensAlways, nMultiplier, FALSE))
+		nTokens <<= nMultiplier;
+
+	for (int i = 0; i < nTokens; ++i)
+	{
+		counted_ptr<CCard> cpToken(CCardFactory::GetInstance()->CreateCard(pGame, pCard->GetOriginalPrintedCardName(), pCard->GetImageID()));
+		if (!cpToken.GetPointer())
+			return;
+
+		pController->GetZoneById(ZoneId::_Tokens)->AddCard(cpToken.GetPointer());
+		cpToken->AddCardType(CardType::Token, CardType::Null, CardTypeEntry::Permanent);
+		cpToken->AddCardType(CardType::Copy, CardType::Null, CardTypeEntry::Permanent);
+
+		// The exceptions of the copy are part of its copiable values, so they are set before it enters
+		cpToken->AddCardType(bEternalize ? CardType::Black : CardType::White, CardType::_ColorMask, CardTypeEntry::Permanent);
+
+		CCreatureCard* pCreature = dynamic_cast<CCreatureCard*>(cpToken.GetPointer());
+		if (pCreature)
+		{
+			pCreature->GetCreatureType().AddType(SingleCreatureType::Zombie);
+			if (bEternalize)
+			{
+				pCreature->SetPrintedPower(Power(4));
+				pCreature->SetPrintedToughness(Life(4));
+			}
+		}
+
+		cpToken->Move(pController->GetZoneById(ZoneId::Battlefield), pController, MoveType::Others);
+	}
+}
+
+//____________________________________________________________________________
+//
+CExertSupport::CExertSupport(CCard* pCreature)
+	: m_pCreature(pCreature)
+{
+}
+
+CAbility* CExertSupport::AddExertAbility(LPCTSTR strText, CAbility::ResolutionStartedCallback callback)
+{
+	m_Callback = callback;
+
+	// "You may exert this creature as it attacks. When you do, ..." (as an optional attack trigger)
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfAttackedBlocked,
+						   CWhenSelfAttackedBlocked::AttackEventCallback,
+						   &CWhenSelfAttackedBlocked::SetAttackingEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(m_pCreature));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Optional);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CExertSupport::OnExertResolving));
+
+	CString strAbilityText;
+	strAbilityText.Format(_T("Exert: %s"), strText);
+	cpAbility->SetAbilityText(strAbilityText);
+
+	m_pCreature->AddAbility(cpAbility.GetPointer());
+	return cpAbility.GetPointer();
+}
+
+bool CExertSupport::OnExertResolving(CAbilityAction* pAction)
+{
+	Exert(m_pCreature);
+
+	if (!m_Callback.empty())
+		return m_Callback(pAction);
+	return true;
+}
+
+void CExertSupport::Exert(CCard* pCreature)
+{
+	if (pCreature->GetZoneId() != ZoneId::Battlefield)
+		return;
+
+	// It won't untap during its controller's next untap step (as Aether Revolt's SkipNextUntap)
+	CScheduledCardModifier untapModifier = CScheduledCardModifier(pCreature->GetGame(),
+		new CCardKeywordModifier(CardKeyword::NoUntapInUntapPhase, TRUE, FALSE),
+		TurnNumberDelta(-1), NodeId::UpkeepStep, true, CScheduledCardModifier::Operation::ApplyToNowRemoveLater,
+		CScheduledCardModifier::DeltaOption::CustomPlayerTurn, pCreature->GetController());
+	untapModifier.ApplyTo(pCreature);
+
+	CGame* pGame = pCreature->GetGame();
+	if (!pGame->IsThinking())
+	{
+		CPlayer* pPlayer = pCreature->GetController();
+		CString strMessage;
+		strMessage.Format(_T("%s exerts %s"), pPlayer->GetPlayerName(), pCreature->GetCardName(TRUE));
+		pGame->Message(
+			strMessage,
+			pPlayer->IsComputer() ? pGame->GetComputerImage() : pGame->GetHumanImage(),
+			MessageImportance::High
+			);
+	}
+
+	// "Whenever you exert a creature"
+	CSpecialEffectModifier exertEffect(pCreature, EXERT_TRIGGER_ID);
+	exertEffect.ApplyTo(pCreature);
+}
+
+//____________________________________________________________________________
+//
 CChancellorCreatureCard::CChancellorCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
 										 LPCTSTR strCostText, Power nPower, Life nToughness)
 	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)

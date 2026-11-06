@@ -220,6 +220,8 @@ BEGIN
     IDS_STRING64117         "Mobile Garrison (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nWhenever this Vehicle attacks, untap another target artifact or creature you control.\n3/4"
     IDS_STRING64118         "Peacewalker Colossus (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n6/6"
     IDS_STRING64119         "Untethered Express (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nTrample\rWhenever this Vehicle attacks, put a +1/+1 counter on it.\n4/4"
+    IDS_STRING64120         "Animated Gideon of the Trials\n{1WW}\nCreature - Human Soldier\nToken\nIndestructible\rPrevent all damage that would be dealt to Gideon of the Trials this turn.\n4/4"
+    IDS_STRING64121         "Animated Gideon, Martial Paragon\n{4W}\nCreature - Human Soldier\nToken\nIndestructible\rPrevent all damage that would be dealt to Gideon, Martial Paragon this turn.\n5/5"
 END
 
 

@@ -107,6 +107,11 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CConstructBToken);
 		DEFINE_TOKEN(CBeastQToken);
 		DEFINE_TOKEN(CEtheriumCellToken);
+		DEFINE_TOKEN(CWarriorEToken);
+		DEFINE_TOKEN(CWurmIToken);
+		DEFINE_TOKEN(CBeastRToken);
+		DEFINE_TOKEN(CHippoCToken);
+		DEFINE_TOKEN(CCatGToken);
 	} while (false);
 
 	return cpCard;
@@ -1415,4 +1420,61 @@ CEtheriumCellToken::CEtheriumCellToken(CGame* pGame, UINT nID)
 		AddAbility(cpAbility.GetPointer());
 	}
 // Aether Revolt version: used by Tezzeret the Schemer.
+}
+//____________________________________________________________________________
+//
+CWarriorEToken::CWarriorEToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Warrior"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Warrior), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+	GetCreatureKeyword()->AddVigilance(FALSE);
+// Amonkhet version (1/1 white Warrior with vigilance): used by Oketra's Monument.
+}
+//____________________________________________________________________________
+//
+CWurmIToken::CWurmIToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Wurm"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Wurm), nID,
+		_T(""),
+		Power(5), Life(5))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Amonkhet version: used by Sandwurm Convergence.
+}
+//____________________________________________________________________________
+//
+CBeastRToken::CBeastRToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Beast"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Beast), nID,
+		_T(""),
+		Power(4), Life(2))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Amonkhet version: used by Trial of Strength.
+}
+//____________________________________________________________________________
+//
+CHippoCToken::CHippoCToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Hippo"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Hippo), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Amonkhet version: used by Mouth // Feed.
+}
+//____________________________________________________________________________
+//
+CCatGToken::CCatGToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Cat"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Cat), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+	GetCardKeyword()->AddLifelink(FALSE);
+// Amonkhet version (1/1 white Cat with lifelink): used by Regal Caracal.
 }

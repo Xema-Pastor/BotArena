@@ -663,3 +663,38 @@ class CEtheriumCellToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CEtheriumCellToken);
 };
+
+//____________________________________________________________________________
+//
+class CWarriorEToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CWarriorEToken);
+};
+
+//____________________________________________________________________________
+//
+class CWurmIToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CWurmIToken);
+};
+
+//____________________________________________________________________________
+//
+class CBeastRToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CBeastRToken);
+};
+
+//____________________________________________________________________________
+//
+class CHippoCToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CHippoCToken);
+};
+
+//____________________________________________________________________________
+//
+class CCatGToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CCatGToken);
+};
