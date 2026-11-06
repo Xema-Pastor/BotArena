@@ -2898,7 +2898,87 @@ void CZoneModifier::ApplyTo(CPlayer* pPlayer) const
 	{
 		for (int j = fromCards.GetSize() - 1; j >= 0; --j)
 			fromCards.GetAt(j)->Move(pReorderToZone, pPlayer, m_ReorderToMoveType, CardPlacement::Bottom);
-	}	
+	}
+}
+
+//____________________________________________________________________________
+//
+CScryModifier::CScryModifier(CGame* pGame, int nCount, CCard* pSource)
+	: CDrawCardModifier(pGame, MinimumValue(nCount), MaximumValue(nCount))
+	, m_pSource(pSource)
+{
+	// Nothing goes to the hand
+	GetSelection(0).nMinSelectionCount = MinimumValue(0);
+	GetSelection(0).nMaxSelectionCount = MaximumValue(0);
+	GetSelection(0).moveType = MoveType::Others;
+
+	// Select any number of them to put on the bottom
+	AddSelection(MinimumValue(0), MaximumValue(nCount),
+		RoleType::PrimaryPlayer,		// select by
+		RoleType::PrimaryPlayer,		// reveal to
+		NULL,							// any cards
+		ZoneId::Library,				// if selected, move cards to
+		RoleType::PrimaryPlayer,		// this player's library
+		CardPlacement::Bottom,			// put selected cards on the bottom
+		MoveType::Others,				// move type
+		RoleType::PrimaryPlayer);		// order selected cards by this player
+
+	// And put the rest on top in any order
+	SetReorderInformation(true, ZoneId::Library, RoleType::PrimaryPlayer, CardPlacement::Top);
+}
+
+void CScryModifier::ApplyTo(CPlayer* pPlayer) const
+{
+	if (m_nCount <= 0)
+		return;
+
+	__super::ApplyTo(pPlayer);
+
+	if (m_pSource)
+	{
+		CSpecialEffectModifier scryEffect(m_pSource, SCRY_TRIGGER_ID);
+		scryEffect.ApplyTo(m_pSource);
+	}
+}
+
+//____________________________________________________________________________
+//
+CSurveilModifier::CSurveilModifier(CGame* pGame, int nCount, CCard* pSource)
+	: CDrawCardModifier(pGame, MinimumValue(nCount), MaximumValue(nCount))
+	, m_pSource(pSource)
+{
+	// Nothing goes to the hand
+	GetSelection(0).nMinSelectionCount = MinimumValue(0);
+	GetSelection(0).nMaxSelectionCount = MaximumValue(0);
+	GetSelection(0).moveType = MoveType::Others;
+
+	// Select any number of them to put into the graveyard
+	AddSelection(MinimumValue(0), MaximumValue(nCount),
+		RoleType::PrimaryPlayer,		// select by
+		RoleType::PrimaryPlayer,		// reveal to
+		NULL,							// any cards
+		ZoneId::Graveyard,				// if selected, move cards to
+		RoleType::PrimaryPlayer,		// this player's graveyard
+		CardPlacement::Top,				// put selected cards on top of the graveyard
+		MoveType::Others,				// move type
+		RoleType::PrimaryPlayer);		// order selected cards by this player
+
+	// And put the rest on top of the library in any order
+	SetReorderInformation(true, ZoneId::Library, RoleType::PrimaryPlayer, CardPlacement::Top);
+}
+
+void CSurveilModifier::ApplyTo(CPlayer* pPlayer) const
+{
+	if (m_nCount <= 0)
+		return;
+
+	__super::ApplyTo(pPlayer);
+
+	if (m_pSource)
+	{
+		CSpecialEffectModifier surveilEffect(m_pSource, SURVEIL_TRIGGER_ID);
+		surveilEffect.ApplyTo(m_pSource);
+	}
 }
 
 //____________________________________________________________________________

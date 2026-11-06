@@ -4684,35 +4684,6 @@ CWeirdedVampireCard::CWeirdedVampireCard(CGame* pGame, UINT nID)
 //
 // Blue creatures
 
-// Scry N (as in Shadows over Innistrad)
-static void ApplyScry(CGame* pGame, CPlayer* pPlayer, CCard* pSource, int nCount)
-{
-	CZoneModifier* pModifier = new CDrawCardModifier(pGame, MinimumValue(nCount), MaximumValue(nCount));
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(nCount), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on the bottom
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true,
-			ZoneId::Library,
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-	pModifier->ApplyTo(pPlayer);
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(pSource, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(pSource);
-}
-
 // Prowess (as in Khans of Tarkir)
 static void AddProwess(CCreatureCard* pCard)
 {
@@ -4896,7 +4867,7 @@ CGeistOfTheArchivesCard::CGeistOfTheArchivesCard(CGame* pGame, UINT nID)
 
 bool CGeistOfTheArchivesCard::BeforeResolution(CAbilityAction* pAction)
 {
-	ApplyScry(GetGame(), pAction->GetController(), this, 1);
+	CScryModifier(GetGame(), 1, this).ApplyTo(pAction->GetController());
 	return true;
 }
 

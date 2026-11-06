@@ -479,35 +479,6 @@ bool CSequesteredStashCard::BeforeResolution(CAbilityAction* pAction) const
 //
 // Planeswalkers
 
-// Scry N (as in Shadows over Innistrad)
-static void ApplyScry(CGame* pGame, CPlayer* pPlayer, CCard* pSource, int nCount)
-{
-	CZoneModifier* pModifier = new CDrawCardModifier(pGame, MinimumValue(nCount), MaximumValue(nCount));
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(nCount), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on the bottom
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true,
-			ZoneId::Library,
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-	pModifier->ApplyTo(pPlayer);
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(pSource, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(pSource);
-}
-
 // The source deals nDamage damage to each opponent of pPlayer
 static void DamageEachOpponent(CCard* pSource, CPlayer* pPlayer, int nDamage)
 {
@@ -941,7 +912,7 @@ CSaheeliRaiCard::CSaheeliRaiCard(CGame* pGame, UINT nID)
 bool CSaheeliRaiCard::BeforeResolution1(CAbilityAction* pAction)
 {
 	CPlayer* pController = pAction->GetController();
-	ApplyScry(GetGame(), pController, this, 1);
+	CScryModifier(GetGame(), 1, this).ApplyTo(pController);
 	DamageEachOpponent(this, pController, 1);
 	return true;
 }
@@ -1350,7 +1321,7 @@ CGlassblowersPuzzleknotCard::CGlassblowersPuzzleknotCard(CGame* pGame, UINT nID)
 bool CGlassblowersPuzzleknotCard::BeforeResolution(CAbilityAction* pAction)
 {
 	CPlayer* pController = pAction->GetController();
-	ApplyScry(GetGame(), pController, this, 2);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pController);
 	GetEnergy(this, pController, 2);
 	return true;
 }
@@ -2514,7 +2485,7 @@ bool CHarshScrutinyCard::BeforeResolution(CAbilityAction* pAction)
 			m_CardSelection.AddSelectionRequest(entries, 1, 1, this, pController);
 	}
 
-	ApplyScry(GetGame(), pController, this, 1);
+	CScryModifier(GetGame(), 1, this).ApplyTo(pController);
 	return true;
 }
 
@@ -3466,7 +3437,7 @@ CGlimmerOfGeniusCard::CGlimmerOfGeniusCard(CGame* pGame, UINT nID)
 bool CGlimmerOfGeniusCard::BeforeResolution(CAbilityAction* pAction) const
 {
 	CPlayer* pController = pAction->GetController();
-	ApplyScry(GetGame(), pController, (CCard*)this, 2);
+	CScryModifier(GetGame(), 2, (CCard*)this).ApplyTo(pController);
 	DrawCards(GetGame(), pController, 2);
 	GetEnergy((CCard*)this, pController, 2);
 	return true;
@@ -3713,7 +3684,7 @@ CSelectForInspectionCard::CSelectForInspectionCard(CGame* pGame, UINT nID)
 
 bool CSelectForInspectionCard::BeforeResolution(CAbilityAction* pAction) const
 {
-	ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, 1);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(pAction->GetController());
 	return true;
 }
 
@@ -3734,7 +3705,7 @@ CSkywhalersShotCard::CSkywhalersShotCard(CGame* pGame, UINT nID)
 
 bool CSkywhalersShotCard::BeforeResolution(CAbilityAction* pAction) const
 {
-	ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, 1);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(pAction->GetController());
 	return true;
 }
 
@@ -6237,7 +6208,7 @@ bool CAetherTheoristCard::BeforeEnergy(CAbilityAction* pAction) const
 
 bool CAetherTheoristCard::BeforeScry(CAbilityAction* pAction) const
 {
-	ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, 1);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(pAction->GetController());
 	return true;
 }
 
@@ -6604,7 +6575,7 @@ CContrabandKingpinCard::CContrabandKingpinCard(CGame* pGame, UINT nID)
 
 bool CContrabandKingpinCard::BeforeScry(CAbilityAction* pAction) const
 {
-	ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, 1);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(pAction->GetController());
 	return true;
 }
 
@@ -6721,7 +6692,7 @@ CVeteranMotoristCard::CVeteranMotoristCard(CGame* pGame, UINT nID)
 
 bool CVeteranMotoristCard::BeforeScry(CAbilityAction* pAction) const
 {
-	ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, 2);
+	CScryModifier(GetGame(), 2, (CCard*)this).ApplyTo(pAction->GetController());
 	return true;
 }
 
@@ -6877,7 +6848,7 @@ CEagerConstructCard::CEagerConstructCard(CGame* pGame, UINT nID)
 bool CEagerConstructCard::BeforeScry(CAbilityAction* pAction) const
 {
 	for (int ip = 0; ip < GetGame()->GetPlayerCount(); ++ip)
-		ApplyScry(GetGame(), GetGame()->GetPlayer(ip), (CCard*)this, 1);
+		CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(GetGame()->GetPlayer(ip));
 	return true;
 }
 

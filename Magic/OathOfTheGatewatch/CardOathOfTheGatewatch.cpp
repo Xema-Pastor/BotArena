@@ -415,35 +415,6 @@ CWanderingFumaroleCard::CWanderingFumaroleCard(CGame* pGame, UINT nID)
 //
 // Artifacts
 
-// Scry N for pPlayer (as in Theros / Preordain)
-static void ApplyScry(CGame* pGame, CPlayer* pPlayer, CCard* pSource, int nCount)
-{
-	CZoneModifier* pModifier = new CDrawCardModifier(pGame, MinimumValue(nCount), MaximumValue(nCount));
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(nCount), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on the bottom
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true,
-			ZoneId::Library,
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-	pModifier->ApplyTo(pPlayer);
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(pSource, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(pSource);
-}
-
 CCaptainsClawsCard::CCaptainsClawsCard(CGame* pGame, UINT nID)
 	: CInPlaySpellCard(pGame, _T("Captain's Claws"), CardType::Artifact | CardType::Equipment, nID,
 		_T("2"), AbilityType::Artifact)
@@ -535,7 +506,7 @@ CSeersLanternCard::CSeersLanternCard(CGame* pGame, UINT nID)
 
 bool CSeersLanternCard::BeforeResolution(CAbilityAction* pAction) const
 {
-	ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, 1);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(pAction->GetController());
 	return true;
 }
 
@@ -1448,7 +1419,7 @@ bool CHedronAlignmentCard::BeforeResolution(TriggeredAbility::TriggeredActionTyp
 
 bool CHedronAlignmentCard::BeforeScry(CAbilityAction* pAction) const
 {
-	ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, 1);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(pAction->GetController());
 	return true;
 }
 
@@ -1633,7 +1604,7 @@ bool COathOfJaceCard::BeforeScry(CAbilityAction* pAction) const
 {
 	int nCount = CountPlaneswalkers();
 	if (nCount > 0)
-		ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, nCount);
+		CScryModifier(GetGame(), nCount, (CCard*)this).ApplyTo(pAction->GetController());
 	return true;
 }
 

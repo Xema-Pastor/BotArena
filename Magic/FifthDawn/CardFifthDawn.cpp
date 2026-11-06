@@ -2660,30 +2660,7 @@ CEyesOfTheWatcherCard::CEyesOfTheWatcherCard(CGame* pGame, UINT nID)
 	cpAbility->SetResolutionCost(_T("1"));
 
 	//Scry 2.
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-	pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-	pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-	pModifier->GetSelection(0).moveType = MoveType::Others;
-	pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bootom
-		CZoneModifier::RoleType::PrimaryPlayer, // select by 
-		CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-		NULL, // any cards
-		ZoneId::Library, // if selected, move cards to
-		CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-		CardPlacement::Bottom, // put selected cards on top
-		MoveType::Others, // move type
-		CZoneModifier::RoleType::PrimaryPlayer); // order selected cards by this player
-
-	// and finally put the last ones on top of the library
-	pModifier->SetReorderInformation(
-		true, 
-		ZoneId::Library,	
-		CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-		CardPlacement::Top);
-	cpAbility->GetResolutionModifier().CPlayerModifiers::push_back(pModifier);
-
-	CSpecialEffectModifier* pScryModifier = new CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	cpAbility->GetResolutionModifier().CCardModifiers::push_back(pScryModifier);
+	cpAbility->GetResolutionModifier().CPlayerModifiers::push_back(new CScryModifier(GetGame(), 2, this));
 
 	AddAbility(cpAbility.GetPointer());
 }
@@ -2708,32 +2685,7 @@ CCondescendCard::CCondescendCard(CGame* pGame, UINT nID)
 void CCondescendCard::OnResolutionCompleted(const CAbilityAction* pAbilityAction, BOOL bResult)
 {
 	if (!bResult) return;
-	//Scry 2 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by 
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on top
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true, 
-			ZoneId::Library,	
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-//Scry 2 end--------------------------
-	pModifier->ApplyTo(pAbilityAction->GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(this);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pAbilityAction->GetController());
 }
 
 //____________________________________________________________________________
@@ -2754,32 +2706,7 @@ void CFerociousChargeCard::OnResolutionCompleted(const CAbilityAction* pAbilityA
 {
 	if (!bResult) return;
 
-	//Scry 2 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by 
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on top
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true, 
-			ZoneId::Library,	
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-//Scry 2 end--------------------------
-	pModifier->ApplyTo(pAbilityAction->GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(this);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pAbilityAction->GetController());
 }
 
 //____________________________________________________________________________
@@ -2800,32 +2727,7 @@ void CLoseHopeCard::OnResolutionCompleted(const CAbilityAction* pAbilityAction, 
 {
 	if (!bResult) return;
 
-	//Scry 2 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by 
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on top
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true, 
-			ZoneId::Library,	
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-//Scry 2 end--------------------------
-	pModifier->ApplyTo(pAbilityAction->GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(this);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pAbilityAction->GetController());
 }
 
 //____________________________________________________________________________
@@ -2848,32 +2750,7 @@ void CMagmaJetCard::OnResolutionCompleted(const CAbilityAction* pAbilityAction, 
 {
 	if (!bResult) return;
 
-	//Scry 2 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by 
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on top
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true, 
-			ZoneId::Library,	
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-//Scry 2 end--------------------------
-	pModifier->ApplyTo(pAbilityAction->GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(this);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pAbilityAction->GetController());
 }
 
 //____________________________________________________________________________
@@ -2894,32 +2771,7 @@ void CStandFirmCard::OnResolutionCompleted(const CAbilityAction* pAbilityAction,
 {
 	if (!bResult) return;
 
-	//Scry 2 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by 
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on top
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true, 
-			ZoneId::Library,	
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-//Scry 2 end--------------------------
-	pModifier->ApplyTo(pAbilityAction->GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(this);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pAbilityAction->GetController());
 }
 
 //____________________________________________________________________________
@@ -2939,32 +2791,7 @@ void CTelJiladJusticeCard::OnResolutionCompleted(const CAbilityAction* pAbilityA
 {
 	if (!bResult) return;
 
-	//Scry 2 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by 
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on top
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true, 
-			ZoneId::Library,	
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-//Scry 2 end--------------------------
-	pModifier->ApplyTo(pAbilityAction->GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(this);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pAbilityAction->GetController());
 }
 
 //____________________________________________________________________________
@@ -2990,32 +2817,7 @@ void CFillWithFrightCard::OnResolutionCompleted(const CAbilityAction* pAbilityAc
 {
 	if (!bResult) return;
 
-	//Scry 2 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by 
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on top
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true, 
-			ZoneId::Library,	
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-//Scry 2 end--------------------------
-	pModifier->ApplyTo(pAbilityAction->GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(this);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pAbilityAction->GetController());
 }
 
 //____________________________________________________________________________
@@ -3038,32 +2840,7 @@ void CSerumVisionsCard	::OnResolutionCompleted(const CAbilityAction* pAbilityAct
 {
 	if (!bResult) return;
 
-	//Scry 2 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));	
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(2), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by 
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on top
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true, 
-			ZoneId::Library,	
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-//Scry 2 end--------------------------
-	pModifier->ApplyTo(pAbilityAction->GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(this);
+	CScryModifier(GetGame(), 2, this).ApplyTo(pAbilityAction->GetController());
 }
 
 //____________________________________________________________________________

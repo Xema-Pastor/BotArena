@@ -1964,32 +1964,7 @@ CRetreatToCoralhelmCard::CRetreatToCoralhelmCard(CGame* pGame, UINT nID)
 
 bool CRetreatToCoralhelmCard::BeforeScry(ScryAbility::TriggeredActionType* pAction) const
 {
-	//Scry 1 start----------------------
-	CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(1), MaximumValue(1));
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(1), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on the bottom
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true,
-			ZoneId::Library,
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-	//Scry 1 end--------------------------
-	pModifier->ApplyTo(GetController());
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier((CCard*)this, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo((CCard*)this);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(GetController());
 
 	return true;
 }
@@ -2342,32 +2317,7 @@ void CUginsInsightCard::OnResolutionCompleted(const CAbilityAction* pAbilityActi
 
 	if (nMaxCost > 0)
 	{
-		//Scry X start----------------------
-		CZoneModifier* pModifier = new CDrawCardModifier(GetGame(), MinimumValue(nMaxCost), MaximumValue(nMaxCost));
-			pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-			pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-			pModifier->GetSelection(0).moveType = MoveType::Others;
-			pModifier->AddSelection(MinimumValue(0), MaximumValue(nMaxCost), // select cards to bottom
-				CZoneModifier::RoleType::PrimaryPlayer, // select by
-				CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-				NULL,									// any cards
-				ZoneId::Library,						// if selected, move cards to
-				CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-				CardPlacement::Bottom,					// put selected cards on the bottom
-				MoveType::Others,						// move type
-				CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-			// and finally put the last ones on top of the library
-			pModifier->SetReorderInformation(
-				true,
-				ZoneId::Library,
-				CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-				CardPlacement::Top);
-		//Scry X end--------------------------
-		pModifier->ApplyTo(pController);
-
-		CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(this, SCRY_TRIGGER_ID);
-		pScryModifier.ApplyTo(this);
+		CScryModifier(GetGame(), nMaxCost, this).ApplyTo(pController);
 	}
 
 	// then draw three cards (as Preordain)
@@ -2951,35 +2901,6 @@ static bool ControlsAnotherColorlessCreature(const CPlayer* pPlayer, const CCard
 	return false;
 }
 
-// Scry N for pPlayer (as in Theros / Preordain)
-static void ApplyScry(CGame* pGame, CPlayer* pPlayer, CCard* pSource, int nCount)
-{
-	CZoneModifier* pModifier = new CDrawCardModifier(pGame, MinimumValue(nCount), MaximumValue(nCount));
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(nCount), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on the bottom
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true,
-			ZoneId::Library,
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-	pModifier->ApplyTo(pPlayer);
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(pSource, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(pSource);
-}
-
 // Exile the top nCount cards of pPlayer's library
 static void ExileTopOfLibrary(CPlayer* pPlayer, int nCount)
 {
@@ -3097,7 +3018,7 @@ CCatacombSifterCard::CCatacombSifterCard(CGame* pGame, UINT nID)
 
 bool CCatacombSifterCard::BeforeScry(TriggeredAbility::TriggeredActionType* pAction) const
 {
-	ApplyScry(GetGame(), GetController(), (CCard*)this, 1);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(GetController());
 	return true;
 }
 
@@ -4619,7 +4540,7 @@ CWindriderPatrolCard::CWindriderPatrolCard(CGame* pGame, UINT nID)
 
 bool CWindriderPatrolCard::BeforeScry(TriggeredAbility::TriggeredActionType* pAction) const
 {
-	ApplyScry(GetGame(), GetController(), (CCard*)this, 2);
+	CScryModifier(GetGame(), 2, (CCard*)this).ApplyTo(GetController());
 	return true;
 }
 

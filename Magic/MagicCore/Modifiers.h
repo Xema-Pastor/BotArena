@@ -2004,6 +2004,94 @@ public:
 
 //____________________________________________________________________________
 //
+// Scry N: the player looks at the top N cards of their library, puts any number
+// of them on the bottom and the rest on top in any order.
+// If pSource is set, it fires SCRY_TRIGGER_ID on it ("whenever you scry" abilities).
+// Usage:
+//   CScryModifier(GetGame(), 2, this).ApplyTo(pPlayer);
+//   cpAbility->GetResolutionModifier().CPlayerModifiers::push_back(new CScryModifier(GetGame(), 1, this));
+class CORE_EXPORT CScryModifier
+	: public CDrawCardModifier
+{
+public:
+	CScryModifier(CGame* pGame, int nCount, CCard* pSource = NULL);
+
+	int GetScryCount() const { return m_nCount; }
+	CCard* GetSource() const { return m_pSource; }
+
+	virtual void ApplyTo(CPlayer* pPlayer) const;
+
+	virtual CPlayerModifier* ClonePlayerModifier() const
+	{
+		CScryModifier* pModifier = new CScryModifier(m_pGame, m_nCount, m_pSource);
+		*pModifier = *this;
+		return pModifier;
+	}
+
+	virtual bool Equals(const CPlayerModifier& rhs) const
+	{
+		const CScryModifier* pThis = dynamic_cast<const CScryModifier*>(&rhs);
+		if (!pThis)
+			return false;
+
+		if (pThis == this)
+			return true;
+
+		return
+			__super::Equals(rhs) &&
+			m_pSource == pThis->m_pSource;
+	}
+
+protected:
+	CCard* m_pSource;
+};
+
+//____________________________________________________________________________
+//
+// Surveil N: the player looks at the top N cards of their library, puts any number
+// of them into their graveyard and the rest on top in any order.
+// If pSource is set, it fires SURVEIL_TRIGGER_ID on it ("whenever you surveil" abilities).
+// Usage:
+//   CSurveilModifier(GetGame(), 2, this).ApplyTo(pPlayer);
+//   cpAbility->GetResolutionModifier().CPlayerModifiers::push_back(new CSurveilModifier(GetGame(), 1, this));
+class CORE_EXPORT CSurveilModifier
+	: public CDrawCardModifier
+{
+public:
+	CSurveilModifier(CGame* pGame, int nCount, CCard* pSource = NULL);
+
+	int GetSurveilCount() const { return m_nCount; }
+	CCard* GetSource() const { return m_pSource; }
+
+	virtual void ApplyTo(CPlayer* pPlayer) const;
+
+	virtual CPlayerModifier* ClonePlayerModifier() const
+	{
+		CSurveilModifier* pModifier = new CSurveilModifier(m_pGame, m_nCount, m_pSource);
+		*pModifier = *this;
+		return pModifier;
+	}
+
+	virtual bool Equals(const CPlayerModifier& rhs) const
+	{
+		const CSurveilModifier* pThis = dynamic_cast<const CSurveilModifier*>(&rhs);
+		if (!pThis)
+			return false;
+
+		if (pThis == this)
+			return true;
+
+		return
+			__super::Equals(rhs) &&
+			m_pSource == pThis->m_pSource;
+	}
+
+protected:
+	CCard* m_pSource;
+};
+
+//____________________________________________________________________________
+//
 class CORE_EXPORT CCardCounterModifier 
 	: public CCardModifier
 {

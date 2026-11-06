@@ -209,6 +209,7 @@
 #define CHOICE_3_TRIGGER_ID				60344
 #define MONSTROUS_TRIGGER_ID			60345
 #define SCRY_TRIGGER_ID					60346
+#define SURVEIL_TRIGGER_ID				60347
 #define RENOWNED_TRIGGER_ID				60345
 
 //____________________________________________________________________________

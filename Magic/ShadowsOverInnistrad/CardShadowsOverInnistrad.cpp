@@ -676,35 +676,6 @@ CStoneQuarryCard::CStoneQuarryCard(CGame* pGame, UINT nID)
 //
 // Planeswalkers
 
-// Scry N for pPlayer (as in Battle for Zendikar)
-static void ApplyScry(CGame* pGame, CPlayer* pPlayer, CCard* pSource, int nCount)
-{
-	CZoneModifier* pModifier = new CDrawCardModifier(pGame, MinimumValue(nCount), MaximumValue(nCount));
-		pModifier->GetSelection(0).nMinSelectionCount = MinimumValue(0);
-		pModifier->GetSelection(0).nMaxSelectionCount = MaximumValue(0);
-		pModifier->GetSelection(0).moveType = MoveType::Others;
-		pModifier->AddSelection(MinimumValue(0), MaximumValue(nCount), // select cards to bottom
-			CZoneModifier::RoleType::PrimaryPlayer, // select by
-			CZoneModifier::RoleType::PrimaryPlayer, // reveal to
-			NULL,									// any cards
-			ZoneId::Library,						// if selected, move cards to
-			CZoneModifier::RoleType::PrimaryPlayer, // select by this player
-			CardPlacement::Bottom,					// put selected cards on the bottom
-			MoveType::Others,						// move type
-			CZoneModifier::RoleType::PrimaryPlayer);// order selected cards by this player
-
-		// and finally put the last ones on top of the library
-		pModifier->SetReorderInformation(
-			true,
-			ZoneId::Library,
-			CZoneModifier::RoleType::PrimaryPlayer,	// this player's library
-			CardPlacement::Top);
-	pModifier->ApplyTo(pPlayer);
-
-	CSpecialEffectModifier pScryModifier = CSpecialEffectModifier(pSource, SCRY_TRIGGER_ID);
-	pScryModifier.ApplyTo(pSource);
-}
-
 // Adds the trait that makes the ability usable only on the first or on the second face
 static void AddFaceTrait(CAbility* pAbility, CCard* pCard, CPlayableIfTrait::PlayableCallback callback)
 {
@@ -867,7 +838,7 @@ CJaceUnravelerOfSecretsCard::CJaceUnravelerOfSecretsCard(CGame* pGame, UINT nID)
 bool CJaceUnravelerOfSecretsCard::BeforeResolution1(CAbilityAction* pAction) const
 {
 	// Scry 1, then draw a card (as Ugin's Insight)
-	ApplyScry(GetGame(), pAction->GetController(), (CCard*)this, 1);
+	CScryModifier(GetGame(), 1, (CCard*)this).ApplyTo(pAction->GetController());
 
 	CDrawCardModifier pModifier = CDrawCardModifier(GetGame(), MinimumValue(1), MaximumValue(1));
 	pModifier.ApplyTo(pAction->GetController());
