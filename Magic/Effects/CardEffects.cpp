@@ -121,6 +121,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CDovinBaanEmblemToken);
 		DEFINE_TOKEN(CNissaVitalForceEmblemToken);
 		DEFINE_TOKEN(CTezzeretTheSchemerEmblemToken);
+		DEFINE_TOKEN(CHuatliRadiantChampionEmblemToken);
+		DEFINE_TOKEN(CVraskaSchemingGorgonEffectToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -11672,6 +11674,101 @@ bool CTezzeretTheSchemerEmblemToken::BeforeResolution(CAbilityAction* pAction) c
 		animationModifier.ApplyTo(pCard);
 	}
 	return false;
+}
+
+//____________________________________________________________________________
+//
+CHuatliRadiantChampionEmblemToken::CHuatliRadiantChampionEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Huatli, Radiant Champion Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Whenever a creature you control enters, you may draw a card. (as Nissa, Vital Force Emblem)
+	typedef
+		TTriggeredAbility< CTriggeredDrawCardAbility, CWhenCardMoved > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this,
+		ZoneId::_AllZones, ZoneId::Battlefield));
+
+	cpAbility->GetTrigger().SetToControllerOnly(TRUE);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetFilterType(CCardFilterHelper::FilterType::Custom);
+	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(new AnyCreatureComparer);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Optional);
+	cpAbility->SetDrawCount(1);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CHuatliRadiantChampionEmblemToken::SetTriggerContext));
+
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CHuatliRadiantChampionEmblemToken::SetTriggerContext(CTriggeredDrawCardAbility::TriggerContextType& triggerContext,
+	CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType) const
+{
+	return (this->GetZone()->GetZoneId() == ZoneId::_Effects);
+}
+
+//____________________________________________________________________________
+//
+CVraskaSchemingGorgonEffectToken::CVraskaSchemingGorgonEffectToken(CGame* pGame, UINT nID)
+	: CContainerEffectCard(pGame, _T("Vraska, Scheming Gorgon Effect"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// The creatures of Vraska's -10 (in pCards) have "Whenever this creature deals damage to an opponent, that player
+	// loses the game" until end of turn. (the player in nValue1)
+	{
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->SetPlayableFrom(ZoneId::_Effects);
+		cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CVraskaSchemingGorgonEffectToken::SetTriggerContext));
+		cpAbility->SetBeforeResolveSelectionCallback(TriggeredAbility::BeforeResolveSelectionCallback(this, &CVraskaSchemingGorgonEffectToken::BeforeLose));
+
+		AddAbility(cpAbility.GetPointer());
+	}
+	{
+		// The effect ends at the cleanup step (as Otherworldly Outburst Effect)
+		typedef
+			TTriggeredAbility< CTriggeredMoveCardAbility, CWhenNodeChanged > CleanupAbility;
+
+		counted_ptr<CleanupAbility> cpAbility(
+			::CreateObject<CleanupAbility>(this, NodeId::CleanupStep2, FALSE));
+
+		cpAbility->SetOptionalType(CleanupAbility::OptionalType::Required);
+		cpAbility->SetSkipStack(TRUE);
+		cpAbility->GetMoveCardModifier().SetFromZone(ZoneId::_Effects);
+		cpAbility->GetMoveCardModifier().SetToZone(ZoneId::Exile);
+		cpAbility->SetPlayableFrom(ZoneId::_Effects);
+		cpAbility->AddAbilityTag(AbilityTag(ZoneId::_Effects, ZoneId::Exile));
+		cpAbility->SetContextFunction(CleanupAbility::ContextFunction(this, &CVraskaSchemingGorgonEffectToken::SetTriggerContextCleanup));
+
+		AddAbility(cpAbility.GetPointer());
+	}
+}
+
+bool CVraskaSchemingGorgonEffectToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+	CCard* pFromCard, CPlayer* pToPlayer, Damage damage)
+{
+	if (GetZone()->GetZoneId() != ZoneId::_Effects || !pFromCard || !pToPlayer || !pCards.HasCard(pFromCard))
+		return false;
+	if (pToPlayer == GetController() || damage.m_nLifeDelta >= Life(0))
+		return false;
+
+	triggerContext.nValue1 = (DWORD)pToPlayer;
+	return true;
+}
+
+bool CVraskaSchemingGorgonEffectToken::BeforeLose(TriggeredAbility::TriggeredActionType* pAction)
+{
+	CPlayer* pPlayer = (CPlayer*)pAction->GetTriggerContext().nValue1;
+	if (pPlayer)
+		pPlayer->SetLostByOtherReasons();
+	return true;
+}
+
+bool CVraskaSchemingGorgonEffectToken::SetTriggerContextCleanup(CTriggeredMoveCardAbility::TriggerContextType& triggerContext, CNode* pToNode)
+{
+	return GetZone()->GetZoneId() == ZoneId::_Effects;
 }
 
 //____________________________________________________________________________

@@ -121,6 +121,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CIllusionCToken);
 		DEFINE_TOKEN(CVampireEToken);
 		DEFINE_TOKEN(CMerfolkAToken);
+		DEFINE_TOKEN(CElementalZCToken);
 	} while (false);
 
 	return cpCard;
@@ -1616,4 +1617,55 @@ CMerfolkAToken::CMerfolkAToken(CGame* pGame, UINT nID)
 	AddCardType(CardType::Blue, CardType::_ColorMask);
 	GetCardKeyword()->AddHexproof(FALSE);
 // Ixalan version: used by Deeproot Waters.
+}
+//____________________________________________________________________________
+//
+CElementalZCToken::CElementalZCToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	AddCardType(CardType::Red, CardType::_ColorMask);
+
+	// At the beginning of your upkeep, sacrifice this token and return target card named Rekindling Phoenix from your
+	// graveyard to the battlefield. It gains haste until end of turn.
+	// Note: the Phoenix isn't targeted (the first one in the graveyard)
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::UpkeepStep));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CElementalZCToken::BeforeReturn));
+	AddAbility(cpAbility.GetPointer());
+// Rivals of Ixalan version: used by Rekindling Phoenix.
+}
+
+bool CElementalZCToken::BeforeReturn(CAbilityAction* pAction)
+{
+	CPlayer* pController = pAction->GetController();
+	if (GetZoneId() == ZoneId::Battlefield)
+	{
+		CMoveCardModifier pSacrifice = CMoveCardModifier(ZoneId::Battlefield, ZoneId::Graveyard, TRUE, MoveType::Sacrifice, pController);
+		pSacrifice.ApplyTo(this);
+	}
+
+	CZone* pGraveyard = pController->GetZoneById(ZoneId::Graveyard);
+	for (int i = pGraveyard->GetSize() - 1; i >= 0; --i)
+	{
+		CCard* pCard = pGraveyard->GetAt(i);
+		if (pCard->GetCardType().IsToken() || _tcscmp(pCard->GetPrintedCardName(), _T("Rekindling Phoenix")) != 0)
+			continue;
+
+		CMoveCardModifier pReturn = CMoveCardModifier(ZoneId::Graveyard, ZoneId::Battlefield, TRUE, MoveType::Others, pController);
+		pReturn.ApplyTo(pCard);
+
+		CCreatureCard* pCreature = dynamic_cast<CCreatureCard*>(pCard);
+		if (pCreature && pCreature->GetZoneId() == ZoneId::Battlefield)
+			pCreature->GetCreatureKeyword()->AddHaste(TRUE);
+		break;
+	}
+	return true;
 }

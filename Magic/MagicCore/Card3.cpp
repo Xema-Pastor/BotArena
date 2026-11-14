@@ -782,6 +782,67 @@ void CExploreSupport::Explore(CCard* pCreature)
 
 //____________________________________________________________________________
 //
+// Every permanent with ascend registers here (see HasAscend)
+static std::map<const CCard*, CAscendSupport*>& GetAscendSupports()
+{
+	static std::map<const CCard*, CAscendSupport*> ascendSupports;
+	return ascendSupports;
+}
+
+CAscendSupport::CAscendSupport(CCard* pPermanent)
+	: m_pPermanent(pPermanent)
+{
+	GetAscendSupports()[pPermanent] = this;
+}
+
+CAscendSupport::~CAscendSupport()
+{
+	std::map<const CCard*, CAscendSupport*>::iterator it = GetAscendSupports().find(m_pPermanent);
+	if (it != GetAscendSupports().end() && it->second == this)
+		GetAscendSupports().erase(it);
+}
+
+BOOL CAscendSupport::HasAscend(const CCard* pCard)
+{
+	return GetAscendSupports().find(pCard) != GetAscendSupports().end();
+}
+
+int CAscendSupport::CountPermanents(CPlayer* pPlayer)
+{
+	CZone* pBattlefield = pPlayer->GetZoneById(ZoneId::Battlefield);
+	int nCount = 0;
+	for (int i = 0; i < pBattlefield->GetSize(); ++i)
+		if (!pBattlefield->GetAt(i)->GetIsAlsoOf())
+			++nCount;
+	return nCount;
+}
+
+void CAscendSupport::CheckPermanents(CPlayer* pPlayer)
+{
+	if (!pPlayer || pPlayer->HasCityBlessing() || GetAscendSupports().empty())
+		return;
+
+	CZone* pBattlefield = pPlayer->GetZoneById(ZoneId::Battlefield);
+	if (pBattlefield->GetSize() < 10)
+		return;
+
+	BOOL bAscend = FALSE;
+	for (int i = 0; i < pBattlefield->GetSize() && !bAscend; ++i)
+		bAscend = HasAscend(pBattlefield->GetAt(i));
+
+	if (bAscend && CountPermanents(pPlayer) >= 10)
+		pPlayer->GiveCityBlessing();
+}
+
+BOOL CAscendSupport::CheckSpell(CPlayer* pPlayer)
+{
+	if (!pPlayer->HasCityBlessing() && CountPermanents(pPlayer) >= 10)
+		pPlayer->GiveCityBlessing();
+	return pPlayer->HasCityBlessing();
+}
+
+//____________________________________________________________________________
+//
 CChancellorCreatureCard::CChancellorCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
 										 LPCTSTR strCostText, Power nPower, Life nToughness)
 	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)

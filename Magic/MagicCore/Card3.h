@@ -402,6 +402,38 @@ protected:
 
 //____________________________________________________________________________
 //
+// Ascend (Rivals of Ixalan): "Any time you control ten or more permanents and you don't have the city's blessing, you
+// get the city's blessing for the rest of the game." The city's blessing is kept by the player (CPlayer::
+// HasCityBlessing). It isn't a triggered ability: it's checked by CZone::AddCard every time a card enters a battlefield,
+// before the "enters" events fire, so the entering permanent already sees the blessing.
+// - Permanents with ascend have a member CAscendSupport m_Ascend(this), which registers them (see HasAscend).
+// - Instants and sorceries with ascend call CheckSpell(controller) when they resolve, before checking the blessing.
+// The permanents are counted without the animation tokens (IsAlsoA) of crewed Vehicles and animated cards.
+class CORE_EXPORT CAscendSupport
+{
+public:
+	CAscendSupport(CCard* pPermanent);
+	virtual ~CAscendSupport();
+
+	// Does the card have ascend (as a permanent)?
+	static BOOL HasAscend(const CCard* pCard);
+
+	// The number of permanents the player controls
+	static int CountPermanents(CPlayer* pPlayer);
+
+	// Gives the city's blessing to the player if they control ten or more permanents and one of them has ascend
+	static void CheckPermanents(CPlayer* pPlayer);
+
+	// Ascend on a resolving instant or sorcery: gives the city's blessing if the player controls ten or more permanents.
+	// Returns whether the player has the city's blessing.
+	static BOOL CheckSpell(CPlayer* pPlayer);
+
+protected:
+	CCard* m_pPermanent;
+};
+
+//____________________________________________________________________________
+//
 class CORE_EXPORT CChancellorCreatureCard : public CCreatureCard
 {
 protected:

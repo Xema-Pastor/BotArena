@@ -937,6 +937,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ixalan Block", "Ixalan Bloc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ixalan", "..\Ixalan\Ixalan.vcxproj", "{30418220-EC96-40A9-A81D-7A5113B1BDEE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RivalsOfIxalan", "..\RivalsOfIxalan\RivalsOfIxalan.vcxproj", "{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -1706,6 +1708,12 @@ Global
 		{30418220-EC96-40A9-A81D-7A5113B1BDEE}.Release|Win32.Build.0 = Release|Win32
 		{30418220-EC96-40A9-A81D-7A5113B1BDEE}.Template|Win32.ActiveCfg = Release|Win32
 		{30418220-EC96-40A9-A81D-7A5113B1BDEE}.Template|Win32.Build.0 = Release|Win32
+		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Debug|Win32.Build.0 = Debug|Win32
+		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Release|Win32.ActiveCfg = Release|Win32
+		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Release|Win32.Build.0 = Release|Win32
+		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Template|Win32.ActiveCfg = Release|Win32
+		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Template|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1877,6 +1885,7 @@ Global
 		{E9F89C51-A571-4D57-91AF-EFF66AFD687A} = {FDFC1224-8887-4C80-ABA4-10B65A4E6E64}
 		{6B879DF9-5FBB-4E13-B64F-27D1A3559950} = {11A16C86-7F12-4A28-A321-3933B7F60479}
 		{30418220-EC96-40A9-A81D-7A5113B1BDEE} = {6B879DF9-5FBB-4E13-B64F-27D1A3559950}
+		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD} = {6B879DF9-5FBB-4E13-B64F-27D1A3559950}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = ..\..

@@ -2101,3 +2101,32 @@ private:
 
 //____________________________________________________________________________
 //
+class CHuatliRadiantChampionEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CHuatliRadiantChampionEmblemToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredDrawCardAbility::TriggerContextType& triggerContext,
+		CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType) const;
+};
+
+//____________________________________________________________________________
+//
+class CVraskaSchemingGorgonEffectToken : public CContainerEffectCard
+{
+	DECLARE_CARD_CSTOR(CVraskaSchemingGorgonEffectToken);
+
+protected:
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenDamageDealt,
+						   CWhenDamageDealt::PlayerEventCallback,
+						   &CWhenDamageDealt::SetPlayerEventCallback > TriggeredAbility;
+
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+		CCard* pFromCard, CPlayer* pToPlayer, Damage damage);
+	bool BeforeLose(TriggeredAbility::TriggeredActionType* pAction);
+	bool SetTriggerContextCleanup(CTriggeredMoveCardAbility::TriggerContextType& triggerContext, CNode* pToNode);
+};
+
+//____________________________________________________________________________
+//

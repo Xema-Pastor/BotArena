@@ -761,3 +761,13 @@ class CMerfolkAToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CMerfolkAToken);
 };
+
+//____________________________________________________________________________
+//
+class CElementalZCToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalZCToken);
+
+protected:
+	bool BeforeReturn(CAbilityAction* pAction);
+};

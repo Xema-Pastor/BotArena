@@ -380,6 +380,10 @@ public:
 	int  GetPermanentsLeftBattlefieldThisTurn() const	{ return m_nPermanentsLeftBattlefieldThisTurn; }
 	BOOL HasRevolt() const								{ return m_nPermanentsLeftBattlefieldThisTurn > 0; }
 
+	// The city's blessing (Ascend, Rivals of Ixalan): a designation kept for the rest of the game (see CAscendSupport)
+	BOOL HasCityBlessing() const						{ return m_bCityBlessing; }
+	void GiveCityBlessing();
+
 	void AddLifeLossTakenThisTurn(Life pLifeLost);
 	void AddLifeGainThisTurn(Life pLifeGained);
 
@@ -657,6 +661,7 @@ protected:
 
 	int_	m_nEnergyCounters;	// at the end of the class, so that the layout of the other members doesn't change
 	int_	m_nPermanentsLeftBattlefieldThisTurn;	// Revolt (Aether Revolt), reset every turn
+	BOOL_	m_bCityBlessing;	// Ascend (Rivals of Ixalan), never removed
 };
 
 //____________________________________________________________________________

@@ -208,6 +208,7 @@ BEGIN
     IDS_STRING55105         "Illusion (C)\n{U}\nCreature - Illusion\nToken\nWhen this token becomes the target of a spell, sacrifice it.\n2/2"
     IDS_STRING55106         "Vampire (E)\n{W}\nCreature - Vampire\nToken\nLifelink\n1/1"
     IDS_STRING55107         "Merfolk (A)\n{U}\nCreature - Merfolk\nToken\nHexproof\n1/1"
+    IDS_STRING55108         "Elemental (ZC)\n{R}\nCreature - Elemental\nToken\nAt the beginning of your upkeep, sacrifice this token and return target card named Rekindling Phoenix from your graveyard to the battlefield. It gains haste until end of turn.\n0/1"
 END
 
 #endif    // English (United States) resources

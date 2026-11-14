@@ -203,6 +203,10 @@ BOOL CZone::AddCard(CCard* pCard, const CPlayer* pByPlayer, MoveType moveType, C
 
 	FixCardStatus(pCard, bTapped);
 
+	// Ascend (Rivals of Ixalan): the city's blessing is checked before the "enters" events fire
+	if (GetZoneId() == ZoneId::Battlefield && moveType != MoveType::Morph)
+		CAscendSupport::CheckPermanents(GetPlayer());
+
 	pOrientation->AddListener(m_cpOListener.GetPointer());
 
 	{ // Post-movement events

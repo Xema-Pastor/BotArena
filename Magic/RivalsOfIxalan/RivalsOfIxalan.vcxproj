@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2886FDBA-BDBB-43A4-8A43-6516F3174412}</ProjectGuid>
+    <ProjectGuid>{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}</ProjectGuid>
     <RootNamespace>RivalsOfIxalan</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>

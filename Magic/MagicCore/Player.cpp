@@ -70,6 +70,7 @@ CPlayer::CPlayer(CGame* pGame)
 	, detainedCard()
 	, m_nEnergyCounters(0)
 	, m_nPermanentsLeftBattlefieldThisTurn(0)
+	, m_bCityBlessing(FALSE)
 	, s_hTypes()
 	, s_hfromZones()
 	, s_htoZones()
@@ -1213,6 +1214,26 @@ void CPlayer::AddEnergyCounters(int nCount)
 {
 	int nEnergy = m_nEnergyCounters + nCount;
 	m_nEnergyCounters = nEnergy < 0 ? 0 : nEnergy;
+}
+
+void CPlayer::GiveCityBlessing()
+{
+	if (m_bCityBlessing)
+		return;
+
+	m_bCityBlessing = TRUE;
+
+	// The interface doesn't show player designations: the blessing is shown in a message
+	if (!m_pGame->IsThinking())
+	{
+		CString strMessage;
+		strMessage.Format(_T("%s gets the city's blessing"), GetPlayerName());
+		m_pGame->Message(
+			strMessage,
+			IsComputer() ? m_pGame->GetComputerImage() : m_pGame->GetHumanImage(),
+			MessageImportance::High
+			);
+	}
 }
 
 void CPlayer::AddLifeLossTakenThisTurn(Life pLifeLost)
