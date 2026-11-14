@@ -698,3 +698,24 @@ class CCatGToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CCatGToken);
 };
+
+//____________________________________________________________________________
+//
+class CSnakeJToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSnakeJToken);
+};
+
+//____________________________________________________________________________
+//
+class CHorseAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CHorseAToken);
+};
+
+//____________________________________________________________________________
+//
+class CInsectKToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CInsectKToken);
+};

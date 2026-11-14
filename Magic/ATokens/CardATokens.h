@@ -883,3 +883,17 @@ class CAnimatedGideonMartialParagonToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CElementalAVToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalAVToken);
+};
+
+//____________________________________________________________________________
+//
+class CSphinxAAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSphinxAAToken);
+};
+
+//____________________________________________________________________________
+//

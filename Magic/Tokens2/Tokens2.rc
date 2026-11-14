@@ -199,6 +199,9 @@ BEGIN
     IDS_STRING55096         "Beast (R)\n{G}\nCreature - Beast\nToken\n\n4/2"
     IDS_STRING55097         "Hippo (C)\n{G}\nCreature - Hippo\nToken\n\n3/3"
     IDS_STRING55098         "Cat (G)\n{W}\nCreature - Cat\nToken\nLifelink\n1/1"
+    IDS_STRING55099         "Snake (J)\n{G}\nCreature - Snake\nToken\n\n5/4"
+    IDS_STRING55100         "Horse (A)\n{W}\nCreature - Horse\nToken\n\n5/5"
+    IDS_STRING55101         "Insect (K)\n{UR}\nCreature - Insect\nToken\nFlying, haste\n1/1"
 END
 
 #endif    // English (United States) resources

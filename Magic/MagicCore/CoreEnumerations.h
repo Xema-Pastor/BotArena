@@ -1590,6 +1590,7 @@ struct CORE_EXPORT PlaneswalkerType
 		Nahiri,
 		Dovin,
 		Saheeli,
+		Samut,
 
 		_SubtypeCount,
 	};

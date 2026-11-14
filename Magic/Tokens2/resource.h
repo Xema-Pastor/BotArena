@@ -115,6 +115,9 @@
 #define IDS_STRING55096                 55096
 #define IDS_STRING55097                 55097
 #define IDS_STRING55098                 55098
+#define IDS_STRING55099                 55099
+#define IDS_STRING55100                 55100
+#define IDS_STRING55101                 55101
 
 // Next default values for new objects
 // 

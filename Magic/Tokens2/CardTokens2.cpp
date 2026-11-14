@@ -112,6 +112,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CBeastRToken);
 		DEFINE_TOKEN(CHippoCToken);
 		DEFINE_TOKEN(CCatGToken);
+		DEFINE_TOKEN(CSnakeJToken);
+		DEFINE_TOKEN(CHorseAToken);
+		DEFINE_TOKEN(CInsectKToken);
 	} while (false);
 
 	return cpCard;
@@ -1477,4 +1480,39 @@ CCatGToken::CCatGToken(CGame* pGame, UINT nID)
 	AddCardType(CardType::White, CardType::_ColorMask);
 	GetCardKeyword()->AddLifelink(FALSE);
 // Amonkhet version (1/1 white Cat with lifelink): used by Regal Caracal.
+}
+//____________________________________________________________________________
+//
+CSnakeJToken::CSnakeJToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Snake"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Snake), nID,
+		_T(""),
+		Power(5), Life(4))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Hour of Devastation version: used by Rhonas's Last Stand.
+}
+//____________________________________________________________________________
+//
+CHorseAToken::CHorseAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Horse"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Horse), nID,
+		_T(""),
+		Power(5), Life(5))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+// Hour of Devastation version: used by Crested Sunmare.
+}
+//____________________________________________________________________________
+//
+CInsectKToken::CInsectKToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Insect"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Insect), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Blue | CardType::Red, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+	GetCreatureKeyword()->AddHaste(FALSE);
+// Hour of Devastation version: used by The Locust God.
 }

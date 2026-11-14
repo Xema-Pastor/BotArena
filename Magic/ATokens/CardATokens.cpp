@@ -73,6 +73,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CAnimatedGideonAllyOfZendikarToken);
 		DEFINE_TOKEN(CAnimatedGideonOfTheTrialsToken);
 		DEFINE_TOKEN(CAnimatedGideonMartialParagonToken);
+		DEFINE_TOKEN(CElementalAVToken);
+		DEFINE_TOKEN(CSphinxAAToken);
 		DEFINE_TOKEN(CElementalARToken);
 		DEFINE_TOKEN(CElementalASToken);
 		DEFINE_TOKEN(CElementalATToken);
@@ -2002,6 +2004,30 @@ CAnimatedGideonMartialParagonToken::CAnimatedGideonMartialParagonToken(CGame* pG
 	GetCardKeyword()->AddIndestructible(FALSE);
 
 // Animation of AKH Gideon, Martial Paragon (as Animated Gideon, Ally of Zendikar)
+}
+
+//____________________________________________________________________________
+//
+CElementalAVToken::CElementalAVToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(3), Life(4))
+{
+// Animation of HOU Hostile Desert (colorless)
+}
+
+//____________________________________________________________________________
+//
+CSphinxAAToken::CSphinxAAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Sphinx"), CardType::Creature,
+		CREATURE_TYPE(Sphinx), nID,
+		_T("1") BLUE_MANA_TEXT,
+		Power(3), Life(3))
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+
+// Animation of HOU Riddleform
 }
 
 //____________________________________________________________________________
