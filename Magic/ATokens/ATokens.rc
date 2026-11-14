@@ -224,6 +224,11 @@ BEGIN
     IDS_STRING64121         "Animated Gideon, Martial Paragon\n{4W}\nCreature - Human Soldier\nToken\nIndestructible\rPrevent all damage that would be dealt to Gideon, Martial Paragon this turn.\n5/5"
     IDS_STRING64122         "Elemental (AV)\n\nCreature - Elemental\nToken\n\n3/4"
     IDS_STRING64123         "Sphinx (AA)\n{1U}\nCreature - Sphinx\nToken\nFlying\n3/3"
+    IDS_STRING64124         "Dusk Legion Dreadnought (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nVigilance\n6/6"
+    IDS_STRING64125         "Fell Flagship (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nWhenever this Vehicle deals combat damage to a player, that player discards a card.\n3/3"
+    IDS_STRING64126         "Shadowed Caravel (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n2/2"
+    IDS_STRING64127         "Sleek Schooner (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n4/3"
+    IDS_STRING64128         "Elemental (AW)\n\nCreature - Elemental\nToken\nHaste\n0/0"
 END
 
 

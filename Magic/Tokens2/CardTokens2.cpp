@@ -115,6 +115,12 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CSnakeJToken);
 		DEFINE_TOKEN(CHorseAToken);
 		DEFINE_TOKEN(CInsectKToken);
+		DEFINE_TOKEN(CTreasureToken);
+		DEFINE_TOKEN(CDinosaurAToken);
+		DEFINE_TOKEN(CPirateAToken);
+		DEFINE_TOKEN(CIllusionCToken);
+		DEFINE_TOKEN(CVampireEToken);
+		DEFINE_TOKEN(CMerfolkAToken);
 	} while (false);
 
 	return cpCard;
@@ -1515,4 +1521,99 @@ CInsectKToken::CInsectKToken(CGame* pGame, UINT nID)
 	GetCreatureKeyword()->AddFlying(FALSE);
 	GetCreatureKeyword()->AddHaste(FALSE);
 // Hour of Devastation version: used by The Locust God.
+}
+//____________________________________________________________________________
+//
+CTreasureToken::CTreasureToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Treasure"), CardType::Artifact | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {T}, Sacrifice this token: Add one mana of any color. (as Etherium Cell)
+	LPCTSTR colors[] = { WHITE_MANA_TEXT, BLUE_MANA_TEXT, BLACK_MANA_TEXT, RED_MANA_TEXT, GREEN_MANA_TEXT };
+	for (int i = 0; i < _countof(colors); ++i)
+	{
+		counted_ptr<CManaProductionAbility> cpAbility(
+			::CreateObject<CManaProductionAbility>(this, _T(""), AbilityType::Activated, colors[i]));
+		cpAbility->AddTapCost();
+		cpAbility->AddSacrificeCost();
+		AddAbility(cpAbility.GetPointer());
+	}
+// Ixalan version: used by the Treasure makers of Ixalan and Rivals of Ixalan.
+}
+//____________________________________________________________________________
+//
+CDinosaurAToken::CDinosaurAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Dinosaur"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Dinosaur), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+	GetCreatureKeyword()->AddTrample(FALSE);
+// Ixalan version: used by Huatli, Warrior Poet.
+}
+//____________________________________________________________________________
+//
+CPirateAToken::CPirateAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Pirate"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Pirate), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::Black, CardType::_ColorMask);
+	GetCreatureKeyword()->AddCantBeBlockedByOne(FALSE);
+// Ixalan version: used by Vraska, Relic Seeker.
+}
+//____________________________________________________________________________
+//
+CIllusionCToken::CIllusionCToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Illusion"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Illusion), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::Blue, CardType::_ColorMask);
+
+	// When this token becomes the target of a spell, sacrifice it. (as Phantasmal Bear in M12)
+	typedef
+		TTriggeredAbility< CTriggeredMoveCardAbility, CWhenSubjectTargeted,
+							CWhenSubjectTargeted::CardEventCallback, &CWhenSubjectTargeted::SetCardEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(
+		::CreateObject<TriggeredAbility>(this, TRUE, FALSE));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetFilterType(CCardFilterHelper::FilterType::Custom);
+	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(new SpecificCardComparer(this));
+	cpAbility->GetMoveCardModifier().SetToZone(ZoneId::Graveyard);
+	cpAbility->GetMoveCardModifier().SetMoveType(MoveType::Sacrifice);
+	cpAbility->AddAbilityTag(AbilityTag(ZoneId::Battlefield, ZoneId::Graveyard));
+	AddAbility(cpAbility.GetPointer());
+// Ixalan version: used by Jace, Cunning Castaway.
+}
+//____________________________________________________________________________
+//
+CVampireEToken::CVampireEToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Vampire"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Vampire), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+	GetCardKeyword()->AddLifelink(FALSE);
+// Ixalan version: used by Legion's Landing and Adanto, the First Fort.
+}
+//____________________________________________________________________________
+//
+CMerfolkAToken::CMerfolkAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Merfolk"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Merfolk), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Blue, CardType::_ColorMask);
+	GetCardKeyword()->AddHexproof(FALSE);
+// Ixalan version: used by Deeproot Waters.
 }

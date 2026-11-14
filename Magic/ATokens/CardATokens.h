@@ -897,3 +897,41 @@ class CSphinxAAToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CDuskLegionDreadnoughtVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CDuskLegionDreadnoughtVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CFellFlagshipVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CFellFlagshipVehicleToken);
+
+protected:
+	bool BeforeDiscard(CAbilityAction* pAction) const;
+};
+
+//____________________________________________________________________________
+//
+class CShadowedCaravelVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CShadowedCaravelVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CSleekSchoonerVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSleekSchoonerVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CElementalAWToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalAWToken);
+};
+
+//____________________________________________________________________________
+//

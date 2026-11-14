@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2886FDBA-BDBB-43A4-8A43-6516F3174412}</ProjectGuid>
+    <ProjectGuid>{30418220-EC96-40A9-A81D-7A5113B1BDEE}</ProjectGuid>
     <RootNamespace>Ixalan</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>

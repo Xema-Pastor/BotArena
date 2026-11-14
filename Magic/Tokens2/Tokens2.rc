@@ -202,6 +202,12 @@ BEGIN
     IDS_STRING55099         "Snake (J)\n{G}\nCreature - Snake\nToken\n\n5/4"
     IDS_STRING55100         "Horse (A)\n{W}\nCreature - Horse\nToken\n\n5/5"
     IDS_STRING55101         "Insect (K)\n{UR}\nCreature - Insect\nToken\nFlying, haste\n1/1"
+    IDS_STRING55102         "Treasure\n\nArtifact - Treasure\nToken\n{T}, Sacrifice this token: Add one mana of any color."
+    IDS_STRING55103         "Dinosaur (A)\n{G}\nCreature - Dinosaur\nToken\nTrample\n3/3"
+    IDS_STRING55104         "Pirate (A)\n{B}\nCreature - Pirate\nToken\nMenace\n2/2"
+    IDS_STRING55105         "Illusion (C)\n{U}\nCreature - Illusion\nToken\nWhen this token becomes the target of a spell, sacrifice it.\n2/2"
+    IDS_STRING55106         "Vampire (E)\n{W}\nCreature - Vampire\nToken\nLifelink\n1/1"
+    IDS_STRING55107         "Merfolk (A)\n{U}\nCreature - Merfolk\nToken\nHexproof\n1/1"
 END
 
 #endif    // English (United States) resources

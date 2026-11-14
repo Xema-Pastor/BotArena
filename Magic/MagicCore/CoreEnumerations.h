@@ -1536,6 +1536,8 @@ struct CORE_EXPORT SingleCreatureType
 		Pilot,
 		Monkey,
 		Pangolin,
+		Dinosaur,
+		Trilobite,
 
 		_SingleTypeCount,
 	};
@@ -1591,6 +1593,7 @@ struct CORE_EXPORT PlaneswalkerType
 		Dovin,
 		Saheeli,
 		Samut,
+		Huatli,
 
 		_SubtypeCount,
 	};

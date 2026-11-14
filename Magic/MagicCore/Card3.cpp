@@ -699,6 +699,89 @@ void CExertSupport::Exert(CCard* pCreature)
 
 //____________________________________________________________________________
 //
+CExploreSupport::CExploreSupport(CCard* pCreature)
+	: m_pCreature(pCreature)
+{
+}
+
+CAbility* CExploreSupport::AddExploreEnterAbility(CAbility::ResolutionStartedCallback callback)
+{
+	m_Callback = callback;
+
+	// "When this creature enters, it explores."
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfInplay,
+						   CWhenSelfInplay::EventCallback, &CWhenSelfInplay::SetEnterEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(m_pCreature));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CExploreSupport::OnExploreResolving));
+	cpAbility->SetAbilityText(_T("When this creature enters, it explores."));
+
+	m_pCreature->AddAbility(cpAbility.GetPointer());
+	return cpAbility.GetPointer();
+}
+
+bool CExploreSupport::OnExploreResolving(CAbilityAction* pAction)
+{
+	Explore(m_pCreature);
+
+	if (!m_Callback.empty())
+		return m_Callback(pAction);
+	return true;
+}
+
+void CExploreSupport::Explore(CCard* pCreature)
+{
+	CGame* pGame = pCreature->GetGame();
+	CPlayer* pPlayer = pCreature->GetController();
+	CZone* pLibrary = pPlayer->GetZoneById(ZoneId::Library);
+	CCard* pTop = pLibrary->GetSize() > 0 ? pLibrary->GetAt(pLibrary->GetSize() - 1) : NULL;
+
+	if (!pGame->IsThinking())
+	{
+		CString strMessage;
+		if (pTop)
+			strMessage.Format(_T("%s explores, revealing %s"), pCreature->GetCardName(TRUE), pTop->GetCardName(TRUE));
+		else
+			strMessage.Format(_T("%s explores (the library is empty)"), pCreature->GetCardName(TRUE));
+		pGame->Message(
+			strMessage,
+			pPlayer->IsComputer() ? pGame->GetComputerImage() : pGame->GetHumanImage(),
+			MessageImportance::High
+			);
+	}
+
+	if (pTop && pTop->GetCardType().IsLand())
+	{
+		// A land goes to the hand
+		CMoveCardModifier pModifier = CMoveCardModifier(ZoneId::Library, ZoneId::Hand, TRUE, MoveType::Others, pPlayer);
+		pModifier.ApplyTo(pTop);
+	}
+	else
+	{
+		// Otherwise, a +1/+1 counter on the creature (if it's still on the battlefield), then the card stays on top or
+		// goes to the graveyard (as Surveil 1, without firing the "whenever you surveil" trigger)
+		if (pCreature->GetZoneId() == ZoneId::Battlefield)
+		{
+			CCardCounterModifier pCounter = CCardCounterModifier(_T("+1/+1"), +1);
+			pCounter.ApplyTo(pCreature);
+		}
+		if (pTop)
+		{
+			CSurveilModifier pSurveil = CSurveilModifier(pGame, 1);
+			pSurveil.ApplyTo(pPlayer);
+		}
+	}
+
+	// "Whenever a creature you control explores"
+	CSpecialEffectModifier exploreEffect(pCreature, EXPLORE_TRIGGER_ID);
+	exploreEffect.ApplyTo(pCreature);
+}
+
+//____________________________________________________________________________
+//
 CChancellorCreatureCard::CChancellorCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
 										 LPCTSTR strCostText, Power nPower, Life nToughness)
 	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)

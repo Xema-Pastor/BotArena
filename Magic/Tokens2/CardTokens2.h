@@ -719,3 +719,45 @@ class CInsectKToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CInsectKToken);
 };
+
+//____________________________________________________________________________
+//
+class CTreasureToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CTreasureToken);
+};
+
+//____________________________________________________________________________
+//
+class CDinosaurAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CDinosaurAToken);
+};
+
+//____________________________________________________________________________
+//
+class CPirateAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CPirateAToken);
+};
+
+//____________________________________________________________________________
+//
+class CIllusionCToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CIllusionCToken);
+};
+
+//____________________________________________________________________________
+//
+class CVampireEToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CVampireEToken);
+};
+
+//____________________________________________________________________________
+//
+class CMerfolkAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CMerfolkAToken);
+};

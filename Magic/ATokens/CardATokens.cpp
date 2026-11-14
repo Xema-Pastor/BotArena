@@ -75,6 +75,11 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CAnimatedGideonMartialParagonToken);
 		DEFINE_TOKEN(CElementalAVToken);
 		DEFINE_TOKEN(CSphinxAAToken);
+		DEFINE_TOKEN(CDuskLegionDreadnoughtVehicleToken);
+		DEFINE_TOKEN(CFellFlagshipVehicleToken);
+		DEFINE_TOKEN(CShadowedCaravelVehicleToken);
+		DEFINE_TOKEN(CSleekSchoonerVehicleToken);
+		DEFINE_TOKEN(CElementalAWToken);
 		DEFINE_TOKEN(CElementalARToken);
 		DEFINE_TOKEN(CElementalASToken);
 		DEFINE_TOKEN(CElementalATToken);
@@ -2028,6 +2033,103 @@ CSphinxAAToken::CSphinxAAToken(CGame* pGame, UINT nID)
 	GetCreatureKeyword()->AddFlying(FALSE);
 
 // Animation of HOU Riddleform
+}
+
+//____________________________________________________________________________
+//
+CDuskLegionDreadnoughtVehicleToken::CDuskLegionDreadnoughtVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Dusk Legion Dreadnought"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(6), Life(6))
+{
+	GetCreatureKeyword()->AddVigilance(FALSE);
+
+// Used by XLN Dusk Legion Dreadnought (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CFellFlagshipVehicleToken::CFellFlagshipVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Fell Flagship"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	// Whenever this Vehicle deals combat damage to a player, that player discards a card.
+	// Note: the player is the opponent (two-player games)
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfDamageDealt,
+						   CWhenSelfDamageDealt::PlayerEventCallback,
+						   &CWhenSelfDamageDealt::SetPlayerEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTrigger().SetCombatDamageOnly();
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CFellFlagshipVehicleToken::BeforeDiscard));
+	AddAbility(cpAbility.GetPointer());
+
+// Used by XLN Fell Flagship (the creature it becomes when crewed, see CCrewSupport)
+}
+
+bool CFellFlagshipVehicleToken::BeforeDiscard(CAbilityAction* pAction) const
+{
+	CPlayer* pPlayer = GetGame()->GetNextPlayer(pAction->GetController());
+	if (pPlayer->GetZoneById(ZoneId::Hand)->GetSize() == 0)
+		return true;
+
+	CZoneModifier pModifier = CZoneModifier(GetGame(),
+		ZoneId::Hand, SpecialNumber::All,
+		CZoneModifier::RoleType::PrimaryPlayer,
+		CardPlacement::Top, CZoneModifier::RoleType::PrimaryPlayer);
+	pModifier.AddSelection(MinimumValue(1), MaximumValue(1), // select a card to discard
+		CZoneModifier::RoleType::PrimaryPlayer, // select by
+		CZoneModifier::RoleType::PrimaryPlayer, // reveal to
+		CCardFilter::GetFilter(_T("cards")), // what cards
+		ZoneId::Graveyard, // if selected, move cards to
+		CZoneModifier::RoleType::PrimaryPlayer, // select by this player
+		CardPlacement::Top, // put selected cards on
+		MoveType::Discard, // move type
+		CZoneModifier::RoleType::PrimaryPlayer); // order selected cards by this player
+	pModifier.ApplyTo(pPlayer);
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CShadowedCaravelVehicleToken::CShadowedCaravelVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Shadowed Caravel"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+// Used by XLN Shadowed Caravel (the creature it becomes when crewed, see CCrewSupport; its +1/+1 counters are
+// on the Vehicle card)
+}
+
+//____________________________________________________________________________
+//
+CSleekSchoonerVehicleToken::CSleekSchoonerVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Sleek Schooner"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(4), Life(3))
+{
+// Used by XLN Sleek Schooner (the creature it becomes when crewed, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CElementalAWToken::CElementalAWToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(0), Life(0))
+{
+	GetCreatureKeyword()->AddHaste(FALSE);
+
+// Animation of XLN Waker of the Wilds (colorless; its +1/+1 counters are on the land)
 }
 
 //____________________________________________________________________________

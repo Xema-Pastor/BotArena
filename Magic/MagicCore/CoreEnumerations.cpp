@@ -559,7 +559,9 @@ const LPCTSTR SingleCreatureType::s_Text[SingleCreatureType::_SingleTypeCount] =
 	_T("Aetherborn"),
 	_T("Pilot"),
 	_T("Monkey"),
-	_T("Pangolin")
+	_T("Pangolin"),
+	_T("Dinosaur"),
+	_T("Trilobite")
 };
 
 //____________________________________________________________________________
@@ -595,7 +597,8 @@ const LPCTSTR PlaneswalkerType::s_Text[PlaneswalkerType::_SubtypeCount] =
 	_T("Nahiri"),
 	_T("Dovin"),
 	_T("Saheeli"),
-	_T("Samut")
+	_T("Samut"),
+	_T("Huatli")
 };
 //____________________________________________________________________________
 //

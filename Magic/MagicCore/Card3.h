@@ -376,6 +376,32 @@ protected:
 
 //____________________________________________________________________________
 //
+// Explore (Ixalan): "Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put
+// a +1/+1 counter on this creature, then put the card back or put it into your graveyard."
+// Exploring fires EXPLORE_TRIGGER_ID on the creature (for "whenever a creature you control explores", with a
+// CSpecialTrigger listening to the controller, as Exert).
+// - AddExploreEnterAbility: "When this creature enters, it explores." The callback (optional) runs after exploring.
+// - Explore: for other effects (e.g. "whenever this creature attacks, it explores").
+class CORE_EXPORT CExploreSupport
+{
+public:
+	CExploreSupport(CCard* pCreature);
+	virtual ~CExploreSupport() {}
+
+	CAbility* AddExploreEnterAbility(CAbility::ResolutionStartedCallback callback = CAbility::ResolutionStartedCallback());
+
+	// The creature explores (its controller reveals the top card of their library); fires EXPLORE_TRIGGER_ID
+	static void Explore(CCard* pCreature);
+
+protected:
+	bool OnExploreResolving(CAbilityAction* pAction);
+
+	CCard* m_pCreature;
+	CAbility::ResolutionStartedCallback m_Callback;
+};
+
+//____________________________________________________________________________
+//
 class CORE_EXPORT CChancellorCreatureCard : public CCreatureCard
 {
 protected:
