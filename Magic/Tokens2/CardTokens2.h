@@ -771,3 +771,48 @@ class CElementalZCToken : public CTokenCreature
 protected:
 	bool BeforeReturn(CAbilityAction* pAction);
 };
+
+//____________________________________________________________________________
+//
+class CConstructCToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CConstructCToken);
+};
+
+//____________________________________________________________________________
+//
+class CClericCToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CClericCToken);
+};
+
+//____________________________________________________________________________
+//
+class CDemonFToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CDemonFToken);
+
+protected:
+	bool BeforeSacrifice(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//
+class CNightmareHorrorAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CNightmareHorrorAToken);
+};
+
+//____________________________________________________________________________
+//
+class CKaroxBladewingToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CKaroxBladewingToken);
+};
+
+//____________________________________________________________________________
+//
+class CZombieKnightToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CZombieKnightToken);
+};

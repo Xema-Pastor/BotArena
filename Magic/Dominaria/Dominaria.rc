@@ -1,0 +1,367 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#include ""..\\MagicCore\\MagicCore.rc2""\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MODULE              ICON                    "Dominaria.ico"
+IDI_LARGE_MODULE        ICON                    "DominariaLarge.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_EXPANSION           "Dominaria"
+    IDS_EXPANSION_ABBREV    "DOM"
+    IDS_FIRST_CARD          "40300"
+    IDS_TOTAL_CARD          "298"
+    IDS_WHITE_BORDER        "0"
+    IDS_MODULE_ICON_ID      "40598"
+    IDS_MODULE_LARGE_ICON_ID "40599"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ALT_IMG_METHOD      "0"
+    IDS_RELEASE_DATE        "27-04-2018"
+    IDS_MWS_FOLDER          "MWS\\DOM\\"
+    IDS_PRODUCT_LIST        """Dominaria Starter Box"":R-3:U-10:C-32:BL-30,""Dominaria Booster Pack"":R-1:U-3:C-11"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING40300         "Cabal Stronghold\n\nLand\nDOM,R\n{T}: Add {C}.\r{3}, {T}: Add {B} for each basic Swamp you control."
+    IDS_STRING40301         "Clifftop Retreat\n\nLand\nDOM,R\nThis land enters tapped unless you control a Mountain or a Plains.\r{T}: Add {R} or {W}."
+    IDS_STRING40302         "Hinterland Harbor\n\nLand\nDOM,R\nThis land enters tapped unless you control a Forest or an Island.\r{T}: Add {G} or {U}."
+    IDS_STRING40303         "Isolated Chapel\n\nLand\nDOM,R\nThis land enters tapped unless you control a Plains or a Swamp.\r{T}: Add {W} or {B}."
+    IDS_STRING40304         "Meandering River\n\nLand\nDOM,C\nThis land enters tapped.\r{T}: Add {W} or {U}."
+    IDS_STRING40305         "Memorial to Folly\n\nLand\nDOM,U\nThis land enters tapped.\r{T}: Add {B}.\r{2}{B}, {T}, Sacrifice this land: Return target creature card from your graveyard to your hand."
+    IDS_STRING40306         "Memorial to Genius\n\nLand\nDOM,U\nThis land enters tapped.\r{T}: Add {U}.\r{4}{U}, {T}, Sacrifice this land: Draw two cards."
+    IDS_STRING40307         "Memorial to Glory\n\nLand\nDOM,U\nThis land enters tapped.\r{T}: Add {W}.\r{3}{W}, {T}, Sacrifice this land: Create two 1/1 white Soldier creature tokens."
+    IDS_STRING40308         "Memorial to Unity\n\nLand\nDOM,U\nThis land enters tapped.\r{T}: Add {G}.\r{2}{G}, {T}, Sacrifice this land: Look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Then put the rest on the bottom of your library in a random order."
+    IDS_STRING40309         "Memorial to War\n\nLand\nDOM,U\nThis land enters tapped.\r{T}: Add {R}.\r{4}{R}, {T}, Sacrifice this land: Destroy target land."
+    IDS_STRING40310         "Sulfur Falls\n\nLand\nDOM,R\nThis land enters tapped unless you control an Island or a Mountain.\r{T}: Add {U} or {R}."
+    IDS_STRING40311         "Timber Gorge\n\nLand\nDOM,C\nThis land enters tapped.\r{T}: Add {R} or {G}."
+    IDS_STRING40312         "Woodland Cemetery\n\nLand\nDOM,R\nThis land enters tapped unless you control a Swamp or a Forest.\r{T}: Add {B} or {G}."
+    IDS_STRING40313         "Zhalfirin Void\n\nLand\nDOM,U\nWhen this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)\r{T}: Add {C}."
+    IDS_STRING40314         "Plains\n\nBasic Land - Plains\nDOM,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40315         "Plains\n\nBasic Land - Plains\nDOM,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40316         "Plains\n\nBasic Land - Plains\nDOM,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40317         "Plains\n\nBasic Land - Plains\nDOM,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40318         "Island\n\nBasic Land - Island\nDOM,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40319         "Island\n\nBasic Land - Island\nDOM,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40320         "Island\n\nBasic Land - Island\nDOM,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40321         "Island\n\nBasic Land - Island\nDOM,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40322         "Swamp\n\nBasic Land - Swamp\nDOM,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40323         "Swamp\n\nBasic Land - Swamp\nDOM,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40324         "Swamp\n\nBasic Land - Swamp\nDOM,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40325         "Swamp\n\nBasic Land - Swamp\nDOM,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40326         "Mountain\n\nBasic Land - Mountain\nDOM,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40327         "Mountain\n\nBasic Land - Mountain\nDOM,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40328         "Mountain\n\nBasic Land - Mountain\nDOM,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40329         "Mountain\n\nBasic Land - Mountain\nDOM,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40330         "Forest\n\nBasic Land - Forest\nDOM,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40331         "Forest\n\nBasic Land - Forest\nDOM,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40332         "Forest\n\nBasic Land - Forest\nDOM,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40333         "Forest\n\nBasic Land - Forest\nDOM,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40334         "Chandra, Bold Pyromancer\n{4RR}\nPlaneswalker - Chandra\nDOM,MR\n[+1]: Add {R}{R}. Chandra deals 2 damage to target player.\r[-3]: Chandra deals 3 damage to target creature or planeswalker.\r[-7]: Chandra deals 10 damage to target player and each creature and planeswalker they control.\n5"
+    IDS_STRING40335         "Jaya Ballard\n{2RRR}\nPlaneswalker - Jaya\nDOM,MR\n[+1]: Add {R}{R}{R}. Spend this mana only to cast instant or sorcery spells.\r[+1]: Discard up to three cards, then draw that many cards.\r[-8]: You get an emblem with ""You may cast instant and sorcery spells from your graveyard. If a spell cast this way would be put into your graveyard, exile it instead.""\n5"
+    IDS_STRING40336         "Karn, Scion of Urza\n{4}\nPlaneswalker - Karn\nDOM,MR\n[+1]: Reveal the top two cards of your library. An opponent chooses one of them. Put that card into your hand and exile the other with a silver counter on it.\r[-1]: Put a card you own with a silver counter on it from exile into your hand.\r[-2]: Create a 0/0 colorless Construct artifact creature token with ""This token gets +1/+1 for each artifact you control.""\n5"
+    IDS_STRING40337         "Teferi, Hero of Dominaria\n{3WU}\nPlaneswalker - Teferi\nDOM,MR\n[+1]: Draw a card. At the beginning of the next end step, untap up to two lands.\r[-3]: Put target nonland permanent into its owner's library third from the top.\r[-8]: You get an emblem with ""Whenever you draw a card, exile target permanent an opponent controls.""\n4"
+    IDS_STRING40338         "Teferi, Timebender\n{4WU}\nPlaneswalker - Teferi\nDOM,MR\n[+2]: Untap up to one target artifact or creature.\r[-3]: You gain 2 life and draw two cards.\r[-9]: Take an extra turn after this one.\n5"
+    IDS_STRING40339         "Arcane Flight\n{U}\nEnchantment - Aura\nDOM,C\nEnchant creature\rEnchanted creature gets +1/+1 and has flying."
+    IDS_STRING40340         "Chainer's Torment\n{3B}\nEnchantment - Saga\nDOM,U\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI, II - This Saga deals 2 damage to each opponent and you gain 2 life.\rIII - Create an X/X black Nightmare Horror creature token, where X is half your life total, rounded up. It deals X damage to you."
+    IDS_STRING40341         "Curator's Ward\n{2U}\nEnchantment - Aura\nDOM,U\nEnchant permanent\rEnchanted permanent has hexproof.\rWhen enchanted permanent leaves the battlefield, if it was historic, draw two cards. (Artifacts, legendaries, and Sagas are historic.)"
+    IDS_STRING40342         "Demonic Vigor\n{B}\nEnchantment - Aura\nDOM,C\nEnchant creature\rEnchanted creature gets +1/+1.\rWhen enchanted creature dies, return that card to its owner's hand."
+    IDS_STRING40343         "Dub\n{2W}\nEnchantment - Aura\nDOM,C\nEnchant creature\rEnchanted creature gets +2/+2, has first strike, and is a Knight in addition to its other types. (It deals combat damage before creatures without first strike.)"
+    IDS_STRING40344         "Fall of the Thran\n{5W}\nEnchantment - Saga\nDOM,R\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI - Destroy all lands.\rII, III - Each player returns two land cards from their graveyard to the battlefield."
+    IDS_STRING40345         "Frenzied Rage\n{1R}\nEnchantment - Aura\nDOM,C\nEnchant creature\rEnchanted creature gets +2/+1 and has menace. (It can't be blocked except by two or more creatures.)"
+    IDS_STRING40346         "Fungal Plots\n{1G}\nEnchantment\nDOM,U\n{1}{G}, Exile a creature card from your graveyard: Create a 1/1 green Saproling creature token.\rSacrifice two Saprolings: You gain 2 life and draw a card."
+    IDS_STRING40347         "Haphazard Bombardment\n{5R}\nEnchantment\nDOM,R\nWhen this enchantment enters, choose four nonenchantment permanents you don't control and put an aim counter on each of them.\rAt the beginning of your end step, if two or more permanents you don't control have an aim counter on them, destroy one of those permanents at random."
+    IDS_STRING40348         "History of Benalia\n{1WW}\nEnchantment - Saga\nDOM,MR\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI, II - Create a 2/2 white Knight creature token with vigilance.\rIII - Knights you control get +2/+1 until end of turn."
+    IDS_STRING40349         "In Bolas's Clutches\n{4UU}\nLegendary Enchantment - Aura\nDOM,U\nEnchant permanent\rYou control enchanted permanent.\rEnchanted permanent is legendary."
+    IDS_STRING40350         "Oath of Teferi\n{3WU}\nLegendary Enchantment\nDOM,R\nWhen Oath of Teferi enters, exile another target permanent you control. Return it to the battlefield under its owner's control at the beginning of the next end step.\rYou may activate the loyalty abilities of planeswalkers you control twice each turn rather than only once."
+    IDS_STRING40351         "On Serra's Wings\n{3W}\nLegendary Enchantment - Aura\nDOM,U\nEnchant creature\rEnchanted creature is legendary, gets +1/+1, and has flying, vigilance, and lifelink."
+    IDS_STRING40352         "Phyrexian Scriptures\n{2BB}\nEnchantment - Saga\nDOM,MR\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI - Put a +1/+1 counter on up to one target creature. That creature becomes an artifact in addition to its other types.\rII - Destroy all nonartifact creatures.\rIII - Exile all opponents' graveyards."
+    IDS_STRING40353         "Rite of Belzenlok\n{2BB}\nEnchantment - Saga\nDOM,R\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI, II - Create two 0/1 black Cleric creature tokens.\rIII - Create a 6/6 black Demon creature token with flying, trample, and ""At the beginning of your upkeep, sacrifice another creature. If you can't, this token deals 6 damage to you."""
+    IDS_STRING40354         "Seal Away\n{1W}\nEnchantment\nDOM,U\nFlash\rWhen this enchantment enters, exile target tapped creature an opponent controls until this enchantment leaves the battlefield."
+    IDS_STRING40355         "Song of Freyalise\n{1G}\nEnchantment - Saga\nDOM,U\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI, II - Until your next turn, creatures you control gain ""{T}: Add one mana of any color.""\rIII - Put a +1/+1 counter on each creature you control. Those creatures gain vigilance, trample, and indestructible until end of turn."
+    IDS_STRING40356         "The Antiquities War\n{3U}\nEnchantment - Saga\nDOM,R\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI, II - Look at the top five cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\rIII - Artifacts you control become artifact creatures with base power and toughness 5/5 until end of turn."
+    IDS_STRING40357         "The Eldest Reborn\n{4B}\nEnchantment - Saga\nDOM,U\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI - Each opponent sacrifices a creature or planeswalker of their choice.\rII - Each opponent discards a card.\rIII - Put target creature or planeswalker card from a graveyard onto the battlefield under your control."
+    IDS_STRING40358         "The First Eruption\n{2R}\nEnchantment - Saga\nDOM,R\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI - This Saga deals 1 damage to each creature without flying.\rII - Add {R}{R}.\rIII - Sacrifice a Mountain. If you do, this Saga deals 3 damage to each creature."
+    IDS_STRING40359         "The Flame of Keld\n{1R}\nEnchantment - Saga\nDOM,U\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI - Discard your hand.\rII - Draw two cards.\rIII - If a red source you control would deal damage to a permanent or player this turn, it deals that much damage plus 2 to that permanent or player instead."
+    IDS_STRING40360         "The Mending of Dominaria\n{3GG}\nEnchantment - Saga\nDOM,R\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI, II - Mill two cards, then you may return a creature card from your graveyard to your hand.\rIII - Return all land cards from your graveyard to the battlefield, then shuffle your graveyard into your library."
+    IDS_STRING40361         "The Mirari Conjecture\n{4U}\nEnchantment - Saga\nDOM,R\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI - Return target instant card from your graveyard to your hand.\rII - Return target sorcery card from your graveyard to your hand.\rIII - Until end of turn, whenever you cast an instant or sorcery spell, copy it. You may choose new targets for the copy."
+    IDS_STRING40362         "Time of Ice\n{3U}\nEnchantment - Saga\nDOM,U\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI, II - Tap target creature an opponent controls. It doesn't untap during its controller's untap step for as long as you control this Saga.\rIII - Return all tapped creatures to their owners' hands."
+    IDS_STRING40363         "Triumph of Gerrard\n{1W}\nEnchantment - Saga\nDOM,U\n(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\rI, II - Put a +1/+1 counter on target creature you control with the greatest power.\rIII - Target creature you control with the greatest power gains flying, first strike, and lifelink until end of turn."
+    IDS_STRING40364         "Blackblade Reforged\n{2}\nLegendary Artifact - Equipment\nDOM,R\nEquipped creature gets +1/+1 for each land you control.\rEquip legendary creature {3}\rEquip {7}"
+    IDS_STRING40365         "Bloodtallow Candle\n{1}\nArtifact\nDOM,C\n{6}, {T}, Sacrifice this artifact: Target creature gets -5/-5 until end of turn."
+    IDS_STRING40366         "Forebear's Blade\n{3}\nArtifact - Equipment\nDOM,R\nEquipped creature gets +3/+0 and has vigilance and trample.\rWhenever equipped creature dies, attach this Equipment to target creature you control.\rEquip {3}"
+    IDS_STRING40367         "Gilded Lotus\n{5}\nArtifact\nDOM,R\n{T}: Add three mana of any one color."
+    IDS_STRING40368         "Icy Manipulator\n{4}\nArtifact\nDOM,U\n{1}, {T}: Tap target artifact, creature, or land."
+    IDS_STRING40369         "Jousting Lance\n{2}\nArtifact - Equipment\nDOM,C\nEquipped creature gets +2/+0.\rDuring your turn, equipped creature has first strike.\rEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)"
+    IDS_STRING40370         "Mox Amber\n{0}\nLegendary Artifact\nDOM,MR\n{T}: Add one mana of any color among legendary creatures and planeswalkers you control."
+    IDS_STRING40371         "Navigator's Compass\n{1}\nArtifact\nDOM,C\nWhen this artifact enters, you gain 3 life.\r{T}: Until end of turn, target land you control becomes the basic land type of your choice in addition to its other types."
+    IDS_STRING40372         "Powerstone Shard\n{3}\nArtifact\nDOM,C\n{T}: Add {C} for each artifact you control named Powerstone Shard."
+    IDS_STRING40373         "Short Sword\n{1}\nArtifact - Equipment\nDOM,C\nEquipped creature gets +1/+1.\rEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)"
+    IDS_STRING40374         "Sorcerer's Wand\n{1}\nArtifact - Equipment\nDOM,U\nEquipped creature has ""{T}: This creature deals 1 damage to target player or planeswalker. If this creature is a Wizard, it deals 2 damage instead.""\rEquip {3}"
+    IDS_STRING40375         "Thran Temporal Gateway\n{4}\nLegendary Artifact\nDOM,R\n{4}, {T}: You may put a historic permanent card from your hand onto the battlefield. (Artifacts, legendaries, and Sagas are historic.)"
+    IDS_STRING40376         "Urza's Tome\n{2}\nArtifact - Book\nDOM,U\n{3}, {T}: Draw a card. Then discard a card unless you exile a historic card from your graveyard. (Artifacts, legendaries, and Sagas are historic.)"
+    IDS_STRING40377         "Weatherlight\n{4}\nLegendary Artifact - Vehicle\nDOM,MR\nFlying\rWhenever Weatherlight deals combat damage to a player, look at the top five cards of your library. You may reveal a historic card from among them and put it into your hand. Put the rest on the bottom of your library in a random order. (Artifacts, legendaries, and Sagas are historic.)\rCrew 3\n4/5"
+    IDS_STRING40378         "Adventurous Impulse\n{G}\nSorcery\nDOM,C\nLook at the top three cards of your library. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in any order."
+    IDS_STRING40379         "Board the Weatherlight\n{1W}\nSorcery\nDOM,U\nLook at the top five cards of your library. You may reveal a historic card from among them and put it into your hand. Put the rest on the bottom of your library in a random order. (Artifacts, legendaries, and Sagas are historic.)"
+    IDS_STRING40380         "Broken Bond\n{1G}\nSorcery\nDOM,C\nDestroy target artifact or enchantment. You may put a land card from your hand onto the battlefield."
+    IDS_STRING40381         "Call the Cavalry\n{3W}\nSorcery\nDOM,C\nCreate two 2/2 white Knight creature tokens with vigilance."
+    IDS_STRING40382         "Chandra's Outburst\n{3RR}\nSorcery\nDOM,R\nChandra's Outburst deals 4 damage to target player or planeswalker.\rSearch your library and/or graveyard for a card named Chandra, Bold Pyromancer, reveal it, and put it into your hand. If you search your library this way, shuffle."
+    IDS_STRING40383         "Divest\n{B}\nSorcery\nDOM,C\nTarget player reveals their hand. You choose an artifact or creature card from it. That player discards that card."
+    IDS_STRING40384         "Divination\n{2U}\nSorcery\nDOM,C\nDraw two cards."
+    IDS_STRING40385         "Eviscerate\n{3B}\nSorcery\nDOM,C\nDestroy target creature."
+    IDS_STRING40386         "Fiery Intervention\n{4R}\nSorcery\nDOM,C\nChoose one -\r* Fiery Intervention deals 5 damage to target creature.\r* Destroy target artifact."
+    IDS_STRING40387         "Fight with Fire\n{2R}\nSorcery\nDOM,U\nKicker {5}{R} (You may pay an additional {5}{R} as you cast this spell.)\rFight with Fire deals 5 damage to target creature. If this spell was kicked, it deals 10 damage divided as you choose among any number of targets instead. (Those targets can include players and planeswalkers.)"
+    IDS_STRING40388         "Final Parting\n{3BB}\nSorcery\nDOM,U\nSearch your library for two cards. Put one into your hand and the other into your graveyard. Then shuffle."
+    IDS_STRING40389         "Gaea's Blessing\n{1G}\nSorcery\nDOM,U\nTarget player shuffles up to three target cards from their graveyard into their library.\rDraw a card.\rWhen this card is put into your graveyard from your library, shuffle your graveyard into your library."
+    IDS_STRING40390         "Goblin Barrage\n{3R}\nSorcery\nDOM,U\nKicker-Sacrifice an artifact or Goblin. (You may sacrifice an artifact or Goblin in addition to any other costs as you cast this spell.)\rGoblin Barrage deals 4 damage to target creature. If this spell was kicked, it also deals 4 damage to target player or planeswalker."
+    IDS_STRING40391         "Grow from the Ashes\n{2G}\nSorcery\nDOM,C\nKicker {2} (You may pay an additional {2} as you cast this spell.)\rSearch your library for a basic land card, put it onto the battlefield, then shuffle. If this spell was kicked, instead search your library for two basic land cards, put them onto the battlefield, then shuffle."
+    IDS_STRING40392         "Jaya's Immolating Inferno\n{XRR}\nLegendary Sorcery\nDOM,R\n(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)\rJaya's Immolating Inferno deals X damage to each of up to three targets."
+    IDS_STRING40393         "Kamahl's Druidic Vow\n{XGG}\nLegendary Sorcery\nDOM,R\n(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)\rLook at the top X cards of your library. You may put any number of land and/or legendary permanent cards with mana value X or less from among them onto the battlefield. Put the rest into your graveyard."
+    IDS_STRING40394         "Karn's Temporal Sundering\n{4UU}\nLegendary Sorcery\nDOM,R\n(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)\rTarget player takes an extra turn after this one. Return up to one target nonland permanent to its owner's hand. Exile Karn's Temporal Sundering."
+    IDS_STRING40395         "Nature's Spiral\n{1G}\nSorcery\nDOM,U\nReturn target permanent card from your graveyard to your hand."
+    IDS_STRING40396         "Primevals' Glorious Rebirth\n{5WB}\nLegendary Sorcery\nDOM,R\n(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)\rReturn all legendary permanent cards from your graveyard to the battlefield."
+    IDS_STRING40397         "Saproling Migration\n{1G}\nSorcery\nDOM,C\nKicker {4} (You may pay an additional {4} as you cast this spell.)\rCreate two 1/1 green Saproling creature tokens. If this spell was kicked, create four of those tokens instead."
+    IDS_STRING40398         "Seismic Shift\n{3R}\nSorcery\nDOM,C\nDestroy target land. Up to two target creatures can't block this turn."
+    IDS_STRING40399         "Settle the Score\n{2BB}\nSorcery\nDOM,U\nExile target creature. Put two loyalty counters on a planeswalker you control."
+    IDS_STRING40400         "Soul Salvage\n{2B}\nSorcery\nDOM,C\nReturn up to two target creature cards from your graveyard to your hand."
+    IDS_STRING40401         "Sylvan Awakening\n{2G}\nSorcery\nDOM,R\nUntil your next turn, all lands you control become 2/2 Elemental creatures with reach, indestructible, and haste. They're still lands."
+    IDS_STRING40402         "Temporal Machinations\n{2U}\nSorcery\nDOM,C\nReturn target creature to its owner's hand. If you control an artifact, draw a card."
+    IDS_STRING40403         "Urza's Ruinous Blast\n{4W}\nLegendary Sorcery\nDOM,R\n(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)\rExile all nonland permanents that aren't legendary."
+    IDS_STRING40404         "Warlord's Fury\n{R}\nSorcery\nDOM,C\nCreatures you control gain first strike until end of turn.\rDraw a card."
+    IDS_STRING40405         "Weight of Memory\n{3UU}\nSorcery\nDOM,U\nDraw three cards. Target player mills three cards."
+    IDS_STRING40406         "Yawgmoth's Vile Offering\n{4B}\nLegendary Sorcery\nDOM,R\n(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)\rPut up to one target creature or planeswalker card from a graveyard onto the battlefield under your control. Destroy up to one target creature or planeswalker. Exile Yawgmoth's Vile Offering."
+    IDS_STRING40407         "Adamant Will\n{1W}\nInstant\nDOM,C\nTarget creature gets +2/+2 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)"
+    IDS_STRING40408         "Ancient Animus\n{1G}\nInstant\nDOM,C\nPut a +1/+1 counter on target creature you control if it's legendary. Then it fights target creature an opponent controls. (Each deals damage equal to its power to the other.)"
+    IDS_STRING40409         "Arbor Armament\n{G}\nInstant\nDOM,C\nPut a +1/+1 counter on target creature. That creature gains reach until end of turn. (It can block creatures with flying.)"
+    IDS_STRING40410         "Befuddle\n{2U}\nInstant\nDOM,C\nTarget creature gets -4/-0 until end of turn.\rDraw a card."
+    IDS_STRING40411         "Blessed Light\n{4W}\nInstant\nDOM,C\nExile target creature or enchantment."
+    IDS_STRING40412         "Blessing of Belzenlok\n{B}\nInstant\nDOM,C\nTarget creature gets +2/+1 until end of turn. If it's legendary, it also gains lifelink until end of turn."
+    IDS_STRING40413         "Blink of an Eye\n{1U}\nInstant\nDOM,C\nKicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\rReturn target nonland permanent to its owner's hand. If this spell was kicked, draw a card."
+    IDS_STRING40414         "Cast Down\n{1B}\nInstant\nDOM,U\nDestroy target nonlegendary creature."
+    IDS_STRING40415         "Charge\n{W}\nInstant\nDOM,C\nCreatures you control get +1/+1 until end of turn."
+    IDS_STRING40416         "Dark Bargain\n{3B}\nInstant\nDOM,C\nLook at the top three cards of your library. Put two of them into your hand and the other into your graveyard. Dark Bargain deals 2 damage to you."
+    IDS_STRING40417         "Fervent Strike\n{R}\nInstant\nDOM,C\nTarget creature gets +1/+0 and gains first strike and haste until end of turn."
+    IDS_STRING40418         "Fungal Infection\n{B}\nInstant\nDOM,C\nTarget creature gets -1/-1 until end of turn. Create a 1/1 green Saproling creature token."
+    IDS_STRING40419         "Gideon's Reproach\n{1W}\nInstant\nDOM,C\nGideon's Reproach deals 4 damage to target attacking or blocking creature."
+    IDS_STRING40420         "Gift of Growth\n{1G}\nInstant\nDOM,C\nKicker {2} (You may pay an additional {2} as you cast this spell.)\rUntap target creature. It gets +2/+2 until end of turn. If this spell was kicked, that creature gets +4/+4 until end of turn instead."
+    IDS_STRING40421         "Healing Grace\n{W}\nInstant\nDOM,C\nPrevent the next 3 damage that would be dealt to any target this turn by a source of your choice. You gain 3 life."
+    IDS_STRING40422         "Invoke the Divine\n{2W}\nInstant\nDOM,C\nDestroy target artifact or enchantment. You gain 4 life."
+    IDS_STRING40423         "Opt\n{U}\nInstant\nDOM,C\nScry 1. (Look at the top card of your library. You may put that card on the bottom.)\rDraw a card."
+    IDS_STRING40424         "Pierce the Sky\n{1G}\nInstant\nDOM,C\nPierce the Sky deals 7 damage to target creature with flying."
+    IDS_STRING40425         "Radiating Lightning\n{3R}\nInstant\nDOM,C\nRadiating Lightning deals 3 damage to target player and 1 damage to each creature that player controls."
+    IDS_STRING40426         "Rescue\n{U}\nInstant\nDOM,C\nReturn target permanent you control to its owner's hand."
+    IDS_STRING40427         "Run Amok\n{1R}\nInstant\nDOM,C\nTarget attacking creature gets +3/+3 and gains trample until end of turn."
+    IDS_STRING40428         "Shivan Fire\n{R}\nInstant\nDOM,C\nKicker {4} (You may pay an additional {4} as you cast this spell.)\rShivan Fire deals 2 damage to target creature. If this spell was kicked, it deals 4 damage instead."
+    IDS_STRING40429         "Spore Swarm\n{3G}\nInstant\nDOM,U\nCreate three 1/1 green Saproling creature tokens."
+    IDS_STRING40430         "Syncopate\n{XU}\nInstant\nDOM,C\nCounter target spell unless its controller pays {X}. If that spell is countered this way, exile it instead of putting it into its owner's graveyard."
+    IDS_STRING40431         "Unwind\n{2U}\nInstant\nDOM,C\nCounter target noncreature spell. Untap up to three lands."
+    IDS_STRING40432         "Vicious Offering\n{1B}\nInstant\nDOM,C\nKicker-Sacrifice a creature. (You may sacrifice a creature in addition to any other costs as you cast this spell.)\rTarget creature gets -2/-2 until end of turn. If this spell was kicked, that creature gets -5/-5 until end of turn instead."
+    IDS_STRING40433         "Wild Onslaught\n{3G}\nInstant\nDOM,U\nKicker {4} (You may pay an additional {4} as you cast this spell.)\rPut a +1/+1 counter on each creature you control. If this spell was kicked, put two +1/+1 counters on each creature you control instead."
+    IDS_STRING40434         "Wizard's Lightning\n{2R}\nInstant\nDOM,U\nThis spell costs {2} less to cast if you control a Wizard.\rWizard's Lightning deals 3 damage to any target."
+    IDS_STRING40435         "Wizard's Retort\n{1UU}\nInstant\nDOM,U\nThis spell costs {1} less to cast if you control a Wizard.\rCounter target spell."
+    IDS_STRING40436         "Aven Sentry\n{3W}\nCreature - Bird Soldier\nDOM,C\nFlying\n3/2"
+    IDS_STRING40437         "Baird, Steward of Argive\n{2WW}\nLegendary Creature - Human Soldier\nDOM,U\nVigilance\rCreatures can't attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.\n2/4"
+    IDS_STRING40438         "Benalish Honor Guard\n{1W}\nCreature - Human Knight\nDOM,C\nThis creature gets +1/+0 for each legendary creature you control.\n2/2"
+    IDS_STRING40439         "Benalish Marshal\n{WWW}\nCreature - Human Knight\nDOM,R\nOther creatures you control get +1/+1.\n3/3"
+    IDS_STRING40440         "Danitha Capashen, Paragon\n{2W}\nLegendary Creature - Human Knight\nDOM,U\nFirst strike, vigilance, lifelink\rAura and Equipment spells you cast cost {1} less to cast.\n2/2"
+    IDS_STRING40441         "Daring Archaeologist\n{3W}\nCreature - Human Artificer\nDOM,R\nWhen this creature enters, you may return target artifact card from your graveyard to your hand.\rWhenever you cast a historic spell, put a +1/+1 counter on this creature. (Artifacts, legendaries, and Sagas are historic.)\n3/3"
+    IDS_STRING40442         "Dauntless Bodyguard\n{W}\nCreature - Human Knight\nDOM,U\nAs this creature enters, choose another creature you control.\rSacrifice this creature: The chosen creature gains indestructible until end of turn.\n2/1"
+    IDS_STRING40443         "D'Avenant Trapper\n{2W}\nCreature - Human Archer\nDOM,C\nWhenever you cast a historic spell, tap target creature an opponent controls. (Artifacts, legendaries, and Sagas are historic.)\n3/2"
+    IDS_STRING40444         "Evra, Halcyon Witness\n{4WW}\nLegendary Creature - Avatar\nDOM,R\nLifelink\r{4}: Exchange your life total with Evra's power.\n4/4"
+    IDS_STRING40445         "Excavation Elephant\n{4W}\nCreature - Elephant\nDOM,C\nKicker {1}{W} (You may pay an additional {1}{W} as you cast this spell.)\rWhen this creature enters, if it was kicked, return target artifact card from your graveyard to your hand.\n3/5"
+    IDS_STRING40446         "Knight of Grace\n{1W}\nCreature - Human Knight\nDOM,U\nFirst strike (This creature deals combat damage before creatures without first strike.)\rHexproof from black (This creature can't be the target of black spells or abilities your opponents control.)\rThis creature gets +1/+0 as long as any player controls a black permanent.\n2/2"
+    IDS_STRING40447         "Knight of New Benalia\n{1W}\nCreature - Human Knight\nDOM,C\n\n3/1"
+    IDS_STRING40448         "Kwende, Pride of Femeref\n{3W}\nLegendary Creature - Human Knight\nDOM,U\nDouble strike\rCreatures you control with first strike have double strike.\n2/2"
+    IDS_STRING40449         "Lyra Dawnbringer\n{3WW}\nLegendary Creature - Angel\nDOM,MR\nFlying\rFirst strike (This creature deals combat damage before creatures without first strike.)\rLifelink (Damage dealt by this creature also causes you to gain that much life.)\rOther Angels you control get +1/+1 and have lifelink.\n5/5"
+    IDS_STRING40450         "Mesa Unicorn\n{1W}\nCreature - Unicorn\nDOM,C\nLifelink (Damage dealt by this creature also causes you to gain that much life.)\n2/2"
+    IDS_STRING40451         "Pegasus Courser\n{2W}\nCreature - Pegasus\nDOM,C\nFlying\rWhenever this creature attacks, another target attacking creature gains flying until end of turn.\n1/3"
+    IDS_STRING40452         "Sanctum Spirit\n{3W}\nCreature - Spirit\nDOM,U\nLifelink\rDiscard a historic card: This creature gains indestructible until end of turn. (Artifacts, legendaries, and Sagas are historic.)\n3/2"
+    IDS_STRING40453         "Sergeant-at-Arms\n{2W}\nCreature - Human Soldier\nDOM,C\nKicker {2}{W} (You may pay an additional {2}{W} as you cast this spell.)\rWhen this creature enters, if it was kicked, create two 1/1 white Soldier creature tokens.\n2/3"
+    IDS_STRING40454         "Serra Angel\n{3WW}\nCreature - Angel\nDOM,U\nFlying\rVigilance (Attacking doesn't cause this creature to tap.)\n4/4"
+    IDS_STRING40455         "Serra Disciple\n{1W}\nCreature - Bird Cleric\nDOM,C\nFlying, first strike\rWhenever you cast a historic spell, this creature gets +1/+1 until end of turn. (Artifacts, legendaries, and Sagas are historic.)\n1/1"
+    IDS_STRING40456         "Shalai, Voice of Plenty\n{3W}\nLegendary Creature - Angel\nDOM,R\nFlying\rYou, planeswalkers you control, and other creatures you control have hexproof.\r{4}{G}{G}: Put a +1/+1 counter on each creature you control.\n3/4"
+    IDS_STRING40457         "Teshar, Ancestor's Apostle\n{3W}\nLegendary Creature - Bird Cleric\nDOM,R\nFlying\rWhenever you cast a historic spell, return target creature card with mana value 3 or less from your graveyard to the battlefield. (Artifacts, legendaries, and Sagas are historic.)\n2/2"
+    IDS_STRING40458         "Tragic Poet\n{W}\nCreature - Human\nDOM,C\n{T}, Sacrifice this creature: Return target enchantment card from your graveyard to your hand.\n1/1"
+    IDS_STRING40459         "Baloth Gorger\n{2GG}\nCreature - Beast\nDOM,C\nKicker {4} (You may pay an additional {4} as you cast this spell.)\rIf this creature was kicked, it enters with three +1/+1 counters on it.\n4/4"
+    IDS_STRING40460         "Elfhame Druid\n{1G}\nCreature - Elf Druid\nDOM,U\n{T}: Add {G}.\r{T}: Add {G}{G}. Spend this mana only to cast kicked spells.\n0/2"
+    IDS_STRING40461         "Gaea's Protector\n{3G}\nCreature - Elemental Warrior\nDOM,C\nThis creature must be blocked if able.\n4/2"
+    IDS_STRING40462         "Grunn, the Lonely King\n{4GG}\nLegendary Creature - Ape Warrior\nDOM,U\nKicker {3} (You may pay an additional {3} as you cast this spell.)\rIf Grunn was kicked, it enters with five +1/+1 counters on it.\rWhenever Grunn attacks alone, double its power and toughness until end of turn.\n5/5"
+    IDS_STRING40463         "Krosan Druid\n{2G}\nCreature - Centaur Druid\nDOM,C\nKicker {4}{G} (You may pay an additional {4}{G} as you cast this spell.)\rWhen this creature enters, if it was kicked, you gain 10 life.\n2/3"
+    IDS_STRING40464         "Llanowar Elves\n{G}\nCreature - Elf Druid\nDOM,C\n{T}: Add {G}.\n1/1"
+    IDS_STRING40465         "Llanowar Envoy\n{2G}\nCreature - Elf Scout\nDOM,C\n{1}{G}: Add one mana of any color.\n3/2"
+    IDS_STRING40466         "Llanowar Scout\n{1G}\nCreature - Elf Scout\nDOM,C\n{T}: You may put a land card from your hand onto the battlefield.\n1/3"
+    IDS_STRING40467         "Mammoth Spider\n{4G}\nCreature - Spider\nDOM,C\nReach (This creature can block creatures with flying.)\n3/5"
+    IDS_STRING40468         "Marwyn, the Nurturer\n{2G}\nLegendary Creature - Elf Druid\nDOM,R\nWhenever another Elf you control enters, put a +1/+1 counter on Marwyn.\r{T}: Add an amount of {G} equal to Marwyn's power.\n1/1"
+    IDS_STRING40469         "Multani, Yavimaya's Avatar\n{4GG}\nLegendary Creature - Elemental Avatar\nDOM,MR\nReach, trample\rMultani gets +1/+1 for each land you control and each land card in your graveyard.\r{1}{G}, Return two lands you control to their owner's hand: Return this card from your graveyard to your hand.\n0/0"
+    IDS_STRING40470         "Primordial Wurm\n{4GG}\nCreature - Wurm\nDOM,C\n\n7/6"
+    IDS_STRING40471         "Sporecrown Thallid\n{1G}\nCreature - Fungus\nDOM,U\nEach other creature you control that's a Fungus or Saproling gets +1/+1.\n2/2"
+    IDS_STRING40472         "Steel Leaf Champion\n{GGG}\nCreature - Elf Knight\nDOM,R\nThis creature can't be blocked by creatures with power 2 or less.\n5/4"
+    IDS_STRING40473         "Territorial Allosaurus\n{2GG}\nCreature - Dinosaur\nDOM,R\nKicker {2}{G} (You may pay an additional {2}{G} as you cast this spell.)\rWhen this creature enters, if it was kicked, it fights another target creature.\n5/5"
+    IDS_STRING40474         "Thorn Elemental\n{5GG}\nCreature - Elemental\nDOM,U\nYou may have this creature assign its combat damage as though it weren't blocked.\n7/7"
+    IDS_STRING40475         "Untamed Kavu\n{1G}\nCreature - Kavu\nDOM,U\nKicker {3} (You may pay an additional {3} as you cast this spell.)\rVigilance, trample\rIf this creature was kicked, it enters with three +1/+1 counters on it.\n2/2"
+    IDS_STRING40476         "Verdant Force\n{5GGG}\nCreature - Elemental\nDOM,R\nAt the beginning of each upkeep, create a 1/1 green Saproling creature token.\n7/7"
+    IDS_STRING40477         "Yavimaya Sapherd\n{2G}\nCreature - Fungus\nDOM,C\nWhen this creature enters, create a 1/1 green Saproling creature token.\n2/2"
+    IDS_STRING40478         "Bloodstone Goblin\n{1R}\nCreature - Goblin Warrior\nDOM,C\nWhenever you cast a spell, if that spell was kicked, this creature gets +1/+1 and gains menace until end of turn. (It can't be blocked except by two or more creatures.)\n2/2"
+    IDS_STRING40479         "Champion of the Flame\n{1R}\nCreature - Human Warrior\nDOM,U\nTrample\rThis creature gets +2/+2 for each Aura and Equipment attached to it.\n1/1"
+    IDS_STRING40480         "Fire Elemental\n{3RR}\nCreature - Elemental\nDOM,C\n\n5/4"
+    IDS_STRING40481         "Firefist Adept\n{4R}\nCreature - Human Wizard\nDOM,U\nWhen this creature enters, it deals X damage to target creature an opponent controls, where X is the number of Wizards you control.\n3/3"
+    IDS_STRING40482         "Ghitu Chronicler\n{1R}\nCreature - Human Wizard\nDOM,C\nKicker {3}{R} (You may pay an additional {3}{R} as you cast this spell.)\rWhen this creature enters, if it was kicked, return target instant or sorcery card from your graveyard to your hand.\n1/3"
+    IDS_STRING40483         "Ghitu Journeymage\n{2R}\nCreature - Human Wizard\nDOM,C\nWhen this creature enters, if you control another Wizard, this creature deals 2 damage to each opponent.\n3/2"
+    IDS_STRING40484         "Ghitu Lavarunner\n{R}\nCreature - Human Wizard\nDOM,C\nAs long as there are two or more instant and/or sorcery cards in your graveyard, this creature gets +1/+0 and has haste. (It can attack and {T} as soon as it comes under your control.)\n1/2"
+    IDS_STRING40485         "Goblin Chainwhirler\n{RRR}\nCreature - Goblin Warrior\nDOM,R\nFirst strike\rWhen this creature enters, it deals 1 damage to each opponent and each creature and planeswalker they control.\n3/3"
+    IDS_STRING40486         "Goblin Warchief\n{1RR}\nCreature - Goblin Warrior\nDOM,U\nGoblin spells you cast cost {1} less to cast.\rGoblins you control have haste.\n2/2"
+    IDS_STRING40487         "Karplusan Hound\n{3R}\nCreature - Dog\nDOM,U\nWhenever this creature attacks, if you control a Chandra planeswalker, this creature deals 2 damage to any target.\n3/3"
+    IDS_STRING40488         "Keldon Overseer\n{2R}\nCreature - Human Warrior\nDOM,C\nKicker {3}{R} (You may pay an additional {3}{R} as you cast this spell.)\rHaste\rWhen this creature enters, if it was kicked, gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\n3/1"
+    IDS_STRING40489         "Keldon Raider\n{2RR}\nCreature - Human Warrior\nDOM,C\nWhen this creature enters, you may discard a card. If you do, draw a card.\n4/3"
+    IDS_STRING40490         "Keldon Warcaller\n{1R}\nCreature - Human Warrior\nDOM,C\nWhenever this creature attacks, put a lore counter on target Saga you control.\n2/2"
+    IDS_STRING40491         "Orcish Vandal\n{1R}\nCreature - Orc Warrior\nDOM,U\n{T}, Sacrifice an artifact: This creature deals 2 damage to any target.\n1/1"
+    IDS_STRING40492         "Pyromantic Pilgrim\n{2R}\nCreature - Human Wizard\nDOM,C\nHaste (This creature can attack and {T} as soon as it comes under your control.)\n3/1"
+    IDS_STRING40493         "Rampaging Cyclops\n{3R}\nCreature - Cyclops\nDOM,C\nThis creature gets -2/-0 as long as two or more creatures are blocking it.\n4/4"
+    IDS_STRING40494         "Siege-Gang Commander\n{3RR}\nCreature - Goblin\nDOM,R\nWhen this creature enters, create three 1/1 red Goblin creature tokens.\r{1}{R}, Sacrifice a Goblin: This creature deals 2 damage to any target.\n2/2"
+    IDS_STRING40495         "Skirk Prospector\n{R}\nCreature - Goblin\nDOM,C\nSacrifice a Goblin: Add {R}.\n1/1"
+    IDS_STRING40496         "Skizzik\n{3R}\nCreature - Elemental\nDOM,U\nKicker {R} (You may pay an additional {R} as you cast this spell.)\rTrample, haste\rAt the beginning of the end step, if this creature wasn't kicked, sacrifice it.\n5/3"
+    IDS_STRING40497         "Squee, the Immortal\n{1RR}\nLegendary Creature - Goblin\nDOM,R\nYou may cast this card from your graveyard or from exile.\n2/1"
+    IDS_STRING40498         "Two-Headed Giant\n{2RR}\nCreature - Giant Warrior\nDOM,R\nWhenever this creature attacks, flip two coins. If both coins come up heads, this creature gains double strike until end of turn. If both coins come up tails, this creature gains menace until end of turn.\n4/4"
+    IDS_STRING40499         "Valduk, Keeper of the Flame\n{2R}\nLegendary Creature - Human Shaman\nDOM,U\nAt the beginning of combat on your turn, for each Aura and Equipment attached to Valduk, create a 3/1 red Elemental creature token with trample and haste. Exile those tokens at the beginning of the next end step.\n3/2"
+    IDS_STRING40500         "Verix Bladewing\n{2RR}\nLegendary Creature - Dragon\nDOM,MR\nKicker {3} (You may pay an additional {3} as you cast this spell.)\rFlying\rWhen Verix Bladewing enters, if it was kicked, create Karox Bladewing, a legendary 4/4 red Dragon creature token with flying.\n4/4"
+    IDS_STRING40501         "Warcry Phoenix\n{3R}\nCreature - Phoenix\nDOM,U\nFlying, haste\rWhenever you attack with three or more creatures, you may pay {2}{R}. If you do, return this card from your graveyard to the battlefield tapped and attacking.\n2/2"
+    IDS_STRING40502         "Cabal Evangel\n{1B}\nCreature - Human Cleric\nDOM,C\n\n2/2"
+    IDS_STRING40503         "Cabal Paladin\n{3B}\nCreature - Human Knight\nDOM,C\nWhenever you cast a historic spell, this creature deals 2 damage to each opponent. (Artifacts, legendaries, and Sagas are historic.)\n4/2"
+    IDS_STRING40504         "Caligo Skin-Witch\n{1B}\nCreature - Human Wizard\nDOM,C\nKicker {3}{B} (You may pay an additional {3}{B} as you cast this spell.)\rWhen this creature enters, if it was kicked, each opponent discards two cards.\n1/3"
+    IDS_STRING40505         "Deathbloom Thallid\n{2B}\nCreature - Fungus\nDOM,C\nWhen this creature dies, create a 1/1 green Saproling creature token.\n3/2"
+    IDS_STRING40506         "Demonlord Belzenlok\n{4BB}\nLegendary Creature - Elder Demon\nDOM,MR\nFlying, trample\rWhen Demonlord Belzenlok enters, exile cards from the top of your library until you exile a nonland card, then put that card into your hand. If the card's mana value is 4 or greater, repeat this process. Demonlord Belzenlok deals 1 damage to you for each card put into your hand this way.\n6/6"
+    IDS_STRING40507         "Dread Shade\n{BBB}\nCreature - Shade\nDOM,R\n{B}: This creature gets +1/+1 until end of turn.\n3/3"
+    IDS_STRING40508         "Drudge Sentinel\n{2B}\nCreature - Skeleton Warrior\nDOM,C\n{3}: Tap this creature. It gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)\n2/1"
+    IDS_STRING40509         "Feral Abomination\n{5B}\nCreature - Thrull\nDOM,C\nDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\n5/5"
+    IDS_STRING40510         "Josu Vess, Lich Knight\n{2BB}\nLegendary Creature - Zombie Knight\nDOM,R\nKicker {5}{B} (You may pay an additional {5}{B} as you cast this spell.)\rMenace\rWhen Josu Vess enters, if he was kicked, create eight 2/2 black Zombie Knight creature tokens with menace.\n4/5"
+    IDS_STRING40511         "Kazarov, Sengir Pureblood\n{5BB}\nLegendary Creature - Vampire\nDOM,R\nFlying\rWhenever a creature an opponent controls is dealt damage, put a +1/+1 counter on Kazarov.\r{3}{R}: Kazarov deals 2 damage to target creature.\n4/4"
+    IDS_STRING40512         "Knight of Malice\n{1B}\nCreature - Human Knight\nDOM,U\nFirst strike (This creature deals combat damage before creatures without first strike.)\rHexproof from white (This creature can't be the target of white spells or abilities your opponents control.)\rThis creature gets +1/+0 as long as any player controls a white permanent.\n2/2"
+    IDS_STRING40513         "Lingering Phantom\n{5B}\nCreature - Spirit\nDOM,U\nWhenever you cast a historic spell, you may pay {B}. If you do, return this card from your graveyard to your hand. (Artifacts, legendaries, and Sagas are historic.)\n5/4"
+    IDS_STRING40514         "Rat Colony\n{1B}\nCreature - Rat\nDOM,C\nThis creature gets +1/+0 for each other Rat you control.\rA deck can have any number of cards named Rat Colony.\n2/1"
+    IDS_STRING40515         "Stronghold Confessor\n{B}\nCreature - Human Cleric\nDOM,C\nKicker {3} (You may pay an additional {3} as you cast this spell.)\rMenace (This creature can't be blocked except by two or more creatures.)\rIf this creature was kicked, it enters with two +1/+1 counters on it.\n1/1"
+    IDS_STRING40516         "Thallid Omnivore\n{3B}\nCreature - Fungus\nDOM,C\n{1}, Sacrifice another creature: This creature gets +2/+2 until end of turn. If a Saproling was sacrificed this way, you gain 2 life.\n3/3"
+    IDS_STRING40517         "Thallid Soothsayer\n{3B}\nCreature - Fungus\nDOM,U\n{2}, Sacrifice a creature: Draw a card.\n2/3"
+    IDS_STRING40518         "Torgaar, Famine Incarnate\n{6BB}\nLegendary Creature - Avatar\nDOM,R\nAs an additional cost to cast this spell, you may sacrifice any number of creatures. This spell costs {2} less to cast for each creature sacrificed this way.\rWhen Torgaar enters, up to one target player's life total becomes half their starting life total, rounded down.\n7/6"
+    IDS_STRING40519         "Urgoros, the Empty One\n{4BB}\nLegendary Creature - Specter\nDOM,U\nFlying\rWhenever Urgoros deals combat damage to a player, that player discards a card at random. If the player can't, you draw a card.\n4/3"
+    IDS_STRING40520         "Whisper, Blood Liturgist\n{3B}\nLegendary Creature - Human Cleric\nDOM,U\n{T}, Sacrifice two creatures: Return target creature card from your graveyard to the battlefield.\n2/2"
+    IDS_STRING40521         "Windgrace Acolyte\n{4B}\nCreature - Cat Warrior\nDOM,C\nFlying\rWhen this creature enters, mill three cards and you gain 3 life.\n3/2"
+    IDS_STRING40522         "Yargle, Glutton of Urborg\n{4B}\nLegendary Creature - Frog Spirit\nDOM,U\n\n9/3"
+    IDS_STRING40523         "Academy Drake\n{2U}\nCreature - Drake\nDOM,C\nKicker {4} (You may pay an additional {4} as you cast this spell.)\rFlying\rIf this creature was kicked, it enters with two +1/+1 counters on it.\n2/2"
+    IDS_STRING40524         "Academy Journeymage\n{4U}\nCreature - Human Wizard\nDOM,C\nThis spell costs {1} less to cast if you control a Wizard.\rWhen this creature enters, return target creature an opponent controls to its owner's hand.\n3/2"
+    IDS_STRING40525         "Artificer's Assistant\n{U}\nCreature - Bird\nDOM,C\nFlying\rWhenever you cast a historic spell, scry 1. (Artifacts, legendaries, and Sagas are historic. To scry 1, look at the top card of your library, then you may put that card on the bottom.)\n1/1"
+    IDS_STRING40526         "Cloudreader Sphinx\n{4U}\nCreature - Sphinx\nDOM,C\nFlying\rWhen this creature enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)\n3/4"
+    IDS_STRING40527         "Cold-Water Snapper\n{5U}\nCreature - Turtle\nDOM,C\nHexproof (This creature can't be the target of spells or abilities your opponents control.)\n4/5"
+    IDS_STRING40528         "Diligent Excavator\n{1U}\nCreature - Human Artificer\nDOM,U\nWhenever you cast a historic spell, target player mills two cards. (Artifacts, legendaries, and Sagas are historic.)\n1/3"
+    IDS_STRING40529         "Homarid Explorer\n{3U}\nCreature - Homarid Scout\nDOM,C\nWhen this creature enters, target player mills four cards.\n3/3"
+    IDS_STRING40530         "Merfolk Trickster\n{UU}\nCreature - Merfolk Wizard\nDOM,U\nFlash\rWhen this creature enters, tap target creature an opponent controls. It loses all abilities until end of turn.\n2/2"
+    IDS_STRING40531         "Naru Meha, Master Wizard\n{2UU}\nLegendary Creature - Human Wizard\nDOM,MR\nFlash\rWhen Naru Meha enters, copy target instant or sorcery spell you control. You may choose new targets for the copy.\rOther Wizards you control get +1/+1.\n3/3"
+    IDS_STRING40532         "Relic Runner\n{1U}\nCreature - Human Rogue\nDOM,C\nThis creature can't be blocked if you've cast a historic spell this turn. (Artifacts, legendaries, and Sagas are historic.)\n2/1"
+    IDS_STRING40533         "Sage of Lat-Nam\n{1U}\nCreature - Human Artificer\nDOM,U\n{T}, Sacrifice an artifact: Draw a card.\n1/2"
+    IDS_STRING40534         "Sentinel of the Pearl Trident\n{4U}\nCreature - Merfolk Soldier\nDOM,U\nFlash\rWhen this creature enters, you may exile target historic permanent you control. If you do, return that card to the battlefield under its owner's control at the beginning of the next end step. (Artifacts, legendaries, and Sagas are historic.)\n3/3"
+    IDS_STRING40535         "Slinn Voda, the Rising Deep\n{6UU}\nLegendary Creature - Leviathan\nDOM,U\nKicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\rWhen Slinn Voda enters, if it was kicked, return all creatures to their owners' hands except for Merfolk, Krakens, Leviathans, Octopuses, and Serpents.\n8/8"
+    IDS_STRING40536         "Tempest Djinn\n{UUU}\nCreature - Djinn\nDOM,R\nFlying\rThis creature gets +1/+0 for each basic Island you control.\n0/4"
+    IDS_STRING40537         "Tetsuko Umezawa, Fugitive\n{1U}\nLegendary Creature - Human Rogue\nDOM,U\nCreatures you control with power or toughness 1 or less can't be blocked.\n1/3"
+    IDS_STRING40538         "Tolarian Scholar\n{2U}\nCreature - Human Wizard\nDOM,C\n\n2/3"
+    IDS_STRING40539         "Vodalian Arcanist\n{1U}\nCreature - Merfolk Wizard\nDOM,C\n{T}: Add {C}. Spend this mana only to cast an instant or sorcery spell.\n1/3"
+    IDS_STRING40540         "Zahid, Djinn of the Lamp\n{4UU}\nLegendary Creature - Djinn\nDOM,R\nYou may pay {3}{U} and tap an untapped artifact you control rather than pay this spell's mana cost.\rFlying\n5/6"
+    IDS_STRING40541         "Adeliz, the Cinder Wind\n{1UR}\nLegendary Creature - Human Wizard\nDOM,U\nFlying, haste\rWhenever you cast an instant or sorcery spell, Wizards you control get +1/+1 until end of turn.\n2/2"
+    IDS_STRING40542         "Aesthir Glider\n{3}\nArtifact Creature - Bird Construct\nDOM,C\nFlying\rThis creature can't block.\n2/1"
+    IDS_STRING40543         "Amaranthine Wall\n{4}\nArtifact Creature - Wall\nDOM,U\nDefender\r{2}: This creature gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)\n0/6"
+    IDS_STRING40544         "Arvad the Cursed\n{3WB}\nLegendary Creature - Vampire Knight\nDOM,U\nDeathtouch, lifelink\rOther legendary creatures you control get +2/+2.\n3/3"
+    IDS_STRING40545         "Aryel, Knight of Windgrace\n{2WB}\nLegendary Creature - Human Knight\nDOM,R\nVigilance\r{2}{W}, {T}: Create a 2/2 white Knight creature token with vigilance.\r{B}, {T}, Tap X untapped Knights you control: Destroy target creature with power X or less.\n4/4"
+    IDS_STRING40546         "Darigaaz Reincarnated\n{4BRG}\nLegendary Creature - Dragon\nDOM,MR\nFlying, trample, haste\rIf Darigaaz would die, instead exile it with three egg counters on it.\rAt the beginning of your upkeep, if this card is exiled with an egg counter on it, remove an egg counter from it. Then if this card has no egg counters on it, return it to the battlefield.\n7/7"
+    IDS_STRING40547         "Garna, the Bloodflame\n{3BR}\nLegendary Creature - Human Warrior\nDOM,U\nFlash\rWhen Garna enters, return to your hand all creature cards in your graveyard that were put there from anywhere this turn.\rOther creatures you control have haste.\n3/3"
+    IDS_STRING40548         "Grand Warlord Radha\n{2RG}\nLegendary Creature - Elf Warrior\nDOM,R\nHaste\rWhenever one or more creatures you control attack, add that much mana in any combination of {R} and/or {G}. Until end of turn, you don't lose this mana as steps and phases end.\n3/4"
+    IDS_STRING40549         "Guardians of Koilos\n{5}\nArtifact Creature - Construct\nDOM,C\nWhen this creature enters, you may return another target historic permanent you control to its owner's hand. (Artifacts, legendaries, and Sagas are historic.)\n4/4"
+    IDS_STRING40550         "Hallar, the Firefletcher\n{1RG}\nLegendary Creature - Elf Archer\nDOM,U\nTrample\rWhenever you cast a spell, if that spell was kicked, put a +1/+1 counter on Hallar, then Hallar deals damage equal to the number of +1/+1 counters on it to each opponent.\n3/3"
+    IDS_STRING40551         "Howling Golem\n{3}\nArtifact Creature - Golem\nDOM,U\nWhenever this creature attacks or blocks, each player draws a card.\n2/3"
+    IDS_STRING40552         "Jhoira's Familiar\n{4}\nArtifact Creature - Bird\nDOM,U\nFlying\rHistoric spells you cast cost {1} less to cast. (Artifacts, legendaries, and Sagas are historic.)\n2/2"
+    IDS_STRING40553         "Jhoira, Weatherlight Captain\n{2UR}\nLegendary Creature - Human Artificer\nDOM,MR\nWhenever you cast a historic spell, draw a card. (Artifacts, legendaries, and Sagas are historic.)\n3/3"
+    IDS_STRING40554         "Jodah, Archmage Eternal\n{1URW}\nLegendary Creature - Human Wizard\nDOM,R\nFlying\rYou may pay {W}{U}{B}{R}{G} rather than pay the mana cost for spells you cast.\n4/3"
+    IDS_STRING40555         "Juggernaut\n{4}\nArtifact Creature - Juggernaut\nDOM,U\nThis creature attacks each combat if able.\rThis creature can't be blocked by Walls.\n5/3"
+    IDS_STRING40556         "Mishra's Self-Replicator\n{5}\nArtifact Creature - Assembly-Worker\nDOM,R\nWhenever you cast a historic spell, you may pay {1}. If you do, create a token that's a copy of this creature. (Artifacts, legendaries, and Sagas are historic.)\n2/2"
+    IDS_STRING40557         "Niambi, Faithful Healer\n{1WU}\nLegendary Creature - Human Cleric\nDOM,R\nWhen Niambi enters, you may search your library and/or graveyard for a card named Teferi, Timebender, reveal it, and put it into your hand. If you search your library this way, shuffle.\n2/2"
+    IDS_STRING40558         "Pardic Wanderer\n{6}\nArtifact Creature - Golem\nDOM,C\nTrample\n5/5"
+    IDS_STRING40559         "Raff Capashen, Ship's Mage\n{2WU}\nLegendary Creature - Human Wizard\nDOM,U\nFlash\rFlying\rYou may cast historic spells as though they had flash. (Artifacts, legendaries, and Sagas are historic.)\n3/3"
+    IDS_STRING40560         "Shanna, Sisay's Legacy\n{GW}\nLegendary Creature - Human Warrior\nDOM,U\nShanna can't be the target of abilities your opponents control.\rShanna gets +1/+1 for each creature you control.\n0/0"
+    IDS_STRING40561         "Skittering Surveyor\n{3}\nArtifact Creature - Construct\nDOM,C\nWhen this creature enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n1/2"
+    IDS_STRING40562         "Slimefoot, the Stowaway\n{1BG}\nLegendary Creature - Fungus\nDOM,U\nWhenever a Saproling you control dies, Slimefoot deals 1 damage to each opponent and you gain 1 life.\r{4}: Create a 1/1 green Saproling creature token.\n2/3"
+    IDS_STRING40563         "Sparring Construct\n{1}\nArtifact Creature - Construct\nDOM,C\nWhen this creature dies, put a +1/+1 counter on target creature you control.\n1/1"
+    IDS_STRING40564         "Tatyova, Benthic Druid\n{3GU}\nLegendary Creature - Merfolk Druid\nDOM,U\nLandfall - Whenever a land you control enters, you gain 1 life and draw a card.\n3/3"
+    IDS_STRING40565         "Teferi's Sentinel\n{5}\nArtifact Creature - Golem\nDOM,U\nAs long as you control a Teferi planeswalker, this creature gets +4/+0.\n2/6"
+    IDS_STRING40566         "Tiana, Ship's Caretaker\n{3RW}\nLegendary Creature - Angel Artificer\nDOM,U\nFlying, first strike\rWhenever an Aura or Equipment you control is put into a graveyard from the battlefield, you may return that card to its owner's hand at the beginning of the next end step.\n3/3"
+    IDS_STRING40567         "Traxos, Scourge of Kroog\n{4}\nLegendary Artifact Creature - Dragon Construct\nDOM,R\nTrample\rTraxos enters tapped and doesn't untap during your untap step.\rWhenever you cast a historic spell, untap Traxos. (Artifacts, legendaries, and Sagas are historic.)\n7/7"
+    IDS_STRING40568         "Voltaic Servant\n{2}\nArtifact Creature - Construct\nDOM,C\nAt the beginning of your end step, untap target artifact.\n1/3"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "..\MagicCore\MagicCore.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

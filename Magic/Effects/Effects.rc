@@ -263,6 +263,8 @@ BEGIN
     IDS_STRING61150          "Tezzeret the Schemer Emblem\n\nEmblem\nToken\nAt the beginning of combat on your turn, target artifact you control becomes an artifact creature with base power and toughness 5/5."
     IDS_STRING61151          "Huatli, Radiant Champion Emblem\n\nEmblem\nToken\nWhenever a creature you control enters, you may draw a card."
     IDS_STRING61152          "Vraska, Scheming Gorgon Effect\n\nEffect\nToken\nUntil end of turn, whenever one of those creatures deals damage to an opponent, that player loses the game."
+    IDS_STRING61153          "Teferi, Hero of Dominaria Effect\n\nEffect\nToken\nAt the beginning of the next end step, untap up to two lands."
+    IDS_STRING61154          "Teferi, Hero of Dominaria Emblem\n\nEmblem\nToken\nWhenever you draw a card, exile target permanent an opponent controls."
 //	IDS_STRING61040          "Chancellor of the Annex Effect\n\nEffect\nToken\nWhen each opponent casts his or her first spell of the game, counter that spell unless that player pays {1}."
 END
 #endif    // English (United States) resources

@@ -209,6 +209,12 @@ BEGIN
     IDS_STRING55106         "Vampire (E)\n{W}\nCreature - Vampire\nToken\nLifelink\n1/1"
     IDS_STRING55107         "Merfolk (A)\n{U}\nCreature - Merfolk\nToken\nHexproof\n1/1"
     IDS_STRING55108         "Elemental (ZC)\n{R}\nCreature - Elemental\nToken\nAt the beginning of your upkeep, sacrifice this token and return target card named Rekindling Phoenix from your graveyard to the battlefield. It gains haste until end of turn.\n0/1"
+    IDS_STRING55109         "Construct (C)\n\nArtifact Creature - Construct\nToken\nThis token gets +1/+1 for each artifact you control.\n0/0"
+    IDS_STRING55110         "Cleric (C)\n{B}\nCreature - Cleric\nToken\n\n0/1"
+    IDS_STRING55111         "Demon (F)\n{B}\nCreature - Demon\nToken\nFlying, trample\rAt the beginning of your upkeep, sacrifice another creature. If you can't, this token deals 6 damage to you.\n6/6"
+    IDS_STRING55112         "Nightmare Horror (A)\n{B}\nCreature - Nightmare Horror\nToken\n\nX/X"
+    IDS_STRING55113         "Karox Bladewing\n{R}\nLegendary Creature - Dragon\nToken\nFlying\n4/4"
+    IDS_STRING55114         "Zombie Knight\n{B}\nCreature - Zombie Knight\nToken\nMenace\n2/2"
 END
 
 #endif    // English (United States) resources

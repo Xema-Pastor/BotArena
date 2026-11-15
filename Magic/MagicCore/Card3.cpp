@@ -843,6 +843,234 @@ BOOL CAscendSupport::CheckSpell(CPlayer* pPlayer)
 
 //____________________________________________________________________________
 //
+// Every Saga registers here (see Find)
+static std::map<const CCard*, CSagaSupport*>& GetSagaSupports()
+{
+	static std::map<const CCard*, CSagaSupport*> sagaSupports;
+	return sagaSupports;
+}
+
+CSagaSupport::CSagaSupport(CCard* pSaga, int nFinalChapter)
+	: m_pSaga(pSaga)
+	, m_nFinalChapter(nFinalChapter)
+{
+	GetSagaSupports()[pSaga] = this;
+
+	{
+		// As this Saga enters, its controller puts a lore counter on it. (a turn-based action)
+		typedef
+			TTriggeredAbility< CTriggeredAbility<>, CWhenSelfInplay,
+							   CWhenSelfInplay::EventCallback, &CWhenSelfInplay::SetEnterEventCallback > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(pSaga));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->SetSkipStack(TRUE);
+		cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CSagaSupport::OnEntering));
+		pSaga->AddAbility(cpAbility.GetPointer());
+	}
+	{
+		// As its controller's precombat main phase begins, that player puts a lore counter on it. (a turn-based action)
+		typedef
+			TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(pSaga, NodeId::MainPhaseStep));
+
+		cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->SetSkipStack(TRUE);
+		cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CSagaSupport::SetMainPhaseContext));
+		cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CSagaSupport::OnMainPhase));
+		pSaga->AddAbility(cpAbility.GetPointer());
+	}
+}
+
+CSagaSupport::~CSagaSupport()
+{
+	std::map<const CCard*, CSagaSupport*>::iterator it = GetSagaSupports().find(m_pSaga);
+	if (it != GetSagaSupports().end() && it->second == this)
+		GetSagaSupports().erase(it);
+}
+
+CSagaSupport* CSagaSupport::Find(const CCard* pCard)
+{
+	std::map<const CCard*, CSagaSupport*>::const_iterator it = GetSagaSupports().find(pCard);
+	return it != GetSagaSupports().end() ? it->second : NULL;
+}
+
+void CSagaSupport::AddChapterAbility(CAbility* pAbility, int nChapter, CAbility::ResolutionStartedCallback callback)
+{
+	Chapter chapter;
+	chapter.pAbility = pAbility;
+	chapter.nChapter = nChapter;
+	chapter.callback = callback;
+	m_Chapters.push_back(chapter);
+}
+
+CAbility* CSagaSupport::AddChapter(int nChapter, CAbility::ResolutionStartedCallback callback)
+{
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CSpecialTrigger > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(m_pSaga));
+
+	cpAbility->GetTrigger().SetTriggerIndex(SAGA_CHAPTER_TRIGGER_ID + nChapter);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetFilterType(CCardFilterHelper::FilterType::Custom);
+	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(new SpecificCardComparer(m_pSaga));
+	cpAbility->GetTrigger().SetTriggerinZone(ZoneId::Battlefield);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CSagaSupport::OnChapterResolving));
+
+	CString strText;
+	strText.Format(_T("Chapter %d"), nChapter);
+	cpAbility->SetAbilityText(strText);
+
+	m_pSaga->AddAbility(cpAbility.GetPointer());
+	AddChapterAbility(cpAbility.GetPointer(), nChapter, callback);
+	return cpAbility.GetPointer();
+}
+
+CTargeting* CSagaSupport::AddChapterTarget(int nChapter, CAbility::ResolutionStartedCallback callback, Characteristic characteristic)
+{
+	typedef
+		TTriggeredTargetAbility< CTriggeredAbility<>, CSpecialTrigger > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(m_pSaga));
+
+	cpAbility->GetTrigger().SetTriggerIndex(SAGA_CHAPTER_TRIGGER_ID + nChapter);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetFilterType(CCardFilterHelper::FilterType::Custom);
+	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(new SpecificCardComparer(m_pSaga));
+	cpAbility->GetTrigger().SetTriggerinZone(ZoneId::Battlefield);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new AnyCreatureComparer);
+	cpAbility->GetTargeting().SetDefaultCharacteristic(characteristic);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CSagaSupport::OnChapterResolving));
+
+	CString strText;
+	strText.Format(_T("Chapter %d"), nChapter);
+	cpAbility->SetAbilityText(strText);
+
+	m_pSaga->AddAbility(cpAbility.GetPointer());
+	AddChapterAbility(cpAbility.GetPointer(), nChapter, callback);
+	return &cpAbility->GetTargeting();
+}
+
+int CSagaSupport::GetLoreCounters() const
+{
+	const Counter* pCounter = m_pSaga->GetCounterContainer()->GetCounter(LORE_COUNTER);
+	return pCounter ? pCounter->GetCount() : 0;
+}
+
+void CSagaSupport::AddLoreCounters(int nCount)
+{
+	if (nCount <= 0 || m_pSaga->GetZoneId() != ZoneId::Battlefield)
+		return;
+
+	int nBefore = GetLoreCounters();
+	CCardCounterModifier pModifier = CCardCounterModifier(LORE_COUNTER, nCount);
+	pModifier.ApplyTo(m_pSaga);
+	int nAfter = GetLoreCounters();
+
+	// The chapters whose number the lore counters reach trigger (rule 714.2b)
+	BOOL bTriggered = FALSE;
+	for (int n = nBefore + 1; n <= nAfter && n <= m_nFinalChapter; ++n)
+	{
+		CSpecialEffectModifier pChapter(m_pSaga, SAGA_CHAPTER_TRIGGER_ID + n);
+		pChapter.ApplyTo(m_pSaga);
+		bTriggered = TRUE;
+	}
+
+	// Without a chapter ability on the stack, a Saga with enough lore counters is sacrificed (rule 714.4)
+	if (!bTriggered && nAfter >= m_nFinalChapter)
+	{
+		CMoveCardModifier pSacrifice = CMoveCardModifier(ZoneId::Battlefield, ZoneId::Graveyard, TRUE, MoveType::Sacrifice, m_pSaga->GetController());
+		pSacrifice.ApplyTo(m_pSaga);
+	}
+}
+
+bool CSagaSupport::OnEntering(CAbilityAction* pAction)
+{
+	AddLoreCounters(1);
+	return true;
+}
+
+bool CSagaSupport::SetMainPhaseContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const
+{
+	return m_pSaga->GetGame()->IsFirstMainPhase();
+}
+
+bool CSagaSupport::OnMainPhase(CAbilityAction* pAction)
+{
+	AddLoreCounters(1);
+	return true;
+}
+
+bool CSagaSupport::OnChapterResolving(CAbilityAction* pAction)
+{
+	bool bResult = true;
+	int nChapter = 0;
+	for (size_t i = 0; i < m_Chapters.size(); ++i)
+		if (m_Chapters[i].pAbility == pAction->GetAbility())
+		{
+			nChapter = m_Chapters[i].nChapter;
+			if (!m_Chapters[i].callback.empty())
+				bResult = m_Chapters[i].callback(pAction);
+			break;
+		}
+
+	// After its final chapter ability resolves, the Saga is sacrificed if it still has enough lore counters
+	if (nChapter == m_nFinalChapter && m_pSaga->GetZoneId() == ZoneId::Battlefield && GetLoreCounters() >= m_nFinalChapter)
+	{
+		CMoveCardModifier pSacrifice = CMoveCardModifier(ZoneId::Battlefield, ZoneId::Graveyard, TRUE, MoveType::Sacrifice, m_pSaga->GetController());
+		pSacrifice.ApplyTo(m_pSaga);
+	}
+	return bResult;
+}
+
+//____________________________________________________________________________
+//
+bool HistoricComparer::operator()(const CCard* pCard) const
+{
+	return pCard->GetCardType().IsLegendary() || pCard->GetCardType().IsArtifact() || CSagaSupport::Find(pCard) != NULL;
+}
+
+//____________________________________________________________________________
+//
+// Every permanent with "hexproof from" registers here (see IsHexproofFrom)
+static std::map<const CCard*, CHexproofFromSupport*>& GetHexproofFromSupports()
+{
+	static std::map<const CCard*, CHexproofFromSupport*> hexproofFromSupports;
+	return hexproofFromSupports;
+}
+
+CHexproofFromSupport::CHexproofFromSupport(CCard* pCard, CardComparer* pComparer)
+	: m_pCard(pCard)
+	, m_SourceFilter(pComparer)
+{
+	GetHexproofFromSupports()[pCard] = this;
+}
+
+CHexproofFromSupport::~CHexproofFromSupport()
+{
+	std::map<const CCard*, CHexproofFromSupport*>::iterator it = GetHexproofFromSupports().find(m_pCard);
+	if (it != GetHexproofFromSupports().end() && it->second == this)
+		GetHexproofFromSupports().erase(it);
+}
+
+BOOL CHexproofFromSupport::IsHexproofFrom(const CCard* pTarget, const CCard* pSource)
+{
+	if (!pTarget || !pSource || pTarget->GetController() == pSource->GetController())
+		return FALSE;
+
+	std::map<const CCard*, CHexproofFromSupport*>::const_iterator it = GetHexproofFromSupports().find(pTarget);
+	if (it == GetHexproofFromSupports().end())
+		return FALSE;
+
+	return it->second->m_SourceFilter.IsCardIncluded(pSource);
+}
+
+//____________________________________________________________________________
+//
 CChancellorCreatureCard::CChancellorCreatureCard(CGame* pGame, LPCTSTR strCardName, CardType cardType, const CreatureType& creatureType, UINT uID,
 										 LPCTSTR strCostText, Power nPower, Life nToughness)
 	: CCreatureCard(pGame, strCardName, cardType, creatureType, uID, strCostText, nPower, nToughness)

@@ -939,6 +939,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ixalan", "..\Ixalan\Ixalan.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RivalsOfIxalan", "..\RivalsOfIxalan\RivalsOfIxalan.vcxproj", "{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominaria", "Dominaria", "{1284E4D6-FB84-4F51-AF43-89BFB5CF2F39}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dominaria", "..\Dominaria\Dominaria.vcxproj", "{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -1714,6 +1718,12 @@ Global
 		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Release|Win32.Build.0 = Release|Win32
 		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Template|Win32.ActiveCfg = Release|Win32
 		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD}.Template|Win32.Build.0 = Release|Win32
+		{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE}.Debug|Win32.Build.0 = Debug|Win32
+		{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE}.Release|Win32.ActiveCfg = Release|Win32
+		{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE}.Release|Win32.Build.0 = Release|Win32
+		{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE}.Template|Win32.ActiveCfg = Release|Win32
+		{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE}.Template|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1886,6 +1896,8 @@ Global
 		{6B879DF9-5FBB-4E13-B64F-27D1A3559950} = {11A16C86-7F12-4A28-A321-3933B7F60479}
 		{30418220-EC96-40A9-A81D-7A5113B1BDEE} = {6B879DF9-5FBB-4E13-B64F-27D1A3559950}
 		{C434A1E6-50EB-4771-8212-6D2CDE7D05AD} = {6B879DF9-5FBB-4E13-B64F-27D1A3559950}
+		{1284E4D6-FB84-4F51-AF43-89BFB5CF2F39} = {11A16C86-7F12-4A28-A321-3933B7F60479}
+		{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE} = {1284E4D6-FB84-4F51-AF43-89BFB5CF2F39}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = ..\..

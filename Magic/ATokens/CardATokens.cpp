@@ -80,6 +80,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CShadowedCaravelVehicleToken);
 		DEFINE_TOKEN(CSleekSchoonerVehicleToken);
 		DEFINE_TOKEN(CElementalAWToken);
+		DEFINE_TOKEN(CWeatherlightVehicleToken);
+		DEFINE_TOKEN(CElementalAXToken);
 		DEFINE_TOKEN(CElementalARToken);
 		DEFINE_TOKEN(CElementalASToken);
 		DEFINE_TOKEN(CElementalATToken);
@@ -2130,6 +2132,73 @@ CElementalAWToken::CElementalAWToken(CGame* pGame, UINT nID)
 	GetCreatureKeyword()->AddHaste(FALSE);
 
 // Animation of XLN Waker of the Wilds (colorless; its +1/+1 counters are on the land)
+}
+
+//____________________________________________________________________________
+//
+CWeatherlightVehicleToken::CWeatherlightVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Weatherlight"), CardType::_ArtifactCreature | CardType::Legendary,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(4), Life(5))
+	, m_HistoricFilter(_T("a historic card"), _T("historic cards"), new HistoricComparer)
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+
+	// Whenever this Vehicle deals combat damage to a player, look at the top five cards of your library. You may reveal
+	// a historic card from among them and put it into your hand. Put the rest on the bottom of your library in a random
+	// order. (the rest in any order)
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfDamageDealt,
+						   CWhenSelfDamageDealt::PlayerEventCallback,
+						   &CWhenSelfDamageDealt::SetPlayerEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTrigger().SetCombatDamageOnly();
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CWeatherlightVehicleToken::BeforeLook));
+	AddAbility(cpAbility.GetPointer());
+
+// Used by DOM Weatherlight (the creature it becomes when crewed, see CCrewSupport)
+}
+
+bool CWeatherlightVehicleToken::BeforeLook(CAbilityAction* pAction)
+{
+	CPlayer* pController = pAction->GetController();
+	CZone* pLibrary = pController->GetZoneById(ZoneId::Library);
+	int nCount = pLibrary->GetSize() < 5 ? pLibrary->GetSize() : 5;
+	if (nCount <= 0)
+		return true;
+
+	CZoneModifier pModifier = CZoneModifier(GetGame(), ZoneId::Library, nCount, CZoneModifier::RoleType::PrimaryPlayer);
+	pModifier.AddSelection(MinimumValue(0), MaximumValue(1), // up to one historic card
+		CZoneModifier::RoleType::PrimaryPlayer, // select by
+		CZoneModifier::RoleType::AllPlayers, // reveal to
+		&m_HistoricFilter, // what cards
+		ZoneId::Hand, // if selected, move cards to
+		CZoneModifier::RoleType::PrimaryPlayer, // select by this player
+		CardPlacement::Top, // placement
+		MoveType::Others, // move type
+		CZoneModifier::RoleType::PrimaryPlayer); // order selected cards by this player
+	pModifier.SetReorderInformation(true, ZoneId::Library, CZoneModifier::RoleType::PrimaryPlayer, CardPlacement::Bottom);
+	pModifier.ApplyTo(pController);
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CElementalAXToken::CElementalAXToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	GetCreatureKeyword()->AddReach(FALSE);
+	GetCreatureKeyword()->AddHaste(FALSE);
+	GetCardKeyword()->AddIndestructible(FALSE);
+
+// Animation of DOM Sylvan Awakening (the lands stay lands)
 }
 
 //____________________________________________________________________________

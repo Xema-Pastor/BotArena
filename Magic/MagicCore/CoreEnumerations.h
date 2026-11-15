@@ -1596,6 +1596,8 @@ struct CORE_EXPORT PlaneswalkerType
 		Samut,
 		Huatli,
 		Angrath,
+		Jaya,
+		Teferi,
 
 		_SubtypeCount,
 	};

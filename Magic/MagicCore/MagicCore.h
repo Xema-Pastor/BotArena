@@ -212,6 +212,7 @@
 #define SURVEIL_TRIGGER_ID				60347
 #define EXERT_TRIGGER_ID				60348
 #define EXPLORE_TRIGGER_ID				60349
+#define SAGA_CHAPTER_TRIGGER_ID			60350	// + the chapter number (60351-60359)
 #define RENOWNED_TRIGGER_ID				60345
 
 //____________________________________________________________________________

@@ -434,6 +434,87 @@ protected:
 
 //____________________________________________________________________________
 //
+// Sagas (Dominaria): an enchantment with chapter abilities (rule 714). The Saga gets a lore counter as it enters and
+// as its controller's precombat (first) main phase begins (turn-based actions, without the stack: SetSkipStack).
+// Each chapter ability is a real triggered ability (it uses the stack and chooses its targets when it triggers): it
+// listens to SAGA_CHAPTER_TRIGGER_ID + N, which AddLoreCounters fires on the Saga for each chapter N whose number the
+// lore counters reach (from less than N to at least N). When the final chapter ability resolves, the Saga is
+// sacrificed if it still has at least as many lore counters as its final chapter number.
+// - Member CSagaSupport m_Saga(this, nFinalChapter) and m_Saga.AddChapter(N, callback) for each chapter ("I, II" adds
+//   two chapters). AddChapterTarget returns the CTargeting (creatures by default) and its callback returns false.
+// - CSagaSupport::Find(card) says whether a card is a Saga (also in the hand, for HistoricComparer).
+#define LORE_COUNTER		_T("lore counter")
+
+class CORE_EXPORT CSagaSupport
+{
+public:
+	CSagaSupport(CCard* pSaga, int nFinalChapter);
+	virtual ~CSagaSupport();
+
+	static CSagaSupport* Find(const CCard* pCard);
+
+	CAbility* AddChapter(int nChapter, CAbility::ResolutionStartedCallback callback);
+	CTargeting* AddChapterTarget(int nChapter, CAbility::ResolutionStartedCallback callback, Characteristic characteristic);
+
+	// Puts lore counters on the Saga and triggers the chapters they reach
+	void AddLoreCounters(int nCount);
+	int GetLoreCounters() const;
+	int GetFinalChapter() const { return m_nFinalChapter; }
+
+protected:
+	bool OnEntering(CAbilityAction* pAction);
+	bool OnMainPhase(CAbilityAction* pAction);
+	bool SetMainPhaseContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const;
+	bool OnChapterResolving(CAbilityAction* pAction);
+	void AddChapterAbility(CAbility* pAbility, int nChapter, CAbility::ResolutionStartedCallback callback);
+
+	struct Chapter
+	{
+		CAbility* pAbility;
+		int nChapter;
+		CAbility::ResolutionStartedCallback callback;
+	};
+
+	CCard* m_pSaga;
+	int m_nFinalChapter;
+	std::vector<Chapter> m_Chapters;
+};
+
+//____________________________________________________________________________
+//
+// Historic (Dominaria, rule 700.6): a card or permanent with the legendary supertype, the artifact card type or the
+// Saga subtype (for "whenever you cast a historic spell", a CWhenSpellCast with this comparer)
+struct CORE_EXPORT HistoricComparer : public CardComparer
+{
+	virtual bool operator()(const CCard* pCard) const;
+
+	virtual HistoricComparer* Clone() const
+	{
+		return new HistoricComparer();
+	}
+};
+
+//____________________________________________________________________________
+//
+// "Hexproof from [quality]" (Dominaria): the permanent can't be the target of spells or abilities with that quality
+// that its opponents control. Member CHexproofFromSupport m_HexproofFrom(this, comparer) (e.g. a CardTypeComparer of a
+// color); CTargeting::TargetAllowed (Target.cpp) checks IsHexproofFrom.
+class CORE_EXPORT CHexproofFromSupport
+{
+public:
+	CHexproofFromSupport(CCard* pCard, CardComparer* pComparer);
+	virtual ~CHexproofFromSupport();
+
+	// Can't pTarget be the target of a spell or ability of pSource (a card of another controller)?
+	static BOOL IsHexproofFrom(const CCard* pTarget, const CCard* pSource);
+
+protected:
+	CCard* m_pCard;
+	CCardFilter m_SourceFilter;
+};
+
+//____________________________________________________________________________
+//
 class CORE_EXPORT CChancellorCreatureCard : public CCreatureCard
 {
 protected:

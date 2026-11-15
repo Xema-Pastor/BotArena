@@ -123,6 +123,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CTezzeretTheSchemerEmblemToken);
 		DEFINE_TOKEN(CHuatliRadiantChampionEmblemToken);
 		DEFINE_TOKEN(CVraskaSchemingGorgonEffectToken);
+		DEFINE_TOKEN(CTeferiHeroOfDominariaEffectToken);
+		DEFINE_TOKEN(CTeferiHeroOfDominariaEmblemToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -11769,6 +11771,105 @@ bool CVraskaSchemingGorgonEffectToken::BeforeLose(TriggeredAbility::TriggeredAct
 bool CVraskaSchemingGorgonEffectToken::SetTriggerContextCleanup(CTriggeredMoveCardAbility::TriggerContextType& triggerContext, CNode* pToNode)
 {
 	return GetZone()->GetZoneId() == ZoneId::_Effects;
+}
+
+//____________________________________________________________________________
+//
+CTeferiHeroOfDominariaEffectToken::CTeferiHeroOfDominariaEffectToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Teferi, Hero of Dominaria Effect"), CardType::GlobalEnchantment, nID)
+	, m_LandSelection(pGame, CSelectionSupport::SelectionCallback(this, &CTeferiHeroOfDominariaEffectToken::OnLandsSelected))
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// At the beginning of the next end step, untap up to two lands. (then the effect is exiled)
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::EndStep, FALSE));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CTeferiHeroOfDominariaEffectToken::SetTriggerContext));
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CTeferiHeroOfDominariaEffectToken::BeforeUntap));
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CTeferiHeroOfDominariaEffectToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode)
+{
+	return GetZone()->GetZoneId() == ZoneId::_Effects;
+}
+
+bool CTeferiHeroOfDominariaEffectToken::BeforeUntap(CAbilityAction* pAction)
+{
+	CPlayer* pController = pAction->GetController();
+	CZone* pBattlefield = pController->GetZoneById(ZoneId::Battlefield);
+	std::vector<SelectionEntry> entries;
+	for (int i = 0; i < pBattlefield->GetSize(); ++i)
+	{
+		CCard* pCard = pBattlefield->GetAt(i);
+		if (!pCard->GetCardType().IsLand() || !pCard->GetOrientation()->IsTapped())
+			continue;
+
+		SelectionEntry entry;
+		entry.dwContext = (DWORD)pCard;
+		entry.cpAssociatedCard = pCard;
+		entry.strText.Format(_T("Untap %s"), pCard->GetCardName(TRUE));
+		entries.push_back(entry);
+	}
+
+	if (!entries.empty())
+		m_LandSelection.AddSelectionRequest(entries, 0, entries.size() < 2 ? (int)entries.size() : 2, NULL, pController);
+
+	// The effect is used once
+	CMoveCardModifier pModifier = CMoveCardModifier(ZoneId::_Effects, ZoneId::Exile, TRUE, MoveType::Others);
+	pModifier.ApplyTo(this);
+	return true;
+}
+
+void CTeferiHeroOfDominariaEffectToken::OnLandsSelected(const std::vector<SelectionEntry>& selection, int nSelectedCount, CPlayer* pSelectionPlayer, DWORD dwContext1, DWORD dwContext2, DWORD dwContext3, DWORD dwContext4, DWORD dwContext5)
+{
+	CCardOrientationModifier pModifier = CCardOrientationModifier(FALSE);
+	for (std::vector<SelectionEntry>::const_iterator it = selection.begin(); it != selection.end(); ++it)
+		if (it->bSelected)
+		{
+			CCard* pCard = (CCard*)it->dwContext;
+			if (pCard->GetZoneId() == ZoneId::Battlefield)
+				pModifier.ApplyTo(pCard);
+		}
+}
+
+//____________________________________________________________________________
+//
+CTeferiHeroOfDominariaEmblemToken::CTeferiHeroOfDominariaEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Teferi, Hero of Dominaria Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Whenever you draw a card, exile target permanent an opponent controls.
+	typedef
+		TTriggeredTargetAbility< CTriggeredAbility<>, CWhenCardDrew > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new TrueCardComparer);
+	cpAbility->GetTargeting().SetIncludeNonControllerCardsOnly();
+	cpAbility->GetTargeting().SetDefaultCharacteristic(Characteristic::Negative);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CTeferiHeroOfDominariaEmblemToken::BeforeExile));
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CTeferiHeroOfDominariaEmblemToken::BeforeExile(CAbilityAction* pAction)
+{
+	CCard* pCard = pAction->GetAssociatedCard();
+	if (pCard && pCard->GetZoneId() == ZoneId::Battlefield)
+	{
+		CMoveCardModifier pModifier = CMoveCardModifier(ZoneId::Battlefield, ZoneId::Exile, TRUE, MoveType::Others, pAction->GetController());
+		pModifier.ApplyTo(pCard);
+	}
+	return false;
 }
 
 //____________________________________________________________________________

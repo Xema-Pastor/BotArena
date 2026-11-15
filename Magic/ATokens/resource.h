@@ -143,6 +143,8 @@
 #define IDS_STRING64126                 64126
 #define IDS_STRING64127                 64127
 #define IDS_STRING64128                 64128
+#define IDS_STRING64129                 64129
+#define IDS_STRING64130                 64130
 #define IDI_MODULE                      64998
 #define IDI_LARGE_MODULE                64999
 

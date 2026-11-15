@@ -2130,3 +2130,27 @@ protected:
 
 //____________________________________________________________________________
 //
+class CTeferiHeroOfDominariaEffectToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CTeferiHeroOfDominariaEffectToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode);
+	bool BeforeUntap(CAbilityAction* pAction);
+	void OnLandsSelected(const std::vector<SelectionEntry>& selection, int nSelectedCount, CPlayer* pSelectionPlayer, DWORD dwContext1, DWORD dwContext2, DWORD dwContext3, DWORD dwContext4, DWORD dwContext5);
+
+	CSelectionSupport m_LandSelection;
+};
+
+//____________________________________________________________________________
+//
+class CTeferiHeroOfDominariaEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CTeferiHeroOfDominariaEmblemToken);
+
+protected:
+	bool BeforeExile(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//

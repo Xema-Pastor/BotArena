@@ -122,6 +122,12 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CVampireEToken);
 		DEFINE_TOKEN(CMerfolkAToken);
 		DEFINE_TOKEN(CElementalZCToken);
+		DEFINE_TOKEN(CConstructCToken);
+		DEFINE_TOKEN(CClericCToken);
+		DEFINE_TOKEN(CDemonFToken);
+		DEFINE_TOKEN(CNightmareHorrorAToken);
+		DEFINE_TOKEN(CKaroxBladewingToken);
+		DEFINE_TOKEN(CZombieKnightToken);
 	} while (false);
 
 	return cpCard;
@@ -1668,4 +1674,120 @@ bool CElementalZCToken::BeforeReturn(CAbilityAction* pAction)
 		break;
 	}
 	return true;
+}
+//____________________________________________________________________________
+//
+CConstructCToken::CConstructCToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Construct"), CardType::_ArtifactCreature | CardType::Token,
+		CREATURE_TYPE(Construct), nID,
+		_T(""),
+		Power(0), Life(0))
+{
+	// This token gets +1/+1 for each artifact you control. (as Nim Grotesque in Fifth Dawn)
+	counted_ptr<CTriggeredChgPwrTghWhenCardPlayedAbility> cpAbility(
+		::CreateObject<CTriggeredChgPwrTghWhenCardPlayedAbility>(this,
+			ZoneId::Battlefield,
+			new CardTypeComparer(CardType::Artifact, false)));
+
+	AddAbility(cpAbility.GetPointer());
+// Dominaria version: used by Karn, Scion of Urza.
+}
+//____________________________________________________________________________
+//
+CClericCToken::CClericCToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Cleric"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Cleric), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	AddCardType(CardType::Black, CardType::_ColorMask);
+// Dominaria version: used by Rite of Belzenlok.
+}
+//____________________________________________________________________________
+//
+CDemonFToken::CDemonFToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Demon"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Demon), nID,
+		_T(""),
+		Power(6), Life(6))
+{
+	AddCardType(CardType::Black, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+	GetCreatureKeyword()->AddTrample(FALSE);
+
+	// At the beginning of your upkeep, sacrifice another creature. If you can't, this token deals 6 damage to you.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::UpkeepStep));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CDemonFToken::BeforeSacrifice));
+	AddAbility(cpAbility.GetPointer());
+// Dominaria version: used by Rite of Belzenlok.
+}
+
+bool CDemonFToken::BeforeSacrifice(CAbilityAction* pAction)
+{
+	CPlayer* pController = pAction->GetController();
+	CCardFilter others(_T("another creature"), _T("other creatures"), new AnyCreatureComparer);
+	others.AddComparer(new NegateCardComparer(new SpecificCardComparer(this)));
+	if (others.CountIncluded(pController->GetZoneById(ZoneId::Battlefield)->GetCardContainer()) == 0)
+	{
+		CLifeModifier pDamage = CLifeModifier(Life(-6), this, PreventableType::Preventable,
+			DamageType::AbilityDamage | DamageType::NonCombatDamage);
+		pDamage.ApplyTo(pController);
+		return true;
+	}
+
+	CZoneModifier pModifier = CZoneModifier(GetGame(), ZoneId::Battlefield, SpecialNumber::All,
+		CZoneModifier::RoleType::PrimaryPlayer,
+		CardPlacement::Top, CZoneModifier::RoleType::PrimaryPlayer);
+	pModifier.AddSelection(MinimumValue(1), MaximumValue(1), // another creature
+		CZoneModifier::RoleType::PrimaryPlayer, // select by
+		CZoneModifier::RoleType::PrimaryPlayer, // reveal to
+		&others, // what cards
+		ZoneId::Graveyard, // if selected, move cards to
+		CZoneModifier::RoleType::PrimaryPlayer, // select by this player
+		CardPlacement::Top, // put selected cards on
+		MoveType::Sacrifice, // move type
+		CZoneModifier::RoleType::PrimaryPlayer); // order selected cards by this player
+	pModifier.ApplyTo(pController);
+	return true;
+}
+//____________________________________________________________________________
+//
+CNightmareHorrorAToken::CNightmareHorrorAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Nightmare Horror"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Nightmare, Horror), nID,
+		_T(""),
+		Power(0), Life(0))
+{
+	AddCardType(CardType::Black, CardType::_ColorMask);
+// Dominaria version: used by Chainer's Torment (it gets X +1/+1 counters).
+}
+//____________________________________________________________________________
+//
+CKaroxBladewingToken::CKaroxBladewingToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Karox Bladewing"), CardType::Creature | CardType::Legendary | CardType::Token,
+		CREATURE_TYPE(Dragon), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	AddCardType(CardType::Red, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+// Dominaria version: used by Verix Bladewing.
+}
+//____________________________________________________________________________
+//
+CZombieKnightToken::CZombieKnightToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Zombie Knight"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Zombie, Knight), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::Black, CardType::_ColorMask);
+	GetCreatureKeyword()->AddCantBeBlockedByOne(FALSE);
+// Dominaria version: used by Josu Vess, Lich Knight.
 }

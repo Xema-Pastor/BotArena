@@ -229,6 +229,8 @@ BEGIN
     IDS_STRING64126         "Shadowed Caravel (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n2/2"
     IDS_STRING64127         "Sleek Schooner (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n4/3"
     IDS_STRING64128         "Elemental (AW)\n\nCreature - Elemental\nToken\nHaste\n0/0"
+    IDS_STRING64129         "Weatherlight (Vehicle)\n\nLegendary Artifact Creature - Vehicle\nToken\nFlying\rWhenever this Vehicle deals combat damage to a player, look at the top five cards of your library. You may reveal a historic card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n4/5"
+    IDS_STRING64130         "Elemental (AX)\n\nCreature - Elemental\nToken\nReach, indestructible, haste\n2/2"
 END
 
 

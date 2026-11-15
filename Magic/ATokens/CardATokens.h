@@ -935,3 +935,22 @@ class CElementalAWToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CWeatherlightVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CWeatherlightVehicleToken);
+
+protected:
+	bool BeforeLook(CAbilityAction* pAction);
+
+	CCardFilter m_HistoricFilter;
+};
+
+//____________________________________________________________________________
+//
+class CElementalAXToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalAXToken);
+};
+
+//____________________________________________________________________________
+//

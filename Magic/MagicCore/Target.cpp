@@ -33,6 +33,10 @@ BOOL CTargeting::TargetAllowed(const CCard* pCard, BOOL bIncludeTricks, BOOL& bT
 	if (pCard->IsInplay() && pCard->GetCardKeyword()->HasShroud(m_pAbility->GetCard()))
 		return FALSE;
 
+	// Hexproof from [quality] (Dominaria, see CHexproofFromSupport)
+	if (pCard->IsInplay() && CHexproofFromSupport::IsHexproofFrom(pCard, m_pAbility->GetCard()))
+		return FALSE;
+
 	if (pCard->IsInplay() && pCard->GetCardKeyword()->HasHexproof() && (m_pAbility->GetCard()->GetController() != pCard->GetController()))
 	{
 		if (!pCard->GetCardType().IsCreature()) return FALSE;

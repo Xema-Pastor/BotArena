@@ -600,7 +600,9 @@ const LPCTSTR PlaneswalkerType::s_Text[PlaneswalkerType::_SubtypeCount] =
 	_T("Saheeli"),
 	_T("Samut"),
 	_T("Huatli"),
-	_T("Angrath")
+	_T("Angrath"),
+	_T("Jaya"),
+	_T("Teferi")
 };
 //____________________________________________________________________________
 //
