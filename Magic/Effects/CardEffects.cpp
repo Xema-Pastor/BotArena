@@ -128,6 +128,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CAjaniAdversaryOfTyrantsEmblemToken);
 		DEFINE_TOKEN(CTezzeretArtificeMasterEmblemToken);
 		DEFINE_TOKEN(CVivienReidEmblemToken);
+		DEFINE_TOKEN(CRalIzzetViceroyEmblemToken);
+		DEFINE_TOKEN(CVraskaGolgariQueenEmblemToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -11977,6 +11979,95 @@ CVivienReidEmblemToken::CVivienReidEmblemToken(CGame* pGame, UINT nID)
 	cpAbility->SetEnchantmentActiveIn(ZoneId::_Effects);
 	cpAbility->SetAffectControllerCardsOnly();
 	AddAbility(cpAbility.GetPointer());
+}
+
+//____________________________________________________________________________
+//
+CRalIzzetViceroyEmblemToken::CRalIzzetViceroyEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Ral, Izzet Viceroy Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Whenever you cast an instant or sorcery spell, this emblem deals 4 damage to any target and you draw two cards.
+	// (it can't target planeswalkers)
+	typedef
+		TTriggeredTargetAbility< CTriggeredAbility<>, CWhenSpellCastAny > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->GetTrigger().GetCardFilterHelper().SetPredefinedFilter(CCardFilter::GetFilter(_T("instant cards or sorcery cards")));
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(new AnyCreatureComparer);
+	cpAbility->GetTargeting().SetIncludePlayers(TRUE);
+	cpAbility->GetTargeting().SetDefaultCharacteristic(Characteristic::Negative);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CRalIzzetViceroyEmblemToken::SetTriggerContext));
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CRalIzzetViceroyEmblemToken::BeforeDamage));
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CRalIzzetViceroyEmblemToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CCard* pCard) const
+{
+	return GetZone()->GetZoneId() == ZoneId::_Effects;
+}
+
+bool CRalIzzetViceroyEmblemToken::BeforeDamage(CAbilityAction* pAction)
+{
+	CLifeModifier pDamage = CLifeModifier(Life(-4), this, PreventableType::Preventable,
+		DamageType::AbilityDamage | DamageType::NonCombatDamage);
+
+	CPlayer* pPlayer = pAction->GetAssociatedPlayer();
+	if (pPlayer)
+		pDamage.ApplyTo(pPlayer);
+	else
+	{
+		CCreatureCard* pCreature = dynamic_cast<CCreatureCard*>(pAction->GetAssociatedCard());
+		if (pCreature && pCreature->GetZoneId() == ZoneId::Battlefield)
+			pDamage.ApplyTo(pCreature);
+	}
+
+	CDrawCardModifier pDraw = CDrawCardModifier(GetGame(), MinimumValue(2), MaximumValue(2));
+	pDraw.ApplyTo(pAction->GetController());
+	return false;
+}
+
+//____________________________________________________________________________
+//
+CVraskaGolgariQueenEmblemToken::CVraskaGolgariQueenEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Vraska, Golgari Queen Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Whenever a creature you control deals combat damage to a player, that player loses the game. (the player is kept in
+	// nValue1, and loses as with CTriggeredLoseGameAbility)
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->GetTrigger().SetCombatDamageOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CVraskaGolgariQueenEmblemToken::SetTriggerContext));
+	cpAbility->SetBeforeResolveSelectionCallback(TriggeredAbility::BeforeResolveSelectionCallback(this, &CVraskaGolgariQueenEmblemToken::BeforeLose));
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CVraskaGolgariQueenEmblemToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+	CCard* pFromCard, CPlayer* pToPlayer, Damage damage) const
+{
+	if (GetZone()->GetZoneId() != ZoneId::_Effects || !pFromCard || !pToPlayer || !pFromCard->GetCardType().IsCreature())
+		return false;
+
+	triggerContext.nValue1 = (DWORD)pToPlayer;
+	return true;
+}
+
+bool CVraskaGolgariQueenEmblemToken::BeforeLose(TriggeredAbility::TriggeredActionType* pAction)
+{
+	CPlayer* pPlayer = (CPlayer*)pAction->GetTriggerContext().nValue1;
+	if (pPlayer)
+		pPlayer->SetLostByOtherReasons();
+	return true;
 }
 
 //____________________________________________________________________________

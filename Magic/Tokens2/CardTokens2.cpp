@@ -131,6 +131,10 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CAvatarAToken);
 		DEFINE_TOKEN(COxAToken);
 		DEFINE_TOKEN(CAngelMToken);
+		DEFINE_TOKEN(CSoldierTToken);
+		DEFINE_TOKEN(CElfKnightAToken);
+		DEFINE_TOKEN(CBirdIllusionAToken);
+		DEFINE_TOKEN(CInsectLToken);
 	} while (false);
 
 	return cpCard;
@@ -1829,4 +1833,51 @@ CAngelMToken::CAngelMToken(CGame* pGame, UINT nID)
 	GetCreatureKeyword()->AddFlying(FALSE);
 	GetCreatureKeyword()->AddVigilance(FALSE);
 // Core Set 2019 version: used by Resplendent Angel.
+}
+//____________________________________________________________________________
+//
+CSoldierTToken::CSoldierTToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Soldier"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Soldier), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+	GetCardKeyword()->AddLifelink(FALSE);
+// Guilds of Ravnica version: used by Dawn of Hope.
+}
+//____________________________________________________________________________
+//
+CElfKnightAToken::CElfKnightAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elf Knight"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Elf, Knight), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::Green | CardType::White, CardType::_ColorMask);
+	GetCreatureKeyword()->AddVigilance(FALSE);
+// Guilds of Ravnica version: used by Sprouting Renewal.
+}
+//____________________________________________________________________________
+//
+CBirdIllusionAToken::CBirdIllusionAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Bird Illusion"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Bird, Illusion), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Blue, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+// Guilds of Ravnica version: used by Murmuring Mystic.
+}
+//____________________________________________________________________________
+//
+CInsectLToken::CInsectLToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Insect"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Insect), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Black | CardType::Green, CardType::_ColorMask);
+// Guilds of Ravnica version: used by Izoni, Thousand-Eyed.
 }

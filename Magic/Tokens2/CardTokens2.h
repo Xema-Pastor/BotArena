@@ -837,3 +837,31 @@ class CAngelMToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CAngelMToken);
 };
+
+//____________________________________________________________________________
+//
+class CSoldierTToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSoldierTToken);
+};
+
+//____________________________________________________________________________
+//
+class CElfKnightAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElfKnightAToken);
+};
+
+//____________________________________________________________________________
+//
+class CBirdIllusionAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CBirdIllusionAToken);
+};
+
+//____________________________________________________________________________
+//
+class CInsectLToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CInsectLToken);
+};

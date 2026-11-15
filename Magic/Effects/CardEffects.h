@@ -2185,3 +2185,31 @@ class CVivienReidEmblemToken : public CEffectCard
 
 //____________________________________________________________________________
 //
+class CRalIzzetViceroyEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CRalIzzetViceroyEmblemToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CCard* pCard) const;
+	bool BeforeDamage(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//
+class CVraskaGolgariQueenEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CVraskaGolgariQueenEmblemToken);
+
+protected:
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenDamageDealtAny,
+						   CWhenDamageDealtAny::PlayerEventCallback,
+						   &CWhenDamageDealtAny::SetPlayerEventCallback > TriggeredAbility;
+
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+		CCard* pFromCard, CPlayer* pToPlayer, Damage damage) const;
+	bool BeforeLose(TriggeredAbility::TriggeredActionType* pAction);
+};
+
+//____________________________________________________________________________
+//

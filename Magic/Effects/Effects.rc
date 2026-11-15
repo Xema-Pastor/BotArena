@@ -268,6 +268,8 @@ BEGIN
     IDS_STRING61155          "Ajani, Adversary of Tyrants Emblem\n\nEmblem\nToken\nAt the beginning of your end step, create three 1/1 white Cat creature tokens with lifelink."
     IDS_STRING61156          "Tezzeret, Artifice Master Emblem\n\nEmblem\nToken\nAt the beginning of your end step, search your library for a permanent card, put it onto the battlefield, then shuffle."
     IDS_STRING61157          "Vivien Reid Emblem\n\nEmblem\nToken\nCreatures you control get +2/+2 and have vigilance, trample, and indestructible."
+    IDS_STRING61158          "Ral, Izzet Viceroy Emblem\n\nEmblem\nToken\nWhenever you cast an instant or sorcery spell, this emblem deals 4 damage to any target and you draw two cards."
+    IDS_STRING61159          "Vraska, Golgari Queen Emblem\n\nEmblem\nToken\nWhenever a creature you control deals combat damage to a player, that player loses the game."
 //	IDS_STRING61040          "Chancellor of the Annex Effect\n\nEffect\nToken\nWhen each opponent casts his or her first spell of the game, counter that spell unless that player pays {1}."
 END
 #endif    // English (United States) resources

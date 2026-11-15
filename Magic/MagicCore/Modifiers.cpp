@@ -2972,7 +2972,21 @@ void CSurveilModifier::ApplyTo(CPlayer* pPlayer) const
 	if (m_nCount <= 0)
 		return;
 
-	__super::ApplyTo(pPlayer);
+	// Enhanced Surveillance (Guilds of Ravnica): "You may look at an additional two cards each time you surveil."
+	int nExtra = 0;
+	const CCountedCardContainer& battlefield = pPlayer->GetZoneById(ZoneId::Battlefield)->GetCardContainer();
+	for (int i = 0; i < battlefield.GetSize(); ++i)
+		if (battlefield.GetAt(i)->GetCardName(FALSE) == _T("Enhanced Surveillance"))
+			nExtra += 2;
+
+	if (nExtra > 0)
+	{
+		// A bigger surveil without source (the trigger is fired below); the qualified call doesn't count again
+		CSurveilModifier bigger(m_pGame, m_nCount + nExtra);
+		bigger.CDrawCardModifier::ApplyTo(pPlayer);
+	}
+	else
+		__super::ApplyTo(pPlayer);
 
 	if (m_pSource)
 	{

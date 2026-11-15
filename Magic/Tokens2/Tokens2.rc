@@ -218,6 +218,10 @@ BEGIN
     IDS_STRING55115         "Avatar (A)\n{W}\nCreature - Avatar\nToken\nFlying\n4/4"
     IDS_STRING55116         "Ox (A)\n{W}\nCreature - Ox\nToken\n\n2/4"
     IDS_STRING55117         "Angel (M)\n{W}\nCreature - Angel\nToken\nFlying, vigilance\n4/4"
+    IDS_STRING55118         "Soldier (T)\n{W}\nCreature - Soldier\nToken\nLifelink\n1/1"
+    IDS_STRING55119         "Elf Knight (A)\n{GW}\nCreature - Elf Knight\nToken\nVigilance\n2/2"
+    IDS_STRING55120         "Bird Illusion (A)\n{U}\nCreature - Bird Illusion\nToken\nFlying\n1/1"
+    IDS_STRING55121         "Insect (L)\n{BG}\nCreature - Insect\nToken\n\n1/1"
 END
 
 #endif    // English (United States) resources
