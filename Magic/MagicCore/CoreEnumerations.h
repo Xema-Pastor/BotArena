@@ -1539,6 +1539,7 @@ struct CORE_EXPORT SingleCreatureType
 		Dinosaur,
 		Trilobite,
 		Ranger,
+		Egg,
 
 		_SingleTypeCount,
 	};
@@ -1598,6 +1599,7 @@ struct CORE_EXPORT PlaneswalkerType
 		Angrath,
 		Jaya,
 		Teferi,
+		Vivien,
 
 		_SubtypeCount,
 	};

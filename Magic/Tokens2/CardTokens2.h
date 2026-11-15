@@ -816,3 +816,24 @@ class CZombieKnightToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CZombieKnightToken);
 };
+
+//____________________________________________________________________________
+//
+class CAvatarAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAvatarAToken);
+};
+
+//____________________________________________________________________________
+//
+class COxAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(COxAToken);
+};
+
+//____________________________________________________________________________
+//
+class CAngelMToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAngelMToken);
+};

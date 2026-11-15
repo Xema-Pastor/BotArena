@@ -2154,3 +2154,34 @@ protected:
 
 //____________________________________________________________________________
 //
+class CAjaniAdversaryOfTyrantsEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CAjaniAdversaryOfTyrantsEmblemToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const;
+	bool BeforeTokens(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//
+class CTezzeretArtificeMasterEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CTezzeretArtificeMasterEmblemToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const;
+	bool BeforeSearch(CAbilityAction* pAction);
+
+	CCardFilter m_PermanentFilter;
+};
+
+//____________________________________________________________________________
+//
+class CVivienReidEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CVivienReidEmblemToken);
+};
+
+//____________________________________________________________________________
+//

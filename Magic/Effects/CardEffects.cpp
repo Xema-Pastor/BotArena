@@ -125,6 +125,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CVraskaSchemingGorgonEffectToken);
 		DEFINE_TOKEN(CTeferiHeroOfDominariaEffectToken);
 		DEFINE_TOKEN(CTeferiHeroOfDominariaEmblemToken);
+		DEFINE_TOKEN(CAjaniAdversaryOfTyrantsEmblemToken);
+		DEFINE_TOKEN(CTezzeretArtificeMasterEmblemToken);
+		DEFINE_TOKEN(CVivienReidEmblemToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -11870,6 +11873,110 @@ bool CTeferiHeroOfDominariaEmblemToken::BeforeExile(CAbilityAction* pAction)
 		pModifier.ApplyTo(pCard);
 	}
 	return false;
+}
+
+//____________________________________________________________________________
+//
+CAjaniAdversaryOfTyrantsEmblemToken::CAjaniAdversaryOfTyrantsEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Ajani, Adversary of Tyrants Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// At the beginning of your end step, create three 1/1 white Cat creature tokens with lifelink.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::EndStep, FALSE));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CAjaniAdversaryOfTyrantsEmblemToken::SetTriggerContext));
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CAjaniAdversaryOfTyrantsEmblemToken::BeforeTokens));
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CAjaniAdversaryOfTyrantsEmblemToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const
+{
+	return GetZone()->GetZoneId() == ZoneId::_Effects;
+}
+
+bool CAjaniAdversaryOfTyrantsEmblemToken::BeforeTokens(CAbilityAction* pAction)
+{
+	CTokenCreationModifier pModifier = CTokenCreationModifier(GetGame(), _T("Cat (G)"), 55098, 3);
+	pModifier.ApplyTo(pAction->GetController());
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CTezzeretArtificeMasterEmblemToken::CTezzeretArtificeMasterEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Tezzeret, Artifice Master Emblem"), CardType::GlobalEnchantment, nID)
+	, m_PermanentFilter(_T("a permanent card"), _T("permanent cards"),
+		new NegateCardComparer(new CardTypeComparer(CardType::Instant | CardType::Sorcery, false)))
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// At the beginning of your end step, search your library for a permanent card, put it onto the battlefield, then
+	// shuffle.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::EndStep, FALSE));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CTezzeretArtificeMasterEmblemToken::SetTriggerContext));
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CTezzeretArtificeMasterEmblemToken::BeforeSearch));
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CTezzeretArtificeMasterEmblemToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const
+{
+	return GetZone()->GetZoneId() == ZoneId::_Effects;
+}
+
+bool CTezzeretArtificeMasterEmblemToken::BeforeSearch(CAbilityAction* pAction)
+{
+	CPlayer* pController = pAction->GetController();
+	CCountedCardContainer cards;
+	CZoneModifier pModifier = CZoneModifier(GetGame(), ZoneId::Library, SpecialNumber::All,
+		CZoneModifier::RoleType::PrimaryPlayer,
+		CardPlacement::Top, CZoneModifier::RoleType::PrimaryPlayer, &cards);
+	pModifier.AddSelection(MinimumValue(0), MaximumValue(1),
+		CZoneModifier::RoleType::PrimaryPlayer,
+		CZoneModifier::RoleType::AllPlayers,
+		&m_PermanentFilter,
+		ZoneId::Battlefield,
+		CZoneModifier::RoleType::PrimaryPlayer,
+		CardPlacement::Top,
+		MoveType::Others,
+		CZoneModifier::RoleType::PrimaryPlayer);
+	pModifier.ApplyTo(pController);
+	pController->GetZoneById(ZoneId::Library)->Shuffle();
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CVivienReidEmblemToken::CVivienReidEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Vivien Reid Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Creatures you control get +2/+2 and have vigilance, trample, and indestructible.
+	counted_ptr<CPwrTghAttrEnchantment> cpAbility(
+		::CreateObject<CPwrTghAttrEnchantment>(this,
+			new AnyCreatureComparer,
+			Power(+2), Life(+2),
+			CreatureKeyword::Vigilance | CreatureKeyword::Trample));
+
+	cpAbility->GetCardKeywordMod().GetModifier().SetToAdd(CardKeyword::Indestructible);
+	cpAbility->GetCardKeywordMod().GetModifier().SetOneTurnOnly(FALSE);
+	cpAbility->SetEnchantmentActiveIn(ZoneId::_Effects);
+	cpAbility->SetAffectControllerCardsOnly();
+	AddAbility(cpAbility.GetPointer());
 }
 
 //____________________________________________________________________________

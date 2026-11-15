@@ -215,6 +215,9 @@ BEGIN
     IDS_STRING55112         "Nightmare Horror (A)\n{B}\nCreature - Nightmare Horror\nToken\n\nX/X"
     IDS_STRING55113         "Karox Bladewing\n{R}\nLegendary Creature - Dragon\nToken\nFlying\n4/4"
     IDS_STRING55114         "Zombie Knight\n{B}\nCreature - Zombie Knight\nToken\nMenace\n2/2"
+    IDS_STRING55115         "Avatar (A)\n{W}\nCreature - Avatar\nToken\nFlying\n4/4"
+    IDS_STRING55116         "Ox (A)\n{W}\nCreature - Ox\nToken\n\n2/4"
+    IDS_STRING55117         "Angel (M)\n{W}\nCreature - Angel\nToken\nFlying, vigilance\n4/4"
 END
 
 #endif    // English (United States) resources

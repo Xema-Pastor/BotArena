@@ -265,6 +265,9 @@ BEGIN
     IDS_STRING61152          "Vraska, Scheming Gorgon Effect\n\nEffect\nToken\nUntil end of turn, whenever one of those creatures deals damage to an opponent, that player loses the game."
     IDS_STRING61153          "Teferi, Hero of Dominaria Effect\n\nEffect\nToken\nAt the beginning of the next end step, untap up to two lands."
     IDS_STRING61154          "Teferi, Hero of Dominaria Emblem\n\nEmblem\nToken\nWhenever you draw a card, exile target permanent an opponent controls."
+    IDS_STRING61155          "Ajani, Adversary of Tyrants Emblem\n\nEmblem\nToken\nAt the beginning of your end step, create three 1/1 white Cat creature tokens with lifelink."
+    IDS_STRING61156          "Tezzeret, Artifice Master Emblem\n\nEmblem\nToken\nAt the beginning of your end step, search your library for a permanent card, put it onto the battlefield, then shuffle."
+    IDS_STRING61157          "Vivien Reid Emblem\n\nEmblem\nToken\nCreatures you control get +2/+2 and have vigilance, trample, and indestructible."
 //	IDS_STRING61040          "Chancellor of the Annex Effect\n\nEffect\nToken\nWhen each opponent casts his or her first spell of the game, counter that spell unless that player pays {1}."
 END
 #endif    // English (United States) resources

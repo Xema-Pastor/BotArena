@@ -1,0 +1,400 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#include ""..\\MagicCore\\MagicCore.rc2""\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MODULE              ICON                    "M19.ico"
+IDI_LARGE_MODULE        ICON                    "M19Large.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_EXPANSION           "Core Set 2019"
+    IDS_EXPANSION_ABBREV    "M19"
+    IDS_FIRST_CARD          "40600"
+    IDS_TOTAL_CARD          "318"
+    IDS_WHITE_BORDER        "0"
+    IDS_MODULE_ICON_ID      "40918"
+    IDS_MODULE_LARGE_ICON_ID "40919"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ALT_IMG_METHOD      "0"
+    IDS_RELEASE_DATE        "13-07-2018"
+    IDS_MWS_FOLDER          "MWS\\M19\\"
+    IDS_PRODUCT_LIST        """Core Set 2019 Starter Box"":R-3:U-10:C-32:BL-30,""Core Set 2019 Booster Pack"":R-1:U-3:C-11"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING40600         "Nicol Bolas, the Ravager\n{1UBR}\nLegendary Creature - Elder Dragon\nM19,MR\nFlying\rWhen Nicol Bolas enters, each opponent discards a card.\r{4}{U}{B}{R}: Exile Nicol Bolas, then return him to the battlefield transformed under his owner's control. Activate only as a sorcery.\n4/4"
+    IDS_STRING40601         "Nicol Bolas, the Arisen\n\nPlaneswalker - Bolas\nM19,MR\n[+2]: Draw two cards.\r[-3]: Nicol Bolas deals 10 damage to target creature or planeswalker.\r[-4]: Put target creature or planeswalker card from a graveyard onto the battlefield under your control.\r[-12]: Exile all but the bottom card of target player's library.\n7"
+    IDS_STRING40602         "Cinder Barrens\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {B} or {R}."
+    IDS_STRING40603         "Detection Tower\n\nLand\nM19,R\n{T}: Add {C}.\r{1}, {T}: Until end of turn, your opponents and creatures your opponents control with hexproof can be the targets of spells and abilities you control as though they didn't have hexproof."
+    IDS_STRING40604         "Forsaken Sanctuary\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {W} or {B}."
+    IDS_STRING40605         "Foul Orchard\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {B} or {G}."
+    IDS_STRING40606         "Highland Lake\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {U} or {R}."
+    IDS_STRING40607         "Meandering River\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {W} or {U}."
+    IDS_STRING40608         "Reliquary Tower\n\nLand\nM19,U\nYou have no maximum hand size.\r{T}: Add {C}."
+    IDS_STRING40609         "Rupture Spire\n\nLand\nM19,U\nThis land enters tapped.\rWhen this land enters, sacrifice it unless you pay {1}.\r{T}: Add one mana of any color."
+    IDS_STRING40610         "Stone Quarry\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {R} or {W}."
+    IDS_STRING40611         "Submerged Boneyard\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {U} or {B}."
+    IDS_STRING40612         "Timber Gorge\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {R} or {G}."
+    IDS_STRING40613         "Tranquil Expanse\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {G} or {W}."
+    IDS_STRING40614         "Woodland Stream\n\nLand\nM19,C\nThis land enters tapped.\r{T}: Add {G} or {U}."
+    IDS_STRING40615         "Plains\n\nBasic Land - Plains\nM19,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40616         "Plains\n\nBasic Land - Plains\nM19,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40617         "Plains\n\nBasic Land - Plains\nM19,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40618         "Plains\n\nBasic Land - Plains\nM19,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40619         "Island\n\nBasic Land - Island\nM19,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40620         "Island\n\nBasic Land - Island\nM19,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40621         "Island\n\nBasic Land - Island\nM19,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40622         "Island\n\nBasic Land - Island\nM19,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40623         "Swamp\n\nBasic Land - Swamp\nM19,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40624         "Swamp\n\nBasic Land - Swamp\nM19,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40625         "Swamp\n\nBasic Land - Swamp\nM19,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40626         "Swamp\n\nBasic Land - Swamp\nM19,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40627         "Mountain\n\nBasic Land - Mountain\nM19,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40628         "Mountain\n\nBasic Land - Mountain\nM19,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40629         "Mountain\n\nBasic Land - Mountain\nM19,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40630         "Mountain\n\nBasic Land - Mountain\nM19,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40631         "Forest\n\nBasic Land - Forest\nM19,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40632         "Forest\n\nBasic Land - Forest\nM19,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40633         "Forest\n\nBasic Land - Forest\nM19,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40634         "Forest\n\nBasic Land - Forest\nM19,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40635         "Ajani, Adversary of Tyrants\n{2WW}\nPlaneswalker - Ajani\nM19,MR\n[+1]: Put a +1/+1 counter on each of up to two target creatures.\r[-2]: Return target creature card with mana value 2 or less from your graveyard to the battlefield.\r[-7]: You get an emblem with ""At the beginning of your end step, create three 1/1 white Cat creature tokens with lifelink.""\n4"
+    IDS_STRING40636         "Ajani, Wise Counselor\n{3WW}\nPlaneswalker - Ajani\nM19,MR\n[+2]: You gain 1 life for each creature you control.\r[-3]: Creatures you control get +2/+2 until end of turn.\r[-9]: Put X +1/+1 counters on target creature, where X is your life total.\n5"
+    IDS_STRING40637         "Liliana, the Necromancer\n{3BB}\nPlaneswalker - Liliana\nM19,MR\n[+1]: Target player loses 2 life.\r[-1]: Return target creature card from your graveyard to your hand.\r[-7]: Destroy up to two target creatures. Put up to two creature cards from graveyards onto the battlefield under your control.\n4"
+    IDS_STRING40638         "Liliana, Untouched by Death\n{2BB}\nPlaneswalker - Liliana\nM19,MR\n[+1]: Mill three cards. If at least one Zombie card is milled this way, each opponent loses 2 life and you gain 2 life.\r[-2]: Target creature gets -X/-X until end of turn, where X is the number of Zombies you control.\r[-3]: You may cast Zombie spells from your graveyard this turn.\n4"
+    IDS_STRING40639         "Sarkhan, Dragonsoul\n{4RR}\nPlaneswalker - Sarkhan\nM19,MR\n[+2]: Sarkhan deals 1 damage to each opponent and each creature your opponents control.\r[-3]: Sarkhan deals 4 damage to target player or planeswalker.\r[-9]: Search your library for any number of Dragon creature cards, put them onto the battlefield, then shuffle.\n5"
+    IDS_STRING40640         "Sarkhan, Fireblood\n{1RR}\nPlaneswalker - Sarkhan\nM19,MR\n[+1]: You may discard a card. If you do, draw a card.\r[+1]: Add two mana in any combination of colors. Spend this mana only to cast Dragon spells.\r[-7]: Create four 5/5 red Dragon creature tokens with flying.\n3"
+    IDS_STRING40641         "Tezzeret, Artifice Master\n{3UU}\nPlaneswalker - Tezzeret\nM19,MR\n[+1]: Create a 1/1 colorless Thopter artifact creature token with flying.\r[0]: Draw a card. If you control three or more artifacts, draw two cards instead.\r[-9]: You get an emblem with ""At the beginning of your end step, search your library for a permanent card, put it onto the battlefield, then shuffle.""\n5"
+    IDS_STRING40642         "Tezzeret, Cruel Machinist\n{4UU}\nPlaneswalker - Tezzeret\nM19,MR\n[+1]: Draw a card.\r[0]: Until your next turn, target artifact you control becomes a 5/5 creature in addition to its other types.\r[-7]: Put any number of cards from your hand onto the battlefield face down. They're 5/5 artifact creatures.\n4"
+    IDS_STRING40643         "Vivien of the Arkbow\n{4GG}\nPlaneswalker - Vivien\nM19,MR\n[+2]: Put two +1/+1 counters on up to one target creature.\r[-3]: Target creature you control deals damage equal to its power to target creature you don't control.\r[-9]: Creatures you control get +4/+4 and gain trample until end of turn.\n5"
+    IDS_STRING40644         "Vivien Reid\n{3GG}\nPlaneswalker - Vivien\nM19,MR\n[+1]: Look at the top four cards of your library. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\r[-3]: Destroy target artifact, enchantment, or creature with flying.\r[-8]: You get an emblem with ""Creatures you control get +2/+2 and have vigilance, trample, and indestructible.""\n5"
+    IDS_STRING40645         "Aether Tunnel\n{1U}\nEnchantment - Aura\nM19,U\nEnchant creature\rEnchanted creature gets +1/+0 and can't be blocked."
+    IDS_STRING40646         "Ajani's Last Stand\n{2WW}\nEnchantment\nM19,R\nWhenever a creature or planeswalker you control dies, you may sacrifice this enchantment. If you do, create a 4/4 white Avatar creature token with flying.\rWhen a spell or ability an opponent controls causes you to discard this card, if you control a Plains, create a 4/4 white Avatar creature token with flying."
+    IDS_STRING40647         "Ajani's Welcome\n{W}\nEnchantment\nM19,U\nWhenever a creature you control enters, you gain 1 life."
+    IDS_STRING40648         "Blanchwood Armor\n{2G}\nEnchantment - Aura\nM19,U\nEnchant creature\rEnchanted creature gets +1/+1 for each Forest you control."
+    IDS_STRING40649         "Colossal Majesty\n{2G}\nEnchantment\nM19,U\nAt the beginning of your upkeep, if you control a creature with power 4 or greater, draw a card."
+    IDS_STRING40650         "Dwindle\n{2U}\nEnchantment - Aura\nM19,C\nEnchant creature\rEnchanted creature gets -6/-0.\rWhen enchanted creature blocks, destroy it. (The attacking creature remains blocked.)"
+    IDS_STRING40651         "Gift of Paradise\n{2G}\nEnchantment - Aura\nM19,U\nEnchant land\rWhen this Aura enters, you gain 3 life.\rEnchanted land has ""{T}: Add two mana of any one color."""
+    IDS_STRING40652         "Hieromancer's Cage\n{3W}\nEnchantment\nM19,U\nWhen this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield."
+    IDS_STRING40653         "Infernal Scarring\n{1B}\nEnchantment - Aura\nM19,C\nEnchant creature\rEnchanted creature gets +2/+0 and has ""When this creature dies, draw a card."""
+    IDS_STRING40654         "Knightly Valor\n{4W}\nEnchantment - Aura\nM19,U\nEnchant creature\rWhen this Aura enters, create a 2/2 white Knight creature token with vigilance. (Attacking doesn't cause it to tap.)\rEnchanted creature gets +2/+2 and has vigilance."
+    IDS_STRING40655         "Knight's Pledge\n{1W}\nEnchantment - Aura\nM19,C\nEnchant creature\rEnchanted creature gets +2/+2."
+    IDS_STRING40656         "Liliana's Contract\n{3BB}\nEnchantment\nM19,R\nWhen this enchantment enters, you draw four cards and you lose 4 life.\rAt the beginning of your upkeep, if you control four or more Demons with different names, you win the game."
+    IDS_STRING40657         "Luminous Bonds\n{2W}\nEnchantment - Aura\nM19,C\nEnchant creature\rEnchanted creature can't attack or block."
+    IDS_STRING40658         "Oakenform\n{2G}\nEnchantment - Aura\nM19,C\nEnchant creature\rEnchanted creature gets +3/+3."
+    IDS_STRING40659         "Open the Graves\n{3BB}\nEnchantment\nM19,R\nWhenever a nontoken creature you control dies, create a 2/2 black Zombie creature token."
+    IDS_STRING40660         "Patient Rebuilding\n{3UU}\nEnchantment\nM19,R\nAt the beginning of your upkeep, target opponent mills three cards, then you draw a card for each land card put into their graveyard this way."
+    IDS_STRING40661         "Prodigious Growth\n{4GG}\nEnchantment - Aura\nM19,R\nEnchant creature\rEnchanted creature gets +7/+7 and has trample."
+    IDS_STRING40662         "Psychic Corrosion\n{2U}\nEnchantment\nM19,U\nWhenever you draw a card, each opponent mills two cards."
+    IDS_STRING40663         "Sarkhan's Unsealing\n{3R}\nEnchantment\nM19,R\nWhenever you cast a creature spell with power 4, 5, or 6, this enchantment deals 4 damage to any target.\rWhenever you cast a creature spell with power 7 or greater, this enchantment deals 4 damage to each opponent and each creature and planeswalker they control."
+    IDS_STRING40664         "Talons of Wildwood\n{1G}\nEnchantment - Aura\nM19,C\nEnchant creature\rEnchanted creature gets +1/+1 and has trample. (It can deal excess combat damage to the player or planeswalker it's attacking.)\r{2}{G}: Return this card from your graveyard to your hand."
+    IDS_STRING40665         "Waterknot\n{1UU}\nEnchantment - Aura\nM19,C\nEnchant creature\rWhen this Aura enters, tap enchanted creature.\rEnchanted creature doesn't untap during its controller's untap step."
+    IDS_STRING40666         "Amulet of Safekeeping\n{2}\nArtifact\nM19,R\nWhenever you become the target of a spell or ability an opponent controls, counter that spell or ability unless its controller pays {1}.\rCreature tokens get -1/-0."
+    IDS_STRING40667         "Arcane Encyclopedia\n{3}\nArtifact - Book\nM19,U\n{3}, {T}: Draw a card."
+    IDS_STRING40668         "Crucible of Worlds\n{3}\nArtifact\nM19,MR\nYou may play lands from your graveyard."
+    IDS_STRING40669         "Desecrated Tomb\n{3}\nArtifact\nM19,R\nWhenever one or more creature cards leave your graveyard, create a 1/1 black Bat creature token with flying."
+    IDS_STRING40670         "Dragon's Hoard\n{3}\nArtifact\nM19,R\nWhenever a Dragon you control enters, put a gold counter on this artifact.\r{T}, Remove a gold counter from this artifact: Draw a card.\r{T}: Add one mana of any color."
+    IDS_STRING40671         "Explosive Apparatus\n{1}\nArtifact\nM19,C\n{3}, {T}, Sacrifice this artifact: It deals 2 damage to any target."
+    IDS_STRING40672         "Fountain of Renewal\n{1}\nArtifact\nM19,U\nAt the beginning of your upkeep, you gain 1 life.\r{3}, Sacrifice this artifact: Draw a card."
+    IDS_STRING40673         "Magistrate's Scepter\n{3}\nArtifact\nM19,R\n{4}, {T}: Put a charge counter on this artifact.\r{T}, Remove three charge counters from this artifact: Take an extra turn after this one."
+    IDS_STRING40674         "Manalith\n{3}\nArtifact\nM19,C\n{T}: Add one mana of any color."
+    IDS_STRING40675         "Marauder's Axe\n{2}\nArtifact - Equipment\nM19,C\nEquipped creature gets +2/+0.\rEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)"
+    IDS_STRING40676         "Millstone\n{2}\nArtifact\nM19,U\n{2}, {T}: Target player mills two cards."
+    IDS_STRING40677         "Pendulum of Patterns\n{2}\nArtifact\nM19,C\nWhen this artifact enters, you gain 3 life.\r{5}, {T}, Sacrifice this artifact: Draw a card."
+    IDS_STRING40678         "Rogue's Gloves\n{2}\nArtifact - Equipment\nM19,U\nWhenever equipped creature deals combat damage to a player, you may draw a card.\rEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)"
+    IDS_STRING40679         "Sigiled Sword of Valeron\n{3}\nArtifact - Equipment\nM19,R\nEquipped creature gets +2/+0, has vigilance, and is a Knight in addition to its other types.\rWhenever equipped creature attacks, create a 2/2 white Knight creature token with vigilance that's attacking.\rEquip {3}"
+    IDS_STRING40680         "Tezzeret's Gatebreaker\n{4}\nArtifact\nM19,R\nWhen this artifact enters, look at the top five cards of your library. You may reveal a blue or artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\r{5}{U}, {T}, Sacrifice this artifact: Creatures you control can't be blocked this turn."
+    IDS_STRING40681         "Transmogrifying Wand\n{3}\nArtifact\nM19,R\nThis artifact enters with three charge counters on it.\r{1}, {T}, Remove a charge counter from this artifact: Destroy target creature. Its controller creates a 2/4 white Ox creature token. Activate only as a sorcery."
+    IDS_STRING40682         "Act of Treason\n{2R}\nSorcery\nM19,C\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. (It can attack and {T} this turn.)"
+    IDS_STRING40683         "Ajani's Influence\n{2WW}\nSorcery\nM19,R\nPut two +1/+1 counters on target creature.\rLook at the top five cards of your library. You may reveal a white card from among them and put it into your hand. Put the rest on the bottom of your library in a random order."
+    IDS_STRING40684         "Banefire\n{XR}\nSorcery\nM19,R\nBanefire deals X damage to any target.\rIf X is 5 or more, this spell can't be countered and the damage can't be prevented."
+    IDS_STRING40685         "Blood Divination\n{3B}\nSorcery\nM19,U\nAs an additional cost to cast this spell, sacrifice a creature.\rDraw three cards."
+    IDS_STRING40686         "Cleansing Nova\n{3WW}\nSorcery\nM19,R\nChoose one -\r* Destroy all creatures.\r* Destroy all artifacts and enchantments."
+    IDS_STRING40687         "Crash Through\n{R}\nSorcery\nM19,C\nCreatures you control gain trample until end of turn. (Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)\rDraw a card."
+    IDS_STRING40688         "Declare Dominance\n{3GG}\nSorcery\nM19,U\nTarget creature gets +3/+3 until end of turn. All creatures able to block it this turn do so."
+    IDS_STRING40689         "Divination\n{2U}\nSorcery\nM19,C\nDraw two cards."
+    IDS_STRING40690         "Duress\n{B}\nSorcery\nM19,C\nTarget opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card."
+    IDS_STRING40691         "Fiery Finish\n{4RR}\nSorcery\nM19,U\nFiery Finish deals 7 damage to target creature."
+    IDS_STRING40692         "Fraying Omnipotence\n{3BB}\nSorcery\nM19,R\nEach player loses half their life, then discards half the cards in their hand, then sacrifices half the creatures they control of their choice. Round up each time."
+    IDS_STRING40693         "Ghostform\n{1U}\nSorcery\nM19,C\nUp to two target creatures can't be blocked this turn."
+    IDS_STRING40694         "Heroic Reinforcements\n{2RW}\nSorcery\nM19,U\nCreate two 1/1 white Soldier creature tokens. Until end of turn, creatures you control get +1/+1 and gain haste. (They can attack and {T} this turn.)"
+    IDS_STRING40695         "Lava Axe\n{4R}\nSorcery\nM19,C\nLava Axe deals 5 damage to target player or planeswalker."
+    IDS_STRING40696         "Lich's Caress\n{3BB}\nSorcery\nM19,C\nDestroy target creature. You gain 3 life."
+    IDS_STRING40697         "Liliana's Spoils\n{3B}\nSorcery\nM19,R\nTarget opponent discards a card.\rLook at the top five cards of your library. You may reveal a black card from among them and put it into your hand. Put the rest on the bottom of your library in a random order."
+    IDS_STRING40698         "Macabre Waltz\n{1B}\nSorcery\nM19,C\nReturn up to two target creature cards from your graveyard to your hand, then discard a card."
+    IDS_STRING40699         "Mind Rot\n{2B}\nSorcery\nM19,C\nTarget player discards two cards."
+    IDS_STRING40700         "One with the Machine\n{3U}\nSorcery\nM19,R\nDraw cards equal to the greatest mana value among artifacts you control."
+    IDS_STRING40701         "Rabid Bite\n{1G}\nSorcery\nM19,C\nTarget creature you control deals damage equal to its power to target creature you don't control."
+    IDS_STRING40702         "Recollect\n{2G}\nSorcery\nM19,U\nReturn target card from your graveyard to your hand."
+    IDS_STRING40703         "Rise from the Grave\n{4B}\nSorcery\nM19,U\nPut target creature card from a graveyard onto the battlefield under your control. That creature is a black Zombie in addition to its other colors and types."
+    IDS_STRING40704         "Sarkhan's Dragonfire\n{3RR}\nSorcery\nM19,R\nSarkhan's Dragonfire deals 3 damage to any target.\rLook at the top five cards of your library. You may reveal a red card from among them and put it into your hand. Put the rest on the bottom of your library in a random order."
+    IDS_STRING40705         "Scapeshift\n{2GG}\nSorcery\nM19,MR\nSacrifice any number of lands. Search your library for up to that many land cards, put them onto the battlefield tapped, then shuffle."
+    IDS_STRING40706         "Sift\n{3U}\nSorcery\nM19,U\nDraw three cards, then discard a card."
+    IDS_STRING40707         "Sleep\n{2UU}\nSorcery\nM19,U\nTap all creatures target player controls. Those creatures don't untap during that player's next untap step."
+    IDS_STRING40708         "Sovereign's Bite\n{1B}\nSorcery\nM19,C\nTarget player loses 3 life and you gain 3 life."
+    IDS_STRING40709         "Switcheroo\n{4U}\nSorcery\nM19,U\nExchange control of two target creatures."
+    IDS_STRING40710         "Take Vengeance\n{1W}\nSorcery\nM19,C\nDestroy target tapped creature."
+    IDS_STRING40711         "Tectonic Rift\n{3R}\nSorcery\nM19,U\nDestroy target land. Creatures without flying can't block this turn."
+    IDS_STRING40712         "Thud\n{R}\nSorcery\nM19,U\nAs an additional cost to cast this spell, sacrifice a creature.\rThud deals damage equal to the sacrificed creature's power to any target."
+    IDS_STRING40713         "Tormenting Voice\n{1R}\nSorcery\nM19,C\nAs an additional cost to cast this spell, discard a card.\rDraw two cards."
+    IDS_STRING40714         "Vivien's Invocation\n{5GG}\nSorcery\nM19,R\nLook at the top seven cards of your library. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order. When a creature is put onto the battlefield this way, it deals damage equal to its power to target creature an opponent controls."
+    IDS_STRING40715         "Abnormal Endurance\n{1B}\nInstant\nM19,C\nUntil end of turn, target creature gets +2/+0 and gains ""When this creature dies, return it to the battlefield tapped under its owner's control."""
+    IDS_STRING40716         "Aegis of the Heavens\n{1W}\nInstant\nM19,U\nTarget creature gets +1/+7 until end of turn."
+    IDS_STRING40717         "Anticipate\n{1U}\nInstant\nM19,C\nLook at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order."
+    IDS_STRING40718         "Befuddle\n{2U}\nInstant\nM19,C\nTarget creature gets -4/-0 until end of turn.\rDraw a card."
+    IDS_STRING40719         "Bone to Ash\n{2UU}\nInstant\nM19,U\nCounter target creature spell.\rDraw a card."
+    IDS_STRING40720         "Cancel\n{1UU}\nInstant\nM19,C\nCounter target spell."
+    IDS_STRING40721         "Disperse\n{1U}\nInstant\nM19,C\nReturn target nonland permanent to its owner's hand."
+    IDS_STRING40722         "Electrify\n{3R}\nInstant\nM19,C\nElectrify deals 4 damage to target creature."
+    IDS_STRING40723         "Essence Scatter\n{1U}\nInstant\nM19,C\nCounter target creature spell."
+    IDS_STRING40724         "Infernal Reckoning\n{B}\nInstant\nM19,R\nExile target colorless creature. You gain life equal to its power."
+    IDS_STRING40725         "Inspired Charge\n{2WW}\nInstant\nM19,C\nCreatures you control get +2/+1 until end of turn."
+    IDS_STRING40726         "Invoke the Divine\n{2W}\nInstant\nM19,C\nDestroy target artifact or enchantment. You gain 4 life."
+    IDS_STRING40727         "Isolate\n{W}\nInstant\nM19,R\nExile target permanent with mana value 1."
+    IDS_STRING40728         "Lightning Strike\n{1R}\nInstant\nM19,U\nLightning Strike deals 3 damage to any target."
+    IDS_STRING40729         "Make a Stand\n{2W}\nInstant\nM19,U\nCreatures you control get +1/+0 and gain indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy them.)"
+    IDS_STRING40730         "Mighty Leap\n{1W}\nInstant\nM19,C\nTarget creature gets +2/+2 and gains flying until end of turn."
+    IDS_STRING40731         "Murder\n{1BB}\nInstant\nM19,U\nDestroy target creature."
+    IDS_STRING40732         "Naturalize\n{1G}\nInstant\nM19,C\nDestroy target artifact or enchantment."
+    IDS_STRING40733         "Nexus of Fate\n{5UU}\nInstant\nM19,MR\nTake an extra turn after this one.\rIf Nexus of Fate would be put into a graveyard from anywhere, reveal Nexus of Fate and shuffle it into its owner's library instead."
+    IDS_STRING40734         "Nightmare's Thirst\n{B}\nInstant\nM19,U\nYou gain 1 life. Target creature gets -X/-X until end of turn, where X is the amount of life you gained this turn."
+    IDS_STRING40735         "Plummet\n{1G}\nInstant\nM19,C\nDestroy target creature with flying."
+    IDS_STRING40736         "Radiating Lightning\n{3R}\nInstant\nM19,C\nRadiating Lightning deals 3 damage to target player and 1 damage to each creature that player controls."
+    IDS_STRING40737         "Revitalize\n{1W}\nInstant\nM19,C\nYou gain 3 life.\rDraw a card."
+    IDS_STRING40738         "Root Snare\n{1G}\nInstant\nM19,C\nPrevent all combat damage that would be dealt this turn."
+    IDS_STRING40739         "Shock\n{R}\nInstant\nM19,C\nShock deals 2 damage to any target."
+    IDS_STRING40740         "Smelt\n{R}\nInstant\nM19,C\nDestroy target artifact."
+    IDS_STRING40741         "Spit Flame\n{2R}\nInstant\nM19,R\nSpit Flame deals 4 damage to target creature.\rWhenever a Dragon you control enters, you may pay {R}. If you do, return this card from your graveyard to your hand."
+    IDS_STRING40742         "Strangling Spores\n{3B}\nInstant\nM19,C\nTarget creature gets -3/-3 until end of turn."
+    IDS_STRING40743         "Sure Strike\n{1R}\nInstant\nM19,C\nTarget creature gets +3/+0 and gains first strike until end of turn. (It deals combat damage before creatures without first strike.)"
+    IDS_STRING40744         "Titanic Growth\n{1G}\nInstant\nM19,C\nTarget creature gets +4/+4 until end of turn."
+    IDS_STRING40745         "Totally Lost\n{4U}\nInstant\nM19,C\nPut target nonland permanent on top of its owner's library."
+    IDS_STRING40746         "Trumpet Blast\n{2R}\nInstant\nM19,C\nAttacking creatures get +2/+0 until end of turn."
+    IDS_STRING40747         "Uncomfortable Chill\n{2U}\nInstant\nM19,C\nCreatures your opponents control get -2/-0 until end of turn.\rDraw a card."
+    IDS_STRING40748         "Aethershield Artificer\n{3W}\nCreature - Dwarf Artificer\nM19,U\nAt the beginning of combat on your turn, target artifact creature you control gets +2/+2 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)\n3/3"
+    IDS_STRING40749         "Ajani's Pridemate\n{1W}\nCreature - Cat Soldier\nM19,U\nWhenever you gain life, put a +1/+1 counter on this creature.\n2/2"
+    IDS_STRING40750         "Angel of the Dawn\n{4W}\nCreature - Angel\nM19,C\nFlying\rWhen this creature enters, creatures you control get +1/+1 and gain vigilance until end of turn.\n3/3"
+    IDS_STRING40751         "Cavalry Drillmaster\n{1W}\nCreature - Human Knight\nM19,C\nWhen this creature enters, target creature gets +2/+0 and gains first strike until end of turn. (It deals combat damage before creatures without first strike.)\n2/1"
+    IDS_STRING40752         "Court Cleric\n{W}\nCreature - Human Cleric\nM19,U\nLifelink (Damage dealt by this creature also causes you to gain that much life.)\rThis creature gets +1/+1 as long as you control an Ajani planeswalker.\n1/1"
+    IDS_STRING40753         "Daybreak Chaplain\n{1W}\nCreature - Human Cleric\nM19,C\nLifelink (Damage dealt by this creature also causes you to gain that much life.)\n1/3"
+    IDS_STRING40754         "Dwarven Priest\n{3W}\nCreature - Dwarf Cleric\nM19,C\nWhen this creature enters, you gain 1 life for each creature you control.\n2/4"
+    IDS_STRING40755         "Gallant Cavalry\n{3W}\nCreature - Human Knight\nM19,C\nVigilance (Attacking doesn't cause this creature to tap.)\rWhen this creature enters, create a 2/2 white Knight creature token with vigilance.\n2/2"
+    IDS_STRING40756         "Herald of Faith\n{3WW}\nCreature - Angel\nM19,U\nFlying\rWhenever this creature attacks, you gain 2 life.\n4/3"
+    IDS_STRING40757         "Knight of the Tusk\n{4WW}\nCreature - Human Knight\nM19,C\nVigilance (Attacking doesn't cause this creature to tap.)\n3/7"
+    IDS_STRING40758         "Lena, Selfless Champion\n{4WW}\nLegendary Creature - Human Knight\nM19,R\nWhen Lena enters, create a 1/1 white Soldier creature token for each nontoken creature you control.\rSacrifice Lena: Creatures you control with power less than Lena's power gain indestructible until end of turn.\n3/3"
+    IDS_STRING40759         "Leonin Vanguard\n{W}\nCreature - Cat Soldier\nM19,U\nAt the beginning of combat on your turn, if you control three or more creatures, this creature gets +1/+1 until end of turn and you gain 1 life.\n1/1"
+    IDS_STRING40760         "Leonin Warleader\n{2WW}\nCreature - Cat Soldier\nM19,R\nWhenever this creature attacks, create two 1/1 white Cat creature tokens with lifelink that are tapped and attacking.\n4/4"
+    IDS_STRING40761         "Loxodon Line Breaker\n{2W}\nCreature - Elephant Soldier\nM19,C\n\n3/2"
+    IDS_STRING40762         "Mentor of the Meek\n{2W}\nCreature - Human Soldier\nM19,R\nWhenever another creature you control with power 2 or less enters, you may pay {1}. If you do, draw a card.\n2/2"
+    IDS_STRING40763         "Militia Bugler\n{2W}\nCreature - Human Soldier\nM19,U\nVigilance (Attacking doesn't cause this creature to tap.)\rWhen this creature enters, look at the top four cards of your library. You may reveal a creature card with power 2 or less from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n2/3"
+    IDS_STRING40764         "Novice Knight\n{W}\nCreature - Human Knight\nM19,U\nDefender (This creature can't attack.)\rAs long as this creature is enchanted or equipped, it can attack as though it didn't have defender.\n2/3"
+    IDS_STRING40765         "Oreskos Swiftclaw\n{1W}\nCreature - Cat Warrior\nM19,C\n\n3/1"
+    IDS_STRING40766         "Pegasus Courser\n{2W}\nCreature - Pegasus\nM19,C\nFlying\rWhenever this creature attacks, another target attacking creature gains flying until end of turn.\n1/3"
+    IDS_STRING40767         "Remorseful Cleric\n{1W}\nCreature - Spirit Cleric\nM19,R\nFlying\rSacrifice this creature: Exile target player's graveyard.\n2/1"
+    IDS_STRING40768         "Resplendent Angel\n{1WW}\nCreature - Angel\nM19,MR\nFlying\rAt the beginning of each end step, if you gained 5 or more life this turn, create a 4/4 white Angel creature token with flying and vigilance.\r{3}{W}{W}{W}: Until end of turn, this creature gets +2/+2 and gains lifelink.\n3/3"
+    IDS_STRING40769         "Rustwing Falcon\n{W}\nCreature - Bird\nM19,C\nFlying\n1/2"
+    IDS_STRING40770         "Serra's Guardian\n{4WW}\nCreature - Angel\nM19,R\nFlying (This creature can't be blocked except by creatures with flying or reach.)\rVigilance (Attacking doesn't cause this creature to tap.)\rOther creatures you control have vigilance.\n5/5"
+    IDS_STRING40771         "Shield Mare\n{1WW}\nCreature - Horse\nM19,U\nThis creature can't be blocked by red creatures.\rWhen this creature enters or becomes the target of a spell or ability an opponent controls, you gain 3 life.\n2/3"
+    IDS_STRING40772         "Silverbeak Griffin\n{WW}\nCreature - Griffin\nM19,C\nFlying (This creature can't be blocked except by creatures with flying or reach.)\n2/2"
+    IDS_STRING40773         "Star-Crowned Stag\n{3W}\nCreature - Elk\nM19,C\nWhenever this creature attacks, tap target creature defending player controls.\n3/3"
+    IDS_STRING40774         "Sun Sentinel\n{1W}\nCreature - Human Soldier\nM19,C\nVigilance (Attacking doesn't cause this creature to tap.)\n2/2"
+    IDS_STRING40775         "Trusty Packbeast\n{2W}\nCreature - Beast\nM19,C\nWhen this creature enters, return target artifact card from your graveyard to your hand.\n2/3"
+    IDS_STRING40776         "Valiant Knight\n{3W}\nCreature - Human Knight\nM19,R\nOther Knights you control get +1/+1.\r{3}{W}{W}: Knights you control gain double strike until end of turn.\n3/4"
+    IDS_STRING40777         "Aggressive Mammoth\n{3GGG}\nCreature - Elephant\nM19,R\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\rOther creatures you control have trample.\n8/8"
+    IDS_STRING40778         "Bristling Boar\n{3G}\nCreature - Boar\nM19,C\nThis creature can't be blocked by more than one creature.\n4/3"
+    IDS_STRING40779         "Centaur Courser\n{2G}\nCreature - Centaur Warrior\nM19,C\n\n3/3"
+    IDS_STRING40780         "Colossal Dreadmaw\n{4GG}\nCreature - Dinosaur\nM19,C\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\n6/6"
+    IDS_STRING40781         "Daggerback Basilisk\n{2G}\nCreature - Basilisk\nM19,C\nDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\n2/2"
+    IDS_STRING40782         "Druid of Horns\n{3G}\nCreature - Human Druid\nM19,U\nWhenever you cast an Aura spell that targets this creature, create a 3/3 green Beast creature token.\n2/3"
+    IDS_STRING40783         "Druid of the Cowl\n{1G}\nCreature - Elf Druid\nM19,C\n{T}: Add {G}.\n1/3"
+    IDS_STRING40784         "Dryad Greenseeker\n{1G}\nCreature - Dryad\nM19,U\n{T}: Look at the top card of your library. If it's a land card, you may reveal it and put it into your hand.\n1/3"
+    IDS_STRING40785         "Elvish Clancaller\n{GG}\nCreature - Elf Druid\nM19,R\nOther Elves you control get +1/+1.\r{4}{G}{G}, {T}: Search your library for a card named Elvish Clancaller, put it onto the battlefield, then shuffle.\n1/1"
+    IDS_STRING40786         "Elvish Rejuvenator\n{2G}\nCreature - Elf Druid\nM19,C\nWhen this creature enters, look at the top five cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom of your library in a random order.\n1/1"
+    IDS_STRING40787         "Ghastbark Twins\n{5GG}\nCreature - Treefolk\nM19,U\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\rThis creature can block an additional creature each combat.\n7/7"
+    IDS_STRING40788         "Ghirapur Guide\n{2G}\nCreature - Elf Scout\nM19,U\n{2}{G}: Target creature you control can't be blocked by creatures with power 2 or less this turn.\n3/2"
+    IDS_STRING40789         "Giant Spider\n{3G}\nCreature - Spider\nM19,C\nReach (This creature can block creatures with flying.)\n2/4"
+    IDS_STRING40790         "Gigantosaurus\n{GGGGG}\nCreature - Dinosaur\nM19,R\n\n10/10"
+    IDS_STRING40791         "Goreclaw, Terror of Qal Sisma\n{3G}\nLegendary Creature - Bear\nM19,R\nCreature spells you cast with power 4 or greater cost {2} less to cast.\rWhenever Goreclaw attacks, each creature you control with power 4 or greater gets +1/+1 and gains trample until end of turn.\n4/3"
+    IDS_STRING40792         "Greenwood Sentinel\n{1G}\nCreature - Elf Scout\nM19,C\nVigilance (Attacking doesn't cause this creature to tap.)\n2/2"
+    IDS_STRING40793         "Highland Game\n{1G}\nCreature - Elk\nM19,C\nWhen this creature dies, you gain 2 life.\n2/1"
+    IDS_STRING40794         "Llanowar Elves\n{G}\nCreature - Elf Druid\nM19,C\n{T}: Add {G}.\n1/1"
+    IDS_STRING40795         "Pelakka Wurm\n{4GGG}\nCreature - Wurm\nM19,R\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\rWhen this creature enters, you gain 7 life.\rWhen this creature dies, draw a card.\n7/7"
+    IDS_STRING40796         "Reclamation Sage\n{2G}\nCreature - Elf Shaman\nM19,U\nWhen this creature enters, you may destroy target artifact or enchantment.\n2/1"
+    IDS_STRING40797         "Rhox Oracle\n{4G}\nCreature - Rhino Monk\nM19,C\nWhen this creature enters, draw a card.\n4/2"
+    IDS_STRING40798         "Skalla Wolf\n{3GG}\nCreature - Wolf Spirit\nM19,R\nWhen this creature enters, look at the top five cards of your library. You may reveal a green card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n3/3"
+    IDS_STRING40799         "Thornhide Wolves\n{4G}\nCreature - Wolf\nM19,C\n\n4/5"
+    IDS_STRING40800         "Thorn Lieutenant\n{1G}\nCreature - Elf Warrior\nM19,R\nWhenever this creature becomes the target of a spell or ability an opponent controls, create a 1/1 green Elf Warrior creature token.\r{5}{G}: This creature gets +4/+4 until end of turn.\n2/3"
+    IDS_STRING40801         "Ursine Champion\n{1G}\nCreature - Human Berserker\nM19,C\n{5}{G}: This creature gets +3/+3 and becomes a Bear Berserker until end of turn. Activate only once each turn.\n2/2"
+    IDS_STRING40802         "Vigilant Baloth\n{3GG}\nCreature - Beast\nM19,U\nVigilance (Attacking doesn't cause this creature to tap.)\n5/5"
+    IDS_STRING40803         "Vine Mare\n{2GG}\nCreature - Elemental Horse\nM19,U\nHexproof (This creature can't be the target of spells or abilities your opponents control.)\rThis creature can't be blocked by black creatures.\n5/3"
+    IDS_STRING40804         "Vivien's Jaguar\n{2G}\nCreature - Cat Spirit\nM19,U\nReach (This creature can block creatures with flying.)\r{2}{G}: Return this card from your graveyard to your hand. Activate only if you control a Vivien planeswalker.\n3/2"
+    IDS_STRING40805         "Wall of Vines\n{G}\nCreature - Plant Wall\nM19,C\nDefender (This creature can't attack.)\rReach (This creature can block creatures with flying.)\n0/3"
+    IDS_STRING40806         "Boggart Brute\n{2R}\nCreature - Goblin Warrior\nM19,C\nMenace (This creature can't be blocked except by two or more creatures.)\n3/2"
+    IDS_STRING40807         "Catalyst Elemental\n{2R}\nCreature - Elemental\nM19,C\nSacrifice this creature: Add {R}{R}.\n2/2"
+    IDS_STRING40808         "Demanding Dragon\n{3RR}\nCreature - Dragon\nM19,R\nFlying\rWhen this creature enters, it deals 5 damage to target opponent unless that player sacrifices a creature of their choice.\n5/5"
+    IDS_STRING40809         "Dismissive Pyromancer\n{1R}\nCreature - Human Wizard\nM19,R\n{R}, {T}, Discard a card: Draw a card.\r{2}{R}, {T}, Sacrifice this creature: It deals 4 damage to target creature.\n2/2"
+    IDS_STRING40810         "Dragon Egg\n{2R}\nCreature - Dragon Egg\nM19,U\nDefender\rWhen this creature dies, create a 2/2 red Dragon creature token with flying and ""{R}: This token gets +1/+0 until end of turn.""\n0/2"
+    IDS_STRING40811         "Fire Elemental\n{3RR}\nCreature - Elemental\nM19,C\n\n5/4"
+    IDS_STRING40812         "Goblin Instigator\n{1R}\nCreature - Goblin Rogue\nM19,C\nWhen this creature enters, create a 1/1 red Goblin creature token.\n1/1"
+    IDS_STRING40813         "Goblin Motivator\n{R}\nCreature - Goblin Warrior\nM19,C\n{T}: Target creature gains haste until end of turn. (It can attack and {T} this turn.)\n1/1"
+    IDS_STRING40814         "Goblin Trashmaster\n{2RR}\nCreature - Goblin Warrior\nM19,R\nOther Goblins you control get +1/+1.\rSacrifice a Goblin: Destroy target artifact.\n3/3"
+    IDS_STRING40815         "Guttersnipe\n{2R}\nCreature - Goblin Shaman\nM19,U\nWhenever you cast an instant or sorcery spell, this creature deals 2 damage to each opponent.\n2/2"
+    IDS_STRING40816         "Havoc Devils\n{2RR}\nCreature - Devil\nM19,C\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\n4/3"
+    IDS_STRING40817         "Hostile Minotaur\n{3R}\nCreature - Minotaur\nM19,C\nHaste (This creature can attack and {T} as soon as it comes under your control.)\n3/3"
+    IDS_STRING40818         "Inferno Hellion\n{3R}\nCreature - Hellion\nM19,U\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\rAt the beginning of each end step, if this creature attacked or blocked this turn, its owner shuffles it into their library.\n7/3"
+    IDS_STRING40819         "Kargan Dragonrider\n{1R}\nCreature - Human Warrior\nM19,C\nAs long as you control a Dragon, this creature has flying.\n2/2"
+    IDS_STRING40820         "Lathliss, Dragon Queen\n{4RR}\nLegendary Creature - Dragon\nM19,R\nFlying\rWhenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying.\r{1}{R}: Dragons you control get +1/+0 until end of turn.\n6/6"
+    IDS_STRING40821         "Lightning Mare\n{RR}\nCreature - Elemental Horse\nM19,U\nThis spell can't be countered.\rThis creature can't be blocked by blue creatures.\r{1}{R}: This creature gets +1/+0 until end of turn.\n3/1"
+    IDS_STRING40822         "Onakke Ogre\n{2R}\nCreature - Ogre Warrior\nM19,C\n\n4/2"
+    IDS_STRING40823         "Sarkhan's Whelp\n{2R}\nCreature - Dragon\nM19,U\nFlying (This creature can't be blocked except by creatures with flying or reach.)\rWhenever you activate an ability of a Sarkhan planeswalker, this creature deals 1 damage to any target.\n2/2"
+    IDS_STRING40824         "Shivan Dragon\n{4RR}\nCreature - Dragon\nM19,R\nFlying\r{R}: This creature gets +1/+0 until end of turn.\n5/5"
+    IDS_STRING40825         "Siegebreaker Giant\n{3RR}\nCreature - Giant Warrior\nM19,U\nTrample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\r{3}{R}: Target creature can't block this turn.\n6/3"
+    IDS_STRING40826         "Sparktongue Dragon\n{3RR}\nCreature - Dragon\nM19,C\nFlying\rWhen this creature enters, you may pay {2}{R}. When you do, it deals 3 damage to any target.\n3/3"
+    IDS_STRING40827         "Viashino Pyromancer\n{1R}\nCreature - Lizard Wizard\nM19,C\nWhen this creature enters, it deals 2 damage to target player or planeswalker.\n2/1"
+    IDS_STRING40828         "Volcanic Dragon\n{4RR}\nCreature - Dragon\nM19,U\nFlying, haste\n4/4"
+    IDS_STRING40829         "Volley Veteran\n{3R}\nCreature - Goblin Warrior\nM19,U\nWhen this creature enters, it deals damage to target creature an opponent controls equal to the number of Goblins you control.\n4/2"
+    IDS_STRING40830         "Arisen Gorgon\n{1BB}\nCreature - Zombie Gorgon\nM19,U\nThis creature has deathtouch as long as you control a Liliana planeswalker. (Any amount of damage this deals to a creature is enough to destroy it.)\n3/3"
+    IDS_STRING40831         "Bogstomper\n{4BB}\nCreature - Beast\nM19,C\n\n6/5"
+    IDS_STRING40832         "Bone Dragon\n{3BB}\nCreature - Dragon Skeleton\nM19,MR\nFlying\r{3}{B}{B}, Exile seven other cards from your graveyard: Return this card from your graveyard to the battlefield tapped.\n5/4"
+    IDS_STRING40833         "Child of Night\n{1B}\nCreature - Vampire\nM19,C\nLifelink\n2/1"
+    IDS_STRING40834         "Death Baron\n{1BB}\nCreature - Zombie Wizard\nM19,R\nSkeletons you control and other Zombies you control get +1/+1 and have deathtouch. (Any amount of damage they deal to a creature is enough to destroy it.)\n2/2"
+    IDS_STRING40835         "Demon of Catastrophes\n{2BB}\nCreature - Demon\nM19,R\nAs an additional cost to cast this spell, sacrifice a creature.\rFlying, trample\n6/6"
+    IDS_STRING40836         "Diregraf Ghoul\n{B}\nCreature - Zombie\nM19,U\nThis creature enters tapped.\n2/2"
+    IDS_STRING40837         "Doomed Dissenter\n{1B}\nCreature - Human\nM19,C\nWhen this creature dies, create a 2/2 black Zombie creature token.\n1/1"
+    IDS_STRING40838         "Epicure of Blood\n{4B}\nCreature - Vampire\nM19,C\nWhenever you gain life, each opponent loses 1 life.\n4/4"
+    IDS_STRING40839         "Fell Specter\n{3B}\nCreature - Specter\nM19,U\nFlying\rWhen this creature enters, target opponent discards a card.\rWhenever an opponent discards a card, that player loses 2 life.\n1/3"
+    IDS_STRING40840         "Grasping Scoundrel\n{B}\nCreature - Human Pirate\nM19,C\nThis creature gets +1/+0 as long as it's attacking.\n1/1"
+    IDS_STRING40841         "Gravedigger\n{3B}\nCreature - Zombie\nM19,U\nWhen this creature enters, you may return target creature card from your graveyard to your hand.\n2/2"
+    IDS_STRING40842         "Gravewaker\n{4BB}\nCreature - Bird Spirit\nM19,R\nFlying (This creature can't be blocked except by creatures with flying or reach.)\r{5}{B}{B}: Return target creature card from your graveyard to the battlefield tapped.\n5/5"
+    IDS_STRING40843         "Graveyard Marshal\n{BB}\nCreature - Zombie Soldier\nM19,R\n{2}{B}, Exile a creature card from your graveyard: Create a tapped 2/2 black Zombie creature token.\n3/2"
+    IDS_STRING40844         "Hired Blade\n{2B}\nCreature - Human Assassin\nM19,C\nFlash (You may cast this spell any time you could cast an instant.)\n3/2"
+    IDS_STRING40845         "Infectious Horror\n{3B}\nCreature - Zombie Horror\nM19,C\nWhenever this creature attacks, each opponent loses 2 life.\n2/2"
+    IDS_STRING40846         "Isareth the Awakener\n{1BB}\nLegendary Creature - Human Wizard\nM19,R\nDeathtouch\rWhenever Isareth attacks, you may pay {X}. When you do, return target creature card with mana value X from your graveyard to the battlefield with a corpse counter on it. If that creature would leave the battlefield, exile it instead of putting it anywhere else.\n3/3"
+    IDS_STRING40847         "Phylactery Lich\n{BBB}\nCreature - Zombie\nM19,R\nIndestructible\rAs this creature enters, put a phylactery counter on an artifact you control.\rWhen you control no permanents with phylactery counters on them, sacrifice this creature.\n5/5"
+    IDS_STRING40848         "Plague Mare\n{1BB}\nCreature - Nightmare Horse\nM19,U\nThis creature can't be blocked by white creatures.\rWhen this creature enters, creatures your opponents control get -1/-1 until end of turn.\n2/2"
+    IDS_STRING40849         "Ravenous Harpy\n{2B}\nCreature - Harpy\nM19,U\nFlying\r{1}, Sacrifice another creature: Put a +1/+1 counter on this creature.\n1/2"
+    IDS_STRING40850         "Reassembling Skeleton\n{1B}\nCreature - Skeleton Warrior\nM19,U\n{1}{B}: Return this card from your graveyard to the battlefield tapped.\n1/1"
+    IDS_STRING40851         "Skeleton Archer\n{3B}\nCreature - Skeleton Archer\nM19,C\nWhen this creature enters, it deals 1 damage to any target.\n3/3"
+    IDS_STRING40852         "Skymarch Bloodletter\n{2B}\nCreature - Vampire Soldier\nM19,C\nFlying\rWhen this creature enters, target opponent loses 1 life and you gain 1 life.\n2/2"
+    IDS_STRING40853         "Stitcher's Supplier\n{B}\nCreature - Zombie\nM19,U\nWhen this creature enters or dies, mill three cards. (Put the top three cards of your library into your graveyard.)\n1/1"
+    IDS_STRING40854         "Tattered Mummy\n{1B}\nCreature - Zombie Jackal\nM19,C\nWhen this creature dies, each opponent loses 2 life.\n1/2"
+    IDS_STRING40855         "Two-Headed Zombie\n{3B}\nCreature - Zombie\nM19,C\nMenace (This creature can't be blocked except by two or more creatures.)\n4/2"
+    IDS_STRING40856         "Vampire Neonate\n{B}\nCreature - Vampire\nM19,C\n{2}, {T}: Each opponent loses 1 life and you gain 1 life.\n0/3"
+    IDS_STRING40857         "Vampire Sovereign\n{3BB}\nCreature - Vampire Noble\nM19,U\nFlying\rWhen this creature enters, target opponent loses 3 life and you gain 3 life.\n3/4"
+    IDS_STRING40858         "Walking Corpse\n{1B}\nCreature - Zombie\nM19,C\n\n2/2"
+    IDS_STRING40859         "Air Elemental\n{3UU}\nCreature - Elemental\nM19,U\nFlying\n4/4"
+    IDS_STRING40860         "Aven Wind Mage\n{2U}\nCreature - Bird Wizard\nM19,C\nFlying\rWhenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn.\n2/2"
+    IDS_STRING40861         "Aviation Pioneer\n{2U}\nCreature - Human Artificer\nM19,C\nWhen this creature enters, create a 1/1 colorless Thopter artifact creature token with flying.\n1/2"
+    IDS_STRING40862         "Departed Deckhand\n{1U}\nCreature - Spirit Pirate\nM19,U\nWhen this creature becomes the target of a spell, sacrifice it.\rThis creature can't be blocked except by Spirits.\r{3}{U}: Another target creature you control can't be blocked this turn except by Spirits.\n2/2"
+    IDS_STRING40863         "Exclusion Mage\n{2U}\nCreature - Human Wizard\nM19,U\nWhen this creature enters, return target creature an opponent controls to its owner's hand.\n2/2"
+    IDS_STRING40864         "Frilled Sea Serpent\n{4UU}\nCreature - Serpent\nM19,C\n{5}{U}{U}: This creature can't be blocked this turn.\n4/6"
+    IDS_STRING40865         "Gearsmith Prodigy\n{U}\nCreature - Human Artificer\nM19,C\nThis creature gets +1/+0 as long as you control an artifact.\n1/2"
+    IDS_STRING40866         "Horizon Scholar\n{5U}\nCreature - Sphinx\nM19,U\nFlying\rWhen this creature enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)\n4/4"
+    IDS_STRING40867         "Mist-Cloaked Herald\n{U}\nCreature - Merfolk Warrior\nM19,C\nThis creature can't be blocked.\n1/1"
+    IDS_STRING40868         "Mystic Archaeologist\n{1U}\nCreature - Human Wizard\nM19,R\n{3}{U}{U}: Draw two cards.\n2/1"
+    IDS_STRING40869         "Omenspeaker\n{1U}\nCreature - Human Wizard\nM19,C\nWhen this creature enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)\n1/3"
+    IDS_STRING40870         "Riddlemaster Sphinx\n{4UU}\nCreature - Sphinx\nM19,R\nFlying (This creature can't be blocked except by creatures with flying or reach.)\rWhen this creature enters, you may return target creature an opponent controls to its owner's hand.\n5/5"
+    IDS_STRING40871         "Sai, Master Thopterist\n{2U}\nLegendary Creature - Human Artificer\nM19,R\nWhenever you cast an artifact spell, create a 1/1 colorless Thopter artifact creature token with flying.\r{1}{U}, Sacrifice two artifacts: Draw a card.\n1/4"
+    IDS_STRING40872         "Salvager of Secrets\n{3UU}\nCreature - Merfolk Wizard\nM19,C\nWhen this creature enters, return target instant or sorcery card from your graveyard to your hand.\n2/2"
+    IDS_STRING40873         "Scholar of Stars\n{3U}\nCreature - Human Artificer\nM19,C\nWhen this creature enters, if you control an artifact, draw a card.\n3/2"
+    IDS_STRING40874         "Skilled Animator\n{2U}\nCreature - Human Artificer\nM19,U\nWhen this creature enters, target artifact you control becomes an artifact creature with base power and toughness 5/5 for as long as this creature remains on the battlefield.\n1/3"
+    IDS_STRING40875         "Snapping Drake\n{3U}\nCreature - Drake\nM19,C\nFlying (This creature can't be blocked except by creatures with flying or reach.)\n3/2"
+    IDS_STRING40876         "Supreme Phantom\n{1U}\nCreature - Spirit\nM19,R\nFlying\rOther Spirits you control get +1/+1.\n1/3"
+    IDS_STRING40877         "Surge Mare\n{UU}\nCreature - Horse Fish\nM19,U\nThis creature can't be blocked by green creatures.\rWhenever this creature deals damage to an opponent, you may draw a card. If you do, discard a card.\r{1}{U}: This creature gets +2/-2 until end of turn.\n0/5"
+    IDS_STRING40878         "Tolarian Scholar\n{2U}\nCreature - Human Wizard\nM19,C\n\n2/3"
+    IDS_STRING40879         "Wall of Mist\n{1U}\nCreature - Wall\nM19,C\nDefender\n0/5"
+    IDS_STRING40880         "Windreader Sphinx\n{5UU}\nCreature - Sphinx\nM19,R\nFlying\rWhenever a creature with flying attacks, you may draw a card.\n3/7"
+    IDS_STRING40881         "Aerial Engineer\n{2WU}\nCreature - Human Artificer\nM19,U\nAs long as you control an artifact, this creature gets +2/+0 and has flying.\n2/4"
+    IDS_STRING40882         "Arcades, the Strategist\n{1GWU}\nLegendary Creature - Elder Dragon\nM19,MR\nFlying, vigilance\rWhenever a creature you control with defender enters, draw a card.\rEach creature you control with defender assigns combat damage equal to its toughness rather than its power and can attack as though it didn't have defender.\n3/5"
+    IDS_STRING40883         "Brawl-Bash Ogre\n{2BR}\nCreature - Ogre Warrior\nM19,U\nMenace (This creature can't be blocked except by two or more creatures.)\rWhenever this creature attacks, you may sacrifice another creature. If you do, this creature gets +2/+2 until end of turn.\n3/3"
+    IDS_STRING40884         "Chromium, the Mutable\n{4WUB}\nLegendary Creature - Elder Dragon\nM19,MR\nFlash\rThis spell can't be countered.\rFlying\rDiscard a card: Until end of turn, Chromium becomes a Human with base power and toughness 1/1, loses all abilities, and gains hexproof. It can't be blocked this turn.\n7/7"
+    IDS_STRING40885         "Diamond Mare\n{2}\nArtifact Creature - Horse\nM19,U\nAs this creature enters, choose a color.\rWhenever you cast a spell of the chosen color, you gain 1 life.\n1/3"
+    IDS_STRING40886         "Draconic Disciple\n{1RG}\nCreature - Human Shaman\nM19,U\n{T}: Add one mana of any color.\r{7}, {T}, Sacrifice this creature: Create a 5/5 red Dragon creature token with flying.\n2/2"
+    IDS_STRING40887         "Enigma Drake\n{1UR}\nCreature - Drake\nM19,U\nFlying\rEnigma Drake's power is equal to the number of instant and sorcery cards in your graveyard.\n*/4"
+    IDS_STRING40888         "Field Creeper\n{2}\nArtifact Creature - Scarecrow\nM19,C\n\n2/1"
+    IDS_STRING40889         "Gargoyle Sentinel\n{3}\nArtifact Creature - Gargoyle\nM19,U\nDefender (This creature can't attack.)\r{3}: Until end of turn, this creature loses defender and gains flying.\n3/3"
+    IDS_STRING40890         "Gearsmith Guardian\n{5}\nArtifact Creature - Construct\nM19,C\nThis creature gets +2/+0 as long as you control a blue creature.\n3/5"
+    IDS_STRING40891         "Meteor Golem\n{7}\nArtifact Creature - Golem\nM19,U\nWhen this creature enters, destroy target nonland permanent an opponent controls.\n3/3"
+    IDS_STRING40892         "Palladia-Mors, the Ruiner\n{3RGW}\nLegendary Creature - Elder Dragon\nM19,MR\nFlying, vigilance, trample\rPalladia-Mors has hexproof as long as it hasn't dealt damage yet.\n6/6"
+    IDS_STRING40893         "Poison-Tip Archer\n{2BG}\nCreature - Elf Archer\nM19,U\nReach (This creature can block creatures with flying.)\rDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\rWhenever another creature dies, each opponent loses 1 life.\n2/3"
+    IDS_STRING40894         "Psychic Symbiont\n{4UB}\nCreature - Nightmare Horror\nM19,U\nFlying\rWhen this creature enters, target opponent discards a card and you draw a card.\n3/3"
+    IDS_STRING40895         "Regal Bloodlord\n{3WB}\nCreature - Vampire Soldier\nM19,U\nFlying\rAt the beginning of each end step, if you gained life this turn, create a 1/1 black Bat creature token with flying.\n2/4"
+    IDS_STRING40896         "Satyr Enchanter\n{1GW}\nCreature - Satyr Druid\nM19,U\nWhenever you cast an enchantment spell, draw a card.\n2/2"
+    IDS_STRING40897         "Skyrider Patrol\n{2GU}\nCreature - Elf Scout\nM19,U\nFlying\rAt the beginning of combat on your turn, you may pay {G}{U}. When you do, put a +1/+1 counter on another target creature you control, and that creature gains flying until end of turn.\n2/3"
+    IDS_STRING40898         "Skyscanner\n{3}\nArtifact Creature - Thopter\nM19,C\nFlying\rWhen this creature enters, draw a card.\n1/1"
+    IDS_STRING40899         "Suspicious Bookcase\n{2}\nArtifact Creature - Wall\nM19,U\nDefender\r{3}, {T}: Target creature can't be blocked this turn.\n0/4"
+    IDS_STRING40900         "Tezzeret's Strider\n{3}\nArtifact Creature - Golem\nM19,U\nAs long as you control a Tezzeret planeswalker, this creature has menace. (It can't be blocked except by two or more creatures.)\n3/1"
+    IDS_STRING40901         "Vaevictis Asmadi, the Dire\n{3BRG}\nLegendary Creature - Elder Dragon\nM19,MR\nFlying\rWhenever Vaevictis Asmadi attacks, for each player, choose target permanent that player controls. Those players sacrifice those permanents. Each player who sacrificed a permanent this way reveals the top card of their library, then puts it onto the battlefield if it's a permanent card.\n6/6"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "..\MagicCore\MagicCore.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

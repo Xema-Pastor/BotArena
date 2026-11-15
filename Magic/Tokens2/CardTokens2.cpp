@@ -128,6 +128,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CNightmareHorrorAToken);
 		DEFINE_TOKEN(CKaroxBladewingToken);
 		DEFINE_TOKEN(CZombieKnightToken);
+		DEFINE_TOKEN(CAvatarAToken);
+		DEFINE_TOKEN(COxAToken);
+		DEFINE_TOKEN(CAngelMToken);
 	} while (false);
 
 	return cpCard;
@@ -1790,4 +1793,40 @@ CZombieKnightToken::CZombieKnightToken(CGame* pGame, UINT nID)
 	AddCardType(CardType::Black, CardType::_ColorMask);
 	GetCreatureKeyword()->AddCantBeBlockedByOne(FALSE);
 // Dominaria version: used by Josu Vess, Lich Knight.
+}
+//____________________________________________________________________________
+//
+CAvatarAToken::CAvatarAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Avatar"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Avatar), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+// Core Set 2019 version: used by Ajani's Last Stand.
+}
+//____________________________________________________________________________
+//
+COxAToken::COxAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Ox"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Ox), nID,
+		_T(""),
+		Power(2), Life(4))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+// Core Set 2019 version: used by Transmogrifying Wand.
+}
+//____________________________________________________________________________
+//
+CAngelMToken::CAngelMToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Angel"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Angel), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+	GetCreatureKeyword()->AddVigilance(FALSE);
+// Core Set 2019 version: used by Resplendent Angel.
 }
