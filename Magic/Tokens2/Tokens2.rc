@@ -228,6 +228,15 @@ BEGIN
     IDS_STRING55125         "Centaur (E)\n{G}\nCreature - Centaur\nToken\n\n3/3"
     IDS_STRING55126         "Ooze (G)\n{G}\nCreature - Ooze\nToken\n\n2/2"
     IDS_STRING55127         "Illusion (D)\n{U}\nCreature - Illusion\nToken\nWhenever this token blocks a creature, that creature doesn't untap during its controller's next untap step.\n0/2"
+    IDS_STRING55128         "Zombie Army (A)\n{B}\nCreature - Zombie Army\nToken\n\n0/0"
+    IDS_STRING55129         "Wizard (A)\n{U}\nCreature - Wizard\nToken\n\n2/2"
+    IDS_STRING55130         "Wall (C)\n{W}\nCreature - Wall\nToken\nDefender\n0/3"
+    IDS_STRING55131         "Assassin (A)\n{B}\nCreature - Assassin\nToken\nDeathtouch\rWhenever this token deals damage to a planeswalker, destroy that planeswalker.\n1/1"
+    IDS_STRING55132         "Spirit (T)\n\nCreature - Spirit\nToken\n\n2/2"
+    IDS_STRING55133         "Soldier (U)\n{W}\nCreature - Soldier\nToken\nVigilance\n2/2"
+    IDS_STRING55134         "Citizen (B)\n{WUBRG}\nCreature - Citizen\nToken\n\n2/2"
+    IDS_STRING55135         "Zombie Warrior (A)\n{B}\nCreature - Zombie Warrior\nToken\nVigilance\n4/4"
+    IDS_STRING55136         "Voja, Friend to Elves\n{GW}\nLegendary Creature - Wolf\nToken\n\n3/3"
 END
 
 #endif    // English (United States) resources

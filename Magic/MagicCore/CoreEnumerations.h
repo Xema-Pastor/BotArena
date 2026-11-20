@@ -1541,6 +1541,8 @@ struct CORE_EXPORT SingleCreatureType
 		Ranger,
 		Egg,
 		Shark,
+		Army,
+		Sloth,
 
 		_SingleTypeCount,
 	};
@@ -1602,6 +1604,13 @@ struct CORE_EXPORT PlaneswalkerType
 		Teferi,
 		Vivien,
 		Kaya,
+		Davriel,
+		Kasmina,
+		Kiora,
+		Narset,
+		Teyo,
+		Ugin,
+		Yanggu,
 
 		_SubtypeCount,
 	};

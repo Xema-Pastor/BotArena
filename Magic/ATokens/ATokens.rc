@@ -231,6 +231,15 @@ BEGIN
     IDS_STRING64128         "Elemental (AW)\n\nCreature - Elemental\nToken\nHaste\n0/0"
     IDS_STRING64129         "Weatherlight (Vehicle)\n\nLegendary Artifact Creature - Vehicle\nToken\nFlying\rWhenever this Vehicle deals combat damage to a player, look at the top five cards of your library. You may reveal a historic card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n4/5"
     IDS_STRING64130         "Elemental (AX)\n\nCreature - Elemental\nToken\nReach, indestructible, haste\n2/2"
+    IDS_STRING64131         "Citizen (A)\n\nCreature - Citizen\nToken\nVigilance\n3/3"
+    IDS_STRING64132         "Animated Gideon Blackblade\n{1WW}\nCreature - Human Soldier\nToken\nIndestructible\rPrevent all damage that would be dealt to Gideon Blackblade during your turn.\n4/4"
+    IDS_STRING64133         "Animated Gideon, the Oathsworn\n{4WW}\nCreature - Soldier\nToken\nPrevent all damage that would be dealt to Gideon, the Oathsworn this turn.\n5/5"
+    IDS_STRING64134         "Dragon (AF)\n{R}\nCreature - Dragon\nToken\nFlying\n4/4"
+    IDS_STRING64135         "Elemental (AY)\n\nCreature - Elemental\nToken\nVigilance, haste\n0/0"
+    IDS_STRING64136         "Mizzium Tank (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nTrample\n3/2"
+    IDS_STRING64137         "Parhelion II (Vehicle)\n\nLegendary Artifact Creature - Vehicle\nToken\nFlying, first strike, vigilance\rWhenever Parhelion II attacks, create two 4/4 white Angel creature tokens with flying and vigilance that are attacking.\n5/5"
+    IDS_STRING64138         "Silent Submersible (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nWhenever this Vehicle deals combat damage to a player or planeswalker, draw a card.\n2/3"
+    IDS_STRING64139         "Vitu-Ghazi (A)\n\nLegendary Creature - Elemental\nToken\nHaste\n0/0"
 END
 
 

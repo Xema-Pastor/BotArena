@@ -141,6 +141,15 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CCentaurEToken);
 		DEFINE_TOKEN(COozeGToken);
 		DEFINE_TOKEN(CIllusionDToken);
+		DEFINE_TOKEN(CZombieArmyAToken);
+		DEFINE_TOKEN(CWizardAToken);
+		DEFINE_TOKEN(CWallCToken);
+		DEFINE_TOKEN(CAssassinAToken);
+		DEFINE_TOKEN(CSpiritTToken);
+		DEFINE_TOKEN(CSoldierUToken);
+		DEFINE_TOKEN(CCitizenBToken);
+		DEFINE_TOKEN(CZombieWarriorAToken);
+		DEFINE_TOKEN(CVojaFriendtoElvesToken);
 	} while (false);
 
 	return cpCard;
@@ -1989,4 +1998,135 @@ bool CIllusionDToken::BeforeSkipUntap(TriggeredAbility::TriggeredActionType* pAc
 		CScheduledCardModifier::DeltaOption::CustomPlayerTurn, pCard->GetController());
 	pSkip.ApplyTo(pCard);
 	return true;
+}
+//____________________________________________________________________________
+//
+CZombieArmyAToken::CZombieArmyAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Zombie Army"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Zombie, Army), nID,
+		_T(""),
+		Power(0), Life(0))
+{
+	AddCardType(CardType::Black, CardType::_ColorMask);
+// War of the Spark version: the Army of Amass.
+}
+//____________________________________________________________________________
+//
+CWizardAToken::CWizardAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Wizard"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Wizard), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::Blue, CardType::_ColorMask);
+// War of the Spark version: used by Kasmina, Enigmatic Mentor.
+}
+
+//____________________________________________________________________________
+//
+CWallCToken::CWallCToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Wall"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Wall), nID,
+		_T(""),
+		Power(0), Life(3))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+	GetCreatureKeyword()->AddDefender(FALSE);
+// War of the Spark version: used by Teyo, the Shieldmage.
+}
+
+//____________________________________________________________________________
+//
+CAssassinAToken::CAssassinAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Assassin"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Assassin), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Black, CardType::_ColorMask);
+	GetCardKeyword()->AddDeathtouch(FALSE);
+
+	// Whenever this token deals damage to a planeswalker, destroy that planeswalker.
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CAssassinAToken::SetDamageContext));
+	cpAbility->SetBeforeResolveSelectionCallback(TriggeredAbility::BeforeResolveSelectionCallback(this, &CAssassinAToken::BeforeDestroy));
+	AddAbility(cpAbility.GetPointer());
+// War of the Spark version: used by Vraska, Swarm's Eminence.
+}
+
+bool CAssassinAToken::SetDamageContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+	CPlaneswalkerCard* pPlaneswalker, Damage damage) const
+{
+	triggerContext.nValue1 = (DWORD)pPlaneswalker;
+	return pPlaneswalker != NULL;
+}
+
+bool CAssassinAToken::BeforeDestroy(TriggeredAbility::TriggeredActionType* pAction)
+{
+	CCard* pCard = (CCard*)pAction->GetTriggerContext().nValue1;
+	if (pCard && pCard->GetZoneId() == ZoneId::Battlefield)
+		CMoveCardModifier(ZoneId::Battlefield, ZoneId::Graveyard, TRUE, MoveType::Destroy, pAction->GetController()).ApplyTo(pCard);
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CSpiritTToken::CSpiritTToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Spirit"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Spirit), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+// War of the Spark version (colorless): used by Ugin, the Ineffable.
+}
+
+//____________________________________________________________________________
+//
+//____________________________________________________________________________
+//
+CSoldierUToken::CSoldierUToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Soldier"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Soldier), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+	GetCreatureKeyword()->AddVigilance(FALSE);
+// War of the Spark version: used by Finale of Glory.
+}
+//____________________________________________________________________________
+//
+CCitizenBToken::CCitizenBToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Citizen"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Citizen), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::_ColorMask, CardType::_ColorMask);
+// War of the Spark version (all colors): used by Planewide Celebration.
+}
+//____________________________________________________________________________
+//
+CZombieWarriorAToken::CZombieWarriorAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Zombie Warrior"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Zombie, Warrior), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	AddCardType(CardType::Black, CardType::_ColorMask);
+	GetCreatureKeyword()->AddVigilance(FALSE);
+// War of the Spark version: used by God-Eternal Oketra.
+}
+//____________________________________________________________________________
+//
+CVojaFriendtoElvesToken::CVojaFriendtoElvesToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Voja, Friend to Elves"), CardType::Creature | CardType::Token | CardType::Legendary,
+		CREATURE_TYPE(Wolf), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	AddCardType(CardType::Green | CardType::White, CardType::_ColorMask);
+// War of the Spark version: used by Tolsimir, Friend to Wolves.
 }

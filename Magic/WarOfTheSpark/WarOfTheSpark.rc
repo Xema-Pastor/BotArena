@@ -1,0 +1,363 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#include ""..\\MagicCore\\MagicCore.rc2""\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MODULE              ICON                    "WarOfTheSpark.ico"
+IDI_LARGE_MODULE        ICON                    "WarOfTheSparkLarge.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_EXPANSION           "War of the Spark"
+    IDS_EXPANSION_ABBREV    "WAR"
+    IDS_FIRST_CARD          "41220"
+    IDS_TOTAL_CARD          "318"
+    IDS_WHITE_BORDER        "0"
+    IDS_MODULE_ICON_ID      "41538"
+    IDS_MODULE_LARGE_ICON_ID "41539"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ALT_IMG_METHOD      "0"
+    IDS_RELEASE_DATE        "03-05-2019"
+    IDS_MWS_FOLDER          "MWS\\WAR\\"
+    IDS_PRODUCT_LIST        """War of the Spark Starter Box"":R-3:U-10:C-32:BL-30,""War of the Spark Booster Pack"":R-1:U-3:C-11"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING41220         "Blast Zone\n\nLand\nWAR,R\nThis land enters with a charge counter on it.\r{T}: Add {C}.\r{X}{X}, {T}: Put X charge counters on this land.\r{3}, {T}, Sacrifice this land: Destroy each nonland permanent with mana value equal to the number of charge counters on this land."
+    IDS_STRING41221         "Emergence Zone\n\nLand\nWAR,U\n{T}: Add {C}.\r{1}, {T}, Sacrifice this land: You may cast spells this turn as though they had flash."
+    IDS_STRING41222         "Gateway Plaza\n\nLand - Gate\nWAR,C\nThis land enters tapped.\rWhen this land enters, sacrifice it unless you pay {1}.\r{T}: Add one mana of any color."
+    IDS_STRING41223         "Interplanar Beacon\n\nLand\nWAR,U\nWhenever you cast a planeswalker spell, you gain 1 life.\r{T}: Add {C}.\r{1}, {T}: Add two mana of different colors. Spend this mana only to cast planeswalker spells."
+    IDS_STRING41224         "Karn's Bastion\n\nLand\nWAR,R\n{T}: Add {C}.\r{4}, {T}: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)"
+    IDS_STRING41225         "Mobilized District\n\nLand\nWAR,R\n{T}: Add {C}.\r{4}: This land becomes a 3/3 Citizen creature with vigilance until end of turn. It's still a land. This ability costs {1} less to activate for each legendary creature and planeswalker you control."
+    IDS_STRING41226         "Orzhov Guildgate\n\nLand - Gate\nWAR,C\nThis land enters tapped.\r{T}: Add {W} or {B}."
+    IDS_STRING41227         "Simic Guildgate\n\nLand - Gate\nWAR,C\nThis land enters tapped.\r{T}: Add {G} or {U}."
+    IDS_STRING41228         "Plains\n\nBasic Land - Plains\nWAR,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING41229         "Plains\n\nBasic Land - Plains\nWAR,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING41230         "Plains\n\nBasic Land - Plains\nWAR,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING41231         "Island\n\nBasic Land - Island\nWAR,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING41232         "Island\n\nBasic Land - Island\nWAR,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING41233         "Island\n\nBasic Land - Island\nWAR,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING41234         "Swamp\n\nBasic Land - Swamp\nWAR,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING41235         "Swamp\n\nBasic Land - Swamp\nWAR,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING41236         "Swamp\n\nBasic Land - Swamp\nWAR,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING41237         "Mountain\n\nBasic Land - Mountain\nWAR,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING41238         "Mountain\n\nBasic Land - Mountain\nWAR,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING41239         "Mountain\n\nBasic Land - Mountain\nWAR,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING41240         "Forest\n\nBasic Land - Forest\nWAR,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING41241         "Forest\n\nBasic Land - Forest\nWAR,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING41242         "Forest\n\nBasic Land - Forest\nWAR,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING41243         "Ajani, the Greathearted\n{2GW}\nPlaneswalker - Ajani\nWAR,R\nCreatures you control have vigilance.\r[+1]: You gain 3 life.\r[-2]: Put a +1/+1 counter on each creature you control and a loyalty counter on each other planeswalker you control.\n5"
+    IDS_STRING41244         "Angrath, Captain of Chaos\n{2B/RB/R}\nPlaneswalker - Angrath\nWAR,U\nCreatures you control have menace.\r[-2]: Amass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\n5"
+    IDS_STRING41245         "Arlinn, Voice of the Pack\n{4GG}\nPlaneswalker - Arlinn\nWAR,U\nEach creature you control that's a Wolf or a Werewolf enters with an additional +1/+1 counter on it.\r[-2]: Create a 2/2 green Wolf creature token.\n7"
+    IDS_STRING41246         "Ashiok, Dream Render\n{1U/BU/B}\nPlaneswalker - Ashiok\nWAR,U\nSpells and abilities your opponents control can't cause their controller to search their library.\r[-1]: Target player mills four cards. Then exile each opponent's graveyard.\n5"
+    IDS_STRING41247         "Davriel, Rogue Shadowmage\n{2B}\nPlaneswalker - Davriel\nWAR,U\nAt the beginning of each opponent's upkeep, if that player has one or fewer cards in hand, Davriel deals 2 damage to them.\r[-1]: Target player discards a card.\n3"
+    IDS_STRING41248         "Domri, Anarch of Bolas\n{1RG}\nPlaneswalker - Domri\nWAR,R\nCreatures you control get +1/+0.\r[+1]: Add {R} or {G}. Creature spells you cast this turn can't be countered.\r[-2]: Target creature you control fights target creature you don't control.\n3"
+    IDS_STRING41249         "Dovin, Hand of Control\n{2W/U}\nPlaneswalker - Dovin\nWAR,U\nArtifact, instant, and sorcery spells your opponents cast cost {1} more to cast.\r[-1]: Until your next turn, prevent all damage that would be dealt to and dealt by target permanent an opponent controls.\n5"
+    IDS_STRING41250         "Gideon Blackblade\n{1WW}\nPlaneswalker - Gideon\nWAR,MR\nDuring your turn, Gideon Blackblade is a 4/4 Human Soldier creature with indestructible that's still a planeswalker.\rPrevent all damage that would be dealt to Gideon Blackblade during your turn.\r[+1]: Up to one other target creature you control gains your choice of vigilance, lifelink, or indestructible until end of turn.\r[-6]: Exile target nonland permanent.\n4"
+    IDS_STRING41251         "Gideon, the Oathsworn\n{4WW}\nPlaneswalker - Gideon\nWAR,MR\nWhenever you attack with two or more non-Gideon creatures, put a +1/+1 counter on each of those creatures.\r[+2]: Until end of turn, Gideon becomes a 5/5 white Soldier creature that's still a planeswalker. Prevent all damage that would be dealt to him this turn. (He can't attack if he was cast this turn.)\r[-9]: Exile Gideon and each creature your opponents control.\n4"
+    IDS_STRING41252         "Huatli, the Sun's Heart\n{2G/W}\nPlaneswalker - Huatli\nWAR,U\nEach creature you control assigns combat damage equal to its toughness rather than its power.\r[-3]: You gain life equal to the greatest toughness among creatures you control.\n7"
+    IDS_STRING41253         "Jace, Arcane Strategist\n{4UU}\nPlaneswalker - Jace\nWAR,MR\nWhenever you draw your second card each turn, put a +1/+1 counter on target creature you control.\r[+1]: Draw a card.\r[-7]: Creatures you control can't be blocked this turn.\n4"
+    IDS_STRING41254         "Jace, Wielder of Mysteries\n{1UUU}\nPlaneswalker - Jace\nWAR,R\nIf you would draw a card while your library has no cards in it, you win the game instead.\r[+1]: Target player mills two cards. Draw a card.\r[-8]: Draw seven cards. Then if your library has no cards in it, you win the game.\n4"
+    IDS_STRING41255         "Jaya, Venerated Firemage\n{4R}\nPlaneswalker - Jaya\nWAR,U\nIf another red source you control would deal damage to a permanent or player, it deals that much damage plus 1 to that permanent or player instead.\r[-2]: Jaya deals 2 damage to any target.\n5"
+    IDS_STRING41256         "Jiang Yanggu, Wildcrafter\n{2G}\nPlaneswalker - Yanggu\nWAR,U\nEach creature you control with a +1/+1 counter on it has ""{T}: Add one mana of any color.""\r[-1]: Put a +1/+1 counter on target creature.\n3"
+    IDS_STRING41257         "Karn, the Great Creator\n{4}\nPlaneswalker - Karn\nWAR,R\nActivated abilities of artifacts your opponents control can't be activated.\r[+1]: Until your next turn, up to one target noncreature artifact becomes an artifact creature with power and toughness each equal to its mana value.\r[-2]: You may reveal an artifact card you own from outside the game or choose a face-up artifact card you own in exile. Put that card into your hand.\n5"
+    IDS_STRING41258         "Kasmina, Enigmatic Mentor\n{3U}\nPlaneswalker - Kasmina\nWAR,U\nSpells your opponents cast that target a creature or planeswalker you control cost {2} more to cast.\r[-2]: Create a 2/2 blue Wizard creature token. Draw a card, then discard a card.\n5"
+    IDS_STRING41259         "Kaya, Bane of the Dead\n{3W/BW/BW/B}\nPlaneswalker - Kaya\nWAR,U\nYour opponents and permanents your opponents control with hexproof can be the targets of spells and abilities you control as though they didn't have hexproof.\r[-3]: Exile target creature.\n7"
+    IDS_STRING41260         "Kiora, Behemoth Beckoner\n{2G/U}\nPlaneswalker - Kiora\nWAR,U\nWhenever a creature you control with power 4 or greater enters, draw a card.\r[-1]: Untap target permanent.\n7"
+    IDS_STRING41261         "Liliana, Dreadhorde General\n{4BB}\nPlaneswalker - Liliana\nWAR,MR\nWhenever a creature you control dies, draw a card.\r[+1]: Create a 2/2 black Zombie creature token.\r[-4]: Each player sacrifices two creatures of their choice.\r[-9]: Each opponent chooses a permanent they control of each permanent type and sacrifices the rest.\n6"
+    IDS_STRING41262         "Nahiri, Storm of Stone\n{2R/WR/W}\nPlaneswalker - Nahiri\nWAR,U\nDuring your turn, creatures you control have first strike and equip abilities you activate cost {1} less to activate.\r[-X]: Nahiri deals X damage to target tapped creature.\n6"
+    IDS_STRING41263         "Narset, Parter of Veils\n{1UU}\nPlaneswalker - Narset\nWAR,U\nEach opponent can't draw more than one card each turn.\r[-2]: Look at the top four cards of your library. You may reveal a noncreature, nonland card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n5"
+    IDS_STRING41264         "Nicol Bolas, Dragon-God\n{UBBBR}\nPlaneswalker - Bolas\nWAR,MR\nNicol Bolas has all loyalty abilities of all other planeswalkers on the battlefield.\r[+1]: You draw a card. Each opponent exiles a card from their hand or a permanent they control.\r[-3]: Destroy target creature or planeswalker.\r[-8]: Each opponent who doesn't control a legendary creature or planeswalker loses the game.\n4"
+    IDS_STRING41265         "Nissa, Who Shakes the World\n{3GG}\nPlaneswalker - Nissa\nWAR,R\nWhenever you tap a Forest for mana, add an additional {G}.\r[+1]: Put three +1/+1 counters on up to one target noncreature land you control. Untap it. It becomes a 0/0 Elemental creature with vigilance and haste that's still a land.\r[-8]: You get an emblem with ""Lands you control have indestructible."" Search your library for any number of Forest cards, put them onto the battlefield tapped, then shuffle.\n5"
+    IDS_STRING41266         "Ob Nixilis, the Hate-Twisted\n{3BB}\nPlaneswalker - Nixilis\nWAR,U\nWhenever an opponent draws a card, Ob Nixilis deals 1 damage to that player.\r[-2]: Destroy target creature. Its controller draws two cards.\n5"
+    IDS_STRING41267         "Ral, Storm Conduit\n{2UR}\nPlaneswalker - Ral\nWAR,R\nWhenever you cast or copy an instant or sorcery spell, Ral deals 1 damage to target opponent or planeswalker.\r[+2]: Scry 1.\r[-2]: When you next cast an instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\n4"
+    IDS_STRING41268         "Saheeli, Sublime Artificer\n{1U/RU/R}\nPlaneswalker - Saheeli\nWAR,U\nWhenever you cast a noncreature spell, create a 1/1 colorless Servo artifact creature token.\r[-2]: Target artifact you control becomes a copy of another target artifact or creature you control until end of turn, except it's an artifact in addition to its other types.\n5"
+    IDS_STRING41269         "Samut, Tyrant Smasher\n{2R/GR/G}\nPlaneswalker - Samut\nWAR,U\nCreatures you control have haste.\r[-1]: Target creature gets +2/+1 and gains haste until end of turn. Scry 1.\n5"
+    IDS_STRING41270         "Sarkhan the Masterless\n{3RR}\nPlaneswalker - Sarkhan\nWAR,R\nWhenever a creature attacks you or a planeswalker you control, each Dragon you control deals 1 damage to that creature.\r[+1]: Until end of turn, each planeswalker you control becomes a 4/4 red Dragon creature and gains flying.\r[-3]: Create a 4/4 red Dragon creature token with flying.\n5"
+    IDS_STRING41271         "Sorin, Vengeful Bloodlord\n{2WB}\nPlaneswalker - Sorin\nWAR,R\nDuring your turn, creatures and planeswalkers you control have lifelink.\r[+2]: Sorin deals 1 damage to target player or planeswalker.\r[-X]: Return target creature card with mana value X from your graveyard to the battlefield. That creature is a Vampire in addition to its other types.\n4"
+    IDS_STRING41272         "Tamiyo, Collector of Tales\n{2GU}\nPlaneswalker - Tamiyo\nWAR,R\nSpells and abilities your opponents control can't cause you to discard cards or sacrifice permanents.\r[+1]: Choose a nonland card name, then reveal the top four cards of your library. Put all cards with the chosen name from among them into your hand and the rest into your graveyard.\r[-3]: Return target card from your graveyard to your hand.\n5"
+    IDS_STRING41273         "Teferi, Time Raveler\n{1WU}\nPlaneswalker - Teferi\nWAR,R\nEach opponent can cast spells only any time they could cast a sorcery.\r[+1]: Until your next turn, you may cast sorcery spells as though they had flash.\r[-3]: Return up to one target artifact, creature, or enchantment to its owner's hand. Draw a card.\n4"
+    IDS_STRING41274         "Teyo, the Shieldmage\n{2W}\nPlaneswalker - Teyo\nWAR,U\nYou have hexproof. (You can't be the target of spells or abilities your opponents control.)\r[-2]: Create a 0/3 white Wall creature token with defender.\n5"
+    IDS_STRING41275         "Tezzeret, Master of the Bridge\n{4UB}\nPlaneswalker - Tezzeret\nWAR,MR\nCreature and planeswalker spells you cast have affinity for artifacts. (They cost {1} less to cast for each artifact you control.)\r[+2]: Tezzeret deals X damage to each opponent, where X is the number of artifacts you control. You gain X life.\r[-3]: Return target artifact card from your graveyard to your hand.\r[-8]: Exile the top ten cards of your library. Put all artifact cards from among them onto the battlefield.\n5"
+    IDS_STRING41276         "The Wanderer\n{3W}\nPlaneswalker\nWAR,U\nPrevent all noncombat damage that would be dealt to you and other permanents you control.\r[-2]: Exile target creature with power 4 or greater.\n5"
+    IDS_STRING41277         "Tibalt, Rakish Instigator\n{2R}\nPlaneswalker - Tibalt\nWAR,U\nYour opponents can't gain life.\r[-2]: Create a 1/1 red Devil creature token with ""When this token dies, it deals 1 damage to any target.""\n5"
+    IDS_STRING41278         "Ugin, the Ineffable\n{6}\nPlaneswalker - Ugin\nWAR,R\nColorless spells you cast cost {2} less to cast.\r[+1]: Exile the top card of your library face down and look at it. Create a 2/2 colorless Spirit creature token. When that token leaves the battlefield, put the exiled card into your hand.\r[-3]: Destroy target permanent that's one or more colors.\n4"
+    IDS_STRING41279         "Vivien, Champion of the Wilds\n{2G}\nPlaneswalker - Vivien\nWAR,R\nYou may cast creature spells as though they had flash.\r[+1]: Until your next turn, up to one target creature gains reach and vigilance.\r[-2]: Look at the top three cards of your library. Exile one face down and put the rest on the bottom of your library in any order. For as long as it remains exiled, you may cast it if it's a creature spell.\n4"
+    IDS_STRING41280         "Vraska, Swarm's Eminence\n{2B/GB/G}\nPlaneswalker - Vraska\nWAR,U\nWhenever a creature you control with deathtouch deals damage to a player or planeswalker, put a +1/+1 counter on that creature.\r[-2]: Create a 1/1 black Assassin creature token with deathtouch and ""Whenever this token deals damage to a planeswalker, destroy that planeswalker.""\n5"
+    IDS_STRING41281         "Firemind Vessel\n{4}\nArtifact\nWAR,U\nThis artifact enters tapped.\r{T}: Add two mana of different colors."
+    IDS_STRING41282         "God-Pharaoh's Statue\n{6}\nLegendary Artifact\nWAR,U\nSpells your opponents cast cost {2} more to cast.\rAt the beginning of your end step, each opponent loses 1 life."
+    IDS_STRING41283         "Guild Globe\n{2}\nArtifact\nWAR,C\nWhen this artifact enters, draw a card.\r{2}, {T}, Sacrifice this artifact: Add two mana of different colors."
+    IDS_STRING41284         "Mana Geode\n{3}\nArtifact\nWAR,C\nWhen this artifact enters, scry 1.\r{T}: Add one mana of any color."
+    IDS_STRING41285         "Mizzium Tank\n{1RR}\nArtifact - Vehicle\nWAR,R\nTrample\rWhenever you cast a noncreature spell, this Vehicle becomes an artifact creature and gets +1/+1 until end of turn.\rCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n3/2"
+    IDS_STRING41286         "Parhelion II\n{6WW}\nLegendary Artifact - Vehicle\nWAR,R\nFlying, first strike, vigilance\rWhenever Parhelion II attacks, create two 4/4 white Angel creature tokens with flying and vigilance that are attacking.\rCrew 4 (Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)\n5/5"
+    IDS_STRING41287         "Silent Submersible\n{UU}\nArtifact - Vehicle\nWAR,R\nWhenever this Vehicle deals combat damage to a player or planeswalker, draw a card.\rCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n2/3"
+    IDS_STRING41288         "Vivien's Arkbow\n{1G}\nLegendary Artifact\nWAR,R\n{X}, {T}, Discard a card: Look at the top X cards of your library. You may put a creature card with mana value X or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order."
+    IDS_STRING41289         "Aid the Fallen\n{1B}\nSorcery\nWAR,C\nChoose one or both -\r* Return target creature card from your graveyard to your hand.\r* Return target planeswalker card from your graveyard to your hand."
+    IDS_STRING41290         "Angrath's Rampage\n{BR}\nSorcery\nWAR,U\nChoose one -\r* Target player sacrifices an artifact of their choice.\r* Target player sacrifices a creature of their choice.\r* Target player sacrifices a planeswalker of their choice."
+    IDS_STRING41291         "Bleeding Edge\n{1BB}\nSorcery\nWAR,U\nUp to one target creature gets -2/-2 until end of turn. Amass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41292         "Bond of Discipline\n{4W}\nSorcery\nWAR,U\nTap all creatures your opponents control. Creatures you control gain lifelink until end of turn."
+    IDS_STRING41293         "Bond of Flourishing\n{1G}\nSorcery\nWAR,U\nLook at the top three cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in any order. You gain 3 life."
+    IDS_STRING41294         "Bond of Insight\n{3U}\nSorcery\nWAR,U\nEach player mills four cards. Return up to two instant and/or sorcery cards from your graveyard to your hand. Exile Bond of Insight."
+    IDS_STRING41295         "Bond of Passion\n{4RR}\nSorcery\nWAR,U\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. Bond of Passion deals 2 damage to any other target."
+    IDS_STRING41296         "Bond of Revival\n{4B}\nSorcery\nWAR,U\nReturn target creature card from your graveyard to the battlefield. It gains haste until your next turn."
+    IDS_STRING41297         "Callous Dismissal\n{1U}\nSorcery\nWAR,C\nReturn target nonland permanent to its owner's hand.\rAmass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41298         "Casualties of War\n{2BBGG}\nSorcery\nWAR,R\nChoose one or more -\r* Destroy target artifact.\r* Destroy target creature.\r* Destroy target enchantment.\r* Destroy target land.\r* Destroy target planeswalker."
+    IDS_STRING41299         "Command the Dreadhorde\n{4BB}\nSorcery\nWAR,R\nChoose any number of target creature and/or planeswalker cards in graveyards. Command the Dreadhorde deals damage to you equal to the total mana value of those cards. Put them onto the battlefield under your control."
+    IDS_STRING41300         "Contentious Plan\n{1U}\nSorcery\nWAR,C\nProliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\rDraw a card."
+    IDS_STRING41301         "Courage in Crisis\n{2G}\nSorcery\nWAR,C\nPut a +1/+1 counter on target creature, then proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)"
+    IDS_STRING41302         "Davriel's Shadowfugue\n{3B}\nSorcery\nWAR,C\nTarget player discards two cards and loses 2 life."
+    IDS_STRING41303         "Deliver Unto Evil\n{2B}\nSorcery\nWAR,R\nChoose up to four target cards in your graveyard. If you control a Bolas planeswalker, return those cards to your hand. Otherwise, an opponent chooses two of them. Leave the chosen cards in your graveyard and put the rest into your hand.\rExile Deliver Unto Evil."
+    IDS_STRING41304         "Demolish\n{3R}\nSorcery\nWAR,C\nDestroy target artifact or land."
+    IDS_STRING41305         "Domri's Ambush\n{RG}\nSorcery\nWAR,U\nPut a +1/+1 counter on target creature you control. Then that creature deals damage equal to its power to target creature or planeswalker you don't control."
+    IDS_STRING41306         "Enter the God-Eternals\n{2UUB}\nSorcery\nWAR,R\nEnter the God-Eternals deals 4 damage to target creature and you gain life equal to the damage dealt this way. Target player mills four cards. Amass Zombies 4. (Put four +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41307         "Finale of Devastation\n{XGG}\nSorcery\nWAR,MR\nSearch your library and/or graveyard for a creature card with mana value X or less and put it onto the battlefield. If you search your library this way, shuffle. If X is 10 or more, creatures you control get +X/+X and gain haste until end of turn."
+    IDS_STRING41308         "Finale of Eternity\n{XBB}\nSorcery\nWAR,MR\nDestroy up to three target creatures with toughness X or less. If X is 10 or more, return all creature cards from your graveyard to the battlefield."
+    IDS_STRING41309         "Finale of Glory\n{XWW}\nSorcery\nWAR,MR\nCreate X 2/2 white Soldier creature tokens with vigilance. If X is 10 or more, also create X 4/4 white Angel creature tokens with flying and vigilance."
+    IDS_STRING41310         "Finale of Revelation\n{XUU}\nSorcery\nWAR,MR\nDraw X cards. If X is 10 or more, instead shuffle your graveyard into your library, draw X cards, untap up to five lands, and you have no maximum hand size for the rest of the game.\rExile Finale of Revelation."
+    IDS_STRING41311         "Gideon's Battle Cry\n{2WW}\nSorcery\nWAR,R\nPut a +1/+1 counter on each creature you control. You may search your library and/or graveyard for a card named Gideon, the Oathsworn, reveal it, and put it into your hand. If you search your library this way, shuffle."
+    IDS_STRING41312         "Honor the God-Pharaoh\n{2R}\nSorcery\nWAR,C\nAs an additional cost to cast this spell, discard a card.\rDraw two cards. Amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41313         "Invade the City\n{1UR}\nSorcery\nWAR,U\nAmass Zombies X, where X is the number of instant and sorcery cards in your graveyard. (Put X +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41314         "Jace's Ruse\n{3UU}\nSorcery\nWAR,R\nReturn up to two target creatures to their owner's hand. You may search your library and/or graveyard for a card named Jace, Arcane Strategist, reveal it, and put it into your hand. If you search your library this way, shuffle."
+    IDS_STRING41315         "Jace's Triumph\n{2U}\nSorcery\nWAR,U\nDraw two cards. If you control a Jace planeswalker, draw three cards instead."
+    IDS_STRING41316         "Neoform\n{GU}\nSorcery\nWAR,U\nAs an additional cost to cast this spell, sacrifice a creature.\rSearch your library for a creature card with mana value equal to 1 plus the sacrificed creature's mana value, put that card onto the battlefield with an additional +1/+1 counter on it, then shuffle."
+    IDS_STRING41317         "Nissa's Triumph\n{GG}\nSorcery\nWAR,U\nSearch your library for up to two basic Forest cards. If you control a Nissa planeswalker, instead search your library for up to three land cards. Reveal those cards, put them into your hand, then shuffle."
+    IDS_STRING41318         "Planewide Celebration\n{5GG}\nSorcery\nWAR,R\nChoose four. You may choose the same mode more than once.\r* Create a 2/2 Citizen creature token that's all colors.\r* Return target permanent card from your graveyard to your hand.\r* Proliferate.\r* You gain 4 life."
+    IDS_STRING41319         "Price of Betrayal\n{B}\nSorcery\nWAR,U\nRemove up to five counters from target artifact, creature, planeswalker, or opponent."
+    IDS_STRING41320         "Ravnica at War\n{3W}\nSorcery\nWAR,R\nExile all multicolored permanents."
+    IDS_STRING41321         "Relentless Advance\n{3U}\nSorcery\nWAR,C\nAmass Zombies 3. (Put three +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41322         "Role Reversal\n{UUR}\nSorcery\nWAR,R\nExchange control of two target permanents that share a permanent type."
+    IDS_STRING41323         "Single Combat\n{3WW}\nSorcery\nWAR,R\nEach player chooses a creature or planeswalker they control, then sacrifices the rest. Players can't cast creature or planeswalker spells until the end of your next turn."
+    IDS_STRING41324         "Solar Blaze\n{2RW}\nSorcery\nWAR,R\nEach creature deals damage to itself equal to its power."
+    IDS_STRING41325         "Spark Harvest\n{B}\nSorcery\nWAR,C\nAs an additional cost to cast this spell, sacrifice a creature or pay {3}{B}.\rDestroy target creature or planeswalker."
+    IDS_STRING41326         "Stealth Mission\n{2U}\nSorcery\nWAR,C\nPut two +1/+1 counters on target creature you control. That creature can't be blocked this turn."
+    IDS_STRING41327         "Storm the Citadel\n{4G}\nSorcery\nWAR,U\nUntil end of turn, creatures you control get +2/+2 and gain ""Whenever this creature deals combat damage to a player or planeswalker, destroy target artifact or enchantment defending player controls."""
+    IDS_STRING41328         "Tamiyo's Epiphany\n{3U}\nSorcery\nWAR,C\nScry 4, then draw two cards."
+    IDS_STRING41329         "The Elderspell\n{BB}\nSorcery\nWAR,R\nDestroy any number of target planeswalkers. Choose a planeswalker you control. Put two loyalty counters on it for each planeswalker destroyed this way."
+    IDS_STRING41330         "Time Wipe\n{2WWU}\nSorcery\nWAR,R\nReturn a creature you control to its owner's hand, then destroy all creatures."
+    IDS_STRING41331         "Toll of the Invasion\n{2B}\nSorcery\nWAR,C\nTarget opponent reveals their hand. You choose a nonland card from it. That player discards that card.\rAmass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41332         "Wanderer's Strike\n{4W}\nSorcery\nWAR,C\nExile target creature, then proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)"
+    IDS_STRING41333         "Widespread Brutality\n{1BRR}\nSorcery\nWAR,R\nAmass Zombies 2, then the Army you amassed deals damage equal to its power to each non-Army creature. (To amass Zombies 2, put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41334         "Awakening of Vitu-Ghazi\n{3GG}\nInstant\nWAR,R\nPut nine +1/+1 counters on target land you control. It becomes a legendary 0/0 Elemental creature with haste named Vitu-Ghazi. It's still a land."
+    IDS_STRING41335         "Band Together\n{2G}\nInstant\nWAR,C\nUp to two target creatures you control each deal damage equal to their power to another target creature."
+    IDS_STRING41336         "Battlefield Promotion\n{1W}\nInstant\nWAR,C\nPut a +1/+1 counter on target creature. That creature gains first strike until end of turn. You gain 2 life. (A creature with first strike deals combat damage before creatures without first strike.)"
+    IDS_STRING41337         "Blindblast\n{2R}\nInstant\nWAR,C\nBlindblast deals 1 damage to target creature. That creature can't block this turn.\rDraw a card."
+    IDS_STRING41338         "Bolt Bend\n{3R}\nInstant\nWAR,U\nThis spell costs {3} less to cast if you control a creature with power 4 or greater.\rChange the target of target spell or ability with a single target."
+    IDS_STRING41339         "Chandra's Pyrohelix\n{1R}\nInstant\nWAR,C\nChandra's Pyrohelix deals 2 damage divided as you choose among one or two targets."
+    IDS_STRING41340         "Chandra's Triumph\n{1R}\nInstant\nWAR,U\nChandra's Triumph deals 3 damage to target creature or planeswalker an opponent controls. Chandra's Triumph deals 5 damage instead if you control a Chandra planeswalker."
+    IDS_STRING41341         "Commence the Endgame\n{4UU}\nInstant\nWAR,R\nThis spell can't be countered.\rDraw two cards, then amass Zombies X, where X is the number of cards in your hand. (Put X +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41342         "Crush Dissent\n{3U}\nInstant\nWAR,C\nCounter target spell unless its controller pays {2}.\rAmass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)"
+    IDS_STRING41343         "Deathsprout\n{1BBG}\nInstant\nWAR,U\nDestroy target creature. Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."
+    IDS_STRING41344         "Defiant Strike\n{W}\nInstant\nWAR,C\nTarget creature gets +1/+0 until end of turn.\rDraw a card."
+    IDS_STRING41345         "Despark\n{WB}\nInstant\nWAR,U\nExile target permanent with mana value 4 or greater."
+    IDS_STRING41346         "Desperate Lunge\n{1W}\nInstant\nWAR,C\nTarget creature gets +2/+2 and gains flying until end of turn. You gain 2 life."
+    IDS_STRING41347         "Divine Arrow\n{1W}\nInstant\nWAR,C\nDivine Arrow deals 4 damage to target attacking or blocking creature."
+    IDS_STRING41348         "Dovin's Veto\n{WU}\nInstant\nWAR,U\nThis spell can't be countered.\rCounter target noncreature spell."
+    IDS_STRING41349         "Forced Landing\n{1G}\nInstant\nWAR,C\nPut target creature with flying on the bottom of its owner's library."
+    IDS_STRING41350         "Giant Growth\n{G}\nInstant\nWAR,C\nTarget creature gets +3/+3 until end of turn."
+    IDS_STRING41351         "Gideon's Triumph\n{1W}\nInstant\nWAR,U\nTarget opponent sacrifices a creature of their choice that attacked or blocked this turn. If you control a Gideon planeswalker, that player sacrifices two of those creatures of their choice instead."
+    IDS_STRING41352         "Heartfire\n{1R}\nInstant\nWAR,C\nAs an additional cost to cast this spell, sacrifice a creature or planeswalker.\rHeartfire deals 4 damage to any target."
+    IDS_STRING41353         "Heartwarming Redemption\n{2RW}\nInstant\nWAR,U\nDiscard all the cards in your hand, then draw that many cards plus one. You gain life equal to the number of cards in your hand."
+    IDS_STRING41354         "Ignite the Beacon\n{4W}\nInstant\nWAR,R\nSearch your library for up to two planeswalker cards, reveal them, put them into your hand, then shuffle."
+    IDS_STRING41355         "Jaya's Greeting\n{1R}\nInstant\nWAR,C\nJaya's Greeting deals 3 damage to target creature. Scry 1."
+    IDS_STRING41356         "Lazotep Plating\n{1U}\nInstant\nWAR,U\nAmass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\rYou and permanents you control gain hexproof until end of turn. (You and they can't be the targets of spells or abilities your opponents control.)"
+    IDS_STRING41357         "Liliana's Triumph\n{1B}\nInstant\nWAR,U\nEach opponent sacrifices a creature of their choice. If you control a Liliana planeswalker, each opponent also discards a card."
+    IDS_STRING41358         "Nahiri's Stoneblades\n{1R}\nInstant\nWAR,C\nUp to two target creatures each get +2/+0 until end of turn."
+    IDS_STRING41359         "No Escape\n{2U}\nInstant\nWAR,C\nCounter target creature or planeswalker spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard.\rScry 1."
+    IDS_STRING41360         "Ob Nixilis's Cruelty\n{2B}\nInstant\nWAR,C\nTarget creature gets -5/-5 until end of turn. If that creature would die this turn, exile it instead."
+    IDS_STRING41361         "Pledge of Unity\n{1GW}\nInstant\nWAR,U\nPut a +1/+1 counter on each creature you control. You gain 1 life for each creature you control."
+    IDS_STRING41362         "Rally of Wings\n{1W}\nInstant\nWAR,U\nUntap all creatures you control. Creatures you control with flying get +2/+2 until end of turn."
+    IDS_STRING41363         "Ral's Outburst\n{2UR}\nInstant\nWAR,U\nRal's Outburst deals 3 damage to any target. Look at the top two cards of your library. Put one of them into your hand and the other into your graveyard."
+    IDS_STRING41364         "Return to Nature\n{1G}\nInstant\nWAR,C\nChoose one -\r* Destroy target artifact.\r* Destroy target enchantment.\r* Exile target card from a graveyard."
+    IDS_STRING41365         "Samut's Sprint\n{R}\nInstant\nWAR,C\nTarget creature gets +2/+1 and gains haste until end of turn. Scry 1."
+    IDS_STRING41366         "Sarkhan's Catharsis\n{4R}\nInstant\nWAR,C\nSarkhan's Catharsis deals 5 damage to target player or planeswalker."
+    IDS_STRING41367         "Sorin's Thirst\n{BB}\nInstant\nWAR,C\nSorin's Thirst deals 2 damage to target creature and you gain 2 life."
+    IDS_STRING41368         "Steady Aim\n{1G}\nInstant\nWAR,C\nUntap target creature. It gets +1/+4 and gains reach until end of turn."
+    IDS_STRING41369         "Teferi's Time Twist\n{1U}\nInstant\nWAR,C\nExile target permanent you control. Return that card to the battlefield under its owner's control at the beginning of the next end step. If it enters as a creature, it enters with an additional +1/+1 counter on it."
+    IDS_STRING41370         "Topple the Statue\n{2W}\nInstant\nWAR,C\nTap target permanent. If it's an artifact, destroy it.\rDraw a card."
+    IDS_STRING41371         "Totally Lost\n{4U}\nInstant\nWAR,C\nPut target nonland permanent on top of its owner's library."
+    IDS_STRING41372         "Tyrant's Scorn\n{UB}\nInstant\nWAR,U\nChoose one -\r* Destroy target creature with mana value 3 or less.\r* Return target creature to its owner's hand."
+    IDS_STRING41373         "Unlikely Aid\n{1B}\nInstant\nWAR,C\nTarget creature gets +2/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)"
+    IDS_STRING41374         "Ajani's Pridemate\n{1W}\nCreature - Cat Soldier\nWAR,U\nWhenever you gain life, put a +1/+1 counter on this creature.\n2/2"
+    IDS_STRING41375         "Bulwark Giant\n{5W}\nCreature - Giant Soldier\nWAR,C\nWhen this creature enters, you gain 5 life.\n3/6"
+    IDS_STRING41376         "Charmed Stray\n{W}\nCreature - Cat\nWAR,C\nLifelink\rWhen this creature enters, put a +1/+1 counter on each other creature you control named Charmed Stray.\n1/1"
+    IDS_STRING41377         "Enforcer Griffin\n{4W}\nCreature - Griffin\nWAR,C\nFlying\n3/4"
+    IDS_STRING41378         "Gideon's Company\n{3W}\nCreature - Human Soldier\nWAR,U\nWhenever you gain life, put two +1/+1 counters on this creature.\r{3}{W}: Put a loyalty counter on target Gideon planeswalker.\n3/3"
+    IDS_STRING41379         "God-Eternal Oketra\n{3WW}\nLegendary Creature - Zombie God\nWAR,MR\nDouble strike\rWhenever you cast a creature spell, create a 4/4 black Zombie Warrior creature token with vigilance.\rWhen God-Eternal Oketra dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.\n3/6"
+    IDS_STRING41380         "Grateful Apparition\n{1W}\nCreature - Spirit\nWAR,U\nFlying\rWhenever this creature deals combat damage to a player or planeswalker, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n1/1"
+    IDS_STRING41381         "Ironclad Krovod\n{3W}\nCreature - Beast\nWAR,C\n\n2/5"
+    IDS_STRING41382         "Law-Rune Enforcer\n{W}\nCreature - Human Soldier\nWAR,C\n{1}, {T}: Tap target creature with mana value 2 or greater.\n1/2"
+    IDS_STRING41383         "Loxodon Sergeant\n{3W}\nCreature - Elephant Soldier\nWAR,C\nVigilance\rWhen this creature enters, other creatures you control gain vigilance until end of turn.\n3/3"
+    IDS_STRING41384         "Makeshift Battalion\n{2W}\nCreature - Human Soldier\nWAR,C\nBattalion - Whenever this creature and at least two other creatures attack, put a +1/+1 counter on this creature.\n3/2"
+    IDS_STRING41385         "Martyr for the Cause\n{1W}\nCreature - Human Soldier\nWAR,C\nWhen this creature dies, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n2/2"
+    IDS_STRING41386         "Pouncing Lynx\n{1W}\nCreature - Cat\nWAR,C\nDuring your turn, this creature has first strike.\n2/1"
+    IDS_STRING41387         "Rising Populace\n{2W}\nCreature - Human\nWAR,C\nWhenever another creature or planeswalker you control dies, put a +1/+1 counter on this creature.\n2/2"
+    IDS_STRING41388         "Sunblade Angel\n{5W}\nCreature - Angel\nWAR,U\nFlying, first strike, vigilance, lifelink\n3/3"
+    IDS_STRING41389         "Teyo's Lightshield\n{2W}\nCreature - Illusion\nWAR,C\nWhen this creature enters, put a +1/+1 counter on target creature you control.\n0/3"
+    IDS_STRING41390         "Tomik, Distinguished Advokist\n{WW}\nLegendary Creature - Human Advisor\nWAR,R\nFlying\rLands on the battlefield and land cards in graveyards can't be the targets of spells or abilities your opponents control.\rYour opponents can't play land cards from graveyards.\n2/3"
+    IDS_STRING41391         "Trusted Pegasus\n{2W}\nCreature - Pegasus\nWAR,C\nFlying (This creature can't be blocked except by creatures with flying or reach.)\rWhenever this creature attacks, target attacking creature without flying gains flying until end of turn.\n2/2"
+    IDS_STRING41392         "War Screecher\n{1W}\nCreature - Bird\nWAR,C\nFlying\r{5}{W}, {T}: Other creatures you control get +1/+1 until end of turn.\n1/3"
+    IDS_STRING41393         "Arboreal Grazer\n{G}\nCreature - Sloth Beast\nWAR,C\nReach\rWhen this creature enters, you may put a land card from your hand onto the battlefield tapped.\n0/3"
+    IDS_STRING41394         "Arlinn's Wolf\n{2G}\nCreature - Wolf\nWAR,C\nThis creature can't be blocked by creatures with power 2 or less.\n3/2"
+    IDS_STRING41395         "Bloom Hulk\n{3G}\nCreature - Plant Elemental\nWAR,C\nWhen this creature enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n4/4"
+    IDS_STRING41396         "Centaur Nurturer\n{3G}\nCreature - Centaur Druid\nWAR,C\nWhen this creature enters, you gain 3 life.\r{T}: Add one mana of any color.\n2/4"
+    IDS_STRING41397         "Challenger Troll\n{4G}\nCreature - Troll\nWAR,U\nEach creature you control with power 4 or greater can't be blocked by more than one creature.\n6/5"
+    IDS_STRING41398         "Evolution Sage\n{2G}\nCreature - Elf Druid\nWAR,U\nLandfall - Whenever a land you control enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n3/2"
+    IDS_STRING41399         "God-Eternal Rhonas\n{3GG}\nLegendary Creature - Zombie God\nWAR,MR\nDeathtouch\rWhen God-Eternal Rhonas enters, double the power of each other creature you control until end of turn. Those creatures gain vigilance until end of turn.\rWhen God-Eternal Rhonas dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.\n5/5"
+    IDS_STRING41400         "Kraul Stinger\n{2G}\nCreature - Insect Assassin\nWAR,C\nDeathtouch\n2/2"
+    IDS_STRING41401         "Kronch Wrangler\n{1G}\nCreature - Human Warrior\nWAR,C\nTrample\rWhenever a creature you control with power 4 or greater enters, put a +1/+1 counter on this creature.\n2/1"
+    IDS_STRING41402         "Mowu, Loyal Companion\n{3G}\nLegendary Creature - Dog\nWAR,U\nVigilance, trample\rIf one or more +1/+1 counters would be put on Mowu, that many plus one +1/+1 counters are put on it instead.\n3/3"
+    IDS_STRING41403         "Paradise Druid\n{1G}\nCreature - Elf Druid\nWAR,U\nThis creature has hexproof as long as it's untapped. (It can't be the target of spells or abilities your opponents control.)\r{T}: Add one mana of any color.\n2/1"
+    IDS_STRING41404         "Pollenbright Druid\n{1G}\nCreature - Elf Druid\nWAR,C\nWhen this creature enters, choose one -\r* Put a +1/+1 counter on target creature.\r* Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n1/1"
+    IDS_STRING41405         "Primordial Wurm\n{4GG}\nCreature - Wurm\nWAR,C\n\n7/6"
+    IDS_STRING41406         "Snarespinner\n{1G}\nCreature - Spider\nWAR,C\nReach\rWhenever this creature blocks a creature with flying, this creature gets +2/+0 until end of turn.\n1/3"
+    IDS_STRING41407         "Thundering Ceratok\n{4G}\nCreature - Rhino\nWAR,C\nTrample\rWhen this creature enters, other creatures you control gain trample until end of turn.\n4/5"
+    IDS_STRING41408         "Vivien's Grizzly\n{2G}\nCreature - Bear Spirit\nWAR,C\n{3}{G}: Look at the top card of your library. If it's a creature or planeswalker card, you may reveal it and put it into your hand. If you don't put the card into your hand, put it on the bottom of your library.\n2/3"
+    IDS_STRING41409         "Wardscale Crocodile\n{4G}\nCreature - Crocodile\nWAR,C\nHexproof (This creature can't be the target of spells or abilities your opponents control.)\n5/3"
+    IDS_STRING41410         "Ahn-Crop Invader\n{2R}\nCreature - Zombie Minotaur Warrior\nWAR,C\nDuring your turn, this creature has first strike.\r{1}, Sacrifice another creature: This creature gets +2/+0 until end of turn.\n2/2"
+    IDS_STRING41411         "Burning Prophet\n{1R}\nCreature - Human Wizard\nWAR,C\nWhenever you cast a noncreature spell, this creature gets +1/+0 until end of turn, then scry 1.\n1/3"
+    IDS_STRING41412         "Chainwhip Cyclops\n{4R}\nCreature - Cyclops Warrior\nWAR,C\n{3}{R}: Target creature can't block this turn.\n4/4"
+    IDS_STRING41413         "Cyclops Electromancer\n{4R}\nCreature - Cyclops Wizard\nWAR,U\nWhen this creature enters, it deals X damage to target creature an opponent controls, where X is the number of instant and sorcery cards in your graveyard.\n4/2"
+    IDS_STRING41414         "Devouring Hellion\n{2R}\nCreature - Hellion\nWAR,U\nAs this creature enters, you may sacrifice any number of creatures and/or planeswalkers. If you do, it enters with twice that many +1/+1 counters on it.\n2/2"
+    IDS_STRING41415         "Dreadhorde Twins\n{3R}\nCreature - Zombie Jackal Warrior\nWAR,U\nWhen this creature enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\rZombie tokens you control have trample.\n2/2"
+    IDS_STRING41416         "Goblin Assailant\n{1R}\nCreature - Goblin Warrior\nWAR,C\n\n2/2"
+    IDS_STRING41417         "Goblin Assault Team\n{3R}\nCreature - Goblin Warrior\nWAR,C\nHaste\rWhen this creature dies, put a +1/+1 counter on target creature you control.\n4/1"
+    IDS_STRING41418         "Grim Initiate\n{R}\nCreature - Zombie Warrior\nWAR,C\nFirst strike\rWhen this creature dies, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\n1/1"
+    IDS_STRING41419         "Ilharg, the Raze-Boar\n{3RR}\nLegendary Creature - Boar God\nWAR,MR\nTrample\rWhenever Ilharg attacks, you may put a creature card from your hand onto the battlefield tapped and attacking. Return that creature to your hand at the beginning of the next end step.\rWhen Ilharg dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.\n6/6"
+    IDS_STRING41420         "Invading Manticore\n{5R}\nCreature - Zombie Manticore\nWAR,C\nWhen this creature enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\n4/5"
+    IDS_STRING41421         "Krenko, Tin Street Kingpin\n{2R}\nLegendary Creature - Goblin\nWAR,R\nWhenever Krenko attacks, put a +1/+1 counter on it, then create a number of 1/1 red Goblin creature tokens equal to Krenko's power.\n1/2"
+    IDS_STRING41422         "Neheb, Dreadhorde Champion\n{2RR}\nLegendary Creature - Zombie Minotaur Warrior\nWAR,R\nTrample\rWhenever Neheb deals combat damage to a player or planeswalker, you may discard any number of cards. If you do, draw that many cards and add that much {R}. Until end of turn, you don't lose this mana as steps and phases end.\n5/4"
+    IDS_STRING41423         "Raging Kronch\n{2R}\nCreature - Beast\nWAR,C\nThis creature can't attack alone.\n4/3"
+    IDS_STRING41424         "Spellgorger Weird\n{2R}\nCreature - Weird\nWAR,C\nWhenever you cast a noncreature spell, put a +1/+1 counter on this creature.\n2/2"
+    IDS_STRING41425         "Tibalt's Rager\n{1R}\nCreature - Devil\nWAR,U\nWhen this creature dies, it deals 1 damage to any target.\r{1}{R}: This creature gets +2/+0 until end of turn.\n1/2"
+    IDS_STRING41426         "Turret Ogre\n{3R}\nCreature - Ogre Warrior\nWAR,C\nReach (This creature can block creatures with flying.)\rWhen this creature enters, if you control another creature with power 4 or greater, this creature deals 2 damage to each opponent.\n4/3"
+    IDS_STRING41427         "Banehound\n{B}\nCreature - Nightmare Dog\nWAR,C\nLifelink, haste\n1/1"
+    IDS_STRING41428         "Charity Extractor\n{3B}\nCreature - Human Knight\nWAR,C\nLifelink\n1/5"
+    IDS_STRING41429         "Dreadmalkin\n{B}\nCreature - Zombie Cat\nWAR,U\nMenace (This creature can't be blocked except by two or more creatures.)\r{2}{B}, Sacrifice another creature or planeswalker: Put two +1/+1 counters on this creature.\n1/1"
+    IDS_STRING41430         "Duskmantle Operative\n{1B}\nCreature - Human Rogue\nWAR,C\nThis creature can't be blocked by creatures with power 4 or greater.\n2/2"
+    IDS_STRING41431         "Eternal Taskmaster\n{1B}\nCreature - Zombie\nWAR,U\nThis creature enters tapped.\rWhenever this creature attacks, you may pay {2}{B}. If you do, return target creature card from your graveyard to your hand.\n2/3"
+    IDS_STRING41432         "God-Eternal Bontu\n{3BB}\nLegendary Creature - Zombie God\nWAR,MR\nMenace\rWhen God-Eternal Bontu enters, sacrifice any number of other permanents, then draw that many cards.\rWhen God-Eternal Bontu dies or is put into exile from the battlefield, you may put her into her owner's library third from the top.\n5/6"
+    IDS_STRING41433         "Herald of the Dreadhorde\n{3B}\nCreature - Zombie Warrior\nWAR,C\nWhen this creature dies, amass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\n3/2"
+    IDS_STRING41434         "Lazotep Behemoth\n{4B}\nCreature - Zombie Hippo\nWAR,C\n\n5/4"
+    IDS_STRING41435         "Lazotep Reaver\n{1B}\nCreature - Zombie Beast\nWAR,C\nWhen this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\n1/2"
+    IDS_STRING41436         "Massacre Girl\n{3BB}\nLegendary Creature - Human Assassin\nWAR,R\nMenace\rWhen Massacre Girl enters, each other creature gets -1/-1 until end of turn. Whenever a creature dies this turn, each creature other than Massacre Girl gets -1/-1 until end of turn.\n4/4"
+    IDS_STRING41437         "Shriekdiver\n{2B}\nCreature - Zombie Bird Warrior\nWAR,C\nFlying\r{1}: This creature gains haste until end of turn.\n2/1"
+    IDS_STRING41438         "Spark Reaper\n{2B}\nCreature - Zombie\nWAR,C\n{3}, Sacrifice a creature or planeswalker: You gain 1 life and draw a card.\n2/3"
+    IDS_STRING41439         "Tithebearer Giant\n{5B}\nCreature - Giant Warrior\nWAR,C\nWhen this creature enters, you draw a card and you lose 1 life.\n4/5"
+    IDS_STRING41440         "Vampire Opportunist\n{1B}\nCreature - Vampire\nWAR,C\n{6}{B}: Each opponent loses 2 life and you gain 2 life.\n2/1"
+    IDS_STRING41441         "Vizier of the Scorpion\n{2B}\nCreature - Zombie Wizard\nWAR,U\nWhen this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\rZombie tokens you control have deathtouch.\n1/1"
+    IDS_STRING41442         "Vraska's Finisher\n{2B}\nCreature - Gorgon Assassin\nWAR,C\nWhen this creature enters, destroy target creature or planeswalker an opponent controls that was dealt damage this turn.\n3/2"
+    IDS_STRING41443         "Ashiok's Skulker\n{4U}\nCreature - Nightmare\nWAR,C\n{3}{U}: This creature can't be blocked this turn.\n3/5"
+    IDS_STRING41444         "Augur of Bolas\n{1U}\nCreature - Merfolk Wizard\nWAR,U\nWhen this creature enters, look at the top three cards of your library. You may reveal an instant or sorcery card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\n1/3"
+    IDS_STRING41445         "Aven Eternal\n{2U}\nCreature - Zombie Bird Warrior\nWAR,C\nFlying\rWhen this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\n2/2"
+    IDS_STRING41446         "Erratic Visionary\n{1U}\nCreature - Human Wizard\nWAR,C\n{1}{U}, {T}: Draw a card, then discard a card.\n1/3"
+    IDS_STRING41447         "Eternal Skylord\n{4U}\nCreature - Zombie Wizard\nWAR,U\nWhen this creature enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\rZombie tokens you control have flying.\n3/3"
+    IDS_STRING41448         "Fblthp, the Lost\n{1U}\nLegendary Creature - Homunculus\nWAR,R\nWhen Fblthp enters, draw a card. If it entered from your library or was cast from your library, draw two cards instead.\rWhen Fblthp becomes the target of a spell, shuffle Fblthp into its owner's library.\n1/1"
+    IDS_STRING41449         "Flux Channeler\n{2U}\nCreature - Human Wizard\nWAR,U\nWhenever you cast a noncreature spell, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n2/2"
+    IDS_STRING41450         "God-Eternal Kefnet\n{2UU}\nLegendary Creature - Zombie God\nWAR,MR\nFlying\rYou may reveal the first card you draw each turn as you draw it. Whenever you reveal an instant or sorcery card this way, copy that card and you may cast the copy. That copy costs {2} less to cast.\rWhen God-Eternal Kefnet dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.\n4/5"
+    IDS_STRING41451         "Guildpact Informant\n{2U}\nCreature - Faerie Rogue\nWAR,C\nFlying\rWhenever this creature deals combat damage to a player or planeswalker, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n1/1"
+    IDS_STRING41452         "Jace's Projection\n{2UU}\nCreature - Wizard Illusion\nWAR,U\nWhenever you draw a card, put a +1/+1 counter on this creature.\r{3}{U}: Put a loyalty counter on target Jace planeswalker.\n2/2"
+    IDS_STRING41453         "Kiora's Dambreaker\n{5U}\nCreature - Leviathan\nWAR,C\nWhen this creature enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n5/6"
+    IDS_STRING41454         "Naga Eternal\n{2U}\nCreature - Zombie Snake\nWAR,C\n\n3/2"
+    IDS_STRING41455         "Rescuer Sphinx\n{2UU}\nCreature - Sphinx\nWAR,U\nFlying\rAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +1/+1 counter on it.\n3/2"
+    IDS_STRING41456         "Sky Theater Strix\n{1U}\nCreature - Bird\nWAR,C\nFlying\rWhenever you cast a noncreature spell, this creature gets +1/+0 until end of turn.\n1/2"
+    IDS_STRING41457         "Spellkeeper Weird\n{2U}\nCreature - Weird\nWAR,C\n{2}, {T}, Sacrifice this creature: Return target instant or sorcery card from your graveyard to your hand.\n1/4"
+    IDS_STRING41458         "Thunder Drake\n{3U}\nCreature - Elemental Drake\nWAR,C\nFlying\rWhenever you cast your second spell each turn, put a +1/+1 counter on this creature.\n2/3"
+    IDS_STRING41459         "Wall of Runes\n{U}\nCreature - Wall\nWAR,C\nDefender (This creature can't attack.)\rWhen this creature enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)\n0/4"
+    IDS_STRING41460         "Bioessence Hydra\n{3GU}\nCreature - Hydra Mutant\nWAR,R\nTrample\rThis creature enters with a +1/+1 counter on it for each loyalty counter on planeswalkers you control.\rWhenever one or more loyalty counters are put on planeswalkers you control, put that many +1/+1 counters on this creature.\n4/4"
+    IDS_STRING41461         "Cruel Celebrant\n{WB}\nCreature - Vampire\nWAR,U\nWhenever this creature or another creature or planeswalker you control dies, each opponent loses 1 life and you gain 1 life.\n1/2"
+    IDS_STRING41462         "Dreadhorde Butcher\n{BR}\nCreature - Zombie Warrior\nWAR,R\nHaste\rWhenever this creature deals combat damage to a player or planeswalker, put a +1/+1 counter on this creature.\rWhen this creature dies, it deals damage equal to its power to any target.\n1/1"
+    IDS_STRING41463         "Elite Guardmage\n{2WU}\nCreature - Human Wizard\nWAR,U\nFlying\rWhen this creature enters, you gain 3 life and draw a card.\n2/3"
+    IDS_STRING41464         "Gleaming Overseer\n{1UB}\nCreature - Zombie Wizard\nWAR,U\nWhen this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\rZombie tokens you control have hexproof and menace.\n1/4"
+    IDS_STRING41465         "Huatli's Raptor\n{GW}\nCreature - Dinosaur\nWAR,U\nVigilance\rWhen this creature enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n2/3"
+    IDS_STRING41466         "Iron Bully\n{3}\nArtifact Creature - Golem\nWAR,C\nMenace (This creature can't be blocked except by two or more creatures.)\rWhen this creature enters, put a +1/+1 counter on target creature.\n1/1"
+    IDS_STRING41467         "Leyline Prowler\n{1BG}\nCreature - Nightmare Beast\nWAR,U\nDeathtouch, lifelink\r{T}: Add one mana of any color.\n2/3"
+    IDS_STRING41468         "Living Twister\n{RRG}\nCreature - Elemental\nWAR,R\n{1}{R}, Discard a land card: This creature deals 2 damage to any target.\r{G}: Return a tapped land you control to its owner's hand.\n2/5"
+    IDS_STRING41469         "Mayhem Devil\n{1BR}\nCreature - Devil\nWAR,U\nWhenever a player sacrifices a permanent, this creature deals 1 damage to any target.\n3/3"
+    IDS_STRING41470         "Merfolk Skydiver\n{GU}\nCreature - Merfolk Mutant\nWAR,U\nFlying\rWhen this creature enters, put a +1/+1 counter on target creature you control.\r{3}{G}{U}: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n1/1"
+    IDS_STRING41471         "Niv-Mizzet Reborn\n{WUBRG}\nLegendary Creature - Dragon Avatar\nWAR,MR\nFlying\rWhen Niv-Mizzet enters, reveal the top ten cards of your library. For each color pair, choose a card that's exactly those colors from among them. Put the chosen cards into your hand and the rest on the bottom of your library in a random order.\n6/6"
+    IDS_STRING41472         "Prismite\n{2}\nArtifact Creature - Golem\nWAR,C\n{2}: Add one mana of any color.\n2/1"
+    IDS_STRING41473         "Roalesk, Apex Hybrid\n{2GGU}\nLegendary Creature - Human Mutant\nWAR,MR\nFlying, trample\rWhen Roalesk enters, put two +1/+1 counters on another target creature you control.\rWhen Roalesk dies, proliferate, then proliferate again. (Choose any number of permanents and/or players, then give each another counter of each kind already there. Then do it again.)\n4/5"
+    IDS_STRING41474         "Rubblebelt Rioters\n{1RG}\nCreature - Human Berserker\nWAR,U\nHaste\rWhenever this creature attacks, it gets +X/+0 until end of turn, where X is the greatest power among creatures you control.\n0/4"
+    IDS_STRING41475         "Saheeli's Silverwing\n{4}\nArtifact Creature - Drake\nWAR,C\nFlying\rWhen this creature enters, look at the top card of target opponent's library.\n2/3"
+    IDS_STRING41476         "Soul Diviner\n{UB}\nCreature - Zombie Wizard\nWAR,R\n{T}, Remove a counter from an artifact, creature, land, or planeswalker you control: Draw a card.\n2/3"
+    IDS_STRING41477         "Storrev, Devkarin Lich\n{1BBG}\nLegendary Creature - Zombie Elf Wizard\nWAR,R\nTrample\rWhenever Storrev deals combat damage to a player or planeswalker, return to your hand target creature or planeswalker card in your graveyard that wasn't put there this combat.\n5/4"
+    IDS_STRING41478         "Tenth District Legionnaire\n{RW}\nCreature - Human Soldier\nWAR,U\nHaste\rWhenever you cast a spell that targets this creature, put a +1/+1 counter on this creature, then scry 1.\n2/2"
+    IDS_STRING41479         "Tolsimir, Friend to Wolves\n{2GGW}\nLegendary Creature - Elf Scout\nWAR,R\nWhen Tolsimir enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.\rWhenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.\n3/3"
+    IDS_STRING41480         "Dreadhorde Invasion\n{1B}\nEnchantment\nWAR,R\nAt the beginning of your upkeep, you lose 1 life and amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)\rWhenever a Zombie token you control with power 6 or greater attacks, it gains lifelink until end of turn."
+    IDS_STRING41481         "Kaya's Ghostform\n{B}\nEnchantment - Aura\nWAR,C\nEnchant creature or planeswalker you control\rWhen enchanted permanent dies or is put into exile, return that card to the battlefield under your control."
+    IDS_STRING41482         "New Horizons\n{2G}\nEnchantment - Aura\nWAR,C\nEnchant land\rWhen this Aura enters, put a +1/+1 counter on target creature you control.\rEnchanted land has ""{T}: Add two mana of any one color."""
+    IDS_STRING41483         "Oath of Kaya\n{1WB}\nLegendary Enchantment\nWAR,R\nWhen Oath of Kaya enters, it deals 3 damage to any target and you gain 3 life.\rWhenever an opponent attacks a planeswalker you control with one or more creatures, Oath of Kaya deals 2 damage to that player and you gain 2 life."
+    IDS_STRING41484         "Prison Realm\n{2W}\nEnchantment\nWAR,U\nWhen this enchantment enters, exile target creature or planeswalker an opponent controls until this enchantment leaves the battlefield.\rWhen this enchantment enters, scry 1."
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "..\MagicCore\MagicCore.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

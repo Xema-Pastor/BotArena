@@ -954,3 +954,81 @@ class CElementalAXToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CCitizenAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CCitizenAToken);
+};
+
+//____________________________________________________________________________
+//
+
+//____________________________________________________________________________
+//
+class CAnimatedGideonBlackbladeToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAnimatedGideonBlackbladeToken);
+};
+
+//____________________________________________________________________________
+//
+class CAnimatedGideonTheOathswornToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAnimatedGideonTheOathswornToken);
+};
+
+//____________________________________________________________________________
+//
+class CDragonAFToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CDragonAFToken);
+};
+
+//____________________________________________________________________________
+//
+class CElementalAYToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalAYToken);
+};
+
+//____________________________________________________________________________
+//
+
+//____________________________________________________________________________
+//
+class CMizziumTankVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CMizziumTankVehicleToken);
+};
+
+//____________________________________________________________________________
+//
+class CParhelionIIVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CParhelionIIVehicleToken);
+
+protected:
+	bool BeforeAngels(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//
+class CSilentSubmersibleVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSilentSubmersibleVehicleToken);
+
+protected:
+	bool BeforeDraw(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//
+
+//____________________________________________________________________________
+//
+class CVituGhaziAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CVituGhaziAToken);
+};
+
+//____________________________________________________________________________
+//

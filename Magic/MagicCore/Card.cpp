@@ -2531,7 +2531,7 @@ void CCard::OnISAADamageDealt(CCard* pFromCard, CPlayer* pToPlayer, CCreatureCar
 		CPlaneswalkerCard* pWalker = (CPlaneswalkerCard*)this;
 		
 		if (((pIsAlsoA->GetController()->GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon) && pWalker->GetPrintedCardName() == "Gideon Jura") ||
-			(pIsAlsoA->GetController()->GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon2) && (pWalker->GetPrintedCardName() == "Gideon, Champion of Justice" || pWalker->GetPrintedCardName() == "Gideon, Ally of Zendikar" || pWalker->GetPrintedCardName() == "Gideon of the Trials" || pWalker->GetPrintedCardName() == "Gideon, Martial Paragon")))
+			(pIsAlsoA->GetController()->GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon2) && (pWalker->GetPrintedCardName() == "Gideon, Champion of Justice" || pWalker->GetPrintedCardName() == "Gideon, Ally of Zendikar" || pWalker->GetPrintedCardName() == "Gideon of the Trials" || pWalker->GetPrintedCardName() == "Gideon, Martial Paragon" || pWalker->GetPrintedCardName() == "Gideon Blackblade" || pWalker->GetPrintedCardName() == "Gideon, the Oathsworn")))
 			&& damage.m_Preventable == PreventableType::Preventable)
 			return;
 		else

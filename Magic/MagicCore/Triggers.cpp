@@ -806,6 +806,11 @@ CString CWhenSelfDamageDealt::GetTriggeredHint(CCreatureCard*, Damage) const
 	return m_pCard->GetCardName();
 }
 
+CString CWhenSelfDamageDealt::GetTriggeredHint(CPlaneswalkerCard*, Damage) const
+{
+	return m_pCard->GetCardName();
+}
+
 CString CWhenSelfDamageDealt::GetTriggeredHint(Damage) const
 {
 	return m_pCard->GetCardName();

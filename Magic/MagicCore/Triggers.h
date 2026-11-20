@@ -498,6 +498,7 @@ public:
 
 	CString GetTriggeredHint(CPlayer*, Damage) const;
 	CString GetTriggeredHint(CCreatureCard*, Damage) const;
+	CString GetTriggeredHint(CPlaneswalkerCard*, Damage) const;
 	CString GetTriggeredHint(Damage) const;
 
 private:

@@ -917,3 +917,78 @@ protected:
 		CCreatureCard* pCreature1, CCreatureCard* pCreature2, int n1, int n2) const;
 	bool BeforeSkipUntap(TriggeredAbility::TriggeredActionType* pAction);
 };
+
+//____________________________________________________________________________
+//
+class CZombieArmyAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CZombieArmyAToken);
+};
+
+//____________________________________________________________________________
+//
+class CWizardAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CWizardAToken);
+};
+
+//____________________________________________________________________________
+//
+class CWallCToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CWallCToken);
+};
+
+//____________________________________________________________________________
+//
+class CAssassinAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAssassinAToken);
+
+protected:
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfDamageDealt,
+						   CWhenSelfDamageDealt::PlaneswalkerEventCallback,
+						   &CWhenSelfDamageDealt::SetPlaneswalkerEventCallback > TriggeredAbility;
+
+	bool SetDamageContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CPlaneswalkerCard* pPlaneswalker, Damage damage) const;
+	bool BeforeDestroy(TriggeredAbility::TriggeredActionType* pAction);
+};
+
+//____________________________________________________________________________
+//
+class CSpiritTToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSpiritTToken);
+};
+
+//____________________________________________________________________________
+//
+
+//____________________________________________________________________________
+//
+class CSoldierUToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSoldierUToken);
+};
+
+//____________________________________________________________________________
+//
+class CCitizenBToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CCitizenBToken);
+};
+
+//____________________________________________________________________________
+//
+class CZombieWarriorAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CZombieWarriorAToken);
+};
+
+//____________________________________________________________________________
+//
+class CVojaFriendtoElvesToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CVojaFriendtoElvesToken);
+};

@@ -860,7 +860,7 @@ void CPlayer::OnPlaneswalkerSelected(const std::vector<SelectionEntry>& selectio
 			// Planeswalker
 
 			if (((GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon) &&  ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon Jura") ||
-				(GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon2) &&  (((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Champion of Justice" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Ally of Zendikar" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon of the Trials" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Martial Paragon")))
+				(GetPlayerEffect().HasPlayerEffect(PlayerEffectType::PreventDamagetoGideon2) &&  (((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Champion of Justice" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Ally of Zendikar" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon of the Trials" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, Martial Paragon" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon Blackblade" || ((CPlaneswalkerCard*)(it->dwContext))->GetPrintedCardName() == "Gideon, the Oathsworn")))
 				&& damage.m_Preventable == PreventableType::Preventable)
 				return;
 

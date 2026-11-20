@@ -144,6 +144,15 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CWarriorAAToken);
 		DEFINE_TOKEN(CWarriorABToken);
 		DEFINE_TOKEN(CWolfAAToken);
+		DEFINE_TOKEN(CCitizenAToken);
+		DEFINE_TOKEN(CAnimatedGideonBlackbladeToken);
+		DEFINE_TOKEN(CAnimatedGideonTheOathswornToken);
+		DEFINE_TOKEN(CDragonAFToken);
+		DEFINE_TOKEN(CElementalAYToken);
+		DEFINE_TOKEN(CMizziumTankVehicleToken);
+		DEFINE_TOKEN(CParhelionIIVehicleToken);
+		DEFINE_TOKEN(CSilentSubmersibleVehicleToken);
+		DEFINE_TOKEN(CVituGhaziAToken);
 						
 	} while (false);
 
@@ -2199,6 +2208,185 @@ CElementalAXToken::CElementalAXToken(CGame* pGame, UINT nID)
 	GetCardKeyword()->AddIndestructible(FALSE);
 
 // Animation of DOM Sylvan Awakening (the lands stay lands)
+}
+
+//____________________________________________________________________________
+//
+CCitizenAToken::CCitizenAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Citizen"), CardType::Creature,
+		CREATURE_TYPE(Citizen), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	GetCreatureKeyword()->AddVigilance(FALSE);
+// Animation of WAR Mobilized District (colorless)
+}
+
+//____________________________________________________________________________
+//
+//____________________________________________________________________________
+//
+CAnimatedGideonBlackbladeToken::CAnimatedGideonBlackbladeToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Animated Gideon Blackblade"), CardType::Creature,
+		CREATURE_TYPE2(Human, Soldier), nID,
+		_T("1") WHITE_MANA_TEXT WHITE_MANA_TEXT,
+		Power(4), Life(4))
+{
+	Life prevent(PreventionType::PreventAllDamage);
+	CDamagePreventionEntry entry(prevent);
+	entry.SetOneTurnOnly(FALSE);
+
+	GetDamagePrevention().AddDamagePreventionEntry(entry);
+	GetCardKeyword()->AddIndestructible(FALSE);
+
+// Animation of WAR Gideon Blackblade during your turn (as Animated Gideon, Martial Paragon)
+}
+
+//____________________________________________________________________________
+//
+CAnimatedGideonTheOathswornToken::CAnimatedGideonTheOathswornToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Animated Gideon, the Oathsworn"), CardType::Creature,
+		CREATURE_TYPE(Soldier), nID,
+		_T("4") WHITE_MANA_TEXT WHITE_MANA_TEXT,
+		Power(5), Life(5))
+{
+	Life prevent(PreventionType::PreventAllDamage);
+	CDamagePreventionEntry entry(prevent);
+	entry.SetOneTurnOnly(FALSE);
+
+	GetDamagePrevention().AddDamagePreventionEntry(entry);
+
+// Animation of WAR Gideon, the Oathsworn (as Animated Gideon, Martial Paragon)
+}
+
+//____________________________________________________________________________
+//
+CDragonAFToken::CDragonAFToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Dragon"), CardType::Creature,
+		CREATURE_TYPE(Dragon), nID,
+		RED_MANA_TEXT,
+		Power(4), Life(4))
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+// Animation of the planeswalkers of WAR Sarkhan the Masterless (+1)
+}
+
+//____________________________________________________________________________
+//
+CElementalAYToken::CElementalAYToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(0), Life(0))
+{
+	GetCreatureKeyword()->AddVigilance(FALSE);
+	GetCreatureKeyword()->AddHaste(FALSE);
+// Animation of the lands of WAR Nissa, Who Shakes the World (+1)
+}
+
+//____________________________________________________________________________
+//
+//____________________________________________________________________________
+//
+CMizziumTankVehicleToken::CMizziumTankVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Mizzium Tank"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(3), Life(2))
+{
+	GetCreatureKeyword()->AddTrample(FALSE);
+// Used by WAR Mizzium Tank (the creature it becomes, see CCrewSupport)
+}
+
+//____________________________________________________________________________
+//
+CParhelionIIVehicleToken::CParhelionIIVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Parhelion II"), CardType::_ArtifactCreature | CardType::Legendary,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(5), Life(5))
+{
+	GetCreatureKeyword()->AddFlying(FALSE);
+	GetCreatureKeyword()->AddFirstStrike(FALSE);
+	GetCreatureKeyword()->AddVigilance(FALSE);
+
+	// Whenever Parhelion II attacks, create two 4/4 white Angel creature tokens with flying and vigilance that are
+	// attacking. (Partial: a token can't enter attacking)
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfAttackedBlocked,
+						   CWhenSelfAttackedBlocked::AttackEventCallback,
+						   &CWhenSelfAttackedBlocked::SetAttackingEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CParhelionIIVehicleToken::BeforeAngels));
+	AddAbility(cpAbility.GetPointer());
+// Used by WAR Parhelion II (the creature it becomes, see CCrewSupport)
+}
+
+bool CParhelionIIVehicleToken::BeforeAngels(CAbilityAction* pAction)
+{
+	CTokenCreationModifier(GetGame(), _T("Angel (M)"), 55117, 2).ApplyTo(pAction->GetController());
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CSilentSubmersibleVehicleToken::CSilentSubmersibleVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Silent Submersible"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(2), Life(3))
+{
+	// Whenever this Vehicle deals combat damage to a player or planeswalker, draw a card.
+	{
+		typedef
+			TTriggeredAbility< CTriggeredAbility<>, CWhenSelfDamageDealt,
+							   CWhenSelfDamageDealt::PlayerEventCallback,
+							   &CWhenSelfDamageDealt::SetPlayerEventCallback > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->GetTrigger().SetCombatDamageOnly();
+		cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CSilentSubmersibleVehicleToken::BeforeDraw));
+		AddAbility(cpAbility.GetPointer());
+	}
+	{
+		typedef
+			TTriggeredAbility< CTriggeredAbility<>, CWhenSelfDamageDealt,
+							   CWhenSelfDamageDealt::PlaneswalkerEventCallback,
+							   &CWhenSelfDamageDealt::SetPlaneswalkerEventCallback > TriggeredAbility;
+
+		counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+		cpAbility->GetTrigger().SetCombatDamageOnly();
+		cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CSilentSubmersibleVehicleToken::BeforeDraw));
+		AddAbility(cpAbility.GetPointer());
+	}
+// Used by WAR Silent Submersible (the creature it becomes, see CCrewSupport)
+}
+
+bool CSilentSubmersibleVehicleToken::BeforeDraw(CAbilityAction* pAction)
+{
+	CDrawCardModifier(GetGame(), MinimumValue(1), MaximumValue(1)).ApplyTo(pAction->GetController());
+	return true;
+}
+
+//____________________________________________________________________________
+//
+//____________________________________________________________________________
+//
+CVituGhaziAToken::CVituGhaziAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Vitu-Ghazi"), CardType::Creature | CardType::Legendary,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(0), Life(0))
+{
+	GetCreatureKeyword()->AddHaste(FALSE);
+// Animation of the land of WAR Awakening of Vitu-Ghazi
 }
 
 //____________________________________________________________________________

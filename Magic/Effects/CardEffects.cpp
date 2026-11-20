@@ -186,6 +186,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CZombieBoaBlackEffectToken);
 		DEFINE_TOKEN(CZombieBoaRedEffectToken);
 		DEFINE_TOKEN(CZombieBoaGreenEffectToken);
+		DEFINE_TOKEN(CNissaWhoShakesTheWorldEmblemToken);
 
 		
 	} while (false);
@@ -12101,6 +12102,24 @@ bool CDomriChaosBringerEmblemToken::BeforeToken(CAbilityAction* pAction)
 	CTokenCreationModifier pModifier = CTokenCreationModifier(GetGame(), _T("Beast (S)"), 55122, 1);
 	pModifier.ApplyTo(GetController());
 	return true;
+}
+
+//____________________________________________________________________________
+//
+//____________________________________________________________________________
+//
+CNissaWhoShakesTheWorldEmblemToken::CNissaWhoShakesTheWorldEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Nissa, Who Shakes the World Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Lands you control have indestructible.
+	counted_ptr<CPlayerEffectEnchantment> cpAbility(
+		::CreateObject<CPlayerEffectEnchantment>(this,
+			PlayerEffectType::IndestructibleLands));
+	cpAbility->SetAffectControllerOnly();
+	cpAbility->SetEnchantmentActiveIn(ZoneId::_Effects);
+	AddAbility(cpAbility.GetPointer());
 }
 
 //____________________________________________________________________________
