@@ -1540,6 +1540,7 @@ struct CORE_EXPORT SingleCreatureType
 		Trilobite,
 		Ranger,
 		Egg,
+		Shark,
 
 		_SingleTypeCount,
 	};
@@ -1600,6 +1601,7 @@ struct CORE_EXPORT PlaneswalkerType
 		Jaya,
 		Teferi,
 		Vivien,
+		Kaya,
 
 		_SubtypeCount,
 	};

@@ -130,6 +130,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CVivienReidEmblemToken);
 		DEFINE_TOKEN(CRalIzzetViceroyEmblemToken);
 		DEFINE_TOKEN(CVraskaGolgariQueenEmblemToken);
+		DEFINE_TOKEN(CDomriChaosBringerEmblemToken);
 		DEFINE_TOKEN(COtherworldlyJourneyEffectToken);
 		DEFINE_TOKEN(COvermasterEffectToken);
 		DEFINE_TOKEN(CPactofNegationEffectToken);
@@ -12067,6 +12068,38 @@ bool CVraskaGolgariQueenEmblemToken::BeforeLose(TriggeredAbility::TriggeredActio
 	CPlayer* pPlayer = (CPlayer*)pAction->GetTriggerContext().nValue1;
 	if (pPlayer)
 		pPlayer->SetLostByOtherReasons();
+	return true;
+}
+
+//____________________________________________________________________________
+//
+CDomriChaosBringerEmblemToken::CDomriChaosBringerEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Domri, Chaos Bringer Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// At the beginning of each end step, create a 4/4 red and green Beast creature token with trample.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::EndStep, FALSE));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CDomriChaosBringerEmblemToken::SetTriggerContext));
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CDomriChaosBringerEmblemToken::BeforeToken));
+	AddAbility(cpAbility.GetPointer());
+}
+
+bool CDomriChaosBringerEmblemToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const
+{
+	return GetZone()->GetZoneId() == ZoneId::_Effects;
+}
+
+bool CDomriChaosBringerEmblemToken::BeforeToken(CAbilityAction* pAction)
+{
+	CTokenCreationModifier pModifier = CTokenCreationModifier(GetGame(), _T("Beast (S)"), 55122, 1);
+	pModifier.ApplyTo(GetController());
 	return true;
 }
 

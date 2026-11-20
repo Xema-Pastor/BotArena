@@ -2213,3 +2213,14 @@ protected:
 
 //____________________________________________________________________________
 //
+class CDomriChaosBringerEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CDomriChaosBringerEmblemToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const;
+	bool BeforeToken(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//

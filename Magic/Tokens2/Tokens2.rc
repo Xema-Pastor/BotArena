@@ -222,6 +222,12 @@ BEGIN
     IDS_STRING55119         "Elf Knight (A)\n{GW}\nCreature - Elf Knight\nToken\nVigilance\n2/2"
     IDS_STRING55120         "Bird Illusion (A)\n{U}\nCreature - Bird Illusion\nToken\nFlying\n1/1"
     IDS_STRING55121         "Insect (L)\n{BG}\nCreature - Insect\nToken\n\n1/1"
+    IDS_STRING55122         "Beast (S)\n{RG}\nCreature - Beast\nToken\nTrample\n4/4"
+    IDS_STRING55123         "Frog Lizard (A)\n{G}\nCreature - Frog Lizard\nToken\n\n3/3"
+    IDS_STRING55124         "Sphinx (B)\n{WU}\nCreature - Sphinx\nToken\nFlying, vigilance\n4/4"
+    IDS_STRING55125         "Centaur (E)\n{G}\nCreature - Centaur\nToken\n\n3/3"
+    IDS_STRING55126         "Ooze (G)\n{G}\nCreature - Ooze\nToken\n\n2/2"
+    IDS_STRING55127         "Illusion (D)\n{U}\nCreature - Illusion\nToken\nWhenever this token blocks a creature, that creature doesn't untap during its controller's next untap step.\n0/2"
 END
 
 #endif    // English (United States) resources

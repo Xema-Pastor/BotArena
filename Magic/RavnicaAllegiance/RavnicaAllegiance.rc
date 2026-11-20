@@ -1,0 +1,362 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#include ""..\\MagicCore\\MagicCore.rc2""\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MODULE              ICON                    "RavnicaAllegiance.ico"
+IDI_LARGE_MODULE        ICON                    "RavnicaAllegianceLarge.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_EXPANSION           "Ravnica Allegiance"
+    IDS_EXPANSION_ABBREV    "RNA"
+    IDS_FIRST_CARD          "40920"
+    IDS_TOTAL_CARD          "298"
+    IDS_WHITE_BORDER        "0"
+    IDS_MODULE_ICON_ID      "41218"
+    IDS_MODULE_LARGE_ICON_ID "41219"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ALT_IMG_METHOD      "0"
+    IDS_RELEASE_DATE        "25-01-2019"
+    IDS_MWS_FOLDER          "MWS\\RNA\\"
+    IDS_PRODUCT_LIST        """Ravnica Allegiance Starter Box"":R-3:U-10:C-32:BL-30,""Ravnica Allegiance Booster Pack"":R-1:U-3:C-11"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING40920         "Azorius Guildgate\n\nLand - Gate\nRNA,C\nThis land enters tapped.\r{T}: Add {W} or {U}."
+    IDS_STRING40921         "Blood Crypt\n\nLand - Swamp Mountain\nRNA,R\n({T}: Add {B} or {R}.)\rAs this land enters, you may pay 2 life. If you don't, it enters tapped."
+    IDS_STRING40922         "Breeding Pool\n\nLand - Forest Island\nRNA,R\n({T}: Add {G} or {U}.)\rAs this land enters, you may pay 2 life. If you don't, it enters tapped."
+    IDS_STRING40923         "Gateway Plaza\n\nLand - Gate\nRNA,C\nThis land enters tapped.\rWhen this land enters, sacrifice it unless you pay {1}.\r{T}: Add one mana of any color."
+    IDS_STRING40924         "Godless Shrine\n\nLand - Plains Swamp\nRNA,R\n({T}: Add {W} or {B}.)\rAs this land enters, you may pay 2 life. If you don't, it enters tapped."
+    IDS_STRING40925         "Gruul Guildgate\n\nLand - Gate\nRNA,C\nThis land enters tapped.\r{T}: Add {R} or {G}."
+    IDS_STRING40926         "Hallowed Fountain\n\nLand - Plains Island\nRNA,R\n({T}: Add {W} or {U}.)\rAs this land enters, you may pay 2 life. If you don't, it enters tapped."
+    IDS_STRING40927         "Orzhov Guildgate\n\nLand - Gate\nRNA,C\nThis land enters tapped.\r{T}: Add {W} or {B}."
+    IDS_STRING40928         "Plaza of Harmony\n\nLand\nRNA,R\nWhen this land enters, if you control two or more Gates, you gain 3 life.\r{T}: Add {C}.\r{T}: Add one mana of any type that a Gate you control could produce."
+    IDS_STRING40929         "Rakdos Guildgate\n\nLand - Gate\nRNA,C\nThis land enters tapped.\r{T}: Add {B} or {R}."
+    IDS_STRING40930         "Simic Guildgate\n\nLand - Gate\nRNA,C\nThis land enters tapped.\r{T}: Add {G} or {U}."
+    IDS_STRING40931         "Stomping Ground\n\nLand - Mountain Forest\nRNA,R\n({T}: Add {R} or {G}.)\rAs this land enters, you may pay 2 life. If you don't, it enters tapped."
+    IDS_STRING40932         "Plains\n\nBasic Land - Plains\nRNA,BL\n{T}: Add {W} to your mana pool."
+    IDS_STRING40933         "Island\n\nBasic Land - Island\nRNA,BL\n{T}: Add {U} to your mana pool."
+    IDS_STRING40934         "Swamp\n\nBasic Land - Swamp\nRNA,BL\n{T}: Add {B} to your mana pool."
+    IDS_STRING40935         "Mountain\n\nBasic Land - Mountain\nRNA,BL\n{T}: Add {R} to your mana pool."
+    IDS_STRING40936         "Forest\n\nBasic Land - Forest\nRNA,BL\n{T}: Add {G} to your mana pool."
+    IDS_STRING40937         "Domri, Chaos Bringer\n{2RG}\nPlaneswalker - Domri\nRNA,MR\n[+1]: Add {R} or {G}. If that mana is spent on a creature spell, it gains riot. (It enters with your choice of a +1/+1 counter or haste.)\r[-3]: Look at the top four cards of your library. You may reveal up to two creature cards from among them and put them into your hand. Put the rest on the bottom of your library in a random order.\r[-8]: You get an emblem with ""At the beginning of each end step, create a 4/4 red and green Beast creature token with trample.""\n5"
+    IDS_STRING40938         "Domri, City Smasher\n{4RG}\nPlaneswalker - Domri\nRNA,MR\n[+2]: Creatures you control get +1/+1 and gain haste until end of turn.\r[-3]: Domri deals 3 damage to any target.\r[-8]: Put three +1/+1 counters on each creature you control. Those creatures gain trample until end of turn.\n4"
+    IDS_STRING40939         "Dovin, Architect of Law\n{4WU}\nPlaneswalker - Dovin\nRNA,MR\n[+1]: You gain 2 life and draw a card.\r[-1]: Tap target creature. It doesn't untap during its controller's next untap step.\r[-9]: Tap all permanents target opponent controls. That player skips their next untap step.\n5"
+    IDS_STRING40940         "Dovin, Grand Arbiter\n{1WU}\nPlaneswalker - Dovin\nRNA,MR\n[+1]: Until end of turn, whenever a creature you control deals combat damage to a player, put a loyalty counter on Dovin.\r[-1]: Create a 1/1 colorless Thopter artifact creature token with flying. You gain 1 life.\r[-7]: Look at the top ten cards of your library. Put three of them into your hand and the rest on the bottom of your library in a random order.\n3"
+    IDS_STRING40941         "Kaya, Orzhov Usurper\n{1WB}\nPlaneswalker - Kaya\nRNA,MR\n[+1]: Exile up to two target cards from a single graveyard. You gain 2 life if at least one creature card was exiled this way.\r[-1]: Exile target nonland permanent with mana value 1 or less.\r[-5]: Kaya deals damage to target player equal to the number of cards that player owns in exile and you gain that much life.\n3"
+    IDS_STRING40942         "Angelic Exaltation\n{3W}\nEnchantment\nRNA,U\nWhenever a creature you control attacks alone, it gets +X/+X until end of turn, where X is the number of creatures you control."
+    IDS_STRING40943         "Captive Audience\n{5BR}\nEnchantment\nRNA,MR\nThis enchantment enters under the control of an opponent of your choice.\rAt the beginning of your upkeep, choose one that hasn't been chosen -\r* Your life total becomes 4.\r* Discard your hand.\r* Each opponent creates five 2/2 black Zombie creature tokens."
+    IDS_STRING40944         "Cavalcade of Calamity\n{1R}\nEnchantment\nRNA,U\nWhenever a creature you control with power 1 or less attacks, this enchantment deals 1 damage to the player or planeswalker that creature is attacking."
+    IDS_STRING40945         "Cindervines\n{RG}\nEnchantment\nRNA,R\nWhenever an opponent casts a noncreature spell, this enchantment deals 1 damage to that player.\r{1}, Sacrifice this enchantment: Destroy target artifact or enchantment. This enchantment deals 2 damage to that permanent's controller."
+    IDS_STRING40946         "Dovin's Acuity\n{1WU}\nEnchantment\nRNA,U\nWhen this enchantment enters, you gain 2 life and draw a card.\rWhenever you cast an instant spell during your main phase, you may return this enchantment to its owner's hand."
+    IDS_STRING40947         "Ethereal Absolution\n{4WB}\nEnchantment\nRNA,R\nCreatures you control get +1/+1.\rCreatures your opponents control get -1/-1.\r{2}{W}{B}: Exile target card from an opponent's graveyard. If it was a creature card, you create a 1/1 white and black Spirit creature token with flying."
+    IDS_STRING40948         "Eyes Everywhere\n{2U}\nEnchantment\nRNA,U\nAt the beginning of your upkeep, scry 1.\r{5}{U}: Exchange control of this enchantment and target nonland permanent. Activate only as a sorcery."
+    IDS_STRING40949         "Guardian Project\n{3G}\nEnchantment\nRNA,R\nWhenever a nontoken creature you control enters, if it doesn't have the same name as another creature you control or a creature card in your graveyard, draw a card."
+    IDS_STRING40950         "High Alert\n{1WU}\nEnchantment\nRNA,U\nEach creature you control assigns combat damage equal to its toughness rather than its power.\rCreatures you control can attack as though they didn't have defender.\r{2}{W}{U}: Untap target creature."
+    IDS_STRING40951         "Ill-Gotten Inheritance\n{3B}\nEnchantment\nRNA,C\nAt the beginning of your upkeep, this enchantment deals 1 damage to each opponent and you gain 1 life.\r{5}{B}, Sacrifice this enchantment: It deals 4 damage to target opponent and you gain 4 life."
+    IDS_STRING40952         "Lawmage's Binding\n{1WU}\nEnchantment - Aura\nRNA,C\nFlash\rEnchant creature\rEnchanted creature can't attack or block, and its activated abilities can't be activated."
+    IDS_STRING40953         "Mirror March\n{5R}\nEnchantment\nRNA,R\nWhenever a nontoken creature you control enters, flip a coin until you lose a flip. For each flip you won, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step."
+    IDS_STRING40954         "Rhythm of the Wild\n{1RG}\nEnchantment\nRNA,U\nCreature spells you control can't be countered.\rNontoken creatures you control have riot. (They enter with your choice of a +1/+1 counter or haste.)"
+    IDS_STRING40955         "Sentinel's Mark\n{1W}\nEnchantment - Aura\nRNA,U\nFlash\rEnchant creature\rEnchanted creature gets +1/+2 and has vigilance.\rAddendum - When this Aura enters, if you cast it during your main phase, enchanted creature gains lifelink until end of turn."
+    IDS_STRING40956         "Simic Ascendancy\n{GU}\nEnchantment\nRNA,R\n{1}{G}{U}: Put a +1/+1 counter on target creature you control.\rWhenever one or more +1/+1 counters are put on a creature you control, put that many growth counters on this enchantment.\rAt the beginning of your upkeep, if this enchantment has twenty or more growth counters on it, you win the game."
+    IDS_STRING40957         "Sky Tether\n{W}\nEnchantment - Aura\nRNA,U\nEnchant creature\rEnchanted creature has defender and loses flying."
+    IDS_STRING40958         "Slimebind\n{1U}\nEnchantment - Aura\nRNA,C\nFlash (You may cast this spell any time you could cast an instant.)\rEnchant creature\rEnchanted creature gets -4/-0."
+    IDS_STRING40959         "Smothering Tithe\n{3W}\nEnchantment\nRNA,R\nWhenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")"
+    IDS_STRING40960         "Verity Circle\n{2U}\nEnchantment\nRNA,R\nWhenever a creature an opponent controls becomes tapped, if it isn't being declared as an attacker, you may draw a card.\r{4}{U}: Tap target creature without flying."
+    IDS_STRING40961         "Wilderness Reclamation\n{3G}\nEnchantment\nRNA,U\nAt the beginning of your end step, untap all lands you control."
+    IDS_STRING40962         "Azorius Locket\n{3}\nArtifact\nRNA,C\n{T}: Add {W} or {U}.\r{W/U}{W/U}{W/U}{W/U}, {T}, Sacrifice this artifact: Draw two cards."
+    IDS_STRING40963         "Glass of the Guildpact\n{2}\nArtifact\nRNA,R\nMulticolored creatures you control get +1/+1."
+    IDS_STRING40964         "Gruul Locket\n{3}\nArtifact\nRNA,C\n{T}: Add {R} or {G}.\r{R/G}{R/G}{R/G}{R/G}, {T}, Sacrifice this artifact: Draw two cards."
+    IDS_STRING40965         "Orzhov Locket\n{3}\nArtifact\nRNA,C\n{T}: Add {W} or {B}.\r{W/B}{W/B}{W/B}{W/B}, {T}, Sacrifice this artifact: Draw two cards."
+    IDS_STRING40966         "Rakdos Locket\n{3}\nArtifact\nRNA,C\n{T}: Add {B} or {R}.\r{B/R}{B/R}{B/R}{B/R}, {T}, Sacrifice this artifact: Draw two cards."
+    IDS_STRING40967         "Scrabbling Claws\n{1}\nArtifact\nRNA,U\n{T}: Target player exiles a card from their graveyard.\r{1}, Sacrifice this artifact: Exile target card from a graveyard. Draw a card."
+    IDS_STRING40968         "Screaming Shield\n{1}\nArtifact - Equipment\nRNA,U\nEquipped creature gets +0/+3 and has ""{2}, {T}: Target player mills three cards.""\rEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)"
+    IDS_STRING40969         "Simic Locket\n{3}\nArtifact\nRNA,C\n{T}: Add {G} or {U}.\r{G/U}{G/U}{G/U}{G/U}, {T}, Sacrifice this artifact: Draw two cards."
+    IDS_STRING40970         "Tome of the Guildpact\n{5}\nArtifact - Book\nRNA,R\nWhenever you cast a multicolored spell, draw a card.\r{T}: Add one mana of any color."
+    IDS_STRING40971         "Act of Treason\n{2R}\nSorcery\nRNA,C\nGain control of target creature until end of turn. Untap that creature. It gains haste until end of turn. (It can attack and {T} this turn.)"
+    IDS_STRING40972         "Awaken the Erstwhile\n{3BB}\nSorcery\nRNA,R\nEach player discards all the cards in their hand, then creates that many 2/2 black Zombie creature tokens."
+    IDS_STRING40973         "Bankrupt in Blood\n{1B}\nSorcery\nRNA,U\nAs an additional cost to cast this spell, sacrifice two creatures.\rDraw three cards."
+    IDS_STRING40974         "Biogenic Upgrade\n{4GG}\nSorcery\nRNA,U\nDistribute three +1/+1 counters among one, two, or three target creatures, then double the number of +1/+1 counters on each of those creatures."
+    IDS_STRING40975         "Bring to Trial\n{2W}\nSorcery\nRNA,C\nExile target creature with power 4 or greater."
+    IDS_STRING40976         "Clear the Mind\n{2U}\nSorcery\nRNA,C\nTarget player shuffles their graveyard into their library.\rDraw a card."
+    IDS_STRING40977         "Consign to the Pit\n{5B}\nSorcery\nRNA,C\nDestroy target creature. Consign to the Pit deals 2 damage to that creature's controller."
+    IDS_STRING40978         "Cry of the Carnarium\n{1BB}\nSorcery\nRNA,U\nAll creatures get -2/-2 until end of turn. Exile all creature cards in all graveyards that were put there from the battlefield this turn. If a creature would die this turn, exile it instead."
+    IDS_STRING40979         "Dead Revels\n{3B}\nSorcery\nRNA,C\nSpectacle {1}{B} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\rReturn up to two target creature cards from your graveyard to your hand."
+    IDS_STRING40980         "Deface\n{R}\nSorcery\nRNA,C\nChoose one -\r* Destroy target artifact.\r* Destroy target creature with defender."
+    IDS_STRING40981         "Drill Bit\n{2B}\nSorcery\nRNA,U\nSpectacle {B} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\rTarget player reveals their hand. You choose a nonland card from it. That player discards that card."
+    IDS_STRING40982         "Gates Ablaze\n{2R}\nSorcery\nRNA,U\nGates Ablaze deals X damage to each creature, where X is the number of Gates you control."
+    IDS_STRING40983         "Goblin Gathering\n{2R}\nSorcery\nRNA,C\nCreate a number of 1/1 red Goblin creature tokens equal to two plus the number of cards named Goblin Gathering in your graveyard."
+    IDS_STRING40984         "Kaya's Wrath\n{WWBB}\nSorcery\nRNA,R\nDestroy all creatures. You gain life equal to the number of creatures you controlled that were destroyed this way."
+    IDS_STRING40985         "Mass Manipulation\n{XXUUUU}\nSorcery\nRNA,R\nGain control of X target creatures and/or planeswalkers."
+    IDS_STRING40986         "Open the Gates\n{G}\nSorcery\nRNA,C\nSearch your library for a basic land card or Gate card, reveal it, put it into your hand, then shuffle."
+    IDS_STRING40987         "Ragefire\n{1R}\nSorcery\nRNA,C\nRagefire deals 3 damage to target creature."
+    IDS_STRING40988         "Rubble Reading\n{3R}\nSorcery\nRNA,C\nDestroy target land. Scry 2."
+    IDS_STRING40989         "Savage Smash\n{1RG}\nSorcery\nRNA,C\nTarget creature you control gets +2/+2 until end of turn. It fights target creature you don't control. (Each deals damage equal to its power to the other.)"
+    IDS_STRING40990         "Shimmer of Possibility\n{1U}\nSorcery\nRNA,C\nLook at the top four cards of your library. Put one of them into your hand and the rest on the bottom of your library in a random order."
+    IDS_STRING40991         "Skewer the Critics\n{2R}\nSorcery\nRNA,C\nSpectacle {R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\rSkewer the Critics deals 3 damage to any target."
+    IDS_STRING40992         "Swirling Torrent\n{5U}\nSorcery\nRNA,U\nChoose one or both -\r* Put target creature on top of its owner's library.\r* Return target creature to its owner's hand."
+    IDS_STRING40993         "CarnivalCarnage\n{B/R} // {2BR}\nInstant // Sorcery\nRNA,U\nCARNIVAL: Carnival deals 1 damage to target creature or planeswalker and 1 damage to that permanent's controller.\rCARNAGE: Carnage deals 3 damage to target opponent. That player discards two cards."
+    IDS_STRING40994         "ConsecrateConsume\n{1W/B} // {2WB}\nInstant // Sorcery\nRNA,U\nCONSECRATE: Exile target card from a graveyard.\rDraw a card.\rCONSUME: Target player sacrifices a creature with the greatest power among creatures they control. You gain life equal to its power."
+    IDS_STRING40995         "IncubationIncongruity\n{G/U} // {1GU}\nSorcery // Instant\nRNA,U\nINCUBATION: Look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\rINCONGRUITY: Exile target creature. That creature's controller creates a 3/3 green Frog Lizard creature token."
+    IDS_STRING40996         "RepudiateReplicate\n{G/UG/U} // {1GU}\nInstant // Sorcery\nRNA,R\nREPUDIATE: Counter target activated or triggered ability. (Mana abilities can't be targeted.)\rREPLICATE: Create a token that's a copy of target creature you control."
+    IDS_STRING40997         "RevivalRevenge\n{W/BW/B} // {4WB}\nSorcery // Sorcery\nRNA,R\nREVIVAL: Return target creature card with mana value 3 or less from your graveyard to the battlefield.\rREVENGE: Double your life total. Target opponent loses half their life, rounded up."
+    IDS_STRING40998         "ThrashThreat\n{R/GR/G} // {2RG}\nInstant // Sorcery\nRNA,R\nTHRASH: Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.\rTHREAT: Create a 4/4 red and green Beast creature token with trample."
+    IDS_STRING40999         "WarrantWarden\n{W/UW/U} // {3WU}\nInstant // Sorcery\nRNA,R\nWARRANT: Put target attacking or blocking creature on top of its owner's library.\rWARDEN: Create a 4/4 white and blue Sphinx creature token with flying and vigilance."
+    IDS_STRING41000         "Absorb\n{WUU}\nInstant\nRNA,R\nCounter target spell. You gain 3 life."
+    IDS_STRING41001         "Applied Biomancy\n{GU}\nInstant\nRNA,C\nChoose one or both -\r* Target creature gets +1/+1 until end of turn.\r* Return target creature to its owner's hand."
+    IDS_STRING41002         "Arrester's Admonition\n{2U}\nInstant\nRNA,C\nReturn target creature to its owner's hand.\rAddendum - If you cast this spell during your main phase, draw a card."
+    IDS_STRING41003         "Arrester's Zeal\n{W}\nInstant\nRNA,C\nTarget creature gets +2/+2 until end of turn.\rAddendum - If you cast this spell during your main phase, that creature gains flying until end of turn."
+    IDS_STRING41004         "Bedevil\n{BBR}\nInstant\nRNA,R\nDestroy target artifact, creature, or planeswalker."
+    IDS_STRING41005         "Bladebrand\n{1B}\nInstant\nRNA,C\nTarget creature gains deathtouch until end of turn.\rDraw a card."
+    IDS_STRING41006         "Burn Bright\n{2R}\nInstant\nRNA,C\nCreatures you control get +2/+0 until end of turn."
+    IDS_STRING41007         "Clear the Stage\n{4B}\nInstant\nRNA,U\nTarget creature gets -3/-3 until end of turn. If you control a creature with power 4 or greater, you may return up to one target creature card from your graveyard to your hand."
+    IDS_STRING41008         "Code of Constraint\n{2U}\nInstant\nRNA,U\nTarget creature gets -4/-0 until end of turn.\rDraw a card.\rAddendum - If you cast this spell during your main phase, tap that creature and it doesn't untap during its controller's next untap step."
+    IDS_STRING41009         "Dovin's Dismissal\n{2WU}\nInstant\nRNA,R\nPut up to one target tapped creature on top of its owner's library. You may search your library and/or graveyard for a card named Dovin, Architect of Law, reveal it, and put it into your hand. If you search your library this way, shuffle."
+    IDS_STRING41010         "Electrodominance\n{XRR}\nInstant\nRNA,R\nElectrodominance deals X damage to any target. You may cast a spell with mana value X or less from your hand without paying its mana cost."
+    IDS_STRING41011         "Emergency Powers\n{5WU}\nInstant\nRNA,MR\nEach player shuffles their hand and graveyard into their library, then draws seven cards. Exile Emergency Powers.\rAddendum - If you cast this spell during your main phase, you may put a permanent card with mana value 7 or less from your hand onto the battlefield."
+    IDS_STRING41012         "Essence Capture\n{UU}\nInstant\nRNA,U\nCounter target creature spell. Put a +1/+1 counter on up to one target creature you control."
+    IDS_STRING41013         "Expose to Daylight\n{2W}\nInstant\nRNA,C\nDestroy target artifact or enchantment. Scry 1."
+    IDS_STRING41014         "Final Payment\n{WB}\nInstant\nRNA,C\nAs an additional cost to cast this spell, pay 5 life or sacrifice a creature or enchantment.\rDestroy target creature."
+    IDS_STRING41015         "Flames of the Raze-Boar\n{5R}\nInstant\nRNA,U\nFlames of the Raze-Boar deals 4 damage to target creature an opponent controls. Then Flames of the Raze-Boar deals 2 damage to each other creature that player controls if you control a creature with power 4 or greater."
+    IDS_STRING41016         "Get the Point\n{3BR}\nInstant\nRNA,C\nDestroy target creature. Scry 1."
+    IDS_STRING41017         "Gift of Strength\n{1G}\nInstant\nRNA,C\nTarget creature gets +3/+3 and gains reach until end of turn."
+    IDS_STRING41018         "Grotesque Demise\n{2B}\nInstant\nRNA,C\nExile target creature with power 3 or less."
+    IDS_STRING41019         "Growth Spiral\n{GU}\nInstant\nRNA,C\nDraw a card. You may put a land card from your hand onto the battlefield."
+    IDS_STRING41020         "Justiciar's Portal\n{1W}\nInstant\nRNA,C\nExile target creature you control, then return that card to the battlefield under its owner's control. It gains first strike until end of turn."
+    IDS_STRING41021         "Macabre Mockery\n{2BR}\nInstant\nRNA,U\nPut target creature card from an opponent's graveyard onto the battlefield under your control. It gets +2/+0 and gains haste until end of turn. Sacrifice it at the beginning of the next end step."
+    IDS_STRING41022         "Mortify\n{1WB}\nInstant\nRNA,U\nDestroy target creature or enchantment."
+    IDS_STRING41023         "Precognitive Perception\n{3UU}\nInstant\nRNA,R\nDraw three cards.\rAddendum - If you cast this spell during your main phase, instead scry 3, then draw three cards."
+    IDS_STRING41024         "Prying Eyes\n{4UU}\nInstant\nRNA,C\nDraw four cards, then discard two cards."
+    IDS_STRING41025         "Quench\n{1U}\nInstant\nRNA,C\nCounter target spell unless its controller pays {2}."
+    IDS_STRING41026         "Rally to Battle\n{3W}\nInstant\nRNA,U\nCreatures you control get +1/+3 until end of turn. Untap them."
+    IDS_STRING41027         "Rampage of the Clans\n{3G}\nInstant\nRNA,R\nDestroy all artifacts and enchantments. For each permanent destroyed this way, its controller creates a 3/3 green Centaur creature token."
+    IDS_STRING41028         "Regenesis\n{3GG}\nInstant\nRNA,U\nReturn up to two target permanent cards from your graveyard to your hand."
+    IDS_STRING41029         "Root Snare\n{1G}\nInstant\nRNA,C\nPrevent all combat damage that would be dealt this turn."
+    IDS_STRING41030         "Sagittars' Volley\n{2G}\nInstant\nRNA,C\nDestroy target creature with flying. Sagittars' Volley deals 1 damage to each creature with flying your opponents control."
+    IDS_STRING41031         "Scorchmark\n{1R}\nInstant\nRNA,C\nScorchmark deals 2 damage to target creature. If that creature would die this turn, exile it instead."
+    IDS_STRING41032         "Sphinx's Insight\n{2WU}\nInstant\nRNA,C\nDraw two cards.\rAddendum - If you cast this spell during your main phase, you gain 2 life."
+    IDS_STRING41033         "Stony Strength\n{G}\nInstant\nRNA,C\nPut a +1/+1 counter on target creature you control. Untap that creature."
+    IDS_STRING41034         "Storm Strike\n{R}\nInstant\nRNA,C\nTarget creature gets +1/+0 and gains first strike until end of turn. Scry 1."
+    IDS_STRING41035         "Summary Judgment\n{1W}\nInstant\nRNA,C\nSummary Judgment deals 3 damage to target tapped creature.\rAddendum - If you cast this spell during your main phase, it deals 5 damage instead."
+    IDS_STRING41036         "Thought Collapse\n{1UU}\nInstant\nRNA,C\nCounter target spell. Its controller mills three cards."
+    IDS_STRING41037         "Titanic Brawl\n{1G}\nInstant\nRNA,C\nThis spell costs {1} less to cast if it targets a creature you control with a +1/+1 counter on it.\rTarget creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)"
+    IDS_STRING41038         "Tower Defense\n{1G}\nInstant\nRNA,U\nCreatures you control get +0/+5 and gain reach until end of turn."
+    IDS_STRING41039         "Unbreakable Formation\n{2W}\nInstant\nRNA,R\nCreatures you control gain indestructible until end of turn.\rAddendum - If you cast this spell during your main phase, put a +1/+1 counter on each of those creatures and they gain vigilance until end of turn."
+    IDS_STRING41040         "Undercity's Embrace\n{2B}\nInstant\nRNA,C\nTarget opponent sacrifices a creature of their choice. If you control a creature with power 4 or greater, you gain 4 life."
+    IDS_STRING41041         "BedeckBedazzle\n{B/RB/R} // {4BR}\nInstant // Instant\nRNA,R\nBEDECK: Target creature gets +3/-3 until end of turn.\rBEDAZZLE: Destroy target nonbasic land. Bedazzle deals 2 damage to target opponent or planeswalker."
+    IDS_STRING41042         "CollisionColossus\n{1R/G} // {RG}\nInstant // Instant\nRNA,U\nCOLLISION: Collision deals 6 damage to target creature with flying.\rCOLOSSUS: Target creature gets +4/+2 and gains trample until end of turn."
+    IDS_STRING41043         "DeposeDeploy\n{1W/U} // {2WU}\nInstant // Instant\nRNA,U\nDEPOSE: Tap target creature.\rDraw a card.\rDEPLOY: Create two 1/1 colorless Thopter artifact creature tokens with flying, then you gain 1 life for each creature you control."
+    IDS_STRING41044         "Angel of Grace\n{3WW}\nCreature - Angel\nRNA,MR\nFlash\rFlying\rWhen this creature enters, until end of turn, damage that would reduce your life total to less than 1 reduces it to 1 instead.\r{4}{W}{W}, Exile this card from your graveyard: Your life total becomes 10.\n5/4"
+    IDS_STRING41045         "Archway Angel\n{5W}\nCreature - Angel\nRNA,U\nFlying\rWhen this creature enters, you gain 2 life for each Gate you control.\n3/4"
+    IDS_STRING41046         "Civic Stalwart\n{3W}\nCreature - Elephant Soldier\nRNA,C\nWhen this creature enters, creatures you control get +1/+1 until end of turn.\n3/3"
+    IDS_STRING41047         "Concordia Pegasus\n{1W}\nCreature - Pegasus\nRNA,C\nFlying\n1/3"
+    IDS_STRING41048         "Elite Arrester\n{W}\nCreature - Human Soldier\nRNA,C\n{1}{U}, {T}: Tap target creature.\n0/3"
+    IDS_STRING41049         "Forbidding Spirit\n{1WW}\nCreature - Spirit Cleric\nRNA,U\nWhen this creature enters, until your next turn, creatures can't attack you or planeswalkers you control unless their controller pays {2} for each of those creatures.\n3/3"
+    IDS_STRING41050         "Haazda Officer\n{2W}\nCreature - Human Soldier\nRNA,C\nWhen this creature enters, target creature you control gets +1/+1 until end of turn.\n3/2"
+    IDS_STRING41051         "Hero of Precinct One\n{1W}\nCreature - Human Warrior\nRNA,R\nWhenever you cast a multicolored spell, create a 1/1 white Human creature token.\n2/2"
+    IDS_STRING41052         "Impassioned Orator\n{1W}\nCreature - Human Cleric\nRNA,C\nWhenever another creature you control enters, you gain 1 life.\n2/2"
+    IDS_STRING41053         "Knight of Sorrows\n{4W}\nCreature - Human Knight\nRNA,C\nThis creature can block an additional creature each combat.\rAfterlife 1 (When this creature dies, create a 1/1 white and black Spirit creature token with flying.)\n3/3"
+    IDS_STRING41054         "Lumbering Battlement\n{4W}\nCreature - Beast\nRNA,R\nVigilance\rWhen this creature enters, exile any number of other nontoken creatures you control until it leaves the battlefield.\rThis creature gets +2/+2 for each card exiled with it.\n4/5"
+    IDS_STRING41055         "Ministrant of Obligation\n{2W}\nCreature - Human Cleric\nRNA,U\nAfterlife 2 (When this creature dies, create two 1/1 white and black Spirit creature tokens with flying.)\n2/1"
+    IDS_STRING41056         "Prowling Caracal\n{1W}\nCreature - Cat\nRNA,C\n\n3/1"
+    IDS_STRING41057         "Resolute Watchdog\n{W}\nCreature - Dog\nRNA,U\nDefender\r{1}, Sacrifice this creature: Target creature you control gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)\n1/3"
+    IDS_STRING41058         "Spirit of the Spires\n{3W}\nCreature - Spirit\nRNA,U\nFlying\rOther creatures you control with flying get +0/+1.\n2/4"
+    IDS_STRING41059         "Syndicate Messenger\n{3W}\nCreature - Bird\nRNA,C\nFlying\rAfterlife 1 (When this creature dies, create a 1/1 white and black Spirit creature token with flying.)\n2/3"
+    IDS_STRING41060         "Tenth District Veteran\n{2W}\nCreature - Human Soldier\nRNA,C\nVigilance\rWhenever this creature attacks, untap another target creature you control.\n2/3"
+    IDS_STRING41061         "Tithe Taker\n{1W}\nCreature - Human Soldier\nRNA,R\nDuring your turn, spells your opponents cast cost {1} more to cast and abilities your opponents activate cost {1} more to activate unless they're mana abilities.\rAfterlife 1 (When this creature dies, create a 1/1 white and black Spirit creature token with flying.)\n2/1"
+    IDS_STRING41062         "Twilight Panther\n{W}\nCreature - Cat Spirit\nRNA,C\n{B}: This creature gains deathtouch until end of turn.\n1/2"
+    IDS_STRING41063         "Watchful Giant\n{5W}\nCreature - Giant Soldier\nRNA,C\nWhen this creature enters, create a 1/1 white Human creature token.\n3/6"
+    IDS_STRING41064         "Axebane Beast\n{3G}\nCreature - Beast\nRNA,C\n\n3/4"
+    IDS_STRING41065         "Biogenic Ooze\n{3GG}\nCreature - Ooze\nRNA,MR\nWhen this creature enters, create a 2/2 green Ooze creature token.\rAt the beginning of your end step, put a +1/+1 counter on each Ooze you control.\r{1}{G}{G}{G}: Create a 2/2 green Ooze creature token.\n2/2"
+    IDS_STRING41066         "End-Raze Forerunners\n{5GGG}\nCreature - Boar\nRNA,R\nVigilance, trample, haste\rWhen this creature enters, other creatures you control get +2/+2 and gain vigilance and trample until end of turn.\n7/7"
+    IDS_STRING41067         "Enraged Ceratok\n{2GG}\nCreature - Rhino\nRNA,U\nThis creature can't be blocked by creatures with power 2 or less.\n4/4"
+    IDS_STRING41068         "Gatebreaker Ram\n{2G}\nCreature - Sheep\nRNA,U\nThis creature gets +1/+1 for each Gate you control.\rAs long as you control two or more Gates, this creature has vigilance and trample.\n2/2"
+    IDS_STRING41069         "Growth-Chamber Guardian\n{1G}\nCreature - Elf Crab Warrior\nRNA,R\n{2}{G}: Adapt 2. (If this creature has no +1/+1 counters on it, put two +1/+1 counters on it.)\rWhenever one or more +1/+1 counters are put on this creature, you may search your library for a card named Growth-Chamber Guardian, reveal it, put it into your hand, then shuffle.\n2/2"
+    IDS_STRING41070         "Gruul Beastmaster\n{3G}\nCreature - Human Shaman\nRNA,U\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rWhenever this creature attacks, another target creature you control gets +X/+0 until end of turn, where X is this creature's power.\n2/2"
+    IDS_STRING41071         "Incubation Druid\n{1G}\nCreature - Elf Druid\nRNA,R\n{T}: Add one mana of any type that a land you control could produce. If this creature has a +1/+1 counter on it, add three mana of that type instead.\r{3}{G}{G}: Adapt 3. (If this creature has no +1/+1 counters on it, put three +1/+1 counters on it.)\n0/2"
+    IDS_STRING41072         "Mammoth Spider\n{4G}\nCreature - Spider\nRNA,C\nReach (This creature can block creatures with flying.)\n3/5"
+    IDS_STRING41073         "Rampaging Rendhorn\n{4G}\nCreature - Beast\nRNA,C\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\n4/4"
+    IDS_STRING41074         "Saruli Caretaker\n{G}\nCreature - Dryad\nRNA,C\nDefender\r{T}, Tap an untapped creature you control: Add one mana of any color.\n0/3"
+    IDS_STRING41075         "Sauroform Hybrid\n{1G}\nCreature - Human Lizard Warrior\nRNA,C\n{4}{G}{G}: Adapt 4. (If this creature has no +1/+1 counters on it, put four +1/+1 counters on it.)\n2/2"
+    IDS_STRING41076         "Silhana Wayfinder\n{1G}\nCreature - Elf Scout\nRNA,U\nWhen this creature enters, look at the top four cards of your library. You may reveal a creature or land card from among them and put it on top of your library. Put the rest on the bottom of your library in a random order.\n2/1"
+    IDS_STRING41077         "Steeple Creeper\n{2G}\nCreature - Frog Snake\nRNA,C\n{3}{U}: This creature gains flying until end of turn.\n4/2"
+    IDS_STRING41078         "Sylvan Brushstrider\n{2G}\nCreature - Beast\nRNA,C\nWhen this creature enters, you gain 2 life.\n3/2"
+    IDS_STRING41079         "Territorial Boar\n{1G}\nCreature - Boar\nRNA,C\nWhenever a creature you control with power 4 or greater enters, this creature gets +1/+1 and gains vigilance until end of turn.\n2/2"
+    IDS_STRING41080         "Trollbred Guardian\n{4G}\nCreature - Troll Frog Warrior\nRNA,U\n{2}{G}: Adapt 2. (If this creature has no +1/+1 counters on it, put two +1/+1 counters on it.)\rEach creature you control with a +1/+1 counter on it has trample.\n5/5"
+    IDS_STRING41081         "Wrecking Beast\n{5GG}\nCreature - Beast\nRNA,C\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rTrample\n6/6"
+    IDS_STRING41082         "Amplifire\n{2RR}\nCreature - Elemental\nRNA,R\nAt the beginning of your upkeep, reveal cards from the top of your library until you reveal a creature card. Until your next turn, this creature's base power becomes twice that card's power and its base toughness becomes twice that card's toughness. Put the revealed cards on the bottom of your library in a random order.\n1/1"
+    IDS_STRING41083         "Burning-Tree Vandal\n{2R}\nCreature - Human Rogue\nRNA,C\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rWhenever this creature attacks, you may discard a card. If you do, draw a card.\n2/1"
+    IDS_STRING41084         "Clamor Shaman\n{2R}\nCreature - Goblin Shaman\nRNA,U\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rWhenever this creature attacks, target creature an opponent controls can't block this turn.\n1/1"
+    IDS_STRING41085         "Dagger Caster\n{3R}\nCreature - Lizard Rogue\nRNA,U\nWhen this creature enters, it deals 1 damage to each opponent and 1 damage to each creature your opponents control.\n2/3"
+    IDS_STRING41086         "Feral Maaka\n{1R}\nCreature - Cat\nRNA,C\n\n2/2"
+    IDS_STRING41087         "Ghor-Clan Wrecker\n{3R}\nCreature - Human Warrior\nRNA,C\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rMenace (This creature can't be blocked except by two or more creatures.)\n2/2"
+    IDS_STRING41088         "Gravel-Hide Goblin\n{1R}\nCreature - Goblin Shaman\nRNA,C\n{3}{G}: This creature gets +2/+2 until end of turn.\n2/1"
+    IDS_STRING41089         "Immolation Shaman\n{1R}\nCreature - Lizard Shaman\nRNA,R\nWhenever an opponent activates an ability of an artifact, creature, or land that isn't a mana ability, this creature deals 1 damage to that player.\r{3}{R}{R}: This creature gets +3/+3 and gains menace until end of turn.\n1/3"
+    IDS_STRING41090         "Rix Maadi Reveler\n{1R}\nCreature - Human Shaman\nRNA,R\nSpectacle {2}{B}{R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\rWhen this creature enters, discard a card, then draw a card. If this creature's spectacle cost was paid, instead discard your hand, then draw three cards.\n2/2"
+    IDS_STRING41091         "Rubblebelt Recluse\n{4R}\nCreature - Ogre Berserker\nRNA,C\nThis creature attacks each combat if able.\n6/5"
+    IDS_STRING41092         "Rumbling Ruin\n{5R}\nCreature - Elemental\nRNA,U\nWhen this creature enters, count the number of +1/+1 counters on creatures you control. Creatures your opponents control with power less than or equal to that number can't block this turn.\n6/6"
+    IDS_STRING41093         "Skarrgan Hellkite\n{3RR}\nCreature - Dragon\nRNA,MR\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rFlying\r{3}{R}: This creature deals 2 damage divided as you choose among one or two targets. Activate only if this creature has a +1/+1 counter on it.\n4/4"
+    IDS_STRING41094         "Smelt-Ward Ignus\n{1R}\nCreature - Elemental\nRNA,U\n{2}{R}, Sacrifice this creature: Gain control of target creature with power 3 or less until end of turn. Untap that creature. It gains haste until end of turn. Activate only as a sorcery.\n2/1"
+    IDS_STRING41095         "Spear Spewer\n{R}\nCreature - Goblin Warrior\nRNA,C\nDefender\r{T}: This creature deals 1 damage to each player.\n0/2"
+    IDS_STRING41096         "Spikewheel Acrobat\n{3R}\nCreature - Human Rogue\nRNA,C\nSpectacle {2}{R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\n5/2"
+    IDS_STRING41097         "Tin Street Dodger\n{R}\nCreature - Goblin Rogue\nRNA,U\nHaste\r{R}: This creature can't be blocked this turn except by creatures with defender.\n1/1"
+    IDS_STRING41098         "Blade Juggler\n{4B}\nCreature - Human Rogue\nRNA,C\nSpectacle {2}{B} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\rWhen this creature enters, it deals 1 damage to you and you draw a card.\n3/2"
+    IDS_STRING41099         "Bloodmist Infiltrator\n{2B}\nCreature - Vampire\nRNA,U\nWhenever this creature attacks, you may sacrifice another creature. If you do, this creature can't be blocked this turn.\n3/1"
+    IDS_STRING41100         "Carrion Imp\n{3B}\nCreature - Imp\nRNA,C\nFlying\rWhen this creature enters, you may exile target creature card from a graveyard. If you do, you gain 2 life.\n2/3"
+    IDS_STRING41101         "Catacomb Crocodile\n{4B}\nCreature - Crocodile\nRNA,C\n\n3/7"
+    IDS_STRING41102         "Debtors' Transport\n{5B}\nCreature - Thrull\nRNA,C\nAfterlife 2 (When this creature dies, create two 1/1 white and black Spirit creature tokens with flying.)\n5/3"
+    IDS_STRING41103         "Gutterbones\n{B}\nCreature - Skeleton Warrior\nRNA,R\nThis creature enters tapped.\r{1}{B}: Return this card from your graveyard to your hand. Activate only during your turn and only if an opponent lost life this turn.\n2/1"
+    IDS_STRING41104         "Noxious Groodion\n{2B}\nCreature - Beast\nRNA,C\nDeathtouch\n2/2"
+    IDS_STRING41105         "Orzhov Enforcer\n{1B}\nCreature - Human Rogue\nRNA,U\nDeathtouch\rAfterlife 1 (When this creature dies, create a 1/1 white and black Spirit creature token with flying.)\n1/2"
+    IDS_STRING41106         "Orzhov Racketeers\n{4B}\nCreature - Human Rogue\nRNA,U\nWhenever this creature deals combat damage to a player, that player discards a card.\rAfterlife 2 (When this creature dies, create two 1/1 white and black Spirit creature tokens with flying.)\n3/2"
+    IDS_STRING41107         "Pestilent Spirit\n{2B}\nCreature - Spirit\nRNA,R\nMenace, deathtouch\rInstant and sorcery spells you control have deathtouch. (Any amount of damage they deal to a creature is enough to destroy it.)\n3/2"
+    IDS_STRING41108         "Plague Wight\n{1B}\nCreature - Zombie\nRNA,C\nWhenever this creature becomes blocked, each creature blocking it gets -1/-1 until end of turn.\n2/1"
+    IDS_STRING41109         "Priest of Forgotten Gods\n{1B}\nCreature - Human Cleric\nRNA,R\n{T}, Sacrifice two other creatures: Any number of target players each lose 2 life and sacrifice a creature of their choice. You add {B}{B} and draw a card. (Activate only as an instant.)\n1/2"
+    IDS_STRING41110         "Rakdos Trumpeter\n{1B}\nCreature - Human Shaman\nRNA,C\nMenace (This creature can't be blocked except by two or more creatures.)\r{3}{R}: This creature gets +2/+0 until end of turn.\n1/3"
+    IDS_STRING41111         "Spawn of Mayhem\n{2BB}\nCreature - Demon\nRNA,MR\nSpectacle {1}{B}{B} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\rFlying, trample\rAt the beginning of your upkeep, this creature deals 1 damage to each player. Then if you have 10 or less life, put a +1/+1 counter on this creature.\n4/4"
+    IDS_STRING41112         "Spire Mangler\n{2B}\nCreature - Insect\nRNA,U\nFlash\rFlying\rWhen this creature enters, target creature you control with flying gets +2/+0 until end of turn.\n2/1"
+    IDS_STRING41113         "The Haunt of Hightower\n{4BB}\nLegendary Creature - Vampire\nRNA,MR\nFlying, lifelink\rWhenever The Haunt of Hightower attacks, defending player discards a card.\rWhenever a card is put into an opponent's graveyard from anywhere, put a +1/+1 counter on The Haunt of Hightower.\n3/3"
+    IDS_STRING41114         "Thirsting Shade\n{B}\nCreature - Shade\nRNA,C\nLifelink\r{2}{B}: This creature gets +1/+1 until end of turn.\n1/1"
+    IDS_STRING41115         "Undercity Scavenger\n{3B}\nCreature - Ogre Warrior\nRNA,C\nWhen this creature enters, you may sacrifice another creature. If you do, put two +1/+1 counters on this creature, then scry 2.\n3/3"
+    IDS_STRING41116         "Vindictive Vampire\n{3B}\nCreature - Vampire\nRNA,U\nWhenever another creature you control dies, this creature deals 1 damage to each opponent and you gain 1 life.\n2/3"
+    IDS_STRING41117         "Benthic Biomancer\n{U}\nCreature - Merfolk Wizard Mutant\nRNA,R\n{1}{U}: Adapt 1. (If this creature has no +1/+1 counters on it, put a +1/+1 counter on it.)\rWhenever one or more +1/+1 counters are put on this creature, draw a card, then discard a card.\n1/1"
+    IDS_STRING41118         "Chillbringer\n{4U}\nCreature - Elemental\nRNA,C\nFlying\rWhen this creature enters, tap target creature an opponent controls. It doesn't untap during its controller's next untap step.\n3/3"
+    IDS_STRING41119         "Coral Commando\n{2U}\nCreature - Merfolk Warrior\nRNA,C\n\n3/2"
+    IDS_STRING41120         "Faerie Duelist\n{1U}\nCreature - Faerie Rogue\nRNA,C\nFlash\rFlying\rWhen this creature enters, target creature an opponent controls gets -2/-0 until end of turn.\n1/2"
+    IDS_STRING41121         "Gateway Sneak\n{2U}\nCreature - Vedalken Rogue\nRNA,U\nWhenever a Gate you control enters, this creature can't be blocked this turn.\rWhenever this creature deals combat damage to a player, draw a card.\n1/3"
+    IDS_STRING41122         "Humongulus\n{4U}\nCreature - Homunculus\nRNA,C\nHexproof (This creature can't be the target of spells or abilities your opponents control.)\n2/5"
+    IDS_STRING41123         "Mesmerizing Benthid\n{3UU}\nCreature - Octopus\nRNA,MR\nWhen this creature enters, create two 0/2 blue Illusion creature tokens with ""Whenever this token blocks a creature, that creature doesn't untap during its controller's next untap step.""\rThis creature has hexproof as long as you control an Illusion.\n4/5"
+    IDS_STRING41124         "Persistent Petitioners\n{1U}\nCreature - Human Advisor\nRNA,C\n{1}, {T}: Target player mills a card. (They put the top card of their library into their graveyard.)\rTap four untapped Advisors you control: Target player mills twelve cards.\rA deck can have any number of cards named Persistent Petitioners.\n1/3"
+    IDS_STRING41125         "Pteramander\n{U}\nCreature - Salamander Drake\nRNA,U\nFlying\r{7}{U}: Adapt 4. This ability costs {1} less to activate for each instant and sorcery card in your graveyard. (If this creature has no +1/+1 counters on it, put four +1/+1 counters on it.)\n1/1"
+    IDS_STRING41126         "Sage's Row Savant\n{1U}\nCreature - Vedalken Wizard\nRNA,C\nWhen this creature enters, scry 2.\n2/1"
+    IDS_STRING41127         "Senate Courier\n{2U}\nCreature - Bird\nRNA,C\nFlying\r{1}{W}: This creature gains vigilance until end of turn.\n1/4"
+    IDS_STRING41128         "Skatewing Spy\n{3U}\nCreature - Vedalken Rogue Mutant\nRNA,U\n{5}{U}: Adapt 2. (If this creature has no +1/+1 counters on it, put two +1/+1 counters on it.)\rEach creature you control with a +1/+1 counter on it has flying.\n2/3"
+    IDS_STRING41129         "Skitter Eel\n{3U}\nCreature - Fish Crab\nRNA,C\n{2}{U}: Adapt 2. (If this creature has no +1/+1 counters on it, put two +1/+1 counters on it.)\n3/3"
+    IDS_STRING41130         "Sphinx of Foresight\n{2UU}\nCreature - Sphinx\nRNA,R\nYou may reveal this card from your opening hand. If you do, scry 3 at the beginning of your first upkeep.\rFlying\rAt the beginning of your upkeep, scry 1.\n4/4"
+    IDS_STRING41131         "Wall of Lost Thoughts\n{1U}\nCreature - Wall\nRNA,U\nDefender (This creature can't attack.)\rWhen this creature enters, target player mills four cards. (They put the top four cards of their library into their graveyard.)\n0/4"
+    IDS_STRING41132         "Windstorm Drake\n{4U}\nCreature - Drake\nRNA,U\nFlying\rOther creatures you control with flying get +1/+0.\n3/3"
+    IDS_STRING41133         "Aeromunculus\n{1GU}\nCreature - Homunculus Mutant\nRNA,C\nFlying\r{2}{G}{U}: Adapt 1. (If this creature has no +1/+1 counters on it, put a +1/+1 counter on it.)\n2/3"
+    IDS_STRING41134         "Azorius Knight-Arbiter\n{3WU}\nCreature - Human Knight\nRNA,C\nVigilance\rThis creature can't be blocked.\n2/5"
+    IDS_STRING41135         "Azorius Skyguard\n{4WU}\nCreature - Human Knight\nRNA,U\nFlying, first strike\rCreatures your opponents control get -1/-0.\n3/3"
+    IDS_STRING41136         "Basilica Bell-Haunt\n{WWBB}\nCreature - Spirit\nRNA,U\nWhen this creature enters, each opponent discards a card and you gain 3 life.\n3/4"
+    IDS_STRING41138         "Bolrac-Clan Crusher\n{3RG}\nCreature - Ogre Warrior\nRNA,U\n{T}, Remove a +1/+1 counter from a creature you control: This creature deals 2 damage to any target.\n4/4"
+    IDS_STRING41139         "Charging War Boar\n{1RG}\nCreature - Boar\nRNA,U\nHaste (This creature can attack and {T} as soon as it comes under your control.)\rAs long as you control a Domri planeswalker, this creature gets +1/+1 and has trample. (It can deal excess damage to the player or planeswalker it's attacking.)\n3/1"
+    IDS_STRING41140         "Clan Guildmage\n{RG}\nCreature - Human Shaman\nRNA,U\n{1}{R}, {T}: Target creature can't block this turn.\r{2}{G}, {T}: Target land you control becomes a 4/4 Elemental creature with haste until end of turn. It's still a land.\n2/2"
+    IDS_STRING41141         "Combine Guildmage\n{GU}\nCreature - Merfolk Wizard\nRNA,U\n{1}{G}, {T}: This turn, each creature you control enters with an additional +1/+1 counter on it.\r{1}{U}, {T}: Move a +1/+1 counter from target creature you control onto another target creature you control.\n2/2"
+    IDS_STRING41142         "Cult Guildmage\n{BR}\nCreature - Human Shaman\nRNA,U\n{3}{B}, {T}: Target player discards a card. Activate only as a sorcery.\r{R}, {T}: This creature deals 1 damage to target opponent or planeswalker.\n2/2"
+    IDS_STRING41143         "Deputy of Detention\n{1WU}\nCreature - Vedalken Wizard\nRNA,R\nWhen this creature enters, exile target nonland permanent an opponent controls and all other nonland permanents that player controls with the same name as that permanent until this creature leaves the battlefield.\n1/3"
+    IDS_STRING41144         "Domri's Nodorog\n{3RG}\nCreature - Beast\nRNA,R\nTrample\rWhen this creature enters, you may search your library and/or graveyard for a card named Domri, City Smasher, reveal it, and put it into your hand. If you search your library this way, shuffle.\n5/2"
+    IDS_STRING41145         "Dovin's Automaton\n{4}\nArtifact Creature - Homunculus\nRNA,U\nAs long as you control a Dovin planeswalker, this creature gets +2/+2 and has vigilance. (Attacking doesn't cause it to tap.)\n3/3"
+    IDS_STRING41146         "Fireblade Artist\n{BR}\nCreature - Human Shaman\nRNA,U\nHaste\rAt the beginning of your upkeep, you may sacrifice a creature. When you do, this creature deals 2 damage to target opponent or planeswalker.\n2/2"
+    IDS_STRING41147         "Footlight Fiend\n{B/R}\nCreature - Devil\nRNA,C\nWhen this creature dies, it deals 1 damage to any target.\n1/1"
+    IDS_STRING41148         "Frenzied Arynx\n{2RG}\nCreature - Cat Beast\nRNA,C\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rTrample\r{4}{R}{G}: This creature gets +3/+0 until end of turn.\n3/3"
+    IDS_STRING41149         "Frilled Mystic\n{GGUU}\nCreature - Elf Lizard Wizard\nRNA,U\nFlash\rWhen this creature enters, you may counter target spell.\n3/2"
+    IDS_STRING41150         "Galloping Lizrog\n{3GU}\nCreature - Frog Lizard\nRNA,U\nTrample\rWhen this creature enters, you may remove any number of +1/+1 counters from among creatures you control. If you do, put twice that many +1/+1 counters on this creature.\n3/3"
+    IDS_STRING41151         "Gate Colossus\n{8}\nArtifact Creature - Construct\nRNA,U\nAffinity for Gates (This spell costs {1} less to cast for each Gate you control.)\rThis creature can't be blocked by creatures with power 2 or less.\rWhenever a Gate you control enters, you may put this card from your graveyard on top of your library.\n8/8"
+    IDS_STRING41152         "Grasping Thrull\n{3WB}\nCreature - Thrull\nRNA,C\nFlying\rWhen this creature enters, it deals 2 damage to each opponent and you gain 2 life.\n3/3"
+    IDS_STRING41153         "Gruul Spellbreaker\n{1RG}\nCreature - Ogre Warrior\nRNA,R\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rTrample\rDuring your turn, you and this creature have hexproof.\n3/3"
+    IDS_STRING41154         "Gyre Engineer\n{1GU}\nCreature - Vedalken Wizard\nRNA,U\n{T}: Add {G}{U}.\n1/1"
+    IDS_STRING41155         "Hackrobat\n{1BR}\nCreature - Human Rogue\nRNA,U\nSpectacle {B}{R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\r{B}: This creature gains deathtouch until end of turn.\r{R}: This creature gets +2/-2 until end of turn.\n2/3"
+    IDS_STRING41156         "Hydroid Krasis\n{XGU}\nCreature - Jellyfish Hydra Beast\nRNA,MR\nWhen you cast this spell, you gain half X life and draw half X cards. Round down each time.\rFlying, trample\rThis creature enters with X +1/+1 counters on it.\n0/0"
+    IDS_STRING41157         "Imperious Oligarch\n{WB}\nCreature - Human Cleric\nRNA,C\nVigilance\rAfterlife 1 (When this creature dies, create a 1/1 white and black Spirit creature token with flying.)\n2/1"
+    IDS_STRING41158         "Judith, the Scourge Diva\n{1BR}\nLegendary Creature - Human Shaman\nRNA,R\nOther creatures you control get +1/+0.\rWhenever a nontoken creature you control dies, Judith deals 1 damage to any target.\n2/2"
+    IDS_STRING41159         "Junktroller\n{4}\nArtifact Creature - Golem\nRNA,U\nDefender\r{T}: Put target card from a graveyard on the bottom of its owner's library.\n0/6"
+    IDS_STRING41160         "Knight of the Last Breath\n{5WB}\nCreature - Giant Knight\nRNA,U\n{3}, Sacrifice another nontoken creature: Create a 1/1 white and black Spirit creature token with flying.\rAfterlife 3 (When this creature dies, create three 1/1 white and black Spirit creature tokens with flying.)\n4/4"
+    IDS_STRING41161         "Lavinia, Azorius Renegade\n{WU}\nLegendary Creature - Human Soldier\nRNA,R\nEach opponent can't cast noncreature spells with mana value greater than the number of lands that player controls.\rWhenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.\n2/2"
+    IDS_STRING41162         "Nikya of the Old Ways\n{3RG}\nLegendary Creature - Centaur Druid\nRNA,R\nYou can't cast noncreature spells.\rWhenever you tap a land for mana, add one mana of any type that land produced.\n5/5"
+    IDS_STRING41163         "Pitiless Pontiff\n{WB}\nCreature - Vampire Cleric\nRNA,U\n{1}, Sacrifice another creature: This creature gains deathtouch and indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)\n2/2"
+    IDS_STRING41164         "Prime Speaker Vannifar\n{2GU}\nLegendary Creature - Elf Ooze Wizard\nRNA,MR\n{T}, Sacrifice another creature: Search your library for a creature card with mana value equal to 1 plus the sacrificed creature's mana value, put that card onto the battlefield, then shuffle. Activate only as a sorcery.\n2/4"
+    IDS_STRING41165         "Rafter Demon\n{2BR}\nCreature - Demon\nRNA,C\nSpectacle {3}{B}{R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\rWhen this creature enters, if its spectacle cost was paid, each opponent discards a card.\n4/2"
+    IDS_STRING41166         "Rakdos Firewheeler\n{BBRR}\nCreature - Human Rogue\nRNA,U\nWhen this creature enters, it deals 2 damage to target opponent and 2 damage to up to one target creature or planeswalker.\n4/3"
+    IDS_STRING41167         "Rakdos Roustabout\n{1BR}\nCreature - Ogre Warrior\nRNA,C\nWhenever this creature becomes blocked, it deals 1 damage to the player or planeswalker it's attacking.\n3/2"
+    IDS_STRING41168         "Rakdos, the Showstopper\n{4BR}\nLegendary Creature - Demon\nRNA,MR\nFlying, trample\rWhen Rakdos enters, flip a coin for each creature that isn't a Demon, Devil, or Imp. Destroy each creature whose coin comes up tails.\n6/6"
+    IDS_STRING41169         "Ravager Wurm\n{3RGG}\nCreature - Wurm\nRNA,MR\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\rWhen this creature enters, choose up to one -\r* This creature fights target creature you don't control.\r* Destroy target land with an activated ability that isn't a mana ability.\n4/5"
+    IDS_STRING41170         "Rubblebelt Runner\n{1RG}\nCreature - Lizard Warrior\nRNA,C\nThis creature can't be blocked by creature tokens.\n3/3"
+    IDS_STRING41171         "Rubble Slinger\n{2R/G}\nCreature - Human Warrior\nRNA,C\nReach\n2/3"
+    IDS_STRING41172         "Scuttlegator\n{4G/UG/U}\nCreature - Crab Turtle Crocodile\nRNA,C\nDefender\r{6}{G/U}{G/U}: Adapt 3. (If this creature has no +1/+1 counters on it, put three +1/+1 counters on it.)\rAs long as this creature has a +1/+1 counter on it, it can attack as though it didn't have defender.\n6/6"
+    IDS_STRING41173         "Senate Griffin\n{2W/UW/U}\nCreature - Griffin\nRNA,C\nFlying\rWhen this creature enters, scry 1.\n3/2"
+    IDS_STRING41174         "Senate Guildmage\n{WU}\nCreature - Human Wizard\nRNA,U\n{W}, {T}: You gain 2 life.\r{U}, {T}: Draw a card, then discard a card.\n2/2"
+    IDS_STRING41175         "Seraph of the Scales\n{2WB}\nCreature - Angel\nRNA,MR\nFlying\r{W}: This creature gains vigilance until end of turn.\r{B}: This creature gains deathtouch until end of turn.\rAfterlife 2 (When this creature dies, create two 1/1 white and black Spirit creature tokens with flying.)\n4/3"
+    IDS_STRING41176         "Sharktocrab\n{2GU}\nCreature - Shark Octopus Crab\nRNA,U\n{2}{G}{U}: Adapt 1. (If this creature has no +1/+1 counters on it, put a +1/+1 counter on it.)\rWhenever one or more +1/+1 counters are put on this creature, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\n4/4"
+    IDS_STRING41177         "Sphinx of New Prahv\n{WWUU}\nCreature - Sphinx\nRNA,U\nFlying, vigilance\rSpells your opponents cast that target this creature cost {2} more to cast.\n4/3"
+    IDS_STRING41178         "Sphinx of the Guildpact\n{7}\nArtifact Creature - Sphinx\nRNA,U\nSphinx of the Guildpact is all colors.\rFlying\rHexproof from monocolored (This creature can't be the target of monocolored spells or abilities your opponents control.)\n5/5"
+    IDS_STRING41179         "Sunder Shaman\n{RRGG}\nCreature - Giant Shaman\nRNA,U\nThis creature can't be blocked by more than one creature.\rWhenever this creature deals combat damage to a player, destroy target artifact or enchantment that player controls.\n5/5"
+    IDS_STRING41180         "Syndicate Guildmage\n{WB}\nCreature - Human Cleric\nRNA,U\n{1}{W}, {T}: Tap target creature with power 4 or greater.\r{4}{B}, {T}: This creature deals 2 damage to target opponent or planeswalker.\n2/2"
+    IDS_STRING41181         "Teysa Karlov\n{2WB}\nLegendary Creature - Human Advisor\nRNA,R\nIf a creature dying causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\rCreature tokens you control have vigilance and lifelink.\n2/4"
+    IDS_STRING41182         "Vizkopa Vampire\n{2W/B}\nCreature - Vampire\nRNA,C\nLifelink\n3/1"
+    IDS_STRING41183         "Zegana, Utopian Speaker\n{2GU}\nLegendary Creature - Merfolk Wizard\nRNA,R\nWhen Zegana enters, if you control another creature with a +1/+1 counter on it, draw a card.\r{4}{G}{U}: Adapt 4. (If this creature has no +1/+1 counters on it, put four +1/+1 counters on it.)\rEach creature you control with a +1/+1 counter on it has trample.\n4/4"
+    IDS_STRING41184         "Zhur-Taa Goblin\n{RG}\nCreature - Goblin Berserker\nRNA,U\nRiot (This creature enters with your choice of a +1/+1 counter or haste.)\n2/2"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "..\MagicCore\MagicCore.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

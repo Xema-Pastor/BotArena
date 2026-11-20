@@ -135,6 +135,12 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CElfKnightAToken);
 		DEFINE_TOKEN(CBirdIllusionAToken);
 		DEFINE_TOKEN(CInsectLToken);
+		DEFINE_TOKEN(CBeastSToken);
+		DEFINE_TOKEN(CFrogLizardAToken);
+		DEFINE_TOKEN(CSphinxBToken);
+		DEFINE_TOKEN(CCentaurEToken);
+		DEFINE_TOKEN(COozeGToken);
+		DEFINE_TOKEN(CIllusionDToken);
 	} while (false);
 
 	return cpCard;
@@ -1880,4 +1886,107 @@ CInsectLToken::CInsectLToken(CGame* pGame, UINT nID)
 {
 	AddCardType(CardType::Black | CardType::Green, CardType::_ColorMask);
 // Guilds of Ravnica version: used by Izoni, Thousand-Eyed.
+}
+//____________________________________________________________________________
+//
+CBeastSToken::CBeastSToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Beast"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Beast), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	AddCardType(CardType::Red | CardType::Green, CardType::_ColorMask);
+	GetCreatureKeyword()->AddTrample(FALSE);
+// Ravnica Allegiance version: used by the Domri, Chaos Bringer emblem.
+}
+//____________________________________________________________________________
+//
+CFrogLizardAToken::CFrogLizardAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Frog Lizard"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Frog, Lizard), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Ravnica Allegiance version: used by Incubation // Incongruity.
+}
+//____________________________________________________________________________
+//
+CSphinxBToken::CSphinxBToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Sphinx"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Sphinx), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	AddCardType(CardType::White | CardType::Blue, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+	GetCreatureKeyword()->AddVigilance(FALSE);
+// Ravnica Allegiance version: used by Warrant // Warden.
+}
+//____________________________________________________________________________
+//
+CCentaurEToken::CCentaurEToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Centaur"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Centaur), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Ravnica Allegiance version: used by Rampage of the Clans.
+}
+//____________________________________________________________________________
+//
+COozeGToken::COozeGToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Ooze"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Ooze), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Ravnica Allegiance version: used by Biogenic Ooze.
+}
+//____________________________________________________________________________
+//
+CIllusionDToken::CIllusionDToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Illusion"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Illusion), nID,
+		_T(""),
+		Power(0), Life(2))
+{
+	AddCardType(CardType::Blue, CardType::_ColorMask);
+
+	// Whenever this token blocks a creature, that creature doesn't untap during its controller's next untap step.
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CIllusionDToken::SetBlockContext));
+	cpAbility->SetBeforeResolveSelectionCallback(TriggeredAbility::BeforeResolveSelectionCallback(this, &CIllusionDToken::BeforeSkipUntap));
+	AddAbility(cpAbility.GetPointer());
+// Ravnica Allegiance version: used by Mesmerizing Benthid.
+}
+
+bool CIllusionDToken::SetBlockContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+	CCreatureCard* pCreature1, CCreatureCard* pCreature2, int n1, int n2) const
+{
+	// The blocked creature is the one that isn't this token
+	CCreatureCard* pBlocked = (pCreature1 != this) ? pCreature1 : pCreature2;
+	if (!pBlocked || pBlocked == this)
+		return false;
+	triggerContext.nValue1 = (DWORD)pBlocked;
+	return true;
+}
+
+bool CIllusionDToken::BeforeSkipUntap(TriggeredAbility::TriggeredActionType* pAction)
+{
+	CCard* pCard = (CCard*)pAction->GetTriggerContext().nValue1;
+	if (!pCard || pCard->GetZoneId() != ZoneId::Battlefield)
+		return true;
+
+	// (as Watertrap Weaver, without tapping it)
+	CScheduledCardModifier pSkip = CScheduledCardModifier(GetGame(),
+		new CCardKeywordModifier(CardKeyword::NoUntapInUntapPhase, TRUE, FALSE),
+		TurnNumberDelta(-1), NodeId::UpkeepStep, true, CScheduledCardModifier::Operation::ApplyToNowRemoveLater,
+		CScheduledCardModifier::DeltaOption::CustomPlayerTurn, pCard->GetController());
+	pSkip.ApplyTo(pCard);
+	return true;
 }

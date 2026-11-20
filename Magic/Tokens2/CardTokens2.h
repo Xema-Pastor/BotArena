@@ -865,3 +865,55 @@ class CInsectLToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CInsectLToken);
 };
+
+//____________________________________________________________________________
+//
+class CBeastSToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CBeastSToken);
+};
+
+//____________________________________________________________________________
+//
+class CFrogLizardAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CFrogLizardAToken);
+};
+
+//____________________________________________________________________________
+//
+class CSphinxBToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CSphinxBToken);
+};
+
+//____________________________________________________________________________
+//
+class CCentaurEToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CCentaurEToken);
+};
+
+//____________________________________________________________________________
+//
+class COozeGToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(COozeGToken);
+};
+
+//____________________________________________________________________________
+//
+class CIllusionDToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CIllusionDToken);
+
+protected:
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfAttackedBlocked,
+						   CWhenSelfAttackedBlocked::BlockEventCallback,
+						   &CWhenSelfAttackedBlocked::SetBlockingEventCallback > TriggeredAbility;
+
+	bool SetBlockContext(CTriggeredAbility<>::TriggerContextType& triggerContext,
+		CCreatureCard* pCreature1, CCreatureCard* pCreature2, int n1, int n2) const;
+	bool BeforeSkipUntap(TriggeredAbility::TriggeredActionType* pAction);
+};

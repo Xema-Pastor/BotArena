@@ -945,6 +945,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "M19", "..\M19\M19.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GuildsOfRavnica", "..\GuildsOfRavnica\GuildsOfRavnica.vcxproj", "{13629E62-2221-437E-9F86-FB946FD721F6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RavnicaAllegiance", "..\RavnicaAllegiance\RavnicaAllegiance.vcxproj", "{A53763C3-8E3F-4727-9A41-8F7D1AA7A009}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -1732,6 +1734,12 @@ Global
 		{13629E62-2221-437E-9F86-FB946FD721F6}.Release|Win32.Build.0 = Release|Win32
 		{13629E62-2221-437E-9F86-FB946FD721F6}.Template|Win32.ActiveCfg = Release|Win32
 		{13629E62-2221-437E-9F86-FB946FD721F6}.Template|Win32.Build.0 = Release|Win32
+		{A53763C3-8E3F-4727-9A41-8F7D1AA7A009}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A53763C3-8E3F-4727-9A41-8F7D1AA7A009}.Debug|Win32.Build.0 = Debug|Win32
+		{A53763C3-8E3F-4727-9A41-8F7D1AA7A009}.Release|Win32.ActiveCfg = Release|Win32
+		{A53763C3-8E3F-4727-9A41-8F7D1AA7A009}.Release|Win32.Build.0 = Release|Win32
+		{A53763C3-8E3F-4727-9A41-8F7D1AA7A009}.Template|Win32.ActiveCfg = Release|Win32
+		{A53763C3-8E3F-4727-9A41-8F7D1AA7A009}.Template|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1907,6 +1915,7 @@ Global
 		{9B28D478-C1EE-40F3-92E4-2F9B4BF5C2FE} = {1284E4D6-FB84-4F51-AF43-89BFB5CF2F39}
 		{BD9FD091-B14A-4F9F-B2E3-2044E9FE3015} = {3CC42E1D-AB28-443D-A0B5-BC8125EDC576}
 		{13629E62-2221-437E-9F86-FB946FD721F6} = {B5C6D7E8-F9A0-1234-BCDE-F01234567891}
+		{A53763C3-8E3F-4727-9A41-8F7D1AA7A009} = {B5C6D7E8-F9A0-1234-BCDE-F01234567891}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = ..\..
