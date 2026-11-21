@@ -187,6 +187,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CZombieBoaRedEffectToken);
 		DEFINE_TOKEN(CZombieBoaGreenEffectToken);
 		DEFINE_TOKEN(CNissaWhoShakesTheWorldEmblemToken);
+		DEFINE_TOKEN(CChandraAwakenedInfernoEmblemToken);
 
 		
 	} while (false);
@@ -12120,6 +12121,41 @@ CNissaWhoShakesTheWorldEmblemToken::CNissaWhoShakesTheWorldEmblemToken(CGame* pG
 	cpAbility->SetAffectControllerOnly();
 	cpAbility->SetEnchantmentActiveIn(ZoneId::_Effects);
 	AddAbility(cpAbility.GetPointer());
+}
+
+//____________________________________________________________________________
+//
+CChandraAwakenedInfernoEmblemToken::CChandraAwakenedInfernoEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Chandra, Awakened Inferno Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// At the beginning of your upkeep, this emblem deals 1 damage to you.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenNodeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this, NodeId::UpkeepStep, FALSE));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->SetPlayableFrom(ZoneId::_Effects);
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CChandraAwakenedInfernoEmblemToken::SetTriggerContext));
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CChandraAwakenedInfernoEmblemToken::BeforeDamage));
+	AddAbility(cpAbility.GetPointer());
+// Core Set 2020 version: given to each opponent by Chandra, Awakened Inferno.
+}
+
+bool CChandraAwakenedInfernoEmblemToken::SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const
+{
+	return GetZone()->GetZoneId() == ZoneId::_Effects;
+}
+
+bool CChandraAwakenedInfernoEmblemToken::BeforeDamage(CAbilityAction* pAction)
+{
+	CLifeModifier pModifier = CLifeModifier(Life(-1), this, PreventableType::Preventable,
+		DamageType::AbilityDamage | DamageType::NonCombatDamage);
+	pModifier.ApplyTo(pAction->GetController());
+	return true;
 }
 
 //____________________________________________________________________________

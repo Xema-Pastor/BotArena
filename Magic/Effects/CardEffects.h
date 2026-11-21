@@ -2234,3 +2234,14 @@ class CNissaWhoShakesTheWorldEmblemToken : public CEffectCard
 
 //____________________________________________________________________________
 //
+class CChandraAwakenedInfernoEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CChandraAwakenedInfernoEmblemToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredAbility<>::TriggerContextType& triggerContext, CNode* pToNode) const;
+	bool BeforeDamage(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//

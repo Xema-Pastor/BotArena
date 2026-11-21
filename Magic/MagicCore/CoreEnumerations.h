@@ -1543,6 +1543,7 @@ struct CORE_EXPORT SingleCreatureType
 		Shark,
 		Army,
 		Sloth,
+		Sorcerer,
 
 		_SingleTypeCount,
 	};
@@ -1611,6 +1612,7 @@ struct CORE_EXPORT PlaneswalkerType
 		Teyo,
 		Ugin,
 		Yanggu,
+		Yanling,
 
 		_SubtypeCount,
 	};

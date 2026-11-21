@@ -48,6 +48,8 @@ bool ContainedinComparer::operator()(const CCard* pCard) const
 bool LeylineCardNameComparer::operator()(const CCard* pCard) const
 {
 	return (_T("Leyline of Anticipation") == pCard->GetPrintedCardName() ||
+		   _T("Leyline of Abundance") == pCard->GetPrintedCardName() ||
+		   _T("Leyline of Combustion") == pCard->GetPrintedCardName() ||
 		   _T("Leyline of Lifeforce") == pCard->GetPrintedCardName() ||
 		   _T("Leyline of Lightning") == pCard->GetPrintedCardName() ||
 		   _T("Leyline of Punishment") == pCard->GetPrintedCardName() ||

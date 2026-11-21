@@ -154,6 +154,7 @@
 #define IDS_STRING64137                 64137
 #define IDS_STRING64138                 64138
 #define IDS_STRING64139                 64139
+#define IDS_STRING64140                 64140
 #define IDI_MODULE                      64998
 #define IDI_LARGE_MODULE                64999
 

@@ -237,6 +237,9 @@ BEGIN
     IDS_STRING55134         "Citizen (B)\n{WUBRG}\nCreature - Citizen\nToken\n\n2/2"
     IDS_STRING55135         "Zombie Warrior (A)\n{B}\nCreature - Zombie Warrior\nToken\nVigilance\n4/4"
     IDS_STRING55136         "Voja, Friend to Elves\n{GW}\nLegendary Creature - Wolf\nToken\n\n3/3"
+    IDS_STRING55137         "Elemental Bird (A)\n{U}\nCreature - Elemental Bird\nToken\nFlying\n4/4"
+    IDS_STRING55138         "Ajani's Pridemate\n{W}\nCreature - Cat Soldier\nToken\nWhenever you gain life, put a +1/+1 counter on this token.\n2/2"
+    IDS_STRING55139         "Golem (F)\n\nArtifact Creature - Golem\nToken\n\n3/3"
 END
 
 #endif    // English (United States) resources

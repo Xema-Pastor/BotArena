@@ -1698,50 +1698,34 @@ BOOL CTriggeredProliferateAbility::ResolveSelection(CPlayer* pTriggeredPlayer, C
 	if (!__super::ResolveSelection(pTriggeredPlayer, pAction))
 		return FALSE;
 
-	struct PushBack
+	// Proliferate (rules since War of the Spark): each chosen permanent gets one additional counter
+	// of each kind already there. The names are gathered first, because adding counters may change the list.
+	struct GatherNames
 	{
-		PushBack(CTriggeredAction* pAction)
-			: pAction1((const TTriggeredAction<TriggerContextType>*)pAction)
-			, triggerContext(pAction1->GetTriggerContext())
-			, entries()
-		{}
 		void operator()(Counter* c)
 		{
-			//int n = triggerContext.m_pCard->GetCounterContainer()->GetSize();
-			LPCTSTR name = c->GetName();
-		
-			SelectionEntry selectionEntry;
-
-			selectionEntry.dwContext = (DWORD)c;  //assuming size_of(c)==size_of(DWORD)
-			selectionEntry.strText.Format(_T("put a %s on %s"), name, triggerContext.m_pCard->GetCardName());
-			//m_CounterNameSelection.push_back(name);
-
-			if (c->GetCount()!=0)
-				entries.push_back(selectionEntry);
+			if (c->GetCount() > 0)
+				names.push_back(c->GetName());
 		}
-		const TTriggeredAction<TriggerContextType>* pAction1;
-		const TriggerContextType& triggerContext;
+		std::vector<CString> names;
+	} gather;
 
-		std::vector<SelectionEntry> entries;
-	} push(pAction);
-	//if (triggerContext.m_pCard)
-	//{
-		m_ProliferateSelection.AddSelectionRequest(
-			push.triggerContext.m_pCard->GetCounterContainer()->ForEachCounter(push).entries,
-			1, 1, NULL, GetController(), (DWORD)push.triggerContext.m_pCard);
-/*	}
-	else
+	const TTriggeredAction<TriggerContextType>* pAction1 = (const TTriggeredAction<TriggerContextType>*)pAction;
+	CCard* pCard = pAction1->GetTriggerContext().m_pCard;
+	if (!pCard)
+		return TRUE;
+
+	std::vector<CString> names = pCard->GetCounterContainer()->ForEachCounter(gather).names;
+	for (std::vector<CString>::const_iterator it = names.begin(); it != names.end(); ++it)
 	{
-		int poison = pTriggeredPlayer->GetPoisonCounters();
-		if (poison>0)
-		{
-			CPoisonModifier pModifier = CPoisonModifier (m_pGame, poison);
-			pModifier.ApplyTo(pTriggeredPlayer);
-		}
-	}*/
+		CCardCounterModifier pModifier = CCardCounterModifier(*it, +1);
+		pModifier.ApplyTo(pCard);
+	}
 
 	return TRUE;
 }
+
+// Not used since the War of the Spark rules (one counter of each kind, without choosing); kept for compatibility.
 void CTriggeredProliferateAbility::OnProliferateSelected(const std::vector<SelectionEntry>& selection, int nSelectedCount, CPlayer* pSelectionPlayer, DWORD dwContext1, DWORD dwContext2, DWORD dwContext3, DWORD dwContext4, DWORD dwContext5)
 {
 	ATLASSERT(nSelectedCount == 1);

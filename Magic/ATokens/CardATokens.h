@@ -1032,3 +1032,10 @@ class CVituGhaziAToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CElementalAZToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalAZToken);
+};
+
+//____________________________________________________________________________
+//

@@ -992,3 +992,28 @@ class CVojaFriendtoElvesToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CVojaFriendtoElvesToken);
 };
+
+//____________________________________________________________________________
+//
+class CElementalBirdAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElementalBirdAToken);
+};
+
+//____________________________________________________________________________
+//
+class CAjanisPridemateToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CAjanisPridemateToken);
+
+protected:
+	bool SetTriggerContext(CTriggeredModifyCreatureAbility::TriggerContextType& triggerContext,
+		const CPlayer* pPlayer, Life nFromLife, Life nToLife) const;
+};
+
+//____________________________________________________________________________
+//
+class CGolemFToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CGolemFToken);
+};

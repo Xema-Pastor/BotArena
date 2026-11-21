@@ -153,6 +153,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CParhelionIIVehicleToken);
 		DEFINE_TOKEN(CSilentSubmersibleVehicleToken);
 		DEFINE_TOKEN(CVituGhaziAToken);
+		DEFINE_TOKEN(CElementalAZToken);
 						
 	} while (false);
 
@@ -2387,6 +2388,19 @@ CVituGhaziAToken::CVituGhaziAToken(CGame* pGame, UINT nID)
 {
 	GetCreatureKeyword()->AddHaste(FALSE);
 // Animation of the land of WAR Awakening of Vitu-Ghazi
+}
+
+//____________________________________________________________________________
+//
+CElementalAZToken::CElementalAZToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental"), CardType::Creature,
+		CREATURE_TYPE(Elemental), nID,
+		_T(""),
+		Power(5), Life(5))
+{
+	GetCreatureKeyword()->AddHaste(FALSE);
+
+// Animation of M20 Wakeroot Elemental (a 5/5 Elemental with haste that's still a land)
 }
 
 //____________________________________________________________________________

@@ -150,6 +150,9 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CCitizenBToken);
 		DEFINE_TOKEN(CZombieWarriorAToken);
 		DEFINE_TOKEN(CVojaFriendtoElvesToken);
+		DEFINE_TOKEN(CElementalBirdAToken);
+		DEFINE_TOKEN(CAjanisPridemateToken);
+		DEFINE_TOKEN(CGolemFToken);
 	} while (false);
 
 	return cpCard;
@@ -2129,4 +2132,56 @@ CVojaFriendtoElvesToken::CVojaFriendtoElvesToken(CGame* pGame, UINT nID)
 {
 	AddCardType(CardType::Green | CardType::White, CardType::_ColorMask);
 // War of the Spark version: used by Tolsimir, Friend to Wolves.
+}
+//____________________________________________________________________________
+//
+CElementalBirdAToken::CElementalBirdAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elemental Bird"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Elemental, Bird), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+	AddCardType(CardType::Blue, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+// Core Set 2020 version: used by Mu Yanling, Sky Dancer.
+}
+
+//____________________________________________________________________________
+//
+CAjanisPridemateToken::CAjanisPridemateToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Ajani's Pridemate"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Cat, Soldier), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+
+	// Whenever you gain life, put a +1/+1 counter on this token. (as Ajani's Pridemate in M11)
+	typedef
+		TTriggeredAbility< CTriggeredModifyCreatureAbility, CWhenPlayerLifeChanged > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->GetTrigger().SetMonitorControllerOnly(TRUE);
+	cpAbility->GetTriggeredCardModifiers().push_back(new CCardCounterModifier(_T("+1/+1"), +1));
+	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CAjanisPridemateToken::SetTriggerContext));
+	cpAbility->AddAbilityTag(AbilityTag::CreatureChange);
+	AddAbility(cpAbility.GetPointer());
+// Core Set 2020 version: used by Ajani, Strength of the Pride.
+}
+
+bool CAjanisPridemateToken::SetTriggerContext(CTriggeredModifyCreatureAbility::TriggerContextType& triggerContext,
+	const CPlayer* pPlayer, Life nFromLife, Life nToLife) const
+{
+	return nToLife > nFromLife;
+}
+//____________________________________________________________________________
+//
+CGolemFToken::CGolemFToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Golem"), CardType::_ArtifactCreature | CardType::Token,
+		CREATURE_TYPE(Golem), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+// Core Set 2020 version: used by Masterful Replication and Cavalier of Dawn.
 }

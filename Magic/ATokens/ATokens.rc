@@ -240,6 +240,7 @@ BEGIN
     IDS_STRING64137         "Parhelion II (Vehicle)\n\nLegendary Artifact Creature - Vehicle\nToken\nFlying, first strike, vigilance\rWhenever Parhelion II attacks, create two 4/4 white Angel creature tokens with flying and vigilance that are attacking.\n5/5"
     IDS_STRING64138         "Silent Submersible (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nWhenever this Vehicle deals combat damage to a player or planeswalker, draw a card.\n2/3"
     IDS_STRING64139         "Vitu-Ghazi (A)\n\nLegendary Creature - Elemental\nToken\nHaste\n0/0"
+    IDS_STRING64140         "Elemental (AZ)\n\nCreature - Elemental\nToken\nHaste\n5/5"
 END
 
 
