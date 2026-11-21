@@ -153,6 +153,23 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CElementalBirdAToken);
 		DEFINE_TOKEN(CAjanisPridemateToken);
 		DEFINE_TOKEN(CGolemFToken);
+		DEFINE_TOKEN(CFoodToken);
+		DEFINE_TOKEN(CGoldToken);
+		DEFINE_TOKEN(CBloodToken);
+		DEFINE_TOKEN(CPowerstoneToken);
+		DEFINE_TOKEN(CMapToken);
+		DEFINE_TOKEN(CLanderToken);
+		DEFINE_TOKEN(CShardToken);
+		DEFINE_TOKEN(CWalkerToken);
+		DEFINE_TOKEN(CDwarfAToken);
+		DEFINE_TOKEN(CWolfMToken);
+		DEFINE_TOKEN(CFaerieAToken);
+		DEFINE_TOKEN(CHumanWarriorAToken);
+		DEFINE_TOKEN(CHumanClericBToken);
+		DEFINE_TOKEN(CHumanRogueAToken);
+		DEFINE_TOKEN(CMouseAToken);
+		DEFINE_TOKEN(CGiantACToken);
+		DEFINE_TOKEN(CBoarCToken);
 	} while (false);
 
 	return cpCard;
@@ -1354,7 +1371,7 @@ CHumanClericAToken::CHumanClericAToken(CGame* pGame, UINT nID)
 // treats every token as a CTokenCreature), so it is a CTokenCreature without the creature card type:
 // it can't attack or block and the state-based actions don't check its toughness.
 CClueAToken::CClueAToken(CGame* pGame, UINT nID)
-	: CTokenCreature(pGame, _T("Clue"), CardType::Artifact | CardType::Token,
+	: CTokenCreature(pGame, _T("Clue"), CardType::Artifact | CardType::Clue | CardType::Token,
 		CreatureType(SingleCreatureType::Null), nID,
 		_T(""),
 		Power(0), Life(1))
@@ -1557,7 +1574,7 @@ CInsectKToken::CInsectKToken(CGame* pGame, UINT nID)
 //____________________________________________________________________________
 //
 CTreasureToken::CTreasureToken(CGame* pGame, UINT nID)
-	: CTokenCreature(pGame, _T("Treasure"), CardType::Artifact | CardType::Token,
+	: CTokenCreature(pGame, _T("Treasure"), CardType::Artifact | CardType::Treasure | CardType::Token,
 		CreatureType(SingleCreatureType::Null), nID,
 		_T(""),
 		Power(0), Life(1))
@@ -2184,4 +2201,358 @@ CGolemFToken::CGolemFToken(CGame* pGame, UINT nID)
 		Power(3), Life(3))
 {
 // Core Set 2020 version: used by Masterful Replication and Cavalier of Dawn.
+}
+//____________________________________________________________________________
+//
+CFoodToken::CFoodToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Food"), CardType::Artifact | CardType::Food | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {2}, {T}, Sacrifice this token: You gain 3 life. (rule 111.10b)
+	counted_ptr<CActivatedAbility<CGenericSpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CGenericSpell>>(this,
+			_T("2")));
+
+	cpAbility->AddTapCost();
+	cpAbility->AddSacrificeCost();
+	cpAbility->GetResolutionModifier().CPlayerModifiers::push_back(
+		new CLifeModifier(Life(+3), this, PreventableType::NotPreventable, DamageType::NotDealingDamage));
+	cpAbility->SetAbilityText(_T("You gain 3 life. Activates"));
+	cpAbility->AddAbilityTag(AbilityTag::LifeGain);
+	AddAbility(cpAbility.GetPointer());
+// Predefined token (Throne of Eldraine and later).
+}
+
+//____________________________________________________________________________
+//
+CGoldToken::CGoldToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Gold"), CardType::Artifact | CardType::Gold | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// Sacrifice this token: Add one mana of any color. (rule 111.10c; as the Treasure, without tapping)
+	LPCTSTR colors[] = { WHITE_MANA_TEXT, BLUE_MANA_TEXT, BLACK_MANA_TEXT, RED_MANA_TEXT, GREEN_MANA_TEXT };
+	for (int i = 0; i < _countof(colors); ++i)
+	{
+		counted_ptr<CManaProductionAbility> cpAbility(
+			::CreateObject<CManaProductionAbility>(this, _T(""), AbilityType::Activated, colors[i]));
+		cpAbility->AddSacrificeCost();
+		AddAbility(cpAbility.GetPointer());
+	}
+// Predefined token.
+}
+
+//____________________________________________________________________________
+//
+CBloodToken::CBloodToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Blood"), CardType::Artifact | CardType::Blood | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {1}, {T}, Discard a card, Sacrifice this token: Draw a card. (rule 111.10g)
+	counted_ptr<CActivatedAbility<CDrawCardSpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CDrawCardSpell>>(this,
+			_T("1"), 1));
+
+	cpAbility->AddTapCost();
+	cpAbility->GetCost().AddDiscardCardCost(1, CCardFilter::GetFilter(_T("cards")));
+	cpAbility->AddSacrificeCost();
+	AddAbility(cpAbility.GetPointer());
+// Predefined token.
+}
+
+//____________________________________________________________________________
+//
+CPowerstoneToken::CPowerstoneToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Powerstone"), CardType::Artifact | CardType::Powerstone | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {T}: Add {C}. This mana can't be spent to cast a nonartifact spell. (rule 111.10h)
+	// Partial: the mana isn't restricted (the engine has no restricted mana).
+	counted_ptr<CManaProductionAbility> cpAbility(
+		::CreateObject<CManaProductionAbility>(this, _T(""), AbilityType::Activated, _T("1")));
+	cpAbility->AddTapCost();
+	AddAbility(cpAbility.GetPointer());
+// Predefined token.
+}
+
+//____________________________________________________________________________
+//
+CMapToken::CMapToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Map"), CardType::Artifact | CardType::Map | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {1}, {T}, Sacrifice this token: Target creature you control explores. Activate only as a sorcery. (rule 111.10s)
+	counted_ptr<CActivatedAbility<CTargetSpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CTargetSpell>>(this,
+			_T("1"),
+			new AnyCreatureComparer, FALSE));
+
+	cpAbility->AddTapCost();
+	cpAbility->AddSacrificeCost();
+	cpAbility->GetTargeting()->SetIncludeControllerCardsOnly();
+	cpAbility->GetTargeting()->SetDefaultCharacteristic(Characteristic::Positive);
+	cpAbility->SetAbilityType((cpAbility->GetAbilityType() & ~AbilityType::Activated) | AbilityType::AsSorcery);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CMapToken::BeforeExplore));
+	AddAbility(cpAbility.GetPointer());
+// Predefined token.
+}
+
+bool CMapToken::BeforeExplore(CAbilityAction* pAction)
+{
+	CCard* pCard = pAction->GetAssociatedCard();
+	if (pCard && pCard->GetZoneId() == ZoneId::Battlefield)
+		CExploreSupport::Explore(pCard);
+	return false;
+}
+
+//____________________________________________________________________________
+//
+CLanderToken::CLanderToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Lander"), CardType::Artifact | CardType::Lander | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then
+	// shuffle. (rule 111.10u; as Evolving Wilds)
+	counted_ptr<CActivatedAbility<CSearchLibrarySpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CSearchLibrarySpell>>(this,
+			_T("2"),
+			CCardFilter::GetFilter(_T("basic lands")),
+			ZoneId::Battlefield, FALSE, TRUE, TRUE));
+
+	cpAbility->SetSearchCount(MinimumValue(0), MaximumValue(1));
+	cpAbility->AddTapCost();
+	cpAbility->AddSacrificeCost();
+	AddAbility(cpAbility.GetPointer());
+// Predefined token.
+}
+
+//____________________________________________________________________________
+//
+CShardToken::CShardToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Shard"), CardType::GlobalEnchantment | CardType::Shard | CardType::Token,
+		CreatureType(SingleCreatureType::Null), nID,
+		_T(""),
+		Power(0), Life(1))
+{
+	// {2}, Sacrifice this token: Scry 1, then draw a card. (rule 111.10e)
+	counted_ptr<CActivatedAbility<CGenericSpell>> cpAbility(
+		::CreateObject<CActivatedAbility<CGenericSpell>>(this,
+			_T("2")));
+
+	cpAbility->AddSacrificeCost();
+	cpAbility->GetResolutionModifier().CPlayerModifiers::push_back(new CScryModifier(pGame, 1, this));
+	cpAbility->GetResolutionModifier().CPlayerModifiers::push_back(new CDrawCardModifier(pGame, MinimumValue(1), MaximumValue(1)));
+	cpAbility->SetAbilityText(_T("Scry 1, then draw a card. Activates"));
+	AddAbility(cpAbility.GetPointer());
+// Predefined token.
+}
+
+//____________________________________________________________________________
+//
+CWalkerToken::CWalkerToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Walker"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Zombie), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	// A 2/2 black Zombie creature token named Walker. (rule 111.10d)
+	AddCardType(CardType::Black, CardType::_ColorMask);
+// Predefined token.
+}
+//____________________________________________________________________________
+//
+CDwarfAToken::CDwarfAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Dwarf"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Dwarf), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Red, CardType::_ColorMask);
+// Throne of Eldraine version: used by Dwarven Mine.
+}
+//____________________________________________________________________________
+//
+CWolfMToken::CWolfMToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Wolf"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Wolf), nID,
+		_T(""),
+		Power(2), Life(2))
+{
+	AddCardType(CardType::Black | CardType::Green, CardType::_ColorMask);
+
+	// When this token dies, put a loyalty counter on each Garruk you control.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfInplay,
+						   CWhenSelfInplay::EventCallback, &CWhenSelfInplay::SetLeaveEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTrigger().SetToThisZoneOnly(ZoneId::Graveyard);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CWolfMToken::BeforeLoyalty));
+	AddAbility(cpAbility.GetPointer());
+// Throne of Eldraine version: used by Garruk, Cursed Huntsman.
+}
+
+bool CWolfMToken::BeforeLoyalty(CAbilityAction* pAction)
+{
+	CZone* pBattlefield = pAction->GetController()->GetZoneById(ZoneId::Battlefield);
+	CCountedCardContainer garruks;
+	for (int i = 0; i < pBattlefield->GetSize(); ++i)
+		if (PlaneswalkerTypeComparer(PlaneswalkerType::Garruk)(pBattlefield->GetAt(i)))
+			garruks.AddCard(pBattlefield->GetAt(i), CardPlacement::Top);
+	for (int i = 0; i < garruks.GetSize(); ++i)
+		CCardCounterModifier(LOYALTY_COUNTER, +1).ApplyTo(garruks.GetAt(i));
+	return true;
+}
+//____________________________________________________________________________
+//
+CFaerieAToken::CFaerieAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Faerie"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Faerie), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Blue, CardType::_ColorMask);
+	GetCreatureKeyword()->AddFlying(FALSE);
+// Throne of Eldraine version: used by Improbable Alliance.
+}
+
+//____________________________________________________________________________
+//
+CHumanWarriorAToken::CHumanWarriorAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Human Warrior"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Human, Warrior), nID,
+		_T(""),
+		Power(3), Life(1))
+{
+	AddCardType(CardType::Red | CardType::White, CardType::_ColorMask);
+	GetCreatureKeyword()->AddTrample(FALSE);
+	GetCreatureKeyword()->AddHaste(FALSE);
+// Throne of Eldraine version: used by Outlaws' Merriment.
+}
+
+//____________________________________________________________________________
+//
+CHumanClericBToken::CHumanClericBToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Human Cleric"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Human, Cleric), nID,
+		_T(""),
+		Power(2), Life(1))
+{
+	AddCardType(CardType::Red | CardType::White, CardType::_ColorMask);
+	GetCardKeyword()->AddLifelink(FALSE);
+	GetCreatureKeyword()->AddHaste(FALSE);
+// Throne of Eldraine version: used by Outlaws' Merriment.
+}
+
+//____________________________________________________________________________
+//
+CHumanRogueAToken::CHumanRogueAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Human Rogue"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE2(Human, Rogue), nID,
+		_T(""),
+		Power(1), Life(2))
+{
+	AddCardType(CardType::Red | CardType::White, CardType::_ColorMask);
+	GetCreatureKeyword()->AddHaste(FALSE);
+
+	// When this token enters, it deals 1 damage to any target.
+	typedef
+		TTriggeredTargetAbility< CTriggeredAbility<>, CWhenSelfInplay,
+								 CWhenSelfInplay::EventCallback, &CWhenSelfInplay::SetEnterEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTargeting().GetSubjectCardFilter().AddComparer(
+		new CardTypeComparer(CardType::Creature | CardType::Planeswalker, false));
+	cpAbility->GetTargeting().SetIncludePlayers(TRUE);
+	cpAbility->GetTargeting().SetDefaultCharacteristic(Characteristic::Negative);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CHumanRogueAToken::BeforeDamage));
+	AddAbility(cpAbility.GetPointer());
+// Throne of Eldraine version: used by Outlaws' Merriment.
+}
+
+bool CHumanRogueAToken::BeforeDamage(CAbilityAction* pAction)
+{
+	CLifeModifier pModifier = CLifeModifier(Life(-1), this, PreventableType::Preventable,
+		DamageType::AbilityDamage | DamageType::NonCombatDamage);
+
+	CPlayer* pPlayer = pAction->GetAssociatedPlayer();
+	CCard* pCard = pAction->GetAssociatedCard();
+	if (pPlayer)
+		pModifier.ApplyTo(pPlayer);
+	else if (pCard && pCard->GetZoneId() == ZoneId::Battlefield)
+	{
+		CCreatureCard* pCreature = dynamic_cast<CCreatureCard*>(pCard);
+		if (pCreature && pCard->GetCardType().IsCreature())
+			pModifier.ApplyTo(pCreature);
+		else if (pCard->GetCardType().IsPlaneswalker())
+			CCardCounterModifier(LOYALTY_COUNTER, -1).ApplyTo(pCard);	// (the planeswalkers lose loyalty)
+	}
+	return false;
+}
+//____________________________________________________________________________
+//
+CMouseAToken::CMouseAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Mouse"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Mouse), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::White, CardType::_ColorMask);
+// Throne of Eldraine version: used by Enchanted Carriage.
+}
+//____________________________________________________________________________
+//
+CGiantACToken::CGiantACToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Giant"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Giant), nID,
+		_T(""),
+		Power(7), Life(7))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Throne of Eldraine version: used by Giant Opportunity.
+}
+
+//____________________________________________________________________________
+//
+CBoarCToken::CBoarCToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Boar"), CardType::Creature | CardType::Token,
+		CREATURE_TYPE(Boar), nID,
+		_T(""),
+		Power(1), Life(1))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+
+	// When this token dies, create a Food token.
+	typedef
+		TTriggeredAbility< CTriggeredAbility<>, CWhenSelfInplay,
+						   CWhenSelfInplay::EventCallback, &CWhenSelfInplay::SetLeaveEventCallback > TriggeredAbility;
+
+	counted_ptr<TriggeredAbility> cpAbility(::CreateObject<TriggeredAbility>(this));
+
+	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
+	cpAbility->GetTrigger().SetToThisZoneOnly(ZoneId::Graveyard);
+	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CBoarCToken::BeforeFood));
+	AddAbility(cpAbility.GetPointer());
+// Throne of Eldraine version: used by Wolf's Quarry.
+}
+
+bool CBoarCToken::BeforeFood(CAbilityAction* pAction)
+{
+	CTokenCreationModifier(GetGame(), FOOD_TOKEN_NAME, FOOD_TOKEN_ID, 1).ApplyTo(pAction->GetController());
+	return true;
 }

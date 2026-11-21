@@ -154,6 +154,8 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CSilentSubmersibleVehicleToken);
 		DEFINE_TOKEN(CVituGhaziAToken);
 		DEFINE_TOKEN(CElementalAZToken);
+		DEFINE_TOKEN(CElkAToken);
+		DEFINE_TOKEN(CEnchantedCarriageVehicleToken);
 						
 	} while (false);
 
@@ -2401,6 +2403,29 @@ CElementalAZToken::CElementalAZToken(CGame* pGame, UINT nID)
 	GetCreatureKeyword()->AddHaste(FALSE);
 
 // Animation of M20 Wakeroot Elemental (a 5/5 Elemental with haste that's still a land)
+}
+
+//____________________________________________________________________________
+//
+CElkAToken::CElkAToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Elk"), CardType::Creature,
+		CREATURE_TYPE(Elk), nID,
+		_T(""),
+		Power(3), Life(3))
+{
+	AddCardType(CardType::Green, CardType::_ColorMask);
+// Animation of ELD Oko, Thief of Crowns (a noncreature artifact becomes a 3/3 green Elk)
+}
+
+//____________________________________________________________________________
+//
+CEnchantedCarriageVehicleToken::CEnchantedCarriageVehicleToken(CGame* pGame, UINT nID)
+	: CTokenCreature(pGame, _T("Enchanted Carriage"), CardType::_ArtifactCreature,
+		CREATURE_TYPE(Null), nID,
+		_T(""),
+		Power(4), Life(4))
+{
+// Used by ELD Enchanted Carriage (the creature it becomes, see CCrewSupport)
 }
 
 //____________________________________________________________________________

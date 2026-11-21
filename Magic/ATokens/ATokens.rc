@@ -241,6 +241,8 @@ BEGIN
     IDS_STRING64138         "Silent Submersible (Vehicle)\n\nArtifact Creature - Vehicle\nToken\nWhenever this Vehicle deals combat damage to a player or planeswalker, draw a card.\n2/3"
     IDS_STRING64139         "Vitu-Ghazi (A)\n\nLegendary Creature - Elemental\nToken\nHaste\n0/0"
     IDS_STRING64140         "Elemental (AZ)\n\nCreature - Elemental\nToken\nHaste\n5/5"
+    IDS_STRING64141         "Elk (A)\n{G}\nCreature - Elk\nToken\n\n3/3"
+    IDS_STRING64142         "Enchanted Carriage (Vehicle)\n\nArtifact Creature - Vehicle\nToken\n\n4/4"
 END
 
 

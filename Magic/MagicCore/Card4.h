@@ -130,3 +130,77 @@ protected:
 
 //____________________________________________________________________________
 //
+// Adventure (Throne of Eldraine, rule 715): an adventurer card can be cast normally or as its Adventure (an instant or
+// sorcery with its own name, cost and effect). The card has a CAdventureSupport member and:
+//   - creates its Adventure spell (any CSpell, with its cost and effect) and calls SetAdventureSpell: the Adventure is
+//     cast only from the hand and, if it resolves, the card is exiled instead of going to the graveyard (if it's
+//     countered, it goes to the graveyard);
+//   - calls AddCastFromExileSpell with the normal mana cost: while the card is exiled after its Adventure, its owner may
+//     cast it normally from exile (not as an Adventure). Exiled by any other way, it can't be cast.
+// Find(card) says whether a card "has an Adventure" (Edgewall Innkeeper, Lonesome Unicorn...), and IsAdventureSpell
+// whether a spell on the stack is an Adventure (its ability name is ADVENTURE_ABILITY_NAME).
+// Limitation: while the Adventure is on the stack the card keeps its normal characteristics (types, colors, mana value).
+// Important: the resolution callback of the Adventure spell must return true (use CTargetSpell or CGenericSpell, with
+// the effect in the callback). A callback that returns false makes the resolution fail (CAbility::Resolve), and the card
+// would go to the graveyard instead of exile. With true, CTargetSpell::ResolveImpl fails only if every target is illegal.
+#define ADVENTURE_ABILITY_NAME	_T("Adventure")
+
+class CORE_EXPORT CAdventureSupport
+{
+public:
+	CAdventureSupport(CCard* pCard);
+	virtual ~CAdventureSupport();
+
+	// The Adventure support of a card (NULL if the card doesn't have an Adventure)
+	static CAdventureSupport* Find(const CCard* pCard);
+	// Is the ability an Adventure spell?
+	static BOOL IsAdventureSpell(const CAbility* pAbility);
+
+	// The card's Adventure spell (strName: the Adventure's name, for the ability text)
+	void SetAdventureSpell(CSpell* pSpell, LPCTSTR strName);
+	// The spell that casts the card normally from exile after its Adventure; returns it
+	CSpell* AddCastFromExileSpell(LPCTSTR strManaCost);
+
+	// Is the card exiled after its Adventure (so it can be cast from exile)?
+	BOOL IsOnAdventure() const;
+	LPCTSTR GetAdventureName() const { return m_strName; }
+
+protected:
+	BOOL CanCastFromExile(BOOL bIncludeTricks);
+	void OnZoneChanged(CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType);
+	void OnAdventureResolved(const CAbilityAction* pAction, BOOL bResult);
+
+	CCard* m_pCard;
+	CString m_strName;
+	BOOL_ m_bOnAdventure;
+	ListenerPtr<CardMovementEventSource::Listener> m_cpAListener;
+	ListenerPtr<ResolutionCompletedEventSource::Listener> m_cpRListener;
+};
+
+//____________________________________________________________________________
+//
+// Predefined tokens (rule 111.10), in Tokens2. Their artifact or enchantment type is a CardType flag (CardType::Food,
+// CardType::Treasure...), with the predefined filters "Foods", "Treasures"... "Sacrifice a Food" refers to any Food
+// artifact (a token or a card such as Gingerbrute, Artifact Creature - Food Golem), so the filters use the CardType flag,
+// never the name. The Treasure (55102, TREASURE_TOKEN_NAME in the module helpers) and the Clue (CLUE_TOKEN_NAME, Card3.h)
+// already existed.
+// Not created yet: Incubator (a double-faced token), Junk (play the exiled card this turn) and the Roles (Aura tokens).
+#define FOOD_TOKEN_NAME			_T("Food")
+#define FOOD_TOKEN_ID			55140
+#define GOLD_TOKEN_NAME			_T("Gold")
+#define GOLD_TOKEN_ID			55141
+#define BLOOD_TOKEN_NAME		_T("Blood")
+#define BLOOD_TOKEN_ID			55142
+#define POWERSTONE_TOKEN_NAME	_T("Powerstone")
+#define POWERSTONE_TOKEN_ID		55143
+#define MAP_TOKEN_NAME			_T("Map")
+#define MAP_TOKEN_ID			55144
+#define LANDER_TOKEN_NAME		_T("Lander")
+#define LANDER_TOKEN_ID			55145
+#define SHARD_TOKEN_NAME		_T("Shard")
+#define SHARD_TOKEN_ID			55146
+#define WALKER_TOKEN_NAME		_T("Walker")
+#define WALKER_TOKEN_ID			55147
+
+//____________________________________________________________________________
+//

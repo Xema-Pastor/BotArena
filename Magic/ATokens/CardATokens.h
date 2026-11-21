@@ -1039,3 +1039,17 @@ class CElementalAZToken : public CTokenCreature
 
 //____________________________________________________________________________
 //
+class CElkAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CElkAToken);
+};
+
+//____________________________________________________________________________
+//
+class CEnchantedCarriageVehicleToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CEnchantedCarriageVehicleToken);
+};
+
+//____________________________________________________________________________
+//

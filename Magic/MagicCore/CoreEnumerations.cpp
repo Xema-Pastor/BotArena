@@ -567,7 +567,10 @@ const LPCTSTR SingleCreatureType::s_Text[SingleCreatureType::_SingleTypeCount] =
 	_T("Shark"),
 	_T("Army"),
 	_T("Sloth"),
-	_T("Sorcerer")
+	_T("Sorcerer"),
+	_T("Peasant"),
+	_T("Warlock"),
+	_T("Mouse")
 };
 
 //____________________________________________________________________________
@@ -617,7 +620,10 @@ const LPCTSTR PlaneswalkerType::s_Text[PlaneswalkerType::_SubtypeCount] =
 	_T("Teyo"),
 	_T("Ugin"),
 	_T("Yanggu"),
-	_T("Yanling")
+	_T("Yanling"),
+	_T("Oko"),
+	_T("Rowan"),
+	_T("Will")
 };
 //____________________________________________________________________________
 //

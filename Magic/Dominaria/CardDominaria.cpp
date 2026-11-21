@@ -6584,11 +6584,11 @@ CRelicRunnerCard::CRelicRunnerCard(CGame* pGame, UINT nID)
 	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(new HistoricComparer);
 	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
 	cpAbility->SetSkipStack(TRUE);
-	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CRelicRunnerCard::BeforeUnblockable));
+	cpAbility->SetBeforeResolveSelectionCallback(TriggeredAbility::BeforeResolveSelectionCallback(this, &CRelicRunnerCard::BeforeUnblockable));	// (SetSkipStack: no ResolutionStartedCallback)
 	AddAbility(cpAbility.GetPointer());
 }
 
-bool CRelicRunnerCard::BeforeUnblockable(CAbilityAction* pAction)
+bool CRelicRunnerCard::BeforeUnblockable(CTriggeredAbility<>::TriggeredActionType* pAction)
 {
 	if (GetZoneId() == ZoneId::Battlefield)
 		GetCreatureKeyword()->AddUnblockable(TRUE);

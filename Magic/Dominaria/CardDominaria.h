@@ -1897,7 +1897,7 @@ class CRelicRunnerCard : public CCreatureCard
 	DECLARE_CARD_CSTOR(CRelicRunnerCard);
 
 protected:
-	bool BeforeUnblockable(CAbilityAction* pAction);
+	bool BeforeUnblockable(CTriggeredAbility<>::TriggeredActionType* pAction);
 };
 
 class CSentinelOfThePearlTridentCard : public CCreatureCard

@@ -1219,6 +1219,18 @@ struct CardType
 		Tower               = 0x0000080000000000,
 		Desert              = 0x0000100000000000,
 		PseudoBasicLand     = 0x0000200000000000, // This is to improve land type changing abilities
+		Treasure            = 0x0000400000000000,	// predefined token types (rule 111.10): artifact types...
+		Food                = 0x0000800000000000,
+		Clue                = 0x0001000000000000,
+		Blood               = 0x0002000000000000,
+		Gold                = 0x0004000000000000,
+		Powerstone          = 0x0008000000000000,
+		Incubator           = 0x0010000000000000,
+		Junk                = 0x0020000000000000,
+		Lander              = 0x0040000000000000,
+		Map                 = 0x0080000000000000,
+		Role                = 0x0100000000000000,	// ...and enchantment types
+		Shard               = 0x0200000000000000,
 
 		_Land				= BasicLand | NonbasicLand | PseudoBasicLand,
 		_SnowLand			= Snow | _Land,
@@ -1237,6 +1249,7 @@ struct CardType
 		_UrzasTowerLand		= NonbasicLand | Urzas | Tower,
 
 		_ColorMask			= White | Blue | Black | Red | Green,
+		_PredefinedTypeMask = Treasure | Food | Clue | Blood | Gold | Powerstone | Incubator | Junk | Lander | Map | Role | Shard, // artifact and enchantment types of the predefined tokens
 		_LandTypeMask       = Desert | Forest | Gate | Island | Lair | Locus | Mine | Mountain | Plains | PowerPlant | Swamp | Tower | Urzas,
 		_LandTypeChangeMask = NonbasicLand | Desert | Forest | Gate | Island | Lair | Locus | Mine | Mountain | Plains | PowerPlant | Swamp | Tower | Urzas, // This is to improve land type changing abilities
 
@@ -1544,6 +1557,9 @@ struct CORE_EXPORT SingleCreatureType
 		Army,
 		Sloth,
 		Sorcerer,
+		Peasant,
+		Warlock,
+		Mouse,
 
 		_SingleTypeCount,
 	};
@@ -1613,6 +1629,9 @@ struct CORE_EXPORT PlaneswalkerType
 		Ugin,
 		Yanggu,
 		Yanling,
+		Oko,
+		Rowan,
+		Will,
 
 		_SubtypeCount,
 	};

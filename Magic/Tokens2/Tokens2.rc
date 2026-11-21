@@ -240,6 +240,23 @@ BEGIN
     IDS_STRING55137         "Elemental Bird (A)\n{U}\nCreature - Elemental Bird\nToken\nFlying\n4/4"
     IDS_STRING55138         "Ajani's Pridemate\n{W}\nCreature - Cat Soldier\nToken\nWhenever you gain life, put a +1/+1 counter on this token.\n2/2"
     IDS_STRING55139         "Golem (F)\n\nArtifact Creature - Golem\nToken\n\n3/3"
+    IDS_STRING55140         "Food\n\nArtifact - Food\nToken\n{2}, {T}, Sacrifice this token: You gain 3 life."
+    IDS_STRING55141         "Gold\n\nArtifact - Gold\nToken\nSacrifice this token: Add one mana of any color."
+    IDS_STRING55142         "Blood\n\nArtifact - Blood\nToken\n{1}, {T}, Discard a card, Sacrifice this token: Draw a card."
+    IDS_STRING55143         "Powerstone\n\nArtifact - Powerstone\nToken\n{T}: Add {C}. This mana can't be spent to cast a nonartifact spell."
+    IDS_STRING55144         "Map\n\nArtifact - Map\nToken\n{1}, {T}, Sacrifice this token: Target creature you control explores. Activate only as a sorcery."
+    IDS_STRING55145         "Lander\n\nArtifact - Lander\nToken\n{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."
+    IDS_STRING55146         "Shard\n\nEnchantment - Shard\nToken\n{2}, Sacrifice this token: Scry 1, then draw a card."
+    IDS_STRING55147         "Walker\n{B}\nCreature - Zombie\nToken\n\n2/2"
+    IDS_STRING55148         "Dwarf (A)\n{R}\nCreature - Dwarf\nToken\n\n1/1"
+    IDS_STRING55149         "Wolf (M)\n{BG}\nCreature - Wolf\nToken\nWhen this token dies, put a loyalty counter on each Garruk you control.\n2/2"
+    IDS_STRING55150         "Faerie (A)\n{U}\nCreature - Faerie\nToken\nFlying\n1/1"
+    IDS_STRING55151         "Human Warrior (A)\n{RW}\nCreature - Human Warrior\nToken\nTrample, haste\n3/1"
+    IDS_STRING55152         "Human Cleric (B)\n{RW}\nCreature - Human Cleric\nToken\nLifelink, haste\n2/1"
+    IDS_STRING55153         "Human Rogue (A)\n{RW}\nCreature - Human Rogue\nToken\nHaste\rWhen this token enters, it deals 1 damage to any target.\n1/2"
+    IDS_STRING55154         "Mouse (A)\n{W}\nCreature - Mouse\nToken\n\n1/1"
+    IDS_STRING55155         "Giant (AC)\n{G}\nCreature - Giant\nToken\n\n7/7"
+    IDS_STRING55156         "Boar (C)\n{G}\nCreature - Boar\nToken\nWhen this token dies, create a Food token.\n1/1"
 END
 
 #endif    // English (United States) resources

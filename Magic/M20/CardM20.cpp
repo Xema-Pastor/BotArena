@@ -5285,7 +5285,7 @@ CAngelOfVitalityCard::CAngelOfVitalityCard(CGame* pGame, UINT nID)
 		cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
 		cpAbility->SetSkipStack(TRUE);
 		cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CAngelOfVitalityCard::SetLifeContext));
-		cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CAngelOfVitalityCard::BeforeGainLife));
+		cpAbility->SetBeforeResolveSelectionCallback(TriggeredAbility::BeforeResolveSelectionCallback(this, &CAngelOfVitalityCard::BeforeGainLife));	// (SetSkipStack: no ResolutionStartedCallback)
 		AddAbility(cpAbility.GetPointer());
 	}
 
@@ -5299,7 +5299,7 @@ bool CAngelOfVitalityCard::SetLifeContext(CTriggeredAbility<>::TriggerContextTyp
 	return !s_bGaining && nToLife > nFromLife;
 }
 
-bool CAngelOfVitalityCard::BeforeGainLife(CAbilityAction* pAction)
+bool CAngelOfVitalityCard::BeforeGainLife(CTriggeredAbility<>::TriggeredActionType* pAction)
 {
 	s_bGaining = true;
 	GainLife(this, pAction->GetController(), 1);

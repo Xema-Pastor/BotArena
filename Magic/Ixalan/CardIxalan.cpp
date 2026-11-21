@@ -1567,7 +1567,7 @@ CRevelInRichesCard::CRevelInRichesCard(CGame* pGame, UINT nID)
 
 BOOL CRevelInRichesCard::HasTenTreasures() const
 {
-	CCardFilter treasures(_T("a Treasure"), _T("Treasures"), new CardNameComparer(_T("Treasure")));
+	CCardFilter treasures(_T("a Treasure"), _T("Treasures"), new CardTypeComparer(CardType::Treasure, false));
 	return treasures.CountIncluded(GetController()->GetZoneById(ZoneId::Battlefield)->GetCardContainer()) >= 10;
 }
 
@@ -1892,7 +1892,7 @@ CSpiresOfOrazcaCard::CSpiresOfOrazcaCard(CGame* pGame, UINT nID)
 CTreasureMapCard::CTreasureMapCard(CGame* pGame, UINT nID)
 	: CTransformArtifactBase(pGame, _T("Treasure Map"), nID,
 		_T("2"), _T("Treasure Cove"))
-	, m_TreasureFilter(_T("a Treasure"), _T("Treasures"), new CardNameComparer(_T("Treasure")))
+	, m_TreasureFilter(_T("a Treasure"), _T("Treasures"), new CardTypeComparer(CardType::Treasure, false))
 {
 	{
 		// {1}, {T}: Scry 1. Put a landmark counter on this artifact. Then if there are three or more landmark counters
@@ -5202,7 +5202,7 @@ CCaptainLanneryStormCard::CCaptainLanneryStormCard(CGame* pGame, UINT nID)
 
 	cpAbility->GetTrigger().SetFromControllerOnly(TRUE);
 	cpAbility->GetTrigger().GetCardFilterHelper().SetFilterType(CCardFilterHelper::FilterType::Custom);
-	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(new CardNameComparer(_T("Treasure")));
+	cpAbility->GetTrigger().GetCardFilterHelper().GetCustomFilter().AddComparer(new CardTypeComparer(CardType::Treasure, false));
 	cpAbility->SetOptionalType(TriggeredAbility::OptionalType::Required);
 	cpAbility->SetContextFunction(TriggeredAbility::ContextFunction(this, &CCaptainLanneryStormCard::SetTriggerContext));
 	cpAbility->SetResolutionStartedCallback(CAbility::ResolutionStartedCallback(this, &CCaptainLanneryStormCard::BeforePump));
@@ -6160,7 +6160,7 @@ CRuthlessKnaveCard::CRuthlessKnaveCard(CGame* pGame, UINT nID)
 	: CCreatureCard(pGame, _T("Ruthless Knave"), CardType::Creature, CREATURE_TYPE2(Orc, Pirate), nID,
 		_T("2") BLACK_MANA_TEXT, Power(3), Life(2))
 	, m_CreatureFilter(_T("a creature"), _T("creatures"), new AnyCreatureComparer)
-	, m_TreasureFilter(_T("a Treasure"), _T("Treasures"), new CardNameComparer(_T("Treasure")))
+	, m_TreasureFilter(_T("a Treasure"), _T("Treasures"), new CardTypeComparer(CardType::Treasure, false))
 {
 	{
 		// {2}{B}, Sacrifice a creature: Create two Treasure tokens.

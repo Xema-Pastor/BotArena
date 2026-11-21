@@ -2245,3 +2245,10 @@ protected:
 
 //____________________________________________________________________________
 //
+class CGarrukCursedHuntsmanEmblemToken : public CEffectCard
+{
+	DECLARE_CARD_CSTOR(CGarrukCursedHuntsmanEmblemToken);
+};
+
+//____________________________________________________________________________
+//

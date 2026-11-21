@@ -1225,7 +1225,7 @@ class CAngelOfVitalityCard : public CFlyingCreatureCard
 
 protected:
 	bool SetLifeContext(CTriggeredAbility<>::TriggerContextType& triggerContext, const CPlayer* pPlayer, Life nFromLife, Life nToLife) const;
-	bool BeforeGainLife(CAbilityAction* pAction);
+	bool BeforeGainLife(CTriggeredAbility<>::TriggeredActionType* pAction);
 
 	static bool s_bGaining;	// the extra life is being gained (it doesn't trigger any Angel of Vitality again)
 };

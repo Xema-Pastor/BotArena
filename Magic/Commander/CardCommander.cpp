@@ -54,6 +54,7 @@ counted_ptr<CCard> CreateCard(CGame* pGame, LPCTSTR strCardName, StringArray& ca
 			DEFINE_CARD(CVishKalBloodArbiterCard);
 			DEFINE_CARD(CZedruutheGreatheartedCard);
 
+		DEFINE_CARD(CArcaneSignetCard);
 	} while (false);
 
 	return cpCard;
@@ -1916,6 +1917,60 @@ CBasandraBattleSeraphCard::CBasandraBattleSeraphCard(CGame* pGame, UINT nID)
 
 		AddAbility(cpAbility.GetPointer());	
 	}
+}
+
+//____________________________________________________________________________
+//
+CArcaneSignetCard::CArcaneSignetCard(CGame* pGame, UINT nID)
+	: CInPlaySpellCard(pGame, _T("Arcane Signet"), CardType::Artifact, nID,
+		_T("2"), AbilityType::Artifact)
+{
+	// {T}: Add one mana of any color in your commander's color identity. (as Command Tower)
+	LPCTSTR mana[] = { WHITE_MANA_TEXT, BLUE_MANA_TEXT, BLACK_MANA_TEXT, RED_MANA_TEXT, GREEN_MANA_TEXT };
+	typedef BOOL (CArcaneSignetCard::*Condition)(BOOL);
+	Condition conditions[] = { &CArcaneSignetCard::CanPlayWhite, &CArcaneSignetCard::CanPlayBlue,
+		&CArcaneSignetCard::CanPlayBlack, &CArcaneSignetCard::CanPlayRed, &CArcaneSignetCard::CanPlayGreen };
+
+	for (int i = 0; i < 5; ++i)
+	{
+		counted_ptr<CManaProductionAbility> cpAbility(
+			::CreateObject<CManaProductionAbility>(this, _T(""), AbilityType::Activated, mana[i]));
+
+		cpAbility->AddTapCost();
+
+		counted_ptr<CPlayableIfTrait> cpTrait(
+			::CreateObject<CPlayableIfTrait>(
+				cpAbility.GetPointer(),
+				CPlayableIfTrait::PlayableCallback(this, conditions[i])));
+
+		cpAbility->Add(cpTrait.GetPointer());
+
+		AddAbility(cpAbility.GetPointer());
+	}
+}
+
+BOOL CArcaneSignetCard::HasIdentity(int nColor)
+{
+	CZone* pEffects = GetController()->GetZoneById(ZoneId::_Effects);
+
+	for (int i = 0; i < pEffects->GetSize(); ++i)
+		if (pEffects->GetAt(i)->GetPrintedCardName() == _T("Commander"))
+		{
+			CCommanderCard* pCommander = dynamic_cast<CCommanderCard*>(pEffects->GetAt(i));
+			if (!pCommander)
+				return FALSE;
+			switch (nColor)
+			{
+			case 0: return pCommander->IdentityWhite() == TRUE;
+			case 1: return pCommander->IdentityBlue() == TRUE;
+			case 2: return pCommander->IdentityBlack() == TRUE;
+			case 3: return pCommander->IdentityRed() == TRUE;
+			case 4: return pCommander->IdentityGreen() == TRUE;
+			}
+			return FALSE;
+		}
+
+	return FALSE;
 }
 
 //____________________________________________________________________________

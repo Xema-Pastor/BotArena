@@ -1436,7 +1436,7 @@ counted_ptr<CAbility> CSlayersPlateCard::CreateEquipmentAbility(CCard* pCard)
 CTamiyosJournalCard::CTamiyosJournalCard(CGame* pGame, UINT nID)
 	: CInPlaySpellCard(pGame, _T("Tamiyo's Journal"), CardType::_LegendaryArtifact, nID,
 		_T("5"), AbilityType::Artifact)
-	, m_ClueFilter(_T("a Clue"), _T("Clues"), new CardNameComparer(_T("Clue")))
+	, m_ClueFilter(_T("a Clue"), _T("Clues"), new CardTypeComparer(CardType::Clue, false))
 {
 	{
 		// At the beginning of your upkeep, investigate.
@@ -2873,7 +2873,7 @@ bool CConfrontTheUnknownCard::BeforeResolution(CAbilityAction* pAction) const
 	if (!pTarget || !pTarget->GetCardType().IsCreature() || pTarget->GetZoneId() != ZoneId::Battlefield)
 		return true;
 
-	CCardFilter clueFilter(new CardNameComparer(_T("Clue")));
+	CCardFilter clueFilter(new CardTypeComparer(CardType::Clue, false));
 	int nClues = clueFilter.CountIncluded(pController->GetZoneById(ZoneId::Battlefield)->GetCardContainer());
 
 	CPowerModifier pPowerModifier = CPowerModifier(Power(+nClues));

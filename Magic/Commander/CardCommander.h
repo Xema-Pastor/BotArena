@@ -408,3 +408,18 @@ class CBasandraBattleSeraphCard : public CFlyingCreatureCard
 
 //____________________________________________________________________________
 //
+class CArcaneSignetCard : public CInPlaySpellCard
+{
+	DECLARE_CARD_CSTOR(CArcaneSignetCard);
+
+protected:
+	BOOL HasIdentity(int nColor);
+	BOOL CanPlayWhite(BOOL bIncludeTricks) { return HasIdentity(0); }
+	BOOL CanPlayBlue(BOOL bIncludeTricks) { return HasIdentity(1); }
+	BOOL CanPlayBlack(BOOL bIncludeTricks) { return HasIdentity(2); }
+	BOOL CanPlayRed(BOOL bIncludeTricks) { return HasIdentity(3); }
+	BOOL CanPlayGreen(BOOL bIncludeTricks) { return HasIdentity(4); }
+};
+
+//____________________________________________________________________________
+//

@@ -1345,6 +1345,20 @@ void CCardFilter::AddPredefinedFilters()
 		// nonbasic lands
 		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a nonbasic land"), _T("nonbasic lands"), new CardTypeComparer(CardType::NonbasicLand, false))));
 
+		// artifact and enchantment types of the predefined tokens (Treasure, Food, Clue...)
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Treasure"), _T("Treasures"), new CardTypeComparer(CardType::Treasure, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Food"), _T("Foods"), new CardTypeComparer(CardType::Food, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Clue"), _T("Clues"), new CardTypeComparer(CardType::Clue, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Blood"), _T("Bloods"), new CardTypeComparer(CardType::Blood, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Gold"), _T("Golds"), new CardTypeComparer(CardType::Gold, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Powerstone"), _T("Powerstones"), new CardTypeComparer(CardType::Powerstone, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("an Incubator"), _T("Incubators"), new CardTypeComparer(CardType::Incubator, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Junk"), _T("Junks"), new CardTypeComparer(CardType::Junk, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Lander"), _T("Landers"), new CardTypeComparer(CardType::Lander, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Map"), _T("Maps"), new CardTypeComparer(CardType::Map, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Role"), _T("Roles"), new CardTypeComparer(CardType::Role, false))));
+		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Shard"), _T("Shards"), new CardTypeComparer(CardType::Shard, false))));
+
 		// nonbasic land types
 		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Desert"), _T("Deserts"), new CardTypeComparer(CardType::Desert, false))));
 		AddFilter(std::auto_ptr<CCardFilter>(new CCardFilter(_T("a Gate"), _T("Gates"), new CardTypeComparer(CardType::Gate, false))));

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <map>
 
 #define new DEBUG_NEW
 
@@ -323,6 +324,103 @@ void CTransformedPlaneswalkerCard::Move(CZone* pToZone, const CPlayer* pByPlayer
 	}
 
 	__super::Move(pToZone, pByPlayer, moveType, cardPlacement, can_dredge);
+}
+
+//____________________________________________________________________________
+//
+// Every adventurer card registers its Adventure support here (see Find)
+static std::map<const CCard*, CAdventureSupport*>& GetAdventureSupports()
+{
+	static std::map<const CCard*, CAdventureSupport*> adventureSupports;
+	return adventureSupports;
+}
+
+CAdventureSupport::CAdventureSupport(CCard* pCard)
+	: m_pCard(pCard)
+	, m_bOnAdventure(FALSE)
+	, m_cpAListener(VAR_NAME(m_cpAListener), CardMovementEventSource::Listener::EventCallback(this, &CAdventureSupport::OnZoneChanged))
+	, m_cpRListener(VAR_NAME(m_cpRListener), ResolutionCompletedEventSource::Listener::EventCallback(this, &CAdventureSupport::OnAdventureResolved))
+{
+	GetAdventureSupports()[pCard] = this;
+	pCard->GetMovedEventSource()->AddListener(m_cpAListener.GetPointer());
+}
+
+CAdventureSupport::~CAdventureSupport()
+{
+	std::map<const CCard*, CAdventureSupport*>::iterator it = GetAdventureSupports().find(m_pCard);
+	if (it != GetAdventureSupports().end() && it->second == this)
+		GetAdventureSupports().erase(it);
+}
+
+CAdventureSupport* CAdventureSupport::Find(const CCard* pCard)
+{
+	std::map<const CCard*, CAdventureSupport*>::const_iterator it = GetAdventureSupports().find(pCard);
+	return it != GetAdventureSupports().end() ? it->second : NULL;
+}
+
+BOOL CAdventureSupport::IsAdventureSpell(const CAbility* pAbility)
+{
+	return pAbility && pAbility->GetAbilityName() == ADVENTURE_ABILITY_NAME;
+}
+
+void CAdventureSupport::SetAdventureSpell(CSpell* pSpell, LPCTSTR strName)
+{
+	m_strName = strName;
+
+	// Cast only from the hand; if it resolves, the card is exiled (instead of going to the graveyard)
+	pSpell->SetHandOnly();
+	pSpell->SetMainSpell(FALSE);
+	pSpell->SetAbilityName(ADVENTURE_ABILITY_NAME);
+	pSpell->SetToZoneIfSuccess(ZoneId::Exile, TRUE);
+
+	CString strText;
+	strText.Format(_T("%s (Adventure). Casts"), strName);
+	pSpell->SetAbilityText(strText);
+
+	// The card is moved before the event (CSpell::OnResolutionCompleted), so it's already in exile
+	pSpell->GetResolutionCompletedEventSource()->AddListener(m_cpRListener.GetPointer());
+}
+
+CSpell* CAdventureSupport::AddCastFromExileSpell(LPCTSTR strManaCost)
+{
+	// "You may cast this card from exile" (as Eternal Scourge in Eldritch Moon), only after its Adventure
+	counted_ptr<CSpell> cpSpell(
+		::CreateObject<CSpell>(m_pCard, m_pCard->GetSpells().GetAt(0)->GetAbilityType(), strManaCost, TRUE));
+
+	cpSpell->SetPlayableFrom(ZoneId::Exile);
+	cpSpell->SetMainSpell(FALSE);
+	cpSpell->SetAbilityText(_T("Casts from exile (after its Adventure)"));
+
+	counted_ptr<CPlayableIfTrait> cpTrait(
+		::CreateObject<CPlayableIfTrait>(cpSpell.GetPointer(),
+			CPlayableIfTrait::PlayableCallback(this, &CAdventureSupport::CanCastFromExile)));
+	cpSpell->Add(cpTrait.GetPointer());
+
+	m_pCard->AddSpell(cpSpell.GetPointer());
+	return cpSpell.GetPointer();
+}
+
+BOOL CAdventureSupport::IsOnAdventure() const
+{
+	return m_bOnAdventure && m_pCard->GetZoneId() == ZoneId::Exile;
+}
+
+BOOL CAdventureSupport::CanCastFromExile(BOOL bIncludeTricks)
+{
+	return IsOnAdventure();
+}
+
+void CAdventureSupport::OnZoneChanged(CCard* pCard, CZone* pFromZone, CZone* pToZone, CPlayer* pByPlayer, MoveType moveType)
+{
+	// Any move ends the adventure (the resolution of the Adventure sets it again once the card is in exile)
+	if (pCard == m_pCard)
+		m_bOnAdventure = FALSE;
+}
+
+void CAdventureSupport::OnAdventureResolved(const CAbilityAction* pAction, BOOL bResult)
+{
+	if (bResult && m_pCard->GetZoneId() == ZoneId::Exile)
+		m_bOnAdventure = TRUE;
 }
 
 //____________________________________________________________________________

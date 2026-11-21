@@ -1017,3 +1017,134 @@ class CGolemFToken : public CTokenCreature
 {
 	DECLARE_CARD_CSTOR(CGolemFToken);
 };
+
+//____________________________________________________________________________
+//
+class CFoodToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CFoodToken);
+};
+
+//____________________________________________________________________________
+//
+class CGoldToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CGoldToken);
+};
+
+//____________________________________________________________________________
+//
+class CBloodToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CBloodToken);
+};
+
+//____________________________________________________________________________
+//
+class CPowerstoneToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CPowerstoneToken);
+};
+
+//____________________________________________________________________________
+//
+class CMapToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CMapToken);
+
+protected:
+	bool BeforeExplore(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//
+class CLanderToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CLanderToken);
+};
+
+//____________________________________________________________________________
+//
+class CShardToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CShardToken);
+};
+
+//____________________________________________________________________________
+//
+class CWalkerToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CWalkerToken);
+};
+
+//____________________________________________________________________________
+//
+class CDwarfAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CDwarfAToken);
+};
+
+//____________________________________________________________________________
+//
+class CWolfMToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CWolfMToken);
+
+protected:
+	bool BeforeLoyalty(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//
+class CFaerieAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CFaerieAToken);
+};
+
+//____________________________________________________________________________
+//
+class CHumanWarriorAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CHumanWarriorAToken);
+};
+
+//____________________________________________________________________________
+//
+class CHumanClericBToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CHumanClericBToken);
+};
+
+//____________________________________________________________________________
+//
+class CHumanRogueAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CHumanRogueAToken);
+
+protected:
+	bool BeforeDamage(CAbilityAction* pAction);
+};
+
+//____________________________________________________________________________
+//
+class CMouseAToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CMouseAToken);
+};
+
+//____________________________________________________________________________
+//
+class CGiantACToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CGiantACToken);
+};
+
+//____________________________________________________________________________
+//
+class CBoarCToken : public CTokenCreature
+{
+	DECLARE_CARD_CSTOR(CBoarCToken);
+
+protected:
+	bool BeforeFood(CAbilityAction* pAction);
+};

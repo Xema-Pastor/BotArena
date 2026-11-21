@@ -188,6 +188,7 @@ counted_ptr<CCard> CreateToken(CGame* pGame, LPCTSTR strTokenName, UINT uID)
 		DEFINE_TOKEN(CZombieBoaGreenEffectToken);
 		DEFINE_TOKEN(CNissaWhoShakesTheWorldEmblemToken);
 		DEFINE_TOKEN(CChandraAwakenedInfernoEmblemToken);
+		DEFINE_TOKEN(CGarrukCursedHuntsmanEmblemToken);
 
 		
 	} while (false);
@@ -12156,6 +12157,25 @@ bool CChandraAwakenedInfernoEmblemToken::BeforeDamage(CAbilityAction* pAction)
 		DamageType::AbilityDamage | DamageType::NonCombatDamage);
 	pModifier.ApplyTo(pAction->GetController());
 	return true;
+}
+
+//____________________________________________________________________________
+//
+CGarrukCursedHuntsmanEmblemToken::CGarrukCursedHuntsmanEmblemToken(CGame* pGame, UINT nID)
+	: CEffectCard(pGame, _T("Garruk, Cursed Huntsman Emblem"), CardType::GlobalEnchantment, nID)
+{
+	GetCardKeyword()->AddEmblem(FALSE);
+
+	// Creatures you control get +3/+3 and have trample. (as Vivien Reid Emblem)
+	counted_ptr<CPwrTghAttrEnchantment> cpAbility(
+		::CreateObject<CPwrTghAttrEnchantment>(this,
+			new AnyCreatureComparer,
+			Power(+3), Life(+3), CreatureKeyword::Trample));
+
+	cpAbility->SetEnchantmentActiveIn(ZoneId::_Effects);
+	cpAbility->SetAffectControllerCardsOnly();
+	AddAbility(cpAbility.GetPointer());
+// Throne of Eldraine version: from Garruk, Cursed Huntsman.
 }
 
 //____________________________________________________________________________
